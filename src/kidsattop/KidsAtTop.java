@@ -13,7 +13,7 @@ public class KidsAtTop {
         //prueba2
         //Hola que hace
         //Uno
-        System.out.println();
+  
         LoginForm formulario = new LoginForm();
         formulario.setVisible(true);
     }
