@@ -11,6 +11,7 @@ public class KidsAtTop {
     public static void main(String[] args) {
         //Prueba
         //prueba2
+        //Hola que hace
         LoginForm formulario = new LoginForm();
         formulario.setVisible(true);
     }
