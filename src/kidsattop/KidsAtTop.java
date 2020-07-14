@@ -9,6 +9,7 @@ import vistas.LoginForm;
 public class KidsAtTop {
 
     public static void main(String[] args) {
+        //Prueba
         LoginForm formulario = new LoginForm();
         formulario.setVisible(true);
     }
