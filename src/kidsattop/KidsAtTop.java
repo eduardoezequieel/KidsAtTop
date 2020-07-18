@@ -10,6 +10,7 @@ public class KidsAtTop {
 
     public static void main(String[] args) {
         //hola que hace
+        //hola que hace Eduardo
         LoginForm formulario = new LoginForm();
         formulario.setVisible(true);
     }
