@@ -14,7 +14,7 @@ public class KidsAtTop {
         //Hola que hace 2.2
         //Probando - Pablo
         //Jacobo estuvo aquí xd
-        //Hola que pasa amikoooooos
+        //Hola que pasa amikoooooos edesexFake
         LoginForm formulario = new LoginForm();
         formulario.setVisible(true);
     }
