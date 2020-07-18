@@ -12,6 +12,7 @@ public class KidsAtTop {
         //hola que hace
         //hola que hace Eduardo
         //Hola que hace 2.2
+        //Probando - Pablo
         LoginForm formulario = new LoginForm();
         formulario.setVisible(true);
     }
