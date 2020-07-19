@@ -9,12 +9,7 @@ import vistas.LoginForm;
 public class KidsAtTop {
 
     public static void main(String[] args) {
-        //hola que hace
-        //hola que hace Eduardo
-        //Hola que hace 2.2
-        //Probando - Pablo
-        //Jacobo estuvo aquí xd
-        //Hola que pasa amikoooooos edesexFake
+  
         LoginForm formulario = new LoginForm();
         formulario.setVisible(true);
     }
