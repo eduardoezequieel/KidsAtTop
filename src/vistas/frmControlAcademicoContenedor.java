@@ -9,12 +9,12 @@ package vistas;
  *
  * @author katy0
  */
-public class ControlAcademicoContenedorForm extends javax.swing.JFrame {
+public class frmControlAcademicoContenedor extends javax.swing.JFrame {
 
     /**
      * Creates new form ControlAcademicoContenedorForm
      */
-    public ControlAcademicoContenedorForm() {
+    public frmControlAcademicoContenedor() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -155,35 +155,35 @@ public class ControlAcademicoContenedorForm extends javax.swing.JFrame {
 
     private void jGestionarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarNotasActionPerformed
         //Abriendo formulario de Gestionar Notas
-        GestionarNotasForm notas = new GestionarNotasForm();
+        frmGestionarNotas notas = new frmGestionarNotas();
         jEscritorio.add(notas);
         notas.setVisible(true);
     }//GEN-LAST:event_jGestionarNotasActionPerformed
 
     private void jGestionarConductaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarConductaActionPerformed
         //Abriendo formulario de Gestionar Conducta
-        GestionarConductaForm conducta = new GestionarConductaForm();
+        frmGestionarConducta conducta = new frmGestionarConducta();
         jEscritorio.add(conducta);
         conducta.setVisible(true);
     }//GEN-LAST:event_jGestionarConductaActionPerformed
 
     private void jGestionarSeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarSeccionesActionPerformed
         //Abriendo formulario de Gestionar Secciones
-        GestionarSeccionesForm secciones = new GestionarSeccionesForm();
+        frmGestionarSecciones secciones = new frmGestionarSecciones();
         jEscritorio.add(secciones);
         secciones.setVisible(true);        
     }//GEN-LAST:event_jGestionarSeccionesActionPerformed
 
     private void jGestionarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarAsistenciaActionPerformed
         //Abriendo formulario de Controlar Asistencia
-        ControlarAsistenciaForm asistencia = new ControlarAsistenciaForm();
+        frmControlarAsistencia asistencia = new frmControlarAsistencia();
         jEscritorio.add(asistencia);
         asistencia.setVisible(true);
     }//GEN-LAST:event_jGestionarAsistenciaActionPerformed
 
     private void jGestionarSecciones1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarSecciones1ActionPerformed
          this.setVisible(false);
-        PrincipalForm formulario = new PrincipalForm();
+        frmPrincipal formulario = new frmPrincipal();
         formulario.setVisible(true);
     }//GEN-LAST:event_jGestionarSecciones1ActionPerformed
 
@@ -204,20 +204,21 @@ public class ControlAcademicoContenedorForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ControlAcademicoContenedorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmControlAcademicoContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ControlAcademicoContenedorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmControlAcademicoContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ControlAcademicoContenedorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmControlAcademicoContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ControlAcademicoContenedorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmControlAcademicoContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ControlAcademicoContenedorForm().setVisible(true);
+                new frmControlAcademicoContenedor().setVisible(true);
             }
         });
     }

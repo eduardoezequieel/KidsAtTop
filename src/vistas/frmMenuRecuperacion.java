@@ -1,9 +1,9 @@
 
 package vistas;
 
-public class MenuRecuForm extends javax.swing.JFrame {
+public class frmMenuRecuperacion extends javax.swing.JFrame {
 
-    public MenuRecuForm() {
+    public frmMenuRecuperacion() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -98,26 +98,26 @@ public class MenuRecuForm extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         this.setVisible(false);
-        LoginForm formulario = new LoginForm();
+        frmLogin formulario = new frmLogin();
         formulario.setVisible(true);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        RecuAdminForm formulario = new RecuAdminForm();
+        frmRecuAdmin formulario = new frmRecuAdmin();
         formulario.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.setVisible(false);
-        RecuCorreoForm formulario = new RecuCorreoForm();
+        frmRecuCorreo formulario = new frmRecuCorreo();
         formulario.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         this.setVisible(false);
-        RecuPreguntasForm formulario = new RecuPreguntasForm();
+        frmRecuPreguntas formulario = new frmRecuPreguntas();
         formulario.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -135,21 +135,23 @@ public class MenuRecuForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuRecuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuRecuperacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuRecuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuRecuperacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuRecuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuRecuperacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuRecuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuRecuperacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuRecuForm().setVisible(true);
+                new frmMenuRecuperacion().setVisible(true);
             }
         });
     }

@@ -9,12 +9,12 @@ package vistas;
  *
  * @author eduardxlr
  */
-public class RecuCorreoForm extends javax.swing.JFrame {
+public class frmRecuCorreo extends javax.swing.JFrame {
 
     /**
      * Creates new form RecuCorreoForm
      */
-    public RecuCorreoForm() {
+    public frmRecuCorreo() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -204,7 +204,7 @@ public class RecuCorreoForm extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
        this.setVisible(false);
-       MenuRecuForm formulario = new MenuRecuForm();
+       frmMenuRecuperacion formulario = new frmMenuRecuperacion();
        formulario.setVisible(true);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
@@ -225,20 +225,21 @@ public class RecuCorreoForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RecuCorreoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmRecuCorreo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RecuCorreoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmRecuCorreo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RecuCorreoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmRecuCorreo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RecuCorreoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmRecuCorreo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RecuCorreoForm().setVisible(true);
+                new frmRecuCorreo().setVisible(true);
             }
         });
     }

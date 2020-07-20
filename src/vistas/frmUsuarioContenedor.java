@@ -9,12 +9,12 @@ package vistas;
  *
  * @author katy0
  */
-public class UsuarioContenedorForm extends javax.swing.JFrame {
+public class frmUsuarioContenedor extends javax.swing.JFrame {
 
     /**
      * Creates new form UsuarioContenedorForm
      */
-    public UsuarioContenedorForm() {
+    public frmUsuarioContenedor() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -109,14 +109,14 @@ public class UsuarioContenedorForm extends javax.swing.JFrame {
 
     private void jControlarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jControlarUsuariosActionPerformed
         //Abriendo formulario de Controlar Usuarios
-        ControlarUsuariosForm usuarios = new ControlarUsuariosForm();
+        frmControlarUsuarios usuarios = new frmControlarUsuarios();
         jEscritorio.add(usuarios);
         usuarios.setVisible(true);
     }//GEN-LAST:event_jControlarUsuariosActionPerformed
 
     private void jControlarUsuarios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jControlarUsuarios1ActionPerformed
         this.setVisible(false);
-        PrincipalForm formulario = new PrincipalForm();
+        frmPrincipal formulario = new frmPrincipal();
         formulario.setVisible(true);
     }//GEN-LAST:event_jControlarUsuarios1ActionPerformed
 
@@ -137,20 +137,21 @@ public class UsuarioContenedorForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UsuarioContenedorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmUsuarioContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UsuarioContenedorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmUsuarioContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UsuarioContenedorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmUsuarioContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UsuarioContenedorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmUsuarioContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UsuarioContenedorForm().setVisible(true);
+                new frmUsuarioContenedor().setVisible(true);
             }
         });
     }

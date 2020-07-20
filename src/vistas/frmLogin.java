@@ -3,9 +3,9 @@ package vistas;
  *
  * @author eduardxlr
  */
-public class LoginForm extends javax.swing.JFrame {
+public class frmLogin extends javax.swing.JFrame {
 
-    public LoginForm() {
+    public frmLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -142,13 +142,13 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         this.setVisible(false);
-        PrincipalForm formulario = new PrincipalForm();
+        frmPrincipal formulario = new frmPrincipal();
         formulario.setVisible(true);
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     private void btnRecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarActionPerformed
         this.setVisible(false);
-        MenuRecuForm formulario = new MenuRecuForm();
+        frmMenuRecuperacion formulario = new frmMenuRecuperacion();
         formulario.setVisible(true);
     }//GEN-LAST:event_btnRecuperarActionPerformed
 
@@ -158,7 +158,7 @@ public class LoginForm extends javax.swing.JFrame {
    
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginForm().setVisible(true);
+                new frmLogin().setVisible(true);
             }
         });
     }

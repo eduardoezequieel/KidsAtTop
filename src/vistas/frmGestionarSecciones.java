@@ -13,12 +13,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author katy0
  */
-public class GestionarSeccionesForm extends javax.swing.JInternalFrame {
+public class frmGestionarSecciones extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form GestionarSeccionesForm
      */
-    public GestionarSeccionesForm() {
+    public frmGestionarSecciones() {
         initComponents();
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
@@ -100,7 +100,6 @@ public class GestionarSeccionesForm extends javax.swing.JInternalFrame {
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 220, 140, 70));
 
         tSecciones.setBackground(new java.awt.Color(33, 37, 41));
-        tSecciones.setBorder(null);
         tSecciones.setForeground(new java.awt.Color(254, 254, 254));
         tSecciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

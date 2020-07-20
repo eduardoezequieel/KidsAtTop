@@ -13,12 +13,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author katy0
  */
-public class ControlarUsuariosForm extends javax.swing.JInternalFrame {
+public class frmControlarUsuarios extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ControlarUsuariosForm
      */
-    public ControlarUsuariosForm() {
+    public frmControlarUsuarios() {
         initComponents();
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
@@ -276,7 +276,6 @@ public class ControlarUsuariosForm extends javax.swing.JInternalFrame {
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 420, 140, 70));
 
         tUsuarios.setBackground(new java.awt.Color(33, 37, 41));
-        tUsuarios.setBorder(null);
         tUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null},

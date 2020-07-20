@@ -13,12 +13,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author katy0
  */
-public class GestionarResponsableForm extends javax.swing.JInternalFrame {
+public class frmGestionarResponsable extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form GestionarResponsableForm
      */
-    public GestionarResponsableForm() {
+    public frmGestionarResponsable() {
         initComponents();
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
@@ -221,7 +221,6 @@ public class GestionarResponsableForm extends javax.swing.JInternalFrame {
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 260, 140, 70));
 
         tResponsables.setBackground(new java.awt.Color(33, 37, 41));
-        tResponsables.setBorder(null);
         tResponsables.setFont(new java.awt.Font("Roboto Light", 1, 17)); // NOI18N
         tResponsables.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -303,7 +302,7 @@ public class GestionarResponsableForm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        CorreoForm formulario = new CorreoForm();
+        frmCorreo formulario = new frmCorreo();
         formulario.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 

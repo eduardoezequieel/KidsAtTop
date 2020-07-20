@@ -9,12 +9,12 @@ package vistas;
  *
  * @author eduardxlr
  */
-public class RecuPreguntasForm extends javax.swing.JFrame {
+public class frmRecuPreguntas extends javax.swing.JFrame {
 
     /**
      * Creates new form RecuPreguntasForm
      */
-    public RecuPreguntasForm() {
+    public frmRecuPreguntas() {
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -286,7 +286,7 @@ public class RecuPreguntasForm extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        this.setVisible(false);
-       MenuRecuForm formulario = new MenuRecuForm();
+       frmMenuRecuperacion formulario = new frmMenuRecuperacion();
        formulario.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -311,20 +311,21 @@ public class RecuPreguntasForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RecuPreguntasForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmRecuPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RecuPreguntasForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmRecuPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RecuPreguntasForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmRecuPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RecuPreguntasForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmRecuPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RecuPreguntasForm().setVisible(true);
+                new frmRecuPreguntas().setVisible(true);
             }
         });
     }

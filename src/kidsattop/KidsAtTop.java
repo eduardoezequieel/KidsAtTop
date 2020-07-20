@@ -1,6 +1,6 @@
 package kidsattop;
 
-import vistas.LoginForm;
+import vistas.frmLogin;
 
 /**
  *
@@ -10,7 +10,7 @@ public class KidsAtTop {
 
     public static void main(String[] args) {
   
-        LoginForm formulario = new LoginForm();
+        frmLogin formulario = new frmLogin();
         formulario.setVisible(true);
     }
 

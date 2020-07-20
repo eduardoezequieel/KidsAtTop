@@ -9,12 +9,12 @@ package vistas;
  *
  * @author katy0
  */
-public class GestionarMatriculaContenedorForm extends javax.swing.JFrame {
+public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
 
     /**
      * Creates new form GestionarMatriculaContenedorForm
      */
-    public GestionarMatriculaContenedorForm() {
+    public frmGestionarMatriculaContenedor() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -132,7 +132,7 @@ public class GestionarMatriculaContenedorForm extends javax.swing.JFrame {
 
     private void jGestionarResponsablesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarResponsablesActionPerformed
         //Abriendo formulario de Gestionar Conducta
-        GestionarResponsableForm responsable = new GestionarResponsableForm();
+        frmGestionarResponsable responsable = new frmGestionarResponsable();
         jDesktop.add(responsable);
         responsable.setVisible(true);
     }//GEN-LAST:event_jGestionarResponsablesActionPerformed
@@ -140,14 +140,14 @@ public class GestionarMatriculaContenedorForm extends javax.swing.JFrame {
     private void jGestionarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarEstudiantesActionPerformed
        
         //Abriendo formulario de Gestionar Conducta
-        GestionarEstudiantesForm estudiante = new GestionarEstudiantesForm();
+        frmGestionarEstudiantes estudiante = new frmGestionarEstudiantes();
         jDesktop.add(estudiante);
         estudiante.setVisible(true);
     }//GEN-LAST:event_jGestionarEstudiantesActionPerformed
 
     private void jGestionarResponsables1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarResponsables1ActionPerformed
         this.setVisible(false);
-        PrincipalForm formulario = new PrincipalForm();
+        frmPrincipal formulario = new frmPrincipal();
         formulario.setVisible(true);
     }//GEN-LAST:event_jGestionarResponsables1ActionPerformed
 
@@ -168,20 +168,21 @@ public class GestionarMatriculaContenedorForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionarMatriculaContenedorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmGestionarMatriculaContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionarMatriculaContenedorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmGestionarMatriculaContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionarMatriculaContenedorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmGestionarMatriculaContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionarMatriculaContenedorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmGestionarMatriculaContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionarMatriculaContenedorForm().setVisible(true);
+                new frmGestionarMatriculaContenedor().setVisible(true);
             }
         });
     }

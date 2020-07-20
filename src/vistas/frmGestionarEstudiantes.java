@@ -14,12 +14,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author katy0
  */
-public class GestionarEstudiantesForm extends javax.swing.JInternalFrame {
+public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form GestionarEstudiantesForm
      */
-    public GestionarEstudiantesForm() {
+    public frmGestionarEstudiantes() {
         initComponents();
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
@@ -231,7 +231,6 @@ public class GestionarEstudiantesForm extends javax.swing.JInternalFrame {
         jButton4.setBackground(new java.awt.Color(33, 37, 41));
         jButton4.setForeground(new java.awt.Color(254, 254, 254));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
-        jButton4.setActionCommand("");
         jButton4.setBorder(null);
         jButton4.setContentAreaFilled(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -250,7 +249,6 @@ public class GestionarEstudiantesForm extends javax.swing.JInternalFrame {
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, 170, 70));
 
         tEstudiantes.setBackground(new java.awt.Color(33, 37, 41));
-        tEstudiantes.setBorder(null);
         tEstudiantes.setFont(new java.awt.Font("Roboto Light", 1, 17)); // NOI18N
         tEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

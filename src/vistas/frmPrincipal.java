@@ -2,9 +2,9 @@ package vistas;
 
 
 
-public class PrincipalForm extends javax.swing.JFrame {
+public class frmPrincipal extends javax.swing.JFrame {
 
-    public PrincipalForm() {
+    public frmPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
 
@@ -129,20 +129,20 @@ public class PrincipalForm extends javax.swing.JFrame {
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         this.setVisible(false);
-        LoginForm formulario = new LoginForm();
+        frmLogin formulario = new frmLogin();
         formulario.setVisible(true);
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.setVisible(false);
-        GestionarMatriculaContenedorForm formulario = new GestionarMatriculaContenedorForm();
+        frmGestionarMatriculaContenedor formulario = new frmGestionarMatriculaContenedor();
         formulario.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnControlAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnControlAcademicoActionPerformed
         //Abrir contenedor de Control Academico
         this.setVisible(false);
-        ControlAcademicoContenedorForm academico = new ControlAcademicoContenedorForm();
+        frmControlAcademicoContenedor academico = new frmControlAcademicoContenedor();
         academico.setVisible(true);
         
     }//GEN-LAST:event_btnControlAcademicoActionPerformed
@@ -150,7 +150,7 @@ public class PrincipalForm extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         //Abrir contenedor de Cuentas Usuario
         this.setVisible(false);
-        UsuarioContenedorForm usuario = new UsuarioContenedorForm();
+        frmUsuarioContenedor usuario = new frmUsuarioContenedor();
         usuario.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -168,21 +168,23 @@ public class PrincipalForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrincipalForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrincipalForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrincipalForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrincipalForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrincipalForm().setVisible(true);
+                new frmPrincipal().setVisible(true);
             }
         });
     }

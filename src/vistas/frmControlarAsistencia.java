@@ -13,12 +13,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author katy0
  */
-public class ControlarAsistenciaForm extends javax.swing.JInternalFrame {
+public class frmControlarAsistencia extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ControlarAsistenciaForm
      */
-    public ControlarAsistenciaForm() {
+    public frmControlarAsistencia() {
         initComponents();
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
@@ -89,7 +89,6 @@ public class ControlarAsistenciaForm extends javax.swing.JInternalFrame {
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 180, -1));
 
         tAsistencia.setBackground(new java.awt.Color(33, 37, 41));
-        tAsistencia.setBorder(null);
         tAsistencia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

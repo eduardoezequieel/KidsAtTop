@@ -13,12 +13,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author katy0
  */
-public class GestionarConductaForm extends javax.swing.JInternalFrame {
+public class frmGestionarConducta extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form GestionarConductaForm
      */
-    public GestionarConductaForm() {
+    public frmGestionarConducta() {
         initComponents();
          this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();

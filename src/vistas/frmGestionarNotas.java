@@ -13,12 +13,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author katy0
  */
-public class GestionarNotasForm extends javax.swing.JInternalFrame {
+public class frmGestionarNotas extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form GestionarNotasForm
      */
-    public GestionarNotasForm() {
+    public frmGestionarNotas() {
         initComponents();
          this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
@@ -114,7 +114,6 @@ public class GestionarNotasForm extends javax.swing.JInternalFrame {
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 260, 140, 70));
 
         tNotas.setBackground(new java.awt.Color(33, 37, 41));
-        tNotas.setBorder(null);
         tNotas.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         tNotas.setForeground(new java.awt.Color(254, 254, 254));
         tNotas.setModel(new javax.swing.table.DefaultTableModel(
