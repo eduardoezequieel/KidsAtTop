@@ -89,7 +89,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+        <Component class="javax.swing.JPasswordField" name="txtContra">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="29" green="25" red="21" type="rgb"/>
@@ -146,7 +146,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="txtUsuario">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="29" green="25" red="21" type="rgb"/>

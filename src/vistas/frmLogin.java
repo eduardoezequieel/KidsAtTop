@@ -1,4 +1,10 @@
 package vistas;
+
+import javax.swing.JOptionPane;
+import modelo.BDUser;
+import modelo.BDusuarios;
+import modelo.hash;
+
 /**
  *
  * @author eduardxlr
@@ -18,10 +24,10 @@ public class frmLogin extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtContra = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         btnSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -51,13 +57,13 @@ public class frmLogin extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(141, 141, 141));
         jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 300, 10));
 
-        jPasswordField1.setBackground(new java.awt.Color(33, 37, 41));
-        jPasswordField1.setFont(new java.awt.Font("Roboto Light", 0, 36)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(254, 254, 254));
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField1.setToolTipText("");
-        jPasswordField1.setBorder(null);
-        jPanel3.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 300, 30));
+        txtContra.setBackground(new java.awt.Color(33, 37, 41));
+        txtContra.setFont(new java.awt.Font("Roboto Light", 0, 36)); // NOI18N
+        txtContra.setForeground(new java.awt.Color(254, 254, 254));
+        txtContra.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtContra.setToolTipText("");
+        txtContra.setBorder(null);
+        jPanel3.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 300, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 340, 90));
 
@@ -69,12 +75,12 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel6.setText("Usuario");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jTextField3.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField3.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setBorder(null);
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 300, 30));
+        txtUsuario.setBackground(new java.awt.Color(33, 37, 41));
+        txtUsuario.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(254, 254, 254));
+        txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUsuario.setBorder(null);
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 300, 30));
 
         jSeparator2.setBackground(new java.awt.Color(1, 1, 1));
         jSeparator2.setForeground(new java.awt.Color(141, 141, 141));
@@ -151,8 +157,26 @@ public class frmLogin extends javax.swing.JFrame {
         frmMenuRecuperacion formulario = new frmMenuRecuperacion();
         formulario.setVisible(true);
         
-        BDusuarios modBD = new BDusuarios();
+        BDUser modBD = new BDUser();
+        BDusuarios mod = new BDusuarios();
         
+        String contra = new String(txtContra.getPassword());
+        
+        if(!txtUsuario.getText().equals("") && !contra.equals(""))
+        {
+            String nuevaContra = hash.sha1(contra);
+            
+            mod.setUsuario(txtUsuario.getText());
+            mod.setContrasenia(nuevaContra);
+            
+            if(modBD.login(mod)){
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "El nombre de usuario o la contraseña son erróneos.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Un campo está vacío, por favor ingrese sus datos.");
+        }
         
     }//GEN-LAST:event_btnRecuperarActionPerformed
 
@@ -179,9 +203,9 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JPasswordField txtContra;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
