@@ -193,6 +193,9 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField1KeyTyped(evt);
             }
@@ -211,6 +214,12 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
             val.verificarAlfanumerico(evt);
         }
     }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField1KeyPressed
+    
+    
     //</editor-fold>
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

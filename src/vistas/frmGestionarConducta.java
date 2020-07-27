@@ -8,6 +8,7 @@ package vistas;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import modelo.Validaciones;
 
 /**
  *
@@ -15,6 +16,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  */
 public class frmGestionarConducta extends javax.swing.JInternalFrame {
 
+    Validaciones val = new Validaciones();
     /**
      * Creates new form GestionarConductaForm
      */
@@ -74,6 +76,14 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jTextField7.setForeground(new java.awt.Color(254, 254, 254));
         jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField7KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField7KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 240, 30));
 
         jLabel10.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
@@ -97,6 +107,14 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jTextField8.setForeground(new java.awt.Color(254, 254, 254));
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField8KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField8KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 350, 140));
 
         jButton3.setBackground(new java.awt.Color(33, 37, 41));
@@ -104,7 +122,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGenerarReporte_default.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGenerarReporte_rollover.png"))); // NOI18N
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 390, 140, 70));
 
@@ -146,7 +164,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_default.png"))); // NOI18N
         jButton7.setBorder(null);
         jButton7.setContentAreaFilled(false);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N
         getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 70, 140, 70));
 
@@ -155,7 +173,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMostrar_default.png"))); // NOI18N
         jButton8.setBorder(null);
         jButton8.setContentAreaFilled(false);
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton8.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMostrar_rollover.png"))); // NOI18N
         getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 150, 140, 70));
 
@@ -164,7 +182,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
         jButton9.setBorder(null);
         jButton9.setContentAreaFilled(false);
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton9.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
         getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 230, 140, 70));
 
@@ -173,7 +191,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
         jButton4.setBorder(null);
         jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 310, 140, 70));
 
@@ -187,11 +205,47 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jTextField9.setForeground(new java.awt.Color(254, 254, 254));
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField9KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField9KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 640, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //<editor-fold defaultstate="collapsed" desc="Validaciones">
+    private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isWhitespace(c) && c != '@' && c != '.' && c != '_') {
+            val.verificarAlfanumerico(evt);
+        }
+    }//GEN-LAST:event_jTextField9KeyTyped
+
+    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
+        val.verificarAlfanumerico(evt);
+    }//GEN-LAST:event_jTextField8KeyTyped
+
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
+        val.verificarFechas(evt, jTextField8.getText());
+    }//GEN-LAST:event_jTextField7KeyTyped
+
+    private void jTextField8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField8KeyPressed
+
+    private void jTextField7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField7KeyPressed
+
+    private void jTextField9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField9KeyPressed
+    //</editor-fold>
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
