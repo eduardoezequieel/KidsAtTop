@@ -150,6 +150,10 @@ public class frmLogin extends javax.swing.JFrame {
         this.setVisible(false);
         frmMenuRecuperacion formulario = new frmMenuRecuperacion();
         formulario.setVisible(true);
+        
+        BDusuarios modBD = new BDusuarios();
+        
+        
     }//GEN-LAST:event_btnRecuperarActionPerformed
 
     public static void main(String args[]) {
