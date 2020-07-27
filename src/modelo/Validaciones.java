@@ -43,7 +43,7 @@ public class Validaciones {
     public void verificarLetras(java.awt.event.KeyEvent evt){
         
         char c = evt.getKeyChar();
-        if (!Character.isAlphabetic(c)) {
+        if (!Character.isAlphabetic(c) && !Character.isWhitespace(c) && c != ',' && c != '.') {
             evt.consume();
         }
         
@@ -70,7 +70,7 @@ public class Validaciones {
     
     public void verificarAlfanumerico(java.awt.event.KeyEvent evt){
         char c = evt.getKeyChar();
-        if (!Character.isAlphabetic(c) && !Character.isDigit(c)) {
+        if (!Character.isAlphabetic(c) && !Character.isDigit(c)&& !Character.isWhitespace(c) && c != ',' && c != '.') {
             evt.consume();
         }
     }
