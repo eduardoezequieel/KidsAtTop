@@ -17,6 +17,8 @@ public class Validaciones {
     
       public boolean email(String correo){
     
+       //se muestran las validaciones
+       
         Pattern pat=null;
         Matcher mat=null;
         pat=Pattern.compile("^[\\w\\\\\\+]+(\\.[\\w\\\\]+)*@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$");
