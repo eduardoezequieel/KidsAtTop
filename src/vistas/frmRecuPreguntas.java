@@ -5,12 +5,15 @@
  */
 package vistas;
 
+import modelo.Validaciones;
+
 /**
  *
  * @author eduardxlr
  */
 public class frmRecuPreguntas extends javax.swing.JFrame {
 
+    Validaciones val = new Validaciones();
     /**
      * Creates new form RecuPreguntasForm
      */
@@ -82,6 +85,14 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jTextField10.setForeground(new java.awt.Color(254, 254, 254));
         jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField10KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField10KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 290, 340, 30));
 
         jTextField6.setBackground(new java.awt.Color(33, 37, 41));
@@ -89,6 +100,14 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jTextField6.setForeground(new java.awt.Color(254, 254, 254));
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField6KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 630, 210, 30));
 
         jTextField11.setBackground(new java.awt.Color(33, 37, 41));
@@ -96,6 +115,14 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jTextField11.setForeground(new java.awt.Color(254, 254, 254));
         jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField11KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField11KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 170, 340, 30));
 
         jTextField12.setBackground(new java.awt.Color(33, 37, 41));
@@ -103,6 +130,14 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jTextField12.setForeground(new java.awt.Color(254, 254, 254));
         jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField12.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField12KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField12KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 210, 340, 30));
 
         jTextField13.setBackground(new java.awt.Color(33, 37, 41));
@@ -110,6 +145,14 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jTextField13.setForeground(new java.awt.Color(254, 254, 254));
         jTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField13.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField13KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField13KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 250, 340, 30));
 
         jTextField14.setBackground(new java.awt.Color(33, 37, 41));
@@ -117,6 +160,14 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jTextField14.setForeground(new java.awt.Color(254, 254, 254));
         jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField14.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField14KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField14KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 210, 30));
 
         jTextField15.setBackground(new java.awt.Color(33, 37, 41));
@@ -124,6 +175,14 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jTextField15.setForeground(new java.awt.Color(254, 254, 254));
         jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField15.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField15KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField15KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 550, 210, 30));
 
         jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
@@ -149,7 +208,7 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jbtnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_rollover.png"))); // NOI18N
         jbtnAceptar.setBorder(null);
         jbtnAceptar.setContentAreaFilled(false);
-        jbtnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbtnAceptar.setFocusPainted(false);
         jbtnAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_default.png"))); // NOI18N
         jbtnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +221,7 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jbtnPreguntas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_rollover.png"))); // NOI18N
         jbtnPreguntas.setBorder(null);
         jbtnPreguntas.setContentAreaFilled(false);
-        jbtnPreguntas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnPreguntas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbtnPreguntas.setFocusPainted(false);
         jbtnPreguntas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_default.png"))); // NOI18N
         jbtnPreguntas.addActionListener(new java.awt.event.ActionListener() {
@@ -218,7 +277,7 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backpng.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.setFocusPainted(false);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back_rollover.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -256,7 +315,7 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jbtnVerificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_rollover-1.png"))); // NOI18N
         jbtnVerificar.setBorder(null);
         jbtnVerificar.setContentAreaFilled(false);
-        jbtnVerificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnVerificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbtnVerificar.setFocusPainted(false);
         jbtnVerificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_default.png"))); // NOI18N
         jbtnVerificar.addActionListener(new java.awt.event.ActionListener() {
@@ -294,6 +353,64 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jbtnVerificarActionPerformed
 
+    //<editor-fold defaultstate="collapsed" desc="Validaciones">
+    private void jTextField14KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField14KeyTyped
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jTextField14KeyTyped
+
+    private void jTextField15KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField15KeyTyped
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jTextField15KeyTyped
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void jTextField11KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyTyped
+        val.verificarAlfanumerico(evt);
+    }//GEN-LAST:event_jTextField11KeyTyped
+
+    private void jTextField12KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyTyped
+        val.verificarAlfanumerico(evt);
+    }//GEN-LAST:event_jTextField12KeyTyped
+
+    private void jTextField13KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField13KeyTyped
+        val.verificarAlfanumerico(evt);
+    }//GEN-LAST:event_jTextField13KeyTyped
+
+    private void jTextField10KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyTyped
+        val.verificarAlfanumerico(evt);
+    }//GEN-LAST:event_jTextField10KeyTyped
+
+    private void jTextField14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField14KeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField14KeyPressed
+
+    private void jTextField15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField15KeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField15KeyPressed
+
+    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField6KeyPressed
+
+    private void jTextField11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField11KeyPressed
+
+    private void jTextField12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField12KeyPressed
+
+    private void jTextField13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField13KeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField13KeyPressed
+
+    private void jTextField10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField10KeyPressed
+    //</editor-fold>
+    
     /**
      * @param args the command line arguments
      */
