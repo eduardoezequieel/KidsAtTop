@@ -22,9 +22,9 @@ public class BDUser extends Conexion {
         
         PreparedStatement ps = null;
         ResultSet rs = null;
-        Connection conex = getConnection();
+        Connection conex = conectar();
         
-        String sql = "SELECT id_usuario, nombre, contrasenia, apellido, id_tipo_usuario FROM usuarios WHERE usuario = ?";
+        String sql = "SELECT id_usuario, nombre, contraseña, apellido, id_tipo_usuario FROM usuarios WHERE usuario = ?";
         
         try {
             ps = conex.prepareStatement(sql);
