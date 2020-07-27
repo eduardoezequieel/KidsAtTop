@@ -3,6 +3,7 @@ package vistas;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import modelo.Validaciones;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,6 +17,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  */
 public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
 
+    Validaciones val = new Validaciones();
     /**
      * Creates new form GestionarEstudiantesForm
      */
@@ -45,11 +47,11 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -92,12 +94,20 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jLabel5.setText("Nombre:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
-        jTextField4.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField4.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 250, 30));
+        txtNombre.setBackground(new java.awt.Color(33, 37, 41));
+        txtNombre.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(254, 254, 254));
+        txtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 250, 30));
 
         jLabel6.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(254, 254, 254));
@@ -109,6 +119,14 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jTextField5.setForeground(new java.awt.Color(254, 254, 254));
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField5KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 250, 30));
 
         jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
@@ -116,12 +134,20 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jLabel7.setText("Fecha de nacimiento:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
-        jTextField6.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField6.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 250, 30));
+        txtFecha.setBackground(new java.awt.Color(33, 37, 41));
+        txtFecha.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        txtFecha.setForeground(new java.awt.Color(254, 254, 254));
+        txtFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFecha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        txtFecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFechaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFechaKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 250, 30));
 
         jLabel8.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(254, 254, 254));
@@ -133,6 +159,14 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jTextField7.setForeground(new java.awt.Color(254, 254, 254));
         jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField7KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField7KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 210, 70));
 
         jLabel9.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
@@ -203,7 +237,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMostrar_default.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setFocusPainted(false);
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMostrar_rollover.png"))); // NOI18N
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 180, 140, 70));
@@ -213,7 +247,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_default.png"))); // NOI18N
         jButton2.setBorder(null);
         jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.setFocusPainted(false);
         jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 100, 140, 70));
@@ -223,7 +257,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.setFocusPainted(false);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 260, 140, 70));
@@ -233,7 +267,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
         jButton4.setBorder(null);
         jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.setFocusPainted(false);
         jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 340, 140, 70));
@@ -243,7 +277,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCargarFoto_default.png"))); // NOI18N
         jButton5.setBorder(null);
         jButton5.setContentAreaFilled(false);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton5.setFocusPainted(false);
         jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCargarFoto_rollover.png"))); // NOI18N
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, 170, 70));
@@ -289,7 +323,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGenerarReporte_default.png"))); // NOI18N
         jButton6.setBorder(null);
         jButton6.setContentAreaFilled(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.setFocusPainted(false);
         jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGenerarReporte_rollover.png"))); // NOI18N
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 420, 140, 70));
@@ -304,6 +338,14 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jTextField8.setForeground(new java.awt.Color(254, 254, 254));
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField8KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField8KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 750, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
@@ -319,6 +361,50 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtnMasculinoActionPerformed
 
+    //<editor-fold defaultstate="collapsed" desc="Validaciones">
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void txtFechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFechaKeyTyped
+        val.verificarFechas(evt, txtFecha.getText());
+    }//GEN-LAST:event_txtFechaKeyTyped
+
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
+        val.verificarAlfanumerico(evt);
+    }//GEN-LAST:event_jTextField7KeyTyped
+
+    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isWhitespace(c) && c != '@' && c != '.' && c != '_') {
+            val.verificarAlfanumerico(evt);
+        }
+    }//GEN-LAST:event_jTextField8KeyTyped
+
+    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtNombreKeyPressed
+
+    private void jTextField5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField5KeyPressed
+
+    private void txtFechaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFechaKeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtFechaKeyPressed
+
+    private void jTextField7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField7KeyPressed
+
+    private void jTextField8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField8KeyPressed
+    //</editor-fold>
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup grupoBotones;
@@ -344,13 +430,13 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JRadioButton rbtnFemenino;
     private javax.swing.JRadioButton rbtnMasculino;
     private javax.swing.JTable tEstudiantes;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
