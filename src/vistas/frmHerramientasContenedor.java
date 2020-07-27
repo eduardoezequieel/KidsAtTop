@@ -9,12 +9,12 @@ package vistas;
  *
  * @author katy0
  */
-public class frmUsuarioContenedor extends javax.swing.JFrame {
+public class frmHerramientasContenedor extends javax.swing.JFrame {
 
     /**
      * Creates new form UsuarioContenedorForm
      */
-    public frmUsuarioContenedor() {
+    public frmHerramientasContenedor() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -34,6 +34,7 @@ public class frmUsuarioContenedor extends javax.swing.JFrame {
         jControlarUsuarios1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jControlarUsuarios = new javax.swing.JButton();
+        jReportes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,8 +83,8 @@ public class frmUsuarioContenedor extends javax.swing.JFrame {
         });
         jPanel1.add(jControlarUsuarios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 620, 240, 70));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cuentasUsuario.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fndHerramientasSistema.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 280, 280));
 
         jControlarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_default.png"))); // NOI18N
         jControlarUsuarios.setBorder(null);
@@ -97,7 +98,21 @@ public class frmUsuarioContenedor extends javax.swing.JFrame {
                 jControlarUsuariosActionPerformed(evt);
             }
         });
-        jPanel1.add(jControlarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 360, 70));
+        jPanel1.add(jControlarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 360, 70));
+
+        jReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReportesDefault.png"))); // NOI18N
+        jReportes.setBorder(null);
+        jReportes.setContentAreaFilled(false);
+        jReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jReportes.setFocusPainted(false);
+        jReportes.setFocusable(false);
+        jReportes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReportesRollover.png"))); // NOI18N
+        jReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jReportesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 360, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dashboard.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 40, -1, -1));
@@ -120,6 +135,10 @@ public class frmUsuarioContenedor extends javax.swing.JFrame {
         formulario.setVisible(true);
     }//GEN-LAST:event_jControlarUsuarios1ActionPerformed
 
+    private void jReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jReportesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jReportesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -137,21 +156,23 @@ public class frmUsuarioContenedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmUsuarioContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmHerramientasContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmUsuarioContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmHerramientasContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmUsuarioContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmHerramientasContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmUsuarioContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmHerramientasContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmUsuarioContenedor().setVisible(true);
+                new frmHerramientasContenedor().setVisible(true);
             }
         });
     }
@@ -164,5 +185,6 @@ public class frmUsuarioContenedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jReportes;
     // End of variables declaration//GEN-END:variables
 }

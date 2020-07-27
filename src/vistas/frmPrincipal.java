@@ -49,12 +49,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 180, 230));
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCuentasUsuario_default.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnHerramientasSistemaDefault.png"))); // NOI18N
         jButton6.setBorder(null);
         jButton6.setContentAreaFilled(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.setFocusPainted(false);
-        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCuentasUsuario_rollover.png"))); // NOI18N
+        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnHerramientasSistemaRollover.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -150,7 +150,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         //Abrir contenedor de Cuentas Usuario
         this.setVisible(false);
-        frmUsuarioContenedor usuario = new frmUsuarioContenedor();
+        frmHerramientasContenedor usuario = new frmHerramientasContenedor();
         usuario.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
