@@ -3,6 +3,7 @@ package vistas;
 import javax.swing.JOptionPane;
 import modelo.BDUser;
 import modelo.BDusuarios;
+import modelo.Validaciones;
 import modelo.hash;
 
 /**
@@ -11,11 +12,12 @@ import modelo.hash;
  */
 public class frmLogin extends javax.swing.JFrame {
 
+    Validaciones val = new Validaciones();
     public frmLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -63,6 +65,14 @@ public class frmLogin extends javax.swing.JFrame {
         txtContra.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtContra.setToolTipText("");
         txtContra.setBorder(null);
+        txtContra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtContraKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtContraKeyTyped(evt);
+            }
+        });
         jPanel3.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 300, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 340, 90));
@@ -80,6 +90,14 @@ public class frmLogin extends javax.swing.JFrame {
         txtUsuario.setForeground(new java.awt.Color(254, 254, 254));
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUsuario.setBorder(null);
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 300, 30));
 
         jSeparator2.setBackground(new java.awt.Color(1, 1, 1));
@@ -92,7 +110,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnSalir.setBorder(null);
         btnSalir.setBorderPainted(false);
         btnSalir.setContentAreaFilled(false);
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalir.setFocusPainted(false);
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +128,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnIniciarSesion.setBorder(null);
         btnIniciarSesion.setBorderPainted(false);
         btnIniciarSesion.setContentAreaFilled(false);
-        btnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnIniciarSesion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnIniciarSesion_click.png"))); // NOI18N
         btnIniciarSesion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnIniciarSesion_rollover.png"))); // NOI18N
         btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +142,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnRecuperar.setBorder(null);
         btnRecuperar.setBorderPainted(false);
         btnRecuperar.setContentAreaFilled(false);
-        btnRecuperar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRecuperar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRecuperar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRecuperarContraseña_rollover.png"))); // NOI18N
         btnRecuperar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +198,24 @@ public class frmLogin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnRecuperarActionPerformed
 
+    //<editor-fold defaultstate="collapsed" desc="Validaciones">
+    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_txtUsuarioKeyTyped
+
+    private void txtContraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraKeyTyped
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_txtContraKeyTyped
+
+    private void txtUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtUsuarioKeyPressed
+
+    private void txtContraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraKeyPressed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtContraKeyPressed
+    //</editor-fold>
+    
     public static void main(String args[]) {
  
 
