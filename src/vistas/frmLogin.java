@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 import modelo.BDUser;
 import modelo.BDusuarios;
 import modelo.Conexion;
+import modelo.Correos;
 import modelo.Validaciones;
 import modelo.hash;
 
@@ -195,10 +196,11 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     private void btnRecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarActionPerformed
-        this.setVisible(false);
+        /*this.setVisible(false);
         frmMenuRecuperacion formulario = new frmMenuRecuperacion();
-        formulario.setVisible(true);
-        
+        formulario.setVisible(true);*/
+        Correos correo = new Correos();
+        correo.enviarCorreo();
         
     }//GEN-LAST:event_btnRecuperarActionPerformed
 

@@ -5,6 +5,8 @@
  */
 package vistas;
 
+import modelo.Correos;
+
 /**
  *
  * @author eduardxlr
@@ -30,12 +32,12 @@ public class frmCorreo extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jDestinatario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jAsunto = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        jMensaje = new javax.swing.JTextArea();
+        jEnviar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
@@ -49,44 +51,49 @@ public class frmCorreo extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
         jLabel1.setText("Asunto:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 430, 30));
+        jDestinatario.setBackground(new java.awt.Color(33, 37, 41));
+        jDestinatario.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jDestinatario.setForeground(new java.awt.Color(254, 254, 254));
+        jDestinatario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jDestinatario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jPanel1.add(jDestinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 430, 30));
 
         jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(254, 254, 254));
         jLabel2.setText("Destinatario:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        jTextField2.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 430, 30));
+        jAsunto.setBackground(new java.awt.Color(33, 37, 41));
+        jAsunto.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jAsunto.setForeground(new java.awt.Color(254, 254, 254));
+        jAsunto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jAsunto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jPanel1.add(jAsunto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 430, 30));
 
-        jTextArea1.setBackground(new java.awt.Color(33, 37, 41));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(254, 254, 254));
-        jTextArea1.setRows(5);
-        jTextArea1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jScrollPane1.setViewportView(jTextArea1);
+        jMensaje.setBackground(new java.awt.Color(33, 37, 41));
+        jMensaje.setColumns(20);
+        jMensaje.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jMensaje.setForeground(new java.awt.Color(254, 254, 254));
+        jMensaje.setRows(5);
+        jMensaje.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jScrollPane1.setViewportView(jMensaje);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 430, 290));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_rollover.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusable(false);
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_default.png"))); // NOI18N
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 180, 60));
+        jEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_rollover.png"))); // NOI18N
+        jEnviar.setBorder(null);
+        jEnviar.setContentAreaFilled(false);
+        jEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jEnviar.setFocusable(false);
+        jEnviar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_default.png"))); // NOI18N
+        jEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEnviarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 180, 60));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backpng.png"))); // NOI18N
         jButton2.setBorder(null);
@@ -112,6 +119,17 @@ public class frmCorreo extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEnviarActionPerformed
+       
+        //Llamando clase de correos
+        Correos correo = new Correos();
+        
+        correo.setDestino(jDestinatario.getText());
+        correo.setAsunto(jAsunto.getText());
+        correo.setMensaje(jMensaje.getText());
+        correo.enviarCorreo();
+    }//GEN-LAST:event_jEnviarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,15 +168,15 @@ public class frmCorreo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField jAsunto;
     private javax.swing.JButton jButton2;
+    private javax.swing.JTextField jDestinatario;
+    private javax.swing.JButton jEnviar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextArea jMensaje;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
