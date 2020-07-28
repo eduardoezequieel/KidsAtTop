@@ -11,6 +11,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import modelo.mtoControlarUsuarios;
+import org.apache.commons.codec.digest.DigestUtils;
 /**
  *
  * @author katy0
@@ -95,8 +96,6 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jButton9 = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jTextField14 = new javax.swing.JTextField();
-        txtContraseña = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
@@ -400,18 +399,6 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jTextField14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
         jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 550, 30));
 
-        txtContraseña.setBackground(new java.awt.Color(33, 37, 41));
-        txtContraseña.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        txtContraseña.setForeground(new java.awt.Color(254, 254, 254));
-        txtContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtContraseña.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 200, 30));
-
-        jLabel19.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel19.setText("Contraseña:");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
-
         jLabel20.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(254, 254, 254));
         jLabel20.setText("NIP:");
@@ -489,7 +476,9 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
             mto.setGenero("M");
         }
         mto.setDireccion(txtDireccion.getText());
-        mto.setContraseña(txtContraseña.getText());
+        String contraSinEncriptacion="txt"; 
+        String contraConEncriptacion=DigestUtils.sha1Hex(contraSinEncriptacion);
+        mto.setContraseña(contraConEncriptacion);
         mto.setFoto(person_image);
         
         if (mto.insertarUsuario()) {
@@ -521,7 +510,6 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel4;
@@ -538,7 +526,6 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rbMasculino;
     private javax.swing.JTable tUsuarios;
     private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtDUI;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmail;
