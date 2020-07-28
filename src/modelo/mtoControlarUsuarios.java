@@ -2,6 +2,7 @@ package modelo;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -10,8 +11,33 @@ import javax.swing.JOptionPane;
  * @author EDUARDO
  */
 public class mtoControlarUsuarios {
-    
     //Metodos Get y Set
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
+    public String getNip() {
+        return nip;
+    }
+
+    public void setNip(String nip) {
+        this.nip = nip;
+    }
+    
+    public String getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 
     public Connection getCn() {
         return cn;
@@ -124,15 +150,47 @@ public class mtoControlarUsuarios {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
+    
+    public Integer getIdTipoUsuario (String nombre){
+         Integer id = 0;
+        try{
+            
+            String sql = "SELECT id_tipo_usuario FROM tipo_usuario WHERE tipo_usuario = ?;";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setString(1, nombre);
+            
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+               id = rs.getInt(1);
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        return id;
     }
     
+    public Integer getIdEstadoUsuario (String nombre){
+        Integer id = 0;
+        try
+        {
+            String sql = "SELECT id_estado_usuario FROM estado_usuario WHERE estado_usuario = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setString(1, nombre);
+            
+            ResultSet rs = cmd.executeQuery();
+             while(rs.next())
+             {
+             id = rs.getInt(1);
+             }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return id;
+    }
+
     //Campos
     private Connection cn;
     private Integer id_usuario;
@@ -144,11 +202,13 @@ public class mtoControlarUsuarios {
     private String telefono;
     private String dui;
     private String nit;
+    private String usuario;
+    private String nip;
     private String fecha_nacimiento;
     private String genero;
     private String direccion;
     private String contraseña;
-    private String foto;
+    private byte[] foto;
     
     public mtoControlarUsuarios(){
         Conexion con = new Conexion();
@@ -189,5 +249,42 @@ public class mtoControlarUsuarios {
             JOptionPane.showMessageDialog(null, e);
         }       
       return modelo;
+    }
+    
+    public boolean insertarUsuario(){
+        boolean resp = false;
+        try
+        {
+            String sql = "INSERT INTO usuario(id_usuario, nombre, apellido, id_tipo_usuario, id_estado_usuario, email, telefono, dui, nit,  usuario, nip, fecha_nacimiento, genero,"
+                    + "direccion, contraseña, foto) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setInt(1, id_usuario);
+            cmd.setString(2, nombre);
+            cmd.setString(3, apellido);
+            cmd.setInt(4, id_tipo_usuario);
+            cmd.setInt(5, id_estado_usuario);
+            cmd.setString(6, email);
+            cmd.setString(7, telefono);
+            cmd.setString(8, dui);
+            cmd.setString(9, nit);
+            cmd.setString(10, usuario);
+            cmd.setString(11, nip);
+            cmd.setString(12, fecha_nacimiento);
+            cmd.setString(13, genero);
+            cmd.setString(14, direccion);
+            cmd.setString(15, contraseña);
+            cmd.setBytes(16, foto);
+            
+            if (!cmd.execute()) {
+                resp=true;
+            }
+            
+            cmd.close();
+            cn.close();
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return resp;
     }
 }
