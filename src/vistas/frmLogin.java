@@ -3,6 +3,7 @@ package vistas;
 import javax.swing.JOptionPane;
 import modelo.BDUser;
 import modelo.BDusuarios;
+import modelo.Conexion;
 import modelo.Validaciones;
 import modelo.hash;
 
@@ -168,12 +169,6 @@ public class frmLogin extends javax.swing.JFrame {
         this.setVisible(false);
         frmPrincipal formulario = new frmPrincipal();
         formulario.setVisible(true);
-    }//GEN-LAST:event_btnIniciarSesionActionPerformed
-
-    private void btnRecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarActionPerformed
-        this.setVisible(false);
-        frmMenuRecuperacion formulario = new frmMenuRecuperacion();
-        formulario.setVisible(true);
         
         BDUser modBD = new BDUser();
         BDusuarios mod = new BDusuarios();
@@ -195,6 +190,15 @@ public class frmLogin extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Un campo está vacío, por favor ingrese sus datos.");
         }
+        
+
+    }//GEN-LAST:event_btnIniciarSesionActionPerformed
+
+    private void btnRecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarActionPerformed
+        this.setVisible(false);
+        frmMenuRecuperacion formulario = new frmMenuRecuperacion();
+        formulario.setVisible(true);
+        
         
     }//GEN-LAST:event_btnRecuperarActionPerformed
 
