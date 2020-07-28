@@ -1,23 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vistas;
 
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-
+import modelo.mtoControlarUsuarios;
 /**
  *
  * @author katy0
  */
 public class frmControlarUsuarios extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ControlarUsuariosForm
-     */
     public frmControlarUsuarios() {
         initComponents();
         this.setBorder(null);
@@ -27,6 +19,20 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         tUsuarios.getTableHeader().setOpaque(false);
         tUsuarios.getTableHeader().setBackground(new Color(33, 37, 41));
         tUsuarios.getTableHeader().setForeground(new Color(254,254,254));
+        
+        //Metodos a ejecutar
+        llenarTipoUsuario();
+        llenarEstadoUsuario();
+    }
+    
+    public void llenarTipoUsuario(){
+        mtoControlarUsuarios a = new mtoControlarUsuarios();
+        cbTipoUsuario.setModel(a.llenarTipoUsuario());
+    }
+    
+    public void llenarEstadoUsuario(){
+        mtoControlarUsuarios a = new mtoControlarUsuarios();
+        cbEstadoUsuario.setModel(a.llenarEstadoUsuario());
     }
 
     /**
@@ -47,8 +53,8 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbEstadoUsuario = new javax.swing.JComboBox<>();
+        cbTipoUsuario = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -79,6 +85,8 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jButton9 = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jTextField14 = new javax.swing.JTextField();
+        jTextField15 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -126,17 +134,17 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
         jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 230, 30));
 
-        jComboBox1.setBackground(new java.awt.Color(33, 37, 41));
-        jComboBox1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(254, 254, 254));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 230, -1));
+        cbEstadoUsuario.setBackground(new java.awt.Color(33, 37, 41));
+        cbEstadoUsuario.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        cbEstadoUsuario.setForeground(new java.awt.Color(254, 254, 254));
+        cbEstadoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cbEstadoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 230, -1));
 
-        jComboBox2.setBackground(new java.awt.Color(33, 37, 41));
-        jComboBox2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(254, 254, 254));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 230, -1));
+        cbTipoUsuario.setBackground(new java.awt.Color(33, 37, 41));
+        cbTipoUsuario.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        cbTipoUsuario.setForeground(new java.awt.Color(254, 254, 254));
+        cbTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cbTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 230, -1));
 
         jLabel9.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
@@ -153,79 +161,79 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLabel10.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(254, 254, 254));
         jLabel10.setText("Teléfono:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
 
         jTextField7.setBackground(new java.awt.Color(33, 37, 41));
         jTextField7.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(254, 254, 254));
         jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 250, 30));
+        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 250, 30));
 
         jTextField8.setBackground(new java.awt.Color(33, 37, 41));
         jTextField8.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jTextField8.setForeground(new java.awt.Color(254, 254, 254));
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 160, 30));
+        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, 160, 30));
 
         jLabel11.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(254, 254, 254));
         jLabel11.setText("DUI:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(254, 254, 254));
         jLabel12.setText("Usuario:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, -1, -1));
 
         jTextField9.setBackground(new java.awt.Color(33, 37, 41));
         jTextField9.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jTextField9.setForeground(new java.awt.Color(254, 254, 254));
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 250, 30));
+        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 250, 30));
 
         jTextField10.setBackground(new java.awt.Color(33, 37, 41));
         jTextField10.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jTextField10.setForeground(new java.awt.Color(254, 254, 254));
         jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 250, 30));
+        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 250, 30));
 
         jLabel13.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));
         jLabel13.setText("NIT:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(254, 254, 254));
         jLabel14.setText("NIP:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, -1, -1));
 
         jTextField11.setBackground(new java.awt.Color(33, 37, 41));
         jTextField11.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jTextField11.setForeground(new java.awt.Color(254, 254, 254));
         jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 160, 30));
+        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 160, 30));
 
         jLabel15.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(254, 254, 254));
         jLabel15.setText("Fecha de nacimiento:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
 
         jTextField12.setBackground(new java.awt.Color(33, 37, 41));
         jTextField12.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jTextField12.setForeground(new java.awt.Color(254, 254, 254));
         jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 250, 30));
+        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 250, 30));
 
         jLabel16.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(254, 254, 254));
         jLabel16.setText("Género:");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, -1, -1));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, -1, -1));
 
         rbtnFemenino.setBackground(new java.awt.Color(33, 37, 41));
         btgBotones.add(rbtnFemenino);
@@ -237,7 +245,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
                 rbtnFemeninoActionPerformed(evt);
             }
         });
-        jPanel1.add(rbtnFemenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, -1, -1));
+        jPanel1.add(rbtnFemenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, -1, -1));
 
         rbtnMasculino.setBackground(new java.awt.Color(33, 37, 41));
         btgBotones.add(rbtnMasculino);
@@ -249,19 +257,19 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
                 rbtnMasculinoActionPerformed(evt);
             }
         });
-        jPanel1.add(rbtnMasculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, -1, -1));
+        jPanel1.add(rbtnMasculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(254, 254, 254));
         jLabel17.setText("Dirección:");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, -1, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, -1, -1));
 
         jTextField13.setBackground(new java.awt.Color(33, 37, 41));
         jTextField13.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jTextField13.setForeground(new java.awt.Color(254, 254, 254));
         jTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 160, 160));
+        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, 160, 160));
 
         jButton3.setBackground(new java.awt.Color(33, 37, 41));
         jButton3.setForeground(new java.awt.Color(254, 254, 254));
@@ -272,7 +280,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jButton3.setFocusPainted(false);
         jButton3.setFocusable(false);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReiniciarCuenta_rollover.png"))); // NOI18N
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 420, 140, 70));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 140, 70));
 
         tUsuarios.setBackground(new java.awt.Color(33, 37, 41));
         tUsuarios.setModel(new javax.swing.table.DefaultTableModel(
@@ -301,7 +309,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         tUsuarios.setShowVerticalLines(false);
         jScrollPane1.setViewportView(tUsuarios);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 940, 120));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, 940, 130));
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 90, 190, 210));
 
         jButton5.setBackground(new java.awt.Color(33, 37, 41));
@@ -324,7 +332,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jButton4.setFocusPainted(false);
         jButton4.setFocusable(false);
         jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 140, 70));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 140, 70));
 
         jButton7.setBackground(new java.awt.Color(33, 37, 41));
         jButton7.setForeground(new java.awt.Color(254, 254, 254));
@@ -335,7 +343,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jButton7.setFocusPainted(false);
         jButton7.setFocusable(false);
         jButton7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 140, 70));
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 140, 70));
 
         jButton8.setBackground(new java.awt.Color(33, 37, 41));
         jButton8.setForeground(new java.awt.Color(254, 254, 254));
@@ -346,7 +354,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jButton8.setFocusPainted(false);
         jButton8.setFocusable(false);
         jButton8.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 140, 70));
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 420, 140, 70));
 
         jButton9.setBackground(new java.awt.Color(33, 37, 41));
         jButton9.setForeground(new java.awt.Color(254, 254, 254));
@@ -357,19 +365,31 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jButton9.setFocusPainted(false);
         jButton9.setFocusable(false);
         jButton9.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGenerarReporte_rollover.png"))); // NOI18N
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 140, 70));
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, 140, 70));
 
         jLabel18.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(254, 254, 254));
         jLabel18.setText("Digite lo que desea buscar:");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 230, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, 230, -1));
 
         jTextField14.setBackground(new java.awt.Color(33, 37, 41));
         jTextField14.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jTextField14.setForeground(new java.awt.Color(254, 254, 254));
         jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 550, 550, 30));
+        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 550, 30));
+
+        jTextField15.setBackground(new java.awt.Color(33, 37, 41));
+        jTextField15.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jTextField15.setForeground(new java.awt.Color(254, 254, 254));
+        jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jPanel1.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 200, 30));
+
+        jLabel19.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel19.setText("Contraseña:");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -387,14 +407,14 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgBotones;
+    private javax.swing.JComboBox<String> cbEstadoUsuario;
+    private javax.swing.JComboBox<String> cbTipoUsuario;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -404,6 +424,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -418,6 +439,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
