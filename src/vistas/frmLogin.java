@@ -6,7 +6,7 @@ import modelo.BDusuarios;
 import modelo.Conexion;
 import modelo.Correos;
 import modelo.Validaciones;
-import modelo.hash;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -178,7 +178,7 @@ public class frmLogin extends javax.swing.JFrame {
         
         if(!txtUsuario.getText().equals("") && !contra.equals(""))
         {
-            String nuevaContra = hash.sha1(contra);
+            String nuevaContra = DigestUtils.sha1Hex(contra);
             
             mod.setUsuario(txtUsuario.getText());
             mod.setContrasenia(nuevaContra);
