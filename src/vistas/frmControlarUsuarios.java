@@ -2,6 +2,8 @@ package vistas;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.File;
+import javax.swing.JFileChooser;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import modelo.mtoControlarUsuarios;
 /**
@@ -321,6 +323,11 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jButton5.setFocusPainted(false);
         jButton5.setFocusable(false);
         jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCargarFoto_rollover.png"))); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 320, 140, 70));
 
         jButton4.setBackground(new java.awt.Color(33, 37, 41));
@@ -403,6 +410,12 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     private void rbtnMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnMasculinoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtnMasculinoActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        JFileChooser buscar = new JFileChooser();
+        buscar.setCurrentDirectory(new File(System.getProperty("user.home")));
+        buscar.showOpenDialog(this);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
