@@ -155,7 +155,6 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         lblFoto = new javax.swing.JLabel();
         jCalendario = new com.toedter.calendar.JDateChooser();
         txtFecha = new javax.swing.JTextField();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -581,9 +580,6 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         });
         jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 200, 30));
 
-        jFormattedTextField1.setText("jFormattedTextField1");
-        jPanel1.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 420, 130, 40));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
         pack();
@@ -772,7 +768,6 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton9;
     private com.toedter.calendar.JDateChooser jCalendario;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
