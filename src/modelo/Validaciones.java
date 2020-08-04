@@ -15,6 +15,8 @@ import java.util.regex.Pattern;
  */
 public class Validaciones {
     
+      //Limpiar jTable
+      
       public boolean email(String correo){
     
        //se muestran las validaciones

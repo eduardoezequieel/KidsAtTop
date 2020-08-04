@@ -1,6 +1,13 @@
 package vistas;
 
+import com.bulenkov.darcula.DarculaLaf;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.basic.BasicLookAndFeel;
 import modelo.BDUser;
 import modelo.BDusuarios;
 import modelo.Conexion;
@@ -15,9 +22,13 @@ import org.apache.commons.codec.digest.DigestUtils;
 public class frmLogin extends javax.swing.JFrame {
 
     Validaciones val = new Validaciones();
-    public frmLogin() {
+    public frmLogin() throws UnsupportedLookAndFeelException {
         initComponents();
         this.setLocationRelativeTo(null);
+        //Cargando estilos
+        BasicLookAndFeel darcula = new DarculaLaf();
+        UIManager.setLookAndFeel(darcula);
+        JDialog.setDefaultLookAndFeelDecorated(true);
     }
     
     @SuppressWarnings("unchecked")
@@ -228,7 +239,11 @@ public class frmLogin extends javax.swing.JFrame {
    
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmLogin().setVisible(true);
+                try {
+                    new frmLogin().setVisible(true);
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

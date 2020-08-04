@@ -5,6 +5,10 @@
  */
 package vistas;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author katy0
@@ -124,7 +128,12 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
 
     private void jControlarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jControlarUsuariosActionPerformed
         //Abriendo formulario de Controlar Usuarios
-        frmControlarUsuarios usuarios = new frmControlarUsuarios();
+        frmControlarUsuarios usuarios = null;
+        try {
+            usuarios = new frmControlarUsuarios();
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(frmHerramientasContenedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
         jEscritorio.add(usuarios);
         usuarios.setVisible(true);
     }//GEN-LAST:event_jControlarUsuariosActionPerformed

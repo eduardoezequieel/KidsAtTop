@@ -46,17 +46,17 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tSecciones = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -73,33 +73,24 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         jLabel10.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(254, 254, 254));
         jLabel10.setText("Digite lo que desea buscar:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
 
         jComboBox1.setBackground(new java.awt.Color(33, 37, 41));
-        jComboBox1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(254, 254, 254));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 220, -1));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 220, -1));
 
-        jLabel11.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(254, 254, 254));
         jLabel11.setText("Sección:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, -1, -1));
 
         jComboBox2.setBackground(new java.awt.Color(33, 37, 41));
-        jComboBox2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jComboBox2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jComboBox2.setForeground(new java.awt.Color(254, 254, 254));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 220, -1));
-
-        jButton3.setBackground(new java.awt.Color(33, 37, 41));
-        jButton3.setForeground(new java.awt.Color(254, 254, 254));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGenerarReporte_default.png"))); // NOI18N
-        jButton3.setBorder(null);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGenerarReporte_rollover.png"))); // NOI18N
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 220, 140, 70));
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 220, -1));
 
         tSecciones.setBackground(new java.awt.Color(33, 37, 41));
         tSecciones.setForeground(new java.awt.Color(254, 254, 254));
@@ -133,18 +124,18 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         tSecciones.setShowVerticalLines(false);
         jScrollPane1.setViewportView(tSecciones);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 890, 320));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 890, 380));
 
-        jLabel12.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(254, 254, 254));
         jLabel12.setText("Usuario:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, -1));
 
         jComboBox3.setBackground(new java.awt.Color(33, 37, 41));
-        jComboBox3.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jComboBox3.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jComboBox3.setForeground(new java.awt.Color(254, 254, 254));
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 320, -1));
+        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 270, -1));
 
         jButton4.setBackground(new java.awt.Color(33, 37, 41));
         jButton4.setForeground(new java.awt.Color(254, 254, 254));
@@ -153,16 +144,7 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         jButton4.setContentAreaFilled(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 140, 70));
-
-        jButton5.setBackground(new java.awt.Color(33, 37, 41));
-        jButton5.setForeground(new java.awt.Color(254, 254, 254));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMostrar_default.png"))); // NOI18N
-        jButton5.setBorder(null);
-        jButton5.setContentAreaFilled(false);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMostrar_rollover.png"))); // NOI18N
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 140, 70));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 70, 140, 70));
 
         jButton6.setBackground(new java.awt.Color(33, 37, 41));
         jButton6.setForeground(new java.awt.Color(254, 254, 254));
@@ -171,7 +153,7 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         jButton6.setContentAreaFilled(false);
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, 140, 70));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 150, 140, 70));
 
         jButton7.setBackground(new java.awt.Color(33, 37, 41));
         jButton7.setForeground(new java.awt.Color(254, 254, 254));
@@ -180,12 +162,12 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         jButton7.setContentAreaFilled(false);
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, 140, 70));
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 230, 140, 70));
 
-        jLabel13.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel13.setText("Grado:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
+        jLabel13.setText("Año:");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
         jTextField1.setBackground(new java.awt.Color(33, 37, 41));
         jTextField1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
@@ -200,7 +182,18 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
                 jTextField1KeyTyped(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 560, 30));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 560, 30));
+
+        jLabel14.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel14.setText("Grado:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+
+        jComboBox4.setBackground(new java.awt.Color(33, 37, 41));
+        jComboBox4.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jComboBox4.setForeground(new java.awt.Color(254, 254, 254));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 220, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -223,18 +216,18 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
     //</editor-fold>
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

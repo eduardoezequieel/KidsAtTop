@@ -1,6 +1,10 @@
 
 package vistas;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UnsupportedLookAndFeelException;
+
 public class frmMenuRecuperacion extends javax.swing.JFrame {
 
     public frmMenuRecuperacion() {
@@ -98,7 +102,12 @@ public class frmMenuRecuperacion extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         this.setVisible(false);
-        frmLogin formulario = new frmLogin();
+        frmLogin formulario = null;
+        try {
+            formulario = new frmLogin();
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(frmMenuRecuperacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
         formulario.setVisible(true);
     }//GEN-LAST:event_btnRegresarActionPerformed
 

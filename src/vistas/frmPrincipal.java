@@ -1,5 +1,9 @@
 package vistas;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UnsupportedLookAndFeelException;
+
 
 
 public class frmPrincipal extends javax.swing.JFrame {
@@ -129,7 +133,12 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         this.setVisible(false);
-        frmLogin formulario = new frmLogin();
+        frmLogin formulario = null;
+        try {
+            formulario = new frmLogin();
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(frmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         formulario.setVisible(true);
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
