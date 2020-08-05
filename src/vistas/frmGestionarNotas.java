@@ -57,6 +57,8 @@ public class frmGestionarNotas extends javax.swing.JInternalFrame {
         jButton6 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jComboBox5 = new javax.swing.JComboBox<>();
+        jComboBox6 = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -73,7 +75,7 @@ public class frmGestionarNotas extends javax.swing.JInternalFrame {
         jLabel10.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(254, 254, 254));
         jLabel10.setText("Indicador de logro:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, -1));
 
         jComboBox1.setBackground(new java.awt.Color(33, 37, 41));
         jComboBox1.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -89,19 +91,19 @@ public class frmGestionarNotas extends javax.swing.JInternalFrame {
         jLabel12.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(254, 254, 254));
         jLabel12.setText("Nota:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, -1, -1));
 
         jComboBox3.setBackground(new java.awt.Color(33, 37, 41));
         jComboBox3.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jComboBox3.setForeground(new java.awt.Color(254, 254, 254));
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 180, -1));
+        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 180, -1));
 
         jComboBox2.setBackground(new java.awt.Color(33, 37, 41));
         jComboBox2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jComboBox2.setForeground(new java.awt.Color(254, 254, 254));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 400, -1));
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 400, -1));
 
         tNotas.setBackground(new java.awt.Color(33, 37, 41));
         tNotas.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
@@ -205,6 +207,17 @@ public class frmGestionarNotas extends javax.swing.JInternalFrame {
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 290, -1));
 
+        jComboBox6.setBackground(new java.awt.Color(33, 37, 41));
+        jComboBox6.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jComboBox6.setForeground(new java.awt.Color(254, 254, 254));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 180, -1));
+
+        jLabel16.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel16.setText("Trimestre:");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
         pack();
@@ -224,12 +237,14 @@ public class frmGestionarNotas extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
