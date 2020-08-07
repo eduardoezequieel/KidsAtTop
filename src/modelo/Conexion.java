@@ -8,7 +8,7 @@ import java.sql.DriverManager;
  * @author pablo
  */
 public class Conexion {
-    //pedira importar import java.sqlConnection();
+    /*//pedira importar import java.sqlConnection();
     public Connection conectar(){
         Connection cn = null;
         try{
@@ -24,9 +24,9 @@ public class Conexion {
                     System.out.println(ex.getMessage());
             }
             return cn;
-        }
+        }*/
     
-    /*//Conexion Kath
+    //Conexion Kath
     public Connection conectar(){
         Connection cn = null;
         try{
@@ -43,5 +43,5 @@ public class Conexion {
             }
             return cn;
            
-        }*/
+        }
 }

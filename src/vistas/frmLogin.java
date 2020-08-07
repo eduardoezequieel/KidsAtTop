@@ -210,8 +210,10 @@ public class frmLogin extends javax.swing.JFrame {
         /*this.setVisible(false);
         frmMenuRecuperacion formulario = new frmMenuRecuperacion();
         formulario.setVisible(true);*/
-        Correos correo = new Correos();
-        correo.enviarCorreo();
+        /*Correos correo = new Correos();
+        correo.enviarCorreo();*/
+        Conexion conectar = new Conexion();
+        conectar.conectar();
         
     }//GEN-LAST:event_btnRecuperarActionPerformed
 

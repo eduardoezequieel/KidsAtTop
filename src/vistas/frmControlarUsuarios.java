@@ -54,7 +54,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
      
         
         //Cargando jTable
-         modelo.addColumn("Nombre");
+        modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
         modelo.addColumn("Tipo Usuario");
         modelo.addColumn("Estado Usuario");

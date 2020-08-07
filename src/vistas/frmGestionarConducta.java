@@ -5,9 +5,18 @@
  */
 package vistas;
 
+import controlador.CtrlConducta;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+import modelo.Conexion;
+import modelo.MtoConducta;
 import modelo.Validaciones;
 
 /**
@@ -16,7 +25,18 @@ import modelo.Validaciones;
  */
 public class frmGestionarConducta extends javax.swing.JInternalFrame {
 
+    //Llamando clases
     Validaciones val = new Validaciones();
+    CtrlConducta conductaCtrl = new CtrlConducta();
+    MtoConducta conducta = new MtoConducta();
+    
+    //Declarando variables
+    int idGS;
+    int idEstudiante;
+    
+    //Modelo de la tabla
+    DefaultTableModel modelo = new DefaultTableModel();
+    
     /**
      * Creates new form GestionarConductaForm
      */
@@ -29,6 +49,22 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         tConducta.getTableHeader().setOpaque(false);
         tConducta.getTableHeader().setBackground(new Color(33, 37, 41));
         tConducta.getTableHeader().setForeground(new Color(254,254,254));
+        jId.setVisible(false);
+        
+        //LlenandoCombobox
+        this.llenarAnio();
+        this.llenarGradoSeccion();
+        this.llenarEstudiante();
+        
+        //Creando modelo de la tabla
+        modelo.addColumn("Observacion");
+        modelo.addColumn("Estudiante");
+        modelo.addColumn("Fecha");
+        tConducta.setModel(modelo);
+        
+        //Mostrando tabla
+        this.mostrarConducta();
+        
     }
 
     /**
@@ -42,24 +78,27 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
 
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        jFecha = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbAño = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tConducta = new javax.swing.JTable();
-        jButton7 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        jActualizar = new javax.swing.JButton();
+        jEliminar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jBuscar = new javax.swing.JTextField();
+        jCalendario = new com.toedter.calendar.JDateChooser();
+        cbEstudiante = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cbGradoSeccion = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jObservacion = new javax.swing.JTextArea();
+        jId = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        cbFiltro = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -75,31 +114,46 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jLabel8.setText("Observación:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
-        jTextField7.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField7.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+        jFecha.setBackground(new java.awt.Color(33, 37, 41));
+        jFecha.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jFecha.setForeground(new java.awt.Color(254, 254, 254));
+        jFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jFecha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jFecha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField7KeyPressed(evt);
+                jFechaKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField7KeyTyped(evt);
+                jFechaKeyTyped(evt);
             }
         });
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, 180, 30));
+        getContentPane().add(jFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, 180, 30));
 
         jLabel10.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(254, 254, 254));
         jLabel10.setText("Fecha:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, -1, -1));
 
-        jComboBox1.setBackground(new java.awt.Color(33, 37, 41));
-        jComboBox1.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(254, 254, 254));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 240, -1));
+        cbAño.setBackground(new java.awt.Color(33, 37, 41));
+        cbAño.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbAño.setForeground(new java.awt.Color(254, 254, 254));
+        cbAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbAño.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbAñoItemStateChanged(evt);
+            }
+        });
+        cbAño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbAñoMouseClicked(evt);
+            }
+        });
+        cbAño.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cbAñoPropertyChange(evt);
+            }
+        });
+        getContentPane().add(cbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 240, -1));
 
         jLabel11.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(254, 254, 254));
@@ -135,122 +189,433 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         tConducta.setRowHeight(30);
         tConducta.setSelectionBackground(new java.awt.Color(58, 58, 58));
         tConducta.setShowVerticalLines(false);
+        tConducta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tConductaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tConducta);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 950, 280));
 
-        jButton7.setBackground(new java.awt.Color(33, 37, 41));
-        jButton7.setForeground(new java.awt.Color(254, 254, 254));
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_default.png"))); // NOI18N
-        jButton7.setBorder(null);
-        jButton7.setContentAreaFilled(false);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 140, 140, 70));
+        btnAgregar.setBackground(new java.awt.Color(33, 37, 41));
+        btnAgregar.setForeground(new java.awt.Color(254, 254, 254));
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_default.png"))); // NOI18N
+        btnAgregar.setBorder(null);
+        btnAgregar.setContentAreaFilled(false);
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAgregar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 140, 140, 70));
 
-        jButton9.setBackground(new java.awt.Color(33, 37, 41));
-        jButton9.setForeground(new java.awt.Color(254, 254, 254));
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
-        jButton9.setBorder(null);
-        jButton9.setContentAreaFilled(false);
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton9.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 220, 140, 70));
+        jActualizar.setBackground(new java.awt.Color(33, 37, 41));
+        jActualizar.setForeground(new java.awt.Color(254, 254, 254));
+        jActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
+        jActualizar.setBorder(null);
+        jActualizar.setContentAreaFilled(false);
+        jActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
+        jActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jActualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 220, 140, 70));
 
-        jButton4.setBackground(new java.awt.Color(33, 37, 41));
-        jButton4.setForeground(new java.awt.Color(254, 254, 254));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
-        jButton4.setBorder(null);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 300, 140, 70));
+        jEliminar.setBackground(new java.awt.Color(33, 37, 41));
+        jEliminar.setForeground(new java.awt.Color(254, 254, 254));
+        jEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
+        jEliminar.setBorder(null);
+        jEliminar.setContentAreaFilled(false);
+        jEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
+        jEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEliminarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 300, 140, 70));
 
         jLabel12.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel12.setText("Digite lo que desea buscar:");
+        jLabel12.setText("Buscar por:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, -1, -1));
 
-        jTextField9.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField9.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+        jBuscar.setBackground(new java.awt.Color(33, 37, 41));
+        jBuscar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jBuscar.setForeground(new java.awt.Color(254, 254, 254));
+        jBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField9KeyPressed(evt);
+                jBuscarKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField9KeyTyped(evt);
+                jBuscarKeyTyped(evt);
             }
         });
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 630, 30));
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 320, 50, -1));
+        getContentPane().add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 340, 30));
 
-        jComboBox2.setBackground(new java.awt.Color(33, 37, 41));
-        jComboBox2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(254, 254, 254));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 240, -1));
+        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jCalendarioPropertyChange(evt);
+            }
+        });
+        getContentPane().add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 320, 50, -1));
+
+        cbEstudiante.setBackground(new java.awt.Color(33, 37, 41));
+        cbEstudiante.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbEstudiante.setForeground(new java.awt.Color(254, 254, 254));
+        cbEstudiante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cbEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 240, -1));
 
         jLabel13.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));
         jLabel13.setText("Estudiante:");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, -1, -1));
 
-        jComboBox3.setBackground(new java.awt.Color(33, 37, 41));
-        jComboBox3.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jComboBox3.setForeground(new java.awt.Color(254, 254, 254));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 240, -1));
+        cbGradoSeccion.setBackground(new java.awt.Color(33, 37, 41));
+        cbGradoSeccion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbGradoSeccion.setForeground(new java.awt.Color(254, 254, 254));
+        cbGradoSeccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbGradoSeccion.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbGradoSeccionItemStateChanged(evt);
+            }
+        });
+        cbGradoSeccion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbGradoSeccionMouseClicked(evt);
+            }
+        });
+        cbGradoSeccion.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cbGradoSeccionPropertyChange(evt);
+            }
+        });
+        getContentPane().add(cbGradoSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 240, -1));
 
         jLabel14.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(254, 254, 254));
         jLabel14.setText("Grado/Sección:");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
 
-        jTextArea1.setBackground(new java.awt.Color(33, 37, 41));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setRows(5);
-        jTextArea1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(36, 36, 36)));
-        jScrollPane2.setViewportView(jTextArea1);
+        jObservacion.setBackground(new java.awt.Color(33, 37, 41));
+        jObservacion.setColumns(20);
+        jObservacion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jObservacion.setForeground(new java.awt.Color(255, 255, 255));
+        jObservacion.setRows(5);
+        jObservacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(36, 36, 36)));
+        jScrollPane2.setViewportView(jObservacion);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 360, 200));
+        getContentPane().add(jId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 60, -1));
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 380, -1, -1));
+
+        cbFiltro.setBackground(new java.awt.Color(33, 37, 41));
+        cbFiltro.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbFiltro.setForeground(new java.awt.Color(254, 254, 254));
+        cbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Observacion", "Estudiante", "Fecha" }));
+        getContentPane().add(cbFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 240, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     //<editor-fold defaultstate="collapsed" desc="Validaciones">
-    private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
-        char c = evt.getKeyChar();
-        if (!Character.isWhitespace(c) && c != '@' && c != '.' && c != '_') {
-            val.verificarAlfanumerico(evt);
-        }
-    }//GEN-LAST:event_jTextField9KeyTyped
+    private void jBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyTyped
+        
+    }//GEN-LAST:event_jBuscarKeyTyped
 
-    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
+    private void jFechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFechaKeyTyped
      
-    }//GEN-LAST:event_jTextField7KeyTyped
+    }//GEN-LAST:event_jFechaKeyTyped
 
-    private void jTextField7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyPressed
-        val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField7KeyPressed
+    private void jFechaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFechaKeyPressed
+       
+    }//GEN-LAST:event_jFechaKeyPressed
 
-    private void jTextField9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyPressed
-        val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField9KeyPressed
+    private void jBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyPressed
+       
+    }//GEN-LAST:event_jBuscarKeyPressed
+
+    private void cbAñoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cbAñoPropertyChange
+         
+    }//GEN-LAST:event_cbAñoPropertyChange
+
+    private void cbAñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbAñoMouseClicked
+        
+    }//GEN-LAST:event_cbAñoMouseClicked
+
+    private void cbGradoSeccionPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cbGradoSeccionPropertyChange
+
+    }//GEN-LAST:event_cbGradoSeccionPropertyChange
+
+    private void cbGradoSeccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbGradoSeccionMouseClicked
+        
+    }//GEN-LAST:event_cbGradoSeccionMouseClicked
+
+    private void cbGradoSeccionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbGradoSeccionItemStateChanged
+        this.llenarEstudiante();
+    }//GEN-LAST:event_cbGradoSeccionItemStateChanged
+
+    private void cbAñoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAñoItemStateChanged
+        this.llenarGradoSeccion();
+    }//GEN-LAST:event_cbAñoItemStateChanged
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+           
+        if (jObservacion.getText().trim().isEmpty() || jFecha.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            //Dividiendo el apellido y el nombre
+            String estudiante = cbEstudiante.getItemAt(cbEstudiante.getSelectedIndex());
+            String[] parte = estudiante.split("-");
+            String apellido = parte[0];
+            String nombre = parte[1];
+
+            //Obteniendo id del estudiante
+            idEstudiante = conducta.obtenerIdEstudiante(apellido, nombre);
+
+            //Obteniendo el último id
+            int idConducta = conducta.obtenerUltimoId() + 1;
+
+            //Seteando todos los valores
+            conductaCtrl.setIdConducta(idConducta);
+            conductaCtrl.setObservacion(jObservacion.getText());
+            conductaCtrl.setIdEstudiante(idEstudiante);
+            conductaCtrl.setFecha(jFecha.getText());
+
+            //Ejecutando mantemiento 
+            if (conducta.insertarConducta()) {
+                JOptionPane.showMessageDialog(null, "Ha agregado los datos correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se han agregado los datos correctamente");
+            }
+            
+            this.limpiarTabla();
+            this.mostrarConducta();
+            this.limpiarCampos();
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void jCalendarioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendarioPropertyChange
+        try{
+            String dia = Integer.toString(jCalendario.getCalendar().get(Calendar.DATE));
+            String año = Integer.toString(jCalendario.getCalendar().get(Calendar.YEAR));
+            int mesInt = jCalendario.getCalendar().get(Calendar.MONTH) + 1;
+            String mes = Integer.toString(mesInt);
+            String fecha = (mes+"/"+dia+"/"+año);
+            jFecha.setText(fecha);
+            
+      
+        }catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+    }//GEN-LAST:event_jCalendarioPropertyChange
+
+    private void jActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActualizarActionPerformed
+        
+        //Validando campos vacios
+        if (jObservacion.getText().trim().isEmpty() || jFecha.getText().trim().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
+        } else{
+            
+            //Dividiendo el apellido y el nombre
+            String estudiante = cbEstudiante.getItemAt(cbEstudiante.getSelectedIndex());
+            String[] parte = estudiante.split("-");
+            String apellido = parte[0];
+            String nombre = parte[1];
+
+            //Obteniendo id del estudiante
+            idEstudiante = conducta.obtenerIdEstudiante(apellido, nombre);
+
+            //Seteando todos los valores
+            conductaCtrl.setIdConducta(Integer.parseInt(jId.getText()));
+            conductaCtrl.setObservacion(jObservacion.getText());
+            conductaCtrl.setIdEstudiante(idEstudiante);
+            conductaCtrl.setFecha(jFecha.getText());
+
+            //Ejecutando mantemiento 
+            if (conducta.actualizarConducta()) {
+                JOptionPane.showMessageDialog(null, "Ha actualizado los datos correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se han actualizado los datos correctamente");
+            }
+            
+            this.limpiarTabla();
+            this.mostrarConducta();
+            this.limpiarCampos();
+        }
+    }//GEN-LAST:event_jActualizarActionPerformed
+
+    private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
+        
+        if (jId.getText().trim().isEmpty() || jObservacion.getText().trim().isEmpty() || jFecha.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            conductaCtrl.setIdConducta(Integer.parseInt(jId.getText()));
+            int eliminar = JOptionPane.showConfirmDialog(this, "¿Estás seguro de eliminar este resgistro?",
+                                                                "Atención",JOptionPane.YES_NO_OPTION);
+            if (eliminar == 0) {
+                
+                if (conducta.eliminarConducta()) {
+                  JOptionPane.showMessageDialog(null, "Ha eliminado los datos correctamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se han eliminado los datos correctamente");
+                }
+            }
+        }
+        
+        this.limpiarTabla();
+        this.mostrarConducta();
+        this.limpiarCampos();
+    }//GEN-LAST:event_jEliminarActionPerformed
+
+    private void tConductaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tConductaMouseClicked
+        
+        //Obteniendo el valor de la fila
+        int fila = tConducta.getSelectedRow();
+        
+        //Obteniendo valores de la fila
+        String observacion = String.valueOf(tConducta.getValueAt(fila, 0));
+        String fecha = String.valueOf(tConducta.getValueAt(fila, 2));
+        
+        //Seteando valores a los campos
+        jObservacion.setText(observacion);
+        jFecha.setText(fecha);
+        
+        //Dividiendo del estudiante
+        String student = String.valueOf(tConducta.getValueAt(fila, 1));
+        String[] parte = student.split("-");
+        String apellido = parte[0];
+        String nombre = parte[1];
+        
+        //Setetando combo de grado/seccion
+        String itemGS = conducta.getItemConducta(apellido, nombre);
+        cbGradoSeccion.setSelectedItem(itemGS);
+        
+        //Seteando el combo de anio
+        String itemAnio = conducta.getItemAnio(apellido, nombre);
+        cbAño.setSelectedItem(itemAnio);
+        
+        //obteniendo id de conducta 
+        int idConducta = conducta.obtenerIdConducta(observacion, fecha ,apellido, nombre);
+        jId.setText(String.valueOf(idConducta));
+    }//GEN-LAST:event_tConductaMouseClicked
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        
+        if (jBuscar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            conducta.buscarConducta(jBuscar.getText(), cbFiltro.getItemAt(cbFiltro.getSelectedIndex()), tConducta);
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="LlenandoComboBox">
+    //Método para combobox del año
+    public void llenarAnio(){
+        
+        //Seteando modelo del combo
+        cbAño.setModel(conducta.llenarAnio());
+        
+    }
+    
+    //Método para combobox de grado/seccion
+    public void llenarGradoSeccion(){
+        
+        //Obteniendo parametro del año
+        String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
+        conductaCtrl.setAnio(anio);
+        
+        //Seteando modelo del combo
+        cbGradoSeccion.setModel(conducta.llenarGradoSeccion());
+    }
+    
+    //Método para combobocx de estudiante
+    public void llenarEstudiante(){
+        
+        //Dividiendo el grado y la seccion
+        String gradoSeccion = cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
+        String[] parte = gradoSeccion.split("-");
+        String grado = parte[0];
+        String seccion = parte[1];
+        
+        //Obteniendo id del gradoSeccion
+        idGS = conducta.obtenerIdGS(grado, seccion);
+        conductaCtrl.setIdGradoSeccion(idGS);
+        
+        
+        //Llenando el combobox
+        cbEstudiante.setModel(conducta.llenarEstudiante());
+    }
+    //</editor-fold>
+    
+    public void mostrarConducta(){
+        Conexion con = new Conexion();
+        Connection datos;
+        try
+        {
+            datos = con.conectar();
+            String sql = "SELECT c.observacion, CONCAT(e.apellido,'-',e.nombre) as Estudiante, c.fecha FROM conducta c, estudiante e WHERE c.id_estudiante = e.id_estudiante";
+            PreparedStatement dato = datos.prepareStatement(sql);
+            ResultSet rs = dato.executeQuery();
+            while(rs.next()){
+                Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3)};
+                modelo.addRow(fila);
+            }
+            tConducta.setModel(modelo);
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+    
+    public void limpiarTabla(){
+        //Limpiar tabla
+        int filas = tConducta.getRowCount();
+        for (int i = 0;filas>i; i++) {
+            modelo.removeRow(0);
+        }
+    }
+    
+    public void limpiarCampos(){
+        
+        //limpiando campos
+        jObservacion.setText("");
+        jId.setText("");
+        jFecha.setText("");
+        jBuscar.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JComboBox<String> cbAño;
+    private javax.swing.JComboBox<String> cbEstudiante;
+    private javax.swing.JComboBox<String> cbFiltro;
+    private javax.swing.JComboBox<String> cbGradoSeccion;
+    private javax.swing.JButton jActualizar;
+    private javax.swing.JTextField jBuscar;
+    private com.toedter.calendar.JDateChooser jCalendario;
+    private javax.swing.JButton jEliminar;
+    private javax.swing.JTextField jFecha;
+    private javax.swing.JTextField jId;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -258,11 +623,9 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextArea jObservacion;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTable tConducta;
     // End of variables declaration//GEN-END:variables
 }
