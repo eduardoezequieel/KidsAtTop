@@ -5,6 +5,9 @@
  */
 package vistas;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author katy0
@@ -30,6 +33,7 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jGestionarResponsables = new javax.swing.JButton();
+        jMatricularEstudiante = new javax.swing.JButton();
         jGestionarEstudiantes = new javax.swing.JButton();
         jDesktop = new javax.swing.JDesktopPane();
         jLabel5 = new javax.swing.JLabel();
@@ -59,7 +63,21 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
                 jGestionarResponsablesActionPerformed(evt);
             }
         });
-        jPanel1.add(jGestionarResponsables, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 360, 70));
+        jPanel1.add(jGestionarResponsables, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 360, 70));
+
+        jMatricularEstudiante.setForeground(new java.awt.Color(254, 254, 254));
+        jMatricularEstudiante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatricularEstudianteDefault.png"))); // NOI18N
+        jMatricularEstudiante.setBorder(null);
+        jMatricularEstudiante.setContentAreaFilled(false);
+        jMatricularEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMatricularEstudiante.setFocusPainted(false);
+        jMatricularEstudiante.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatricularEstudianteRollover.png"))); // NOI18N
+        jMatricularEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMatricularEstudianteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jMatricularEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 360, 70));
 
         jGestionarEstudiantes.setForeground(new java.awt.Color(254, 254, 254));
         jGestionarEstudiantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarEstudiantes_default.png"))); // NOI18N
@@ -73,7 +91,7 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
                 jGestionarEstudiantesActionPerformed(evt);
             }
         });
-        jPanel1.add(jGestionarEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 360, 70));
+        jPanel1.add(jGestionarEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 360, 70));
 
         jDesktop.setBackground(new java.awt.Color(33, 37, 41));
 
@@ -86,7 +104,7 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
         jDesktopLayout.setHorizontalGroup(
             jDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopLayout.createSequentialGroup()
-                .addContainerGap(267, Short.MAX_VALUE)
+                .addContainerGap(249, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(262, 262, 262))
         );
@@ -95,7 +113,7 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
             .addGroup(jDesktopLayout.createSequentialGroup()
                 .addGap(190, 190, 190)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(jDesktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 1000, 740));
@@ -135,6 +153,18 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
         frmGestionarResponsable responsable = new frmGestionarResponsable();
         jDesktop.add(responsable);
         responsable.setVisible(true);
+    
+        //Cambiando imagenes
+        Icon Imagenes;
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarResponsable_rollover.png"));
+        jGestionarResponsables.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarEstudiantes_default.png"));
+        jGestionarEstudiantes.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatricularEstudianteDefault.png"));
+        jMatricularEstudiante.setIcon(Imagenes);
+        
     }//GEN-LAST:event_jGestionarResponsablesActionPerformed
 
     private void jGestionarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarEstudiantesActionPerformed
@@ -143,6 +173,21 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
         frmGestionarEstudiantes estudiante = new frmGestionarEstudiantes();
         jDesktop.add(estudiante);
         estudiante.setVisible(true);
+        
+        //Llamando formularios
+        frmGestionarResponsable responsable = new frmGestionarResponsable();
+        
+        //Cambiando imagen
+        Icon Imagenes;
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarEstudiantes_rollover.png"));
+        jGestionarEstudiantes.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarResponsable_default.png"));
+        jGestionarResponsables.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatricularEstudianteDefault.png"));
+        jMatricularEstudiante.setIcon(Imagenes);
+     
     }//GEN-LAST:event_jGestionarEstudiantesActionPerformed
 
     private void jGestionarResponsables1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarResponsables1ActionPerformed
@@ -150,6 +195,24 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
         frmPrincipal formulario = new frmPrincipal();
         formulario.setVisible(true);
     }//GEN-LAST:event_jGestionarResponsables1ActionPerformed
+
+    private void jMatricularEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMatricularEstudianteActionPerformed
+        //Abriendo formulario
+        this.setVisible(false);
+        FrmMatriculaContenedor frm = new FrmMatriculaContenedor();
+        frm.setVisible(true); 
+        //Cambiando imagenes
+        Icon Imagenes;
+         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatricularEstudianteRollover.png"));
+        jMatricularEstudiante.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarResponsable_default.png"));
+        jGestionarResponsables.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarEstudiantes_default.png"));
+        jGestionarEstudiantes.setIcon(Imagenes);
+        
+    }//GEN-LAST:event_jMatricularEstudianteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,6 +259,7 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton jMatricularEstudiante;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblRelleno;
     // End of variables declaration//GEN-END:variables
