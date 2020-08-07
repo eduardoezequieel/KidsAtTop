@@ -1,4 +1,9 @@
 package vistas;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author EDUARDO
@@ -11,6 +16,7 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         FrmVerificarDUI frm = new FrmVerificarDUI();
         jDesktopMatricula.add(frm);
         frm.setVisible(true);
+        btnFinalizar.setVisible(true);
     }
 
     /**
@@ -23,13 +29,15 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnAtras = new javax.swing.JButton();
+        btnFinalizar = new javax.swing.JButton();
+        lblMatricular1 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblMatricular = new javax.swing.JLabel();
+        lblVerificar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jDesktopMatricula = new javax.swing.JDesktopPane();
-        jButton2 = new javax.swing.JButton();
+        btnSiguiente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -38,8 +46,34 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(33, 37, 41));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Atras");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 660, 170, 70));
+        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAtrasDefault.png"))); // NOI18N
+        btnAtras.setBorder(null);
+        btnAtras.setBorderPainted(false);
+        btnAtras.setContentAreaFilled(false);
+        btnAtras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAtras.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAtrasRollover.png"))); // NOI18N
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 640, 170, 70));
+
+        btnFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnFinalizarDefault.png"))); // NOI18N
+        btnFinalizar.setBorder(null);
+        btnFinalizar.setBorderPainted(false);
+        btnFinalizar.setContentAreaFilled(false);
+        btnFinalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFinalizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnFinalizarRollover.png"))); // NOI18N
+        btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnFinalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 640, 170, 70));
+
+        lblMatricular1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fndProceso.png"))); // NOI18N
+        jPanel1.add(lblMatricular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 270, 130));
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backpng.png"))); // NOI18N
         btnRegresar.setBorder(null);
@@ -54,11 +88,11 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         });
         jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, 170, 70));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnMatricularEstudianteDefault.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 270, 70));
+        lblMatricular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnMatricularEstudianteDefault.png"))); // NOI18N
+        jPanel1.add(lblMatricular, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 270, 70));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnVerificarDUIRollover.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 270, 70));
+        lblVerificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnVerificarDUIRollover.png"))); // NOI18N
+        jPanel1.add(lblVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 270, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dashboard.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-110, 30, -1, 680));
@@ -69,17 +103,27 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         jDesktopMatricula.setLayout(jDesktopMatriculaLayout);
         jDesktopMatriculaLayout.setHorizontalGroup(
             jDesktopMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1080, Short.MAX_VALUE)
         );
         jDesktopMatriculaLayout.setVerticalGroup(
             jDesktopMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jDesktopMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 1080, 650));
+        jPanel1.add(jDesktopMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 1080, 640));
 
-        jButton2.setText("Siguiente");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 660, 170, 70));
+        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSiguienteDefault.png"))); // NOI18N
+        btnSiguiente.setBorder(null);
+        btnSiguiente.setBorderPainted(false);
+        btnSiguiente.setContentAreaFilled(false);
+        btnSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSiguiente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSiguienteRollover.png"))); // NOI18N
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 640, 170, 70));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 740));
 
@@ -91,6 +135,43 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         frmGestionarMatriculaContenedor frm = new frmGestionarMatriculaContenedor();
         frm.setVisible(true);
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+        //Abrir siguiente form
+        FrmMatricula frm = new FrmMatricula();
+        jDesktopMatricula.add(frm);
+        frm.setVisible(true);
+        
+        //Cambiando imagen
+        Icon imagenes;
+        imagenes = new ImageIcon(getClass().getResource("/imagenes/icnVerificarDUIDefault.png"));
+        lblVerificar.setIcon(imagenes);
+        
+        imagenes = new ImageIcon(getClass().getResource("/imagenes/icnMatricularEstudianteRollover.png"));
+        lblMatricular.setIcon(imagenes);
+    }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+       //Abrir siguiente form
+        FrmVerificarDUI dui = new FrmVerificarDUI();
+        jDesktopMatricula.add(dui);
+        dui.setVisible(true);
+        /*
+        //Cambiando imagen
+        Icon imagenes;
+        imagenes = new ImageIcon(getClass().getResource("/imagenes/icnVerificarDUIRollover.png"));
+        lblVerificar.setIcon(imagenes);
+        
+        imagenes = new ImageIcon(getClass().getResource("/imagenes/icnMatricularEstudianteDefault.png"));
+        lblMatricular.setIcon(imagenes);*/
+    }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
+       JOptionPane.showMessageDialog(null, "Proceso finalizado.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+        this.setVisible(false);
+       frmGestionarMatriculaContenedor frm = new frmGestionarMatriculaContenedor();
+       frm.setVisible(true);
+    }//GEN-LAST:event_btnFinalizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,13 +209,15 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnSiguiente;
     private javax.swing.JDesktopPane jDesktopMatricula;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblMatricular;
+    private javax.swing.JLabel lblMatricular1;
+    private javax.swing.JLabel lblVerificar;
     // End of variables declaration//GEN-END:variables
 }
