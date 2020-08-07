@@ -137,20 +137,20 @@ public class CtrlUsuario {
         this.foto = foto;
     }
     //Campos
-    private Integer id_usuario;
-    private String nombre;
-    private String apellido;
-    private Integer id_tipo_usuario;
-    private Integer id_estado_usuario;
-    private String email;
-    private String telefono;
-    private String dui;
-    private String nit;
-    private String usuario;
-    private String nip;
-    private String fecha_nacimiento;
-    private String genero;
-    private String direccion;
-    private String contraseña;
-    private byte[] foto;
+    static private Integer id_usuario;
+    static private String nombre;
+    static private String apellido;
+    static private Integer id_tipo_usuario;
+    static private Integer id_estado_usuario;
+    static private String email;
+    static private String telefono;
+    static private String dui;
+    static private String nit;
+    static private String usuario;
+    static private String nip;
+    static private String fecha_nacimiento;
+    static private String genero;
+    static private String direccion;
+    static private String contraseña;
+    static private byte[] foto;
 }

@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  *
  * @author katy0
  */
-public class Correos {
+public class ClsCorreo {
     
     private String destino; //Correo de destinatario
     private String asunto;  //Asunto del correo

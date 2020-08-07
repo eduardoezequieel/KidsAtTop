@@ -5,7 +5,7 @@
  */
 package vistas;
 
-import modelo.Correos;
+import modelo.ClsCorreo;
 
 /**
  *
@@ -123,7 +123,7 @@ public class frmCorreo extends javax.swing.JFrame {
     private void jEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEnviarActionPerformed
        
         //Llamando clase de correos
-        Correos correo = new Correos();
+        ClsCorreo correo = new ClsCorreo();
         
         correo.setDestino(jDestinatario.getText());
         correo.setAsunto(jAsunto.getText());

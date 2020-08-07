@@ -11,7 +11,7 @@ import javax.swing.plaf.basic.BasicLookAndFeel;
 import modelo.BDUser;
 import modelo.BDusuarios;
 import modelo.Conexion;
-import modelo.Correos;
+import modelo.ClsCorreo;
 import modelo.Validaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -210,7 +210,7 @@ public class frmLogin extends javax.swing.JFrame {
         /*this.setVisible(false);
         frmMenuRecuperacion formulario = new frmMenuRecuperacion();
         formulario.setVisible(true);*/
-        /*Correos correo = new Correos();
+        /*ClsCorreo correo = new ClsCorreo();
         correo.enviarCorreo();*/
         Conexion conectar = new Conexion();
         conectar.conectar();
