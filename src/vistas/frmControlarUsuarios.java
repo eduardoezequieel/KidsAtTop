@@ -1,6 +1,7 @@
 package vistas;
 
 import com.bulenkov.darcula.DarculaLaf;
+import controlador.CtrlUsuario;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -25,7 +26,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.plaf.basic.BasicLookAndFeel;
 import javax.swing.table.DefaultTableModel;
 import modelo.Conexion;
-import modelo.mtoControlarUsuarios;
+import modelo.MtoUsuario;
 import org.apache.commons.codec.digest.DigestUtils;
 /**
  *
@@ -78,7 +79,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     }
     
     public void llenarTipoUsuario(){
-        mtoControlarUsuarios a = new mtoControlarUsuarios();
+        MtoUsuario a = new MtoUsuario();
         cbTipoUsuario.setModel(a.llenarTipoUsuario());
     }
     
@@ -623,33 +624,34 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
         }
         else if(rbMasculino.isSelected() || rbFemenino.isSelected()){
-            mtoControlarUsuarios mto = new mtoControlarUsuarios();
-            mto.setId_usuario(Integer.parseInt(txtId.getText()));
-            mto.setNombre(txtNombre.getText());
-            mto.setApellido(txtApellido.getText());
+            CtrlUsuario ctrl = new CtrlUsuario();
+            MtoUsuario mto = new MtoUsuario();
+            ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
+            ctrl.setNombre(txtNombre.getText());
+            ctrl.setApellido(txtApellido.getText());
             int idTipoUsuario = mto.getIdTipoUsuario(cbTipoUsuario.getItemAt(cbTipoUsuario.getSelectedIndex()));
-            mto.setId_tipo_usuario(idTipoUsuario);
+            ctrl.setId_tipo_usuario(idTipoUsuario);
             int idEstadoUsuario = 1;
-            mto.setId_estado_usuario(idEstadoUsuario);
-            mto.setEmail(txtEmail.getText());
-            mto.setTelefono(txtTelefono.getText());
-            mto.setDui(txtDUI.getText());
-            mto.setNit(txtNit.getText());
-            mto.setUsuario(txtUsuario.getText());
-            mto.setNip(txtNIP.getText());
-            mto.setFecha_nacimiento(txtFecha.getText());
+            ctrl.setId_estado_usuario(idEstadoUsuario);
+            ctrl.setEmail(txtEmail.getText());
+            ctrl.setTelefono(txtTelefono.getText());
+            ctrl.setDui(txtDUI.getText());
+            ctrl.setNit(txtNit.getText());
+            ctrl.setUsuario(txtUsuario.getText());
+            ctrl.setNip(txtNIP.getText());
+            ctrl.setFecha_nacimiento(txtFecha.getText());
             if (rbFemenino.isSelected()) {
-                mto.setGenero("F");
+                ctrl.setGenero("F");
             }
             else if(rbMasculino.isSelected())
             {
-                mto.setGenero("M");
+                ctrl.setGenero("M");
             }
-            mto.setDireccion(txtDireccion.getText());
+            ctrl.setDireccion(txtDireccion.getText());
             String contraSinEncriptacion="txt"; 
             String contraConEncriptacion=DigestUtils.sha1Hex(contraSinEncriptacion);
-            mto.setContraseña(contraConEncriptacion);
-            mto.setFoto(person_image);
+            ctrl.setContraseña(contraConEncriptacion);
+            ctrl.setFoto(person_image);
 
             if (mto.insertarUsuario()) {
                 JOptionPane.showMessageDialog(null, "Exito");
