@@ -189,10 +189,9 @@ public class frmLogin extends javax.swing.JFrame {
         
         if(!txtUsuario.getText().equals("") && !contra.equals(""))
         {
-            String nuevaContra = DigestUtils.sha1Hex(contra);
             
             mod.setUsuario(txtUsuario.getText());
-            mod.setContrasenia(nuevaContra);
+            mod.setContrasenia(contra);
             
             if(modBD.login(mod)){
                 
