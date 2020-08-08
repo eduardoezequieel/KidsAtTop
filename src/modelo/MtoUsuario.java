@@ -63,6 +63,92 @@ public class MtoUsuario {
         }
         return id;
     }
+    
+    public Integer getIdUsuario(String usuario){
+        Integer id = 0;
+        try{
+            //Consulta
+            String sql = "SELECT id_usuario FROM usuario WHERE usuario = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+           //Asignando valores de la consulta 
+            cmd.setString(1, usuario);
+            //Ejecutando consulta
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+                id = rs.getInt(1);
+            }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return id;
+    }
+    
+    public static String email, telefono, dui, direccion, nit, nip, fecha_nacimiento;
+    public static Integer maxIdUsuario;
+    public boolean capturarDatosUsuario(String usuario){
+        boolean resp = false;
+        try{
+            String sql = "SELECT email, telefono, dui, direccion, nit, nip, fecha_nacimiento FROM usuario WHERE usuario = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setString(1, usuario);
+            
+            //Ejecutando consulta
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+                resp = true;
+                email = rs.getString(1);
+                telefono = rs.getString(2);
+                dui = rs.getString(3);
+                direccion = rs.getString(4);
+                nit = rs.getString(5);
+                nip = rs.getString(6);
+                fecha_nacimiento = rs.getString(7);
+            }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return resp;
+    }
+    
+    public byte[] capturarFoto(String usuario){
+        byte[] foto = null;
+        try{
+            String sql = "SELECT foto FROM usuario WHERE usuario = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setString(1, usuario);
+            
+            //Ejecutando consulta
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+                foto = rs.getBytes(1); 
+            }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return foto;
+    }
+    
+    public boolean capturarMaxIdUsuario(){
+        boolean resp = false;
+        try{
+            String sql = "SELECT max(id_usuario) FROM usuario";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            
+            //Ejecutando consulta
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+                resp = true;
+                maxIdUsuario = rs.getInt(1);
+            }
+        }
+        catch (Exception ex) {
+            
+        }
+        return resp;
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="ComboBox">
@@ -100,6 +186,25 @@ public class MtoUsuario {
             JOptionPane.showMessageDialog(null, e);
         }       
       return modelo;
+    }
+    
+    public String getItemsTipoUsuario(String usuario){
+        String item = "";
+        try{
+            //Llamando procedimiento
+            CallableStatement cmd = cn.prepareCall("{CALL cbTipoUsuarioInverso(?)}");
+            cmd.setString(1, usuario);
+            
+            //Ejecutando sentencia
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+                item = rs.getString(1);
+            }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return item;
     }
     //</editor-fold>
     

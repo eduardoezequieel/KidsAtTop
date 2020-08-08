@@ -8,6 +8,24 @@ import java.sql.Connection;
  */
 public class CtrlUsuario {
 
+    /**
+     * @return the foto
+     */
+    public static byte[] getFoto() {
+        return foto;
+    }
+
+    /**
+     * @param aFoto the foto to set
+     */
+    public static void setFoto(byte[] aFoto) {
+        foto = aFoto;
+    }
+
+    /**
+     * @return the foto
+     */
+
 
     public Integer getId_usuario() {
         return id_usuario;
@@ -129,13 +147,7 @@ public class CtrlUsuario {
         this.contraseña = contraseña;
     }
 
-    public byte[] getFoto() {
-        return foto;
-    }
 
-    public void setFoto(byte[] foto) {
-        this.foto = foto;
-    }
     //Campos
     static private Integer id_usuario;
     static private String nombre;
