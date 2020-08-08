@@ -7,7 +7,14 @@ package vistas;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import modelo.Conexion;
+import javax.swing.table.DefaultTableModel;
+import modelo.MtoResponsable;
 
 /**
  *
@@ -15,6 +22,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  */
 public class frmGestionarResponsable extends javax.swing.JInternalFrame {
 
+    DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form GestionarResponsableForm
      */
@@ -27,6 +35,18 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         tResponsables.getTableHeader().setOpaque(false);
         tResponsables.getTableHeader().setBackground(new Color(33, 37, 41));
         tResponsables.getTableHeader().setForeground(new Color(254,254,254));
+        
+        //Llenando jTable
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("DUI");
+        modelo.addColumn("Teléfono");
+        modelo.addColumn("E-mail");
+        modelo.addColumn("Parentesco");
+        tResponsables.setModel(modelo);
+        this.mostrarResponsables();
+        
+        this.llenarParentesco();
     }
 
     /**
@@ -44,13 +64,13 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtDui = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -59,7 +79,7 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jButton6 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jTextField11 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbParentesco = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -93,57 +113,57 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jLabel8.setText("Parentesco:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, -1, -1));
 
-        jTextField6.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField6.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 250, 30));
+        txtNombre.setBackground(new java.awt.Color(33, 37, 41));
+        txtNombre.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(254, 254, 254));
+        txtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 250, 30));
 
-        jTextField7.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField7.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 300, 30));
+        txtEmail.setBackground(new java.awt.Color(33, 37, 41));
+        txtEmail.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(254, 254, 254));
+        txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 300, 30));
 
-        jTextField8.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField8.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 250, 30));
+        txtDui.setBackground(new java.awt.Color(33, 37, 41));
+        txtDui.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtDui.setForeground(new java.awt.Color(254, 254, 254));
+        txtDui.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDui.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jPanel1.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 250, 30));
 
         jLabel9.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
         jLabel9.setText("Teléfono:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, -1, -1));
 
-        jTextField9.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField9.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 250, 30));
+        txtApellido.setBackground(new java.awt.Color(33, 37, 41));
+        txtApellido.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtApellido.setForeground(new java.awt.Color(254, 254, 254));
+        txtApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtApellido.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 250, 30));
 
         jLabel11.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(254, 254, 254));
         jLabel11.setText("Email:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
 
-        jTextField10.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField10.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jTextField10.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 190, 30));
+        txtTelefono.setBackground(new java.awt.Color(33, 37, 41));
+        txtTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtTelefono.setForeground(new java.awt.Color(254, 254, 254));
+        txtTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTelefono.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 190, 30));
 
         jButton2.setBackground(new java.awt.Color(33, 37, 41));
         jButton2.setForeground(new java.awt.Color(254, 254, 254));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviarCorreo_default.png"))); // NOI18N
         jButton2.setBorder(null);
         jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.setFocusPainted(false);
         jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviarCorreo_rollover.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +178,7 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMostrar_default.png"))); // NOI18N
         jButton4.setBorder(null);
         jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.setFocusPainted(false);
         jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMostrar_rollover.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +193,7 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
         jButton5.setBorder(null);
         jButton5.setContentAreaFilled(false);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton5.setFocusPainted(false);
         jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -213,6 +233,11 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         tResponsables.setRowHeight(30);
         tResponsables.setSelectionBackground(new java.awt.Color(58, 58, 58));
         tResponsables.setShowVerticalLines(false);
+        tResponsables.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tResponsablesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tResponsables);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 960, 320));
@@ -222,7 +247,7 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
         jButton6.setBorder(null);
         jButton6.setContentAreaFilled(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.setFocusPainted(false);
         jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -244,18 +269,44 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jTextField11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
         jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 620, 30));
 
-        jComboBox2.setBackground(new java.awt.Color(33, 37, 41));
-        jComboBox2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setBorder(null);
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 290, 30));
+        cbParentesco.setBackground(new java.awt.Color(33, 37, 41));
+        cbParentesco.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbParentesco.setForeground(new java.awt.Color(255, 255, 255));
+        cbParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbParentesco.setBorder(null);
+        jPanel1.add(cbParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 290, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void llenarParentesco(){
+        MtoResponsable a = new MtoResponsable();
+        cbParentesco.setModel(a.llenarParentesco());
+    }
+    
+    public void mostrarResponsables(){
+        Conexion con = new Conexion();
+        Connection datos;
+        try
+        {
+            datos = con.conectar();
+            String sql = "SELECT r.nombre, r.apellido, r.dui, r.telefono, r.email, p.parentesco FROM responsable r, parentesco p "
+                    + "WHERE r.id_parentesco = p.id_parentesco";
+            PreparedStatement dato = datos.prepareStatement(sql);
+            ResultSet rs = dato.executeQuery();
+            while(rs.next()){
+                Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)};
+                modelo.addRow(fila);
+            }
+            tResponsables.setModel(modelo);
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         frmCorreo formulario = new frmCorreo();
         formulario.setVisible(true);
@@ -273,13 +324,17 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void tResponsablesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tResponsablesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tResponsablesMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbParentesco;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel4;
@@ -290,12 +345,12 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTable tResponsables;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtDui;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
