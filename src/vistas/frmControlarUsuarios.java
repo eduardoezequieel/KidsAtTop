@@ -722,7 +722,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
             ctrl.setFoto(person_image);
 
             if (mto.insertarUsuario()) {
-                JOptionPane.showMessageDialog(null, "Exito");
+                JOptionPane.showMessageDialog(null, "Se ha ingresado el nuevo usuario. Su contraseña por defecto es: 123","Exito",JOptionPane.INFORMATION_MESSAGE);
             }
             else
             {
@@ -776,7 +776,51 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbTipoUsuarioActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-      
+        if (txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || txtTelefono.getText().isEmpty() || txtUsuario.getText().isEmpty() || txtDUI.getText().isEmpty() ||
+            txtDireccion.getText().isEmpty() || txtFecha.getText().isEmpty() || txtEmail.getText().isEmpty() || txtNIP.getText().isEmpty() || txtNit.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error", "Existen campos vacios", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        {
+            //Asignando datos
+            CtrlUsuario ctrl = new CtrlUsuario();
+            MtoUsuario mto = new MtoUsuario();
+            
+            ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
+            ctrl.setNombre(txtNombre.getText());
+            ctrl.setApellido(txtApellido.getText());
+            int idTipoUsuario = mto.getIdTipoUsuario(cbTipoUsuario.getItemAt(cbTipoUsuario.getSelectedIndex()));
+            ctrl.setId_tipo_usuario(idTipoUsuario);
+            int idEstadoUsuario = 1;
+            ctrl.setId_estado_usuario(idEstadoUsuario);
+            ctrl.setEmail(txtEmail.getText());
+            ctrl.setTelefono(txtTelefono.getText());
+            ctrl.setDui(txtDUI.getText());
+            ctrl.setNit(txtNit.getText());
+            ctrl.setUsuario(txtUsuario.getText());
+            ctrl.setNip(txtNIP.getText());
+            ctrl.setFecha_nacimiento(txtFecha.getText());
+            if (rbMasculino.isSelected()) {
+                ctrl.setGenero("M");
+            }
+            else if(rbFemenino.isSelected())
+            {
+                ctrl.setGenero("F");
+            }
+            ctrl.setDireccion(txtDireccion.getText());
+            String contraSinEncriptacion="txt"; 
+            String contraConEncriptacion=DigestUtils.sha1Hex(contraSinEncriptacion);
+            ctrl.setContraseña(contraConEncriptacion);
+            ctrl.setFoto(person_image);
+            
+            if (mto.actualizarUsuario()) {
+                JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnSuspenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuspenderActionPerformed
@@ -881,6 +925,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         
         //Capturando datos del usuario
         byte[] foto = mto.capturarFoto(usuario);
+        person_image = foto;
         ImageIcon imagen = new ImageIcon(new ImageIcon(foto).getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
         lblFoto.setIcon(imagen);
     }//GEN-LAST:event_tUsuariosMouseClicked
