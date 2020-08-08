@@ -842,15 +842,14 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         CtrlUsuario ctrl = new CtrlUsuario();
         
         ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
-        if (mto.suspenderUsuario()) {
-            mostrarUsuario();
-            JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);
-            
+        if (mto.suspenderUsuario()) {  
+            JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);            
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Error");
         }
+        mostrarUsuario();
     }//GEN-LAST:event_btnSuspenderActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -988,15 +987,14 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         CtrlUsuario ctrl = new CtrlUsuario();
         
         ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
-        if (mto.activarUsuario()) {
-            mostrarUsuario();
-            JOptionPane.showMessageDialog(null, "El usuario ha sido activado de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);
-           
+        if (mto.activarUsuario()) { 
+            JOptionPane.showMessageDialog(null, "El usuario ha sido activado de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);     
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Error");
         }
+        mostrarUsuario();
     }//GEN-LAST:event_btnActivarActionPerformed
 
 
