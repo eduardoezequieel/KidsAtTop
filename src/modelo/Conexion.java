@@ -42,6 +42,25 @@ public class Conexion {
                     System.out.println(ex.getMessage());
             }
             return cn;
+        }
+           
+        }*/
+    //Conexion Jacobo
+    /*public Connection conectar(){
+        Connection cn = null;
+        try{
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            //Pedira importar import java.sql.DriverManager
+           cn = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-39UEACID\\SQLEXPRESS;" + "databaseName=KidsAtTop;integratedSecurity=true;");
+           
+            if (cn != null) {
+                    System.out.println("Si hay conexion");
+                }
+            }
+            catch(Exception ex){
+                    System.out.println(ex.getMessage());
+            }
+            return cn;
            
         }*/
 }
