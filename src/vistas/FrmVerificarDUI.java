@@ -1,7 +1,10 @@
 package vistas;
 
+import controlador.CtrlResponsable;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import modelo.MtoResponsable;
 
 /**
  *
@@ -9,6 +12,10 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  */
 public class FrmVerificarDUI extends javax.swing.JInternalFrame {
 
+    //Llamando clases
+    CtrlResponsable responsableCtrl = new CtrlResponsable();
+    MtoResponsable responsable = new MtoResponsable();
+    
     public FrmVerificarDUI() {
         initComponents();
         this.setBorder(null);
@@ -17,6 +24,9 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         for (Component component : pnlResponsable.getComponents()) {
         component.setEnabled(false); 
         }
+        
+        //Llenando combobox
+        this.llenarParentesco();
     }
 
     /**
@@ -30,23 +40,23 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         pnlResponsable = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jNombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jApellido = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTel = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jCorreo = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbParentesco = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         pnlVerificar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        btnVerificar = new javax.swing.JButton();
+        jDui = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -60,60 +70,60 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         pnlResponsable.setBackground(new java.awt.Color(33, 37, 41));
         pnlResponsable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField1.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        pnlResponsable.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 230, 30));
+        jNombre.setBackground(new java.awt.Color(33, 37, 41));
+        jNombre.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jNombre.setForeground(new java.awt.Color(255, 255, 255));
+        jNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        pnlResponsable.add(jNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 230, 30));
 
         jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Parentesco:");
         pnlResponsable.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 110, 30));
 
-        jTextField3.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField3.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        pnlResponsable.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 230, 30));
+        jApellido.setBackground(new java.awt.Color(33, 37, 41));
+        jApellido.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jApellido.setForeground(new java.awt.Color(255, 255, 255));
+        jApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jApellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        pnlResponsable.add(jApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 230, 30));
 
         jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Apellido:");
         pnlResponsable.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 80, 30));
 
-        jTextField4.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField4.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        pnlResponsable.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 230, 30));
+        jTel.setBackground(new java.awt.Color(33, 37, 41));
+        jTel.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jTel.setForeground(new java.awt.Color(255, 255, 255));
+        jTel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        pnlResponsable.add(jTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 230, 30));
 
         jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Teléfono:");
         pnlResponsable.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 80, 30));
 
-        jTextField5.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField5.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        pnlResponsable.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 230, 30));
+        jCorreo.setBackground(new java.awt.Color(33, 37, 41));
+        jCorreo.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jCorreo.setForeground(new java.awt.Color(255, 255, 255));
+        jCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jCorreo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        pnlResponsable.add(jCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 230, 30));
 
         jLabel6.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Correo Electrónico:");
         pnlResponsable.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 160, 30));
 
-        jComboBox1.setBackground(new java.awt.Color(33, 37, 41));
-        jComboBox1.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(null);
-        pnlResponsable.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 230, -1));
+        cbParentesco.setBackground(new java.awt.Color(33, 37, 41));
+        cbParentesco.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbParentesco.setForeground(new java.awt.Color(255, 255, 255));
+        cbParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbParentesco.setBorder(null);
+        pnlResponsable.add(cbParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 230, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -126,6 +136,11 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
         pnlResponsable.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 160, 80));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReingresarDUIDefault.png"))); // NOI18N
@@ -139,7 +154,7 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        pnlResponsable.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 120, 180, 90));
+        pnlResponsable.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, 180, 90));
 
         jLabel8.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -156,25 +171,25 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         jLabel2.setText("<html><p style=overflow:auto;>Para continuar, ingrese el DUI del responsable para verificar si este existe o no, si el DUI ingresado no existe, podra ingresar los datos del nuevo responsable.</p>");
         pnlVerificar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 970, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_rollover-1.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_default.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVerificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_rollover-1.png"))); // NOI18N
+        btnVerificar.setBorder(null);
+        btnVerificar.setBorderPainted(false);
+        btnVerificar.setContentAreaFilled(false);
+        btnVerificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVerificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_default.png"))); // NOI18N
+        btnVerificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVerificarActionPerformed(evt);
             }
         });
-        pnlVerificar.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 180, 70));
+        pnlVerificar.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 180, 70));
 
-        jTextField2.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        pnlVerificar.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 170, 30));
+        jDui.setBackground(new java.awt.Color(33, 37, 41));
+        jDui.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jDui.setForeground(new java.awt.Color(255, 255, 255));
+        jDui.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jDui.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        pnlVerificar.add(jDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 170, 30));
 
         jLabel3.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -208,15 +223,33 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        for (Component component : pnlVerificar.getComponents()) {
-            component.setEnabled(false);  
+    private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
+        responsableCtrl.setForm(0);
+        //Validando campos vacios
+        if (jDui.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            //Enviando valor a la clase
+            responsableCtrl.setDui(jDui.getText());
+            
+            //Verificando existencia
+            if (responsable.verificarDui()) {
+                JOptionPane.showMessageDialog(null, "Se ha encontrado un registro con este DUI. Seleccionar siguiente para seguir el proceso");
+                responsableCtrl.setForm(1);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha encontrado un registro con este DUI. Ingresar el nuevo responsable");
+                for (Component component : pnlVerificar.getComponents()) {
+                component.setEnabled(false);  
+                }
+
+                for (Component component : pnlResponsable.getComponents()) {
+                    component.setEnabled(true);  
+                }
+            }
         }
         
-        for (Component component : pnlResponsable.getComponents()) {
-            component.setEnabled(true);  
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnVerificarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         for (Component component : pnlVerificar.getComponents()) {
@@ -226,15 +259,61 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         for (Component component : pnlResponsable.getComponents()) {
             component.setEnabled(false);  
         }
+        
+        this.limpiarCampos();
     }//GEN-LAST:event_jButton4ActionPerformed
-         
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+       
+        //Validando campos vacios
+        if ((jNombre.getText().trim().isEmpty()) || (jApellido.getText().trim().isEmpty()) 
+                || (jTel.getText().trim().isEmpty()) || (jCorreo.getText().trim().isEmpty())) {
+            JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            //Enviando datos a la tabla
+            responsableCtrl.setNombre(jNombre.getText());
+            responsableCtrl.setApellido(jApellido.getText());
+            responsableCtrl.setTelefono(jTel.getText());
+            responsableCtrl.setEmail(jCorreo.getText());
+            responsableCtrl.setIdEstado(1);
+            responsable.obtenerIdParentesco(cbParentesco.getItemAt(cbParentesco.getSelectedIndex()));
+            responsable.obtenerUltimoId();
+            
+            //Agregando datos
+            if (responsable.insertarResponsable()) {
+                JOptionPane.showMessageDialog(null, "Se ha agregado el responsable correctamente. Seleccionar siguiente para seguir el proceso");
+                btnAgregar.setEnabled(false);
+                this.limpiarCampos();
+                responsableCtrl.setForm(1);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha agregado el responsable correctamente. Seleccionar siguiente para seguir el proceso");
+            }
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+       
+    public void limpiarCampos(){
+        jNombre.setText("");
+        jApellido.setText("");
+        jTel.setText("");
+        jCorreo.setText("");
+    }
+    
+    public void llenarParentesco(){
+        
+        //Llenando combobox
+        cbParentesco.setModel(responsable.llenarParentesco());
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnVerificar;
+    private javax.swing.JComboBox<String> cbParentesco;
+    private javax.swing.JTextField jApellido;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField jCorreo;
+    private javax.swing.JTextField jDui;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -243,13 +322,10 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField jNombre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTel;
     private javax.swing.JPanel pnlResponsable;
     private javax.swing.JPanel pnlVerificar;
     // End of variables declaration//GEN-END:variables

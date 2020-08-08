@@ -1,5 +1,6 @@
 package vistas;
 
+import controlador.CtrlResponsable;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -10,13 +11,16 @@ import javax.swing.JOptionPane;
  */
 public class FrmMatriculaContenedor extends javax.swing.JFrame {
 
+    
+      
     public FrmMatriculaContenedor() {
         initComponents();
         this.setLocationRelativeTo(null);
         FrmVerificarDUI frm = new FrmVerificarDUI();
         jDesktopMatricula.add(frm);
         frm.setVisible(true);
-        btnFinalizar.setVisible(true);
+        btnFinalizar.setVisible(false);
+        
     }
 
     /**
@@ -137,18 +141,28 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        //Abrir siguiente form
-        FrmMatricula frm = new FrmMatricula();
-        jDesktopMatricula.add(frm);
-        frm.setVisible(true);
         
-        //Cambiando imagen
-        Icon imagenes;
-        imagenes = new ImageIcon(getClass().getResource("/imagenes/icnVerificarDUIDefault.png"));
-        lblVerificar.setIcon(imagenes);
-        
-        imagenes = new ImageIcon(getClass().getResource("/imagenes/icnMatricularEstudianteRollover.png"));
-        lblMatricular.setIcon(imagenes);
+        CtrlResponsable responsableCtrl = new CtrlResponsable();
+        int form = responsableCtrl.getForm();
+        if (form == 1) {
+            //Abrir siguiente form
+            FrmMatricula frm = new FrmMatricula();
+            jDesktopMatricula.add(frm);
+            frm.setVisible(true);
+
+            //Cambiando imagen
+            Icon imagenes;
+            imagenes = new ImageIcon(getClass().getResource("/imagenes/icnVerificarDUIDefault.png"));
+            lblVerificar.setIcon(imagenes);
+
+            imagenes = new ImageIcon(getClass().getResource("/imagenes/icnMatricularEstudianteRollover.png"));
+            lblMatricular.setIcon(imagenes);
+            
+            btnFinalizar.setVisible(true);
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha verificado y/o agregado al responsable","Datos no verificados",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed

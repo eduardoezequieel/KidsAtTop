@@ -416,7 +416,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
             String año = Integer.toString(jCalendario.getCalendar().get(Calendar.YEAR));
             int mesInt = jCalendario.getCalendar().get(Calendar.MONTH) + 1;
             String mes = Integer.toString(mesInt);
-            String fecha = (mes+"/"+dia+"/"+año);
+            String fecha = (mes+"-"+dia+"-"+año);
             jFecha.setText(fecha);
             
       
