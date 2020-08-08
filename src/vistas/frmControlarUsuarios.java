@@ -142,8 +142,8 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         btnReiniciarCuenta = new javax.swing.JButton();
-        btnAgregar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
+        btnActivar = new javax.swing.JButton();
         btnSuspender = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
@@ -184,6 +184,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         tUsuarios = new javax.swing.JTable();
         btnCargarFoto = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -213,22 +214,6 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btnReiniciarCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 360, 140, 70));
 
-        btnAgregar.setBackground(new java.awt.Color(33, 37, 41));
-        btnAgregar.setForeground(new java.awt.Color(254, 254, 254));
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_default.png"))); // NOI18N
-        btnAgregar.setBorder(null);
-        btnAgregar.setContentAreaFilled(false);
-        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgregar.setFocusPainted(false);
-        btnAgregar.setFocusable(false);
-        btnAgregar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 140, 70));
-
         btnActualizar.setBackground(new java.awt.Color(33, 37, 41));
         btnActualizar.setForeground(new java.awt.Color(254, 254, 254));
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
@@ -244,6 +229,22 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 140, 70));
+
+        btnActivar.setBackground(new java.awt.Color(33, 37, 41));
+        btnActivar.setForeground(new java.awt.Color(254, 254, 254));
+        btnActivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
+        btnActivar.setBorder(null);
+        btnActivar.setContentAreaFilled(false);
+        btnActivar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActivar.setFocusPainted(false);
+        btnActivar.setFocusable(false);
+        btnActivar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
+        btnActivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActivarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnActivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 440, 140, 70));
 
         btnSuspender.setBackground(new java.awt.Color(33, 37, 41));
         btnSuspender.setForeground(new java.awt.Color(254, 254, 254));
@@ -401,8 +402,6 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         rbMasculino.setBounds(150, 240, 106, 28);
 
         jPanel1.add(jLayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 270, 270));
-
-        jLayer2.setNextFocusableComponent(jLayer3);
 
         jCalendario.setBackground(new java.awt.Color(255, 255, 255));
         jCalendario.setForeground(new java.awt.Color(255, 255, 255));
@@ -648,6 +647,22 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 140, 70));
 
+        btnAgregar.setBackground(new java.awt.Color(33, 37, 41));
+        btnAgregar.setForeground(new java.awt.Color(254, 254, 254));
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_default.png"))); // NOI18N
+        btnAgregar.setBorder(null);
+        btnAgregar.setContentAreaFilled(false);
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.setFocusPainted(false);
+        btnAgregar.setFocusable(false);
+        btnAgregar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
         pack();
@@ -723,13 +738,12 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
 
             if (mto.insertarUsuario()) {
                 JOptionPane.showMessageDialog(null, "Se ha ingresado el nuevo usuario. Su contraseña por defecto es: 123","Exito",JOptionPane.INFORMATION_MESSAGE);
+                mostrarUsuario();
             }
             else
             {
                 JOptionPane.showMessageDialog(null, "Error");
             }
-
-            mostrarUsuario();
         }
         
         
@@ -824,7 +838,18 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnSuspenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuspenderActionPerformed
-      
+        MtoUsuario mto = new MtoUsuario();
+        CtrlUsuario ctrl = new CtrlUsuario();
+        
+        ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
+        if (mto.suspenderUsuario()) {
+            JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);
+            mostrarUsuario();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
     }//GEN-LAST:event_btnSuspenderActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -957,9 +982,14 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         limpiarCampo();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void btnActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActivarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgBotones;
+    private javax.swing.JButton btnActivar;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCargarFoto;

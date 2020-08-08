@@ -280,5 +280,23 @@ public class MtoUsuario {
         }
         return resp;
     }
+    
+    public boolean suspenderUsuario(){
+        boolean resp = false;
+        try
+        {
+            String sql = "UPDATE usuario SET id_estado_usuario = 2 WHERE id_usuario = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setInt(1, ctrl.getId_usuario());
+            //Ejecutando consulta
+            if (!cmd.execute()) {
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return resp;
+    }
      //</editor-fold>
 }
