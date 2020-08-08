@@ -44,6 +44,9 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     public frmControlarUsuarios() throws UnsupportedLookAndFeelException {
         initComponents();
         txtId.setVisible(false);
+        btnActualizar.setEnabled(false);
+        btnSuspender.setEnabled(false);
+        btnReiniciarCuenta.setEnabled(false);
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
@@ -76,6 +79,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
        
       //Metodos a ejecutar
       llenarTipoUsuario();
+      
     }
     
     public void llenarTipoUsuario(){
@@ -119,6 +123,11 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         txtDireccion.setText("");
         txtId.setText("");
         lblFoto.setIcon(null);
+        
+        btnAgregar.setEnabled(true);
+        btnActualizar.setEnabled(false);
+        btnSuspender.setEnabled(false);
+        btnReiniciarCuenta.setEnabled(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -132,7 +141,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         btgBotones = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btnReiniciarCuenta = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnSuspender = new javax.swing.JButton();
@@ -188,21 +197,21 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLabel4.setText("Controlar Usuarios");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
 
-        jButton3.setBackground(new java.awt.Color(33, 37, 41));
-        jButton3.setForeground(new java.awt.Color(254, 254, 254));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReiniciarCuenta_default.png"))); // NOI18N
-        jButton3.setBorder(null);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setFocusPainted(false);
-        jButton3.setFocusable(false);
-        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReiniciarCuenta_rollover.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnReiniciarCuenta.setBackground(new java.awt.Color(33, 37, 41));
+        btnReiniciarCuenta.setForeground(new java.awt.Color(254, 254, 254));
+        btnReiniciarCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReiniciarCuenta_default.png"))); // NOI18N
+        btnReiniciarCuenta.setBorder(null);
+        btnReiniciarCuenta.setContentAreaFilled(false);
+        btnReiniciarCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReiniciarCuenta.setFocusPainted(false);
+        btnReiniciarCuenta.setFocusable(false);
+        btnReiniciarCuenta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReiniciarCuenta_rollover.png"))); // NOI18N
+        btnReiniciarCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnReiniciarCuentaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 360, 140, 70));
+        jPanel1.add(btnReiniciarCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 360, 140, 70));
 
         btnAgregar.setBackground(new java.awt.Color(33, 37, 41));
         btnAgregar.setForeground(new java.awt.Color(254, 254, 254));
@@ -678,13 +687,14 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         if (txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || txtTelefono.getText().isEmpty() || txtUsuario.getText().isEmpty() || txtDUI.getText().isEmpty() ||
-            txtDireccion.getText().isEmpty() || txtFecha.getText().isEmpty() || txtEmail.getText().isEmpty() || txtNIP.getText().isEmpty() || txtNit.getText().isEmpty() || lblFoto.getText() == "") {
+            txtDireccion.getText().isEmpty() || txtFecha.getText().isEmpty() || txtEmail.getText().isEmpty() || txtNIP.getText().isEmpty() || txtNit.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
         }
         else if(rbMasculino.isSelected() || rbFemenino.isSelected()){
             CtrlUsuario ctrl = new CtrlUsuario();
             MtoUsuario mto = new MtoUsuario();
-            ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
+            mto.capturarMaxIdUsuario();
+            ctrl.setId_usuario(mto.maxIdUsuario+1);
             ctrl.setNombre(txtNombre.getText());
             ctrl.setApellido(txtApellido.getText());
             int idTipoUsuario = mto.getIdTipoUsuario(cbTipoUsuario.getItemAt(cbTipoUsuario.getSelectedIndex()));
@@ -721,6 +731,8 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
 
             mostrarUsuario();
         }
+        
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -775,9 +787,9 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
       
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnReiniciarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarCuentaActionPerformed
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnReiniciarCuentaActionPerformed
 
     private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
         // TODO add your handling code here:
@@ -818,7 +830,13 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCalendarioMouseReleased
 
     private void tUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tUsuariosMouseClicked
-       MtoUsuario mto = new MtoUsuario();
+       //Controlando botones
+       btnAgregar.setEnabled(false);
+       btnActualizar.setEnabled(true);
+       btnSuspender.setEnabled(true);
+       btnReiniciarCuenta.setEnabled(true);
+        
+        MtoUsuario mto = new MtoUsuario();
 
         //Obteniendo fila
         int fila = tUsuarios.getSelectedRow();
@@ -859,6 +877,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         txtNit.setText(mto.nit);
         txtNIP.setText(mto.nip);
         txtFecha.setText(mto.fecha_nacimiento);
+        txtUsuario.setText(usuario);
         
         //Capturando datos del usuario
         byte[] foto = mto.capturarFoto(usuario);
@@ -900,9 +919,9 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCargarFoto;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnReiniciarCuenta;
     private javax.swing.JButton btnSuspender;
     private javax.swing.JComboBox<String> cbTipoUsuario;
-    private javax.swing.JButton jButton3;
     private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
