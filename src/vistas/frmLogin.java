@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.basic.BasicLookAndFeel;
-import modelo.BDUser;
+import modelo.MtoLogin;
 import modelo.BDusuarios;
 import modelo.Conexion;
 import modelo.ClsCorreo;
@@ -178,28 +178,34 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        this.setVisible(false);
-        frmPrincipal formulario = new frmPrincipal();
-        formulario.setVisible(true);
+       
         
-        BDUser modBD = new BDUser();
-        BDusuarios mod = new BDusuarios();
+       
         
         String contra = new String(txtContra.getPassword());
+        String encriptado=DigestUtils.sha1Hex(contra);
         
         if(!txtUsuario.getText().equals("") && !contra.equals(""))
         {
+            MtoLogin modBD = new MtoLogin();
+            BDusuarios mod = new BDusuarios();
             
             mod.setUsuario(txtUsuario.getText());
-            mod.setContrasenia(contra);
+            mod.setContrasenia(encriptado);
             
-            if(modBD.login(mod)){
+            if (modBD.validarLogin(mod)) {
                 
-            } else {
-                JOptionPane.showMessageDialog(null, "El nombre de usuario o la contraseña son erróneos.");
+                JOptionPane.showMessageDialog(this, "Acceso concedido, bienvenido "+mod.getUsuario());
+                this.setVisible(false);
+                frmPrincipal formulario = new frmPrincipal();
+                formulario.setVisible(true);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Un campo está vacío, por favor ingrese sus datos.");
+           
+            
+        }
+        else 
+        {
+            JOptionPane.showMessageDialog(null, "Uno o ambos campos están vacíos, por favor ingrese sus datos.");
         }
         
 

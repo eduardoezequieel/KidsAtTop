@@ -14,7 +14,7 @@ public class Conexion {
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             //Pedira importar import java.sql.DriverManager
-           cn = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-9H26RGO\\SQLEXPRESS;" + "databaseName=KidsAtTop;integratedSecurity=true;");
+           cn = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-2MJP3UJ\\SQLEXPRESS;" + "databaseName=KidsAtTop;integratedSecurity=true;");
            
             if (cn != null) {
                     System.out.println("Si hay conexion");
