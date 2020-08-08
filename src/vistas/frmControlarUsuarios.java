@@ -212,7 +212,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
                 btnReiniciarCuentaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnReiniciarCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 360, 140, 70));
+        jPanel1.add(btnReiniciarCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 420, 140, 70));
 
         btnActualizar.setBackground(new java.awt.Color(33, 37, 41));
         btnActualizar.setForeground(new java.awt.Color(254, 254, 254));
@@ -228,23 +228,23 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 140, 70));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 140, 70));
 
         btnActivar.setBackground(new java.awt.Color(33, 37, 41));
         btnActivar.setForeground(new java.awt.Color(254, 254, 254));
-        btnActivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
+        btnActivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActivarDefault.png"))); // NOI18N
         btnActivar.setBorder(null);
         btnActivar.setContentAreaFilled(false);
         btnActivar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnActivar.setFocusPainted(false);
         btnActivar.setFocusable(false);
-        btnActivar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
+        btnActivar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActivarRollover.png"))); // NOI18N
         btnActivar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActivarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 440, 140, 70));
+        jPanel1.add(btnActivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 420, 140, 70));
 
         btnSuspender.setBackground(new java.awt.Color(33, 37, 41));
         btnSuspender.setForeground(new java.awt.Color(254, 254, 254));
@@ -260,19 +260,19 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
                 btnSuspenderActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSuspender, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 140, 70));
+        jPanel1.add(btnSuspender, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 140, 70));
 
         jLabel18.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(254, 254, 254));
         jLabel18.setText("Digite lo que desea buscar:");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 230, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 230, -1));
 
         txtBuscar.setBackground(new java.awt.Color(33, 37, 41));
         txtBuscar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(254, 254, 254));
         txtBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, 550, 30));
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 550, 30));
 
         txtId.setBackground(new java.awt.Color(33, 37, 41));
         txtId.setFont(new java.awt.Font("Roboto Light", 1, 16)); // NOI18N
@@ -629,7 +629,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
                 btnCargarFotoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCargarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 270, 140, 70));
+        jPanel1.add(btnCargarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 290, 140, 70));
 
         btnLimpiar.setBackground(new java.awt.Color(33, 37, 41));
         btnLimpiar.setForeground(new java.awt.Color(254, 254, 254));
@@ -645,7 +645,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
                 btnLimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 140, 70));
+        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 140, 70));
 
         btnAgregar.setBackground(new java.awt.Color(33, 37, 41));
         btnAgregar.setForeground(new java.awt.Color(254, 254, 254));
@@ -661,7 +661,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, -1, -1));
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -843,8 +843,9 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         
         ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
         if (mto.suspenderUsuario()) {
-            JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);
             mostrarUsuario();
+            JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);
+            
         }
         else
         {
@@ -983,7 +984,19 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarActionPerformed
-        // TODO add your handling code here:
+        MtoUsuario mto = new MtoUsuario();
+        CtrlUsuario ctrl = new CtrlUsuario();
+        
+        ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
+        if (mto.activarUsuario()) {
+            mostrarUsuario();
+            JOptionPane.showMessageDialog(null, "El usuario ha sido activado de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);
+           
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
     }//GEN-LAST:event_btnActivarActionPerformed
 
 
