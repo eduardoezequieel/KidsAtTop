@@ -1,16 +1,22 @@
 package vistas;
 
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UnsupportedLookAndFeelException;
 
 
 
-public class frmPrincipal extends javax.swing.JFrame {
+public class frmPrincipal extends javax.swing.JFrame implements Runnable {
 
+    String hora,minutos,ampm;;
+    Calendar calendario;
+    Thread hl;
     public frmPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        hl=new Thread(this);
+        hl.start();
 
     }
     
@@ -212,4 +218,49 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblHora;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void run() {
+        
+        Thread ct=Thread.currentThread();
+        
+        while(ct==hl)      
+        {
+             calcula();
+             lblHora.setText(hora+":"+minutos+" "+ampm);
+             try
+             {
+                 Thread.sleep(1000);
+             
+             }
+             
+             catch(InterruptedException e)
+                     
+             {
+               
+               
+             }
+             
+        }
+    }
+
+    private void calcula() {
+        
+        Calendar calendario= new GregorianCalendar();
+        Date fechahoraactual=new Date();
+        calendario.setTime(fechahoraactual);
+        ampm=calendario.get(Calendar.AM_PM)==Calendar.AM?"AM":"PM";
+        if (ampm.equals("PM")) {
+            
+            int h=calendario.get(Calendar.HOUR_OF_DAY)-12;
+            hora=h>9?""+h:"0"+h;
+            
+        }
+        else{
+            
+            hora=calendario.get(Calendar.HOUR_OF_DAY)>9?""+calendario.get(Calendar.HOUR_OF_DAY):"0"+calendario.get(Calendar.HOUR_OF_DAY);
+        
+        }
+        minutos=calendario.get(Calendar.MINUTE)>9?""+calendario.get(Calendar.MINUTE):"0"+calendario.get(Calendar.MINUTE);
+    }
 }
