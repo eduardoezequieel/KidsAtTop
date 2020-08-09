@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import controlador.CtrlResponsable;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
@@ -23,6 +24,7 @@ import modelo.MtoResponsable;
 public class frmGestionarResponsable extends javax.swing.JInternalFrame {
 
     DefaultTableModel modelo = new DefaultTableModel();
+    CtrlResponsable ctrl = new CtrlResponsable();
     /**
      * Creates new form GestionarResponsableForm
      */
@@ -35,8 +37,12 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         tResponsables.getTableHeader().setOpaque(false);
         tResponsables.getTableHeader().setBackground(new Color(33, 37, 41));
         tResponsables.getTableHeader().setForeground(new Color(254,254,254));
+        btnActualizar.setEnabled(false);
+        btnSuspender.setEnabled(false);
+        btnCorreo.setEnabled(false);
         
         //Llenando jTable
+        modelo.addColumn("id");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
         modelo.addColumn("DUI");
@@ -44,6 +50,7 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         modelo.addColumn("E-mail");
         modelo.addColumn("Parentesco");
         tResponsables.setModel(modelo);
+        tResponsables.removeColumn(tResponsables.getColumnModel().getColumn(0));
         this.mostrarResponsables();
         
         this.llenarParentesco();
@@ -71,12 +78,11 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         txtApellido = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnCorreo = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tResponsables = new javax.swing.JTable();
-        jButton6 = new javax.swing.JButton();
+        btnSuspender = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jTextField11 = new javax.swing.JTextField();
         cbParentesco = new javax.swing.JComboBox<>();
@@ -158,50 +164,35 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         txtTelefono.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
         jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 190, 30));
 
-        jButton2.setBackground(new java.awt.Color(33, 37, 41));
-        jButton2.setForeground(new java.awt.Color(254, 254, 254));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviarCorreo_default.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton2.setFocusPainted(false);
-        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviarCorreo_rollover.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnCorreo.setBackground(new java.awt.Color(33, 37, 41));
+        btnCorreo.setForeground(new java.awt.Color(254, 254, 254));
+        btnCorreo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviarCorreo_default.png"))); // NOI18N
+        btnCorreo.setBorder(null);
+        btnCorreo.setContentAreaFilled(false);
+        btnCorreo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCorreo.setFocusPainted(false);
+        btnCorreo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviarCorreo_rollover.png"))); // NOI18N
+        btnCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCorreoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 140, 70));
+        jPanel1.add(btnCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 240, 140, 70));
 
-        jButton4.setBackground(new java.awt.Color(33, 37, 41));
-        jButton4.setForeground(new java.awt.Color(254, 254, 254));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMostrar_default.png"))); // NOI18N
-        jButton4.setBorder(null);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton4.setFocusPainted(false);
-        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMostrar_rollover.png"))); // NOI18N
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setBackground(new java.awt.Color(33, 37, 41));
+        btnActualizar.setForeground(new java.awt.Color(254, 254, 254));
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
+        btnActualizar.setBorder(null);
+        btnActualizar.setContentAreaFilled(false);
+        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnActualizar.setFocusPainted(false);
+        btnActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 140, 70));
-
-        jButton5.setBackground(new java.awt.Color(33, 37, 41));
-        jButton5.setForeground(new java.awt.Color(254, 254, 254));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
-        jButton5.setBorder(null);
-        jButton5.setContentAreaFilled(false);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton5.setFocusPainted(false);
-        jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 150, 140, 70));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, 140, 70));
 
         tResponsables.setBackground(new java.awt.Color(33, 37, 41));
         tResponsables.setFont(new java.awt.Font("Roboto Light", 1, 17)); // NOI18N
@@ -242,20 +233,20 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 960, 320));
 
-        jButton6.setBackground(new java.awt.Color(33, 37, 41));
-        jButton6.setForeground(new java.awt.Color(254, 254, 254));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
-        jButton6.setBorder(null);
-        jButton6.setContentAreaFilled(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton6.setFocusPainted(false);
-        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnSuspender.setBackground(new java.awt.Color(33, 37, 41));
+        btnSuspender.setForeground(new java.awt.Color(254, 254, 254));
+        btnSuspender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
+        btnSuspender.setBorder(null);
+        btnSuspender.setContentAreaFilled(false);
+        btnSuspender.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSuspender.setFocusPainted(false);
+        btnSuspender.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
+        btnSuspender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnSuspenderActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 230, 140, 70));
+        jPanel1.add(btnSuspender, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 160, 140, 70));
 
         jLabel12.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(254, 254, 254));
@@ -292,12 +283,12 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         try
         {
             datos = con.conectar();
-            String sql = "SELECT r.nombre, r.apellido, r.dui, r.telefono, r.email, p.parentesco FROM responsable r, parentesco p "
+            String sql = "SELECT r.id_responsable, r.nombre, r.apellido, r.dui, r.telefono, r.email, p.parentesco FROM responsable r, parentesco p "
                     + "WHERE r.id_parentesco = p.id_parentesco";
             PreparedStatement dato = datos.prepareStatement(sql);
             ResultSet rs = dato.executeQuery();
             while(rs.next()){
-                Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)};
+                Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)};
                 modelo.addRow(fila);
             }
             tResponsables.setModel(modelo);
@@ -307,34 +298,63 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         }
     }
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorreoActionPerformed
         frmCorreo formulario = new frmCorreo();
         formulario.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnCorreoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        if(txtNombre.getText().trim().equals("") || txtApellido.getText().trim().equals("") || txtDui.getText().trim().equals("") || txtTelefono.getText().trim().equals("") || txtEmail.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
+        }else{
+            MtoResponsable mto = new MtoResponsable();
+            ctrl.setNombre(txtNombre.getText());
+            ctrl.setApellido(txtApellido.getText());
+            ctrl.setDui(txtDui.getText());
+            ctrl.setEmail(txtEmail.getText());
+            ctrl.setTelefono(txtTelefono.getText());
+            if (mto.actualizarResponsable(String.valueOf(cbParentesco.getSelectedItem()))) {
+                JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+            mostrarResponsables();
+            //System.out.println(txtNombre.getText() + " " + txtApellido.getText() + " " + txtDui.getText() + " " + txtTelefono.getText() + " " + txtEmail.getText());
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnSuspenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuspenderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnSuspenderActionPerformed
 
     private void tResponsablesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tResponsablesMouseClicked
-        // TODO add your handling code here:
+        //Activar botones
+        btnActualizar.setEnabled(true);
+        btnSuspender.setEnabled(true);
+        btnCorreo.setEnabled(true);
+
+        //Obtener fila seleccionada
+        int fila = tResponsables.getSelectedRow();
+        
+        //Creando objeto de controlador
+        CtrlResponsable ctr = new CtrlResponsable();
+        
+        //Obteniendo valores de la tabla
+        txtNombre.setText(String.valueOf(tResponsables.getValueAt(fila, 0)));
+        txtApellido.setText(String.valueOf(tResponsables.getValueAt(fila, 1)));
+        txtDui.setText(String.valueOf(tResponsables.getValueAt(fila, 2)));
+        txtTelefono.setText(String.valueOf(tResponsables.getValueAt(fila, 3)));
+        txtEmail.setText(String.valueOf(tResponsables.getValueAt(fila, 4)));
+        cbParentesco.setSelectedItem(String.valueOf(tResponsables.getValueAt(fila, 5)));
+        ctr.setIdResponsable(Integer.parseInt((String)tResponsables.getModel().getValueAt(fila, 0)));
     }//GEN-LAST:event_tResponsablesMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnCorreo;
+    private javax.swing.JButton btnSuspender;
     private javax.swing.JComboBox<String> cbParentesco;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel4;
