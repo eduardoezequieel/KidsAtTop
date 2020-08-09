@@ -177,6 +177,38 @@ public class MtoResponsable {
         //Retornando valor
         return resp;
     }
+    
+    public boolean actualizarResponsable(String parentesco){
+        boolean resp = false;
+        try{
+            //Se obtiene el Id del parentesco seleccionado
+            String parent = "SELECT id_parentesco FROM parentesco WHERE parentesco = ?";
+            PreparedStatement cmdPar = cn.prepareStatement(parent);
+            cmdPar.setString(1, parentesco);
+            ResultSet rs = cmdPar.executeQuery();
+            while(rs.next()){
+                responsableCtrl.setIdParentesco(rs.getInt(1));
+            }
+            
+            //Se actualiza el responsable seleccionado
+            String sql = "UPDATE responsable set nombre = ?, apellido = ?, dui = ?, telefono = ?, email = ?, id_parentesco = ? WHERE id_responsable = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setString(1, responsableCtrl.getNombre());
+            cmd.setString(2, responsableCtrl.getApellido());
+            cmd.setString(3, responsableCtrl.getDui());
+            cmd.setString(4, responsableCtrl.getTelefono());
+            cmd.setString(5, responsableCtrl.getEmail());
+            cmd.setInt(6, responsableCtrl.getIdParentesco());
+            cmd.setInt(7, responsableCtrl.getIdResponsable());
+            
+            if (!cmd.execute()) {
+                resp = true;
+            }
+        }catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+        return resp;
+    }
     // </editor-fold>
     
 }
