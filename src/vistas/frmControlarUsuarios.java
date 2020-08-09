@@ -46,6 +46,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         txtId.setVisible(false);
         btnActualizar.setEnabled(false);
         btnSuspender.setEnabled(false);
+        btnActivar.setEnabled(false);
         btnReiniciarCuenta.setEnabled(false);
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
@@ -127,7 +128,16 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         btnAgregar.setEnabled(true);
         btnActualizar.setEnabled(false);
         btnSuspender.setEnabled(false);
+        btnActivar.setEnabled(false);
         btnReiniciarCuenta.setEnabled(false);
+    }
+    
+    public void limpiarTabla(){
+        //Limpiar tabla
+        int filas = tUsuarios.getRowCount();
+        for (int i = 0;filas>i; i++) {
+            modelo.removeRow(0);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -738,6 +748,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
 
             if (mto.insertarUsuario()) {
                 JOptionPane.showMessageDialog(null, "Se ha ingresado el nuevo usuario. Su contraseña por defecto es: 123","Exito",JOptionPane.INFORMATION_MESSAGE);
+                limpiarTabla();
                 mostrarUsuario();
             }
             else
@@ -805,8 +816,6 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
             ctrl.setApellido(txtApellido.getText());
             int idTipoUsuario = mto.getIdTipoUsuario(cbTipoUsuario.getItemAt(cbTipoUsuario.getSelectedIndex()));
             ctrl.setId_tipo_usuario(idTipoUsuario);
-            int idEstadoUsuario = 1;
-            ctrl.setId_estado_usuario(idEstadoUsuario);
             ctrl.setEmail(txtEmail.getText());
             ctrl.setTelefono(txtTelefono.getText());
             ctrl.setDui(txtDUI.getText());
@@ -822,13 +831,12 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
                 ctrl.setGenero("F");
             }
             ctrl.setDireccion(txtDireccion.getText());
-            String contraSinEncriptacion="txt"; 
-            String contraConEncriptacion=DigestUtils.sha1Hex(contraSinEncriptacion);
-            ctrl.setContraseña(contraConEncriptacion);
             ctrl.setFoto(person_image);
             
             if (mto.actualizarUsuario()) {
                 JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                limpiarTabla();
+                mostrarUsuario();
             }
             else
             {
@@ -843,13 +851,15 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         
         ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
         if (mto.suspenderUsuario()) {  
-            JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);            
+            JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);     
+            limpiarTabla();
+            mostrarUsuario();
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Error");
         }
-        mostrarUsuario();
+        
     }//GEN-LAST:event_btnSuspenderActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -857,7 +867,20 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void btnReiniciarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarCuentaActionPerformed
+        CtrlUsuario ctrl = new CtrlUsuario();
+        MtoUsuario mto = new MtoUsuario();
+        String contraSinEncriptacion="123"; 
+        String contraConEncriptacion=DigestUtils.sha1Hex(contraSinEncriptacion);
+        ctrl.setContraseña(contraConEncriptacion);
         
+        if (mto.reiniciarContraseña()) {
+            JOptionPane.showMessageDialog(null, "La contraseña de este usuario ha sido reestablecida a 123.","Contraseña reestablecida exitosamente", JOptionPane.INFORMATION_MESSAGE);
+            limpiarTabla();
+            mostrarUsuario();
+        }else
+        {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
     }//GEN-LAST:event_btnReiniciarCuentaActionPerformed
 
     private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
@@ -902,7 +925,6 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
        //Controlando botones
        btnAgregar.setEnabled(false);
        btnActualizar.setEnabled(true);
-       btnSuspender.setEnabled(true);
        btnReiniciarCuenta.setEnabled(true);
         
         MtoUsuario mto = new MtoUsuario();
@@ -915,6 +937,17 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         String apellido = String.valueOf(tUsuarios.getValueAt(fila, 1));
         String usuario = String.valueOf(tUsuarios.getValueAt(fila, 4));
         String genero = String.valueOf(tUsuarios.getValueAt(fila, 5));
+        String estado = String.valueOf(tUsuarios.getValueAt(fila, 3));
+        
+        //Desactivar y activar
+        if ("Disponible".equals(estado)) {
+            btnSuspender.setEnabled(true);
+            btnActivar.setEnabled(false);
+        }else if("Suspendido".equals(estado))
+        {
+            btnSuspender.setEnabled(false);
+            btnActivar.setEnabled(true);
+        }
         
         //Seleccionando radiobutton
         if ("M".equals(genero)) {
@@ -988,13 +1021,15 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         
         ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
         if (mto.activarUsuario()) { 
-            JOptionPane.showMessageDialog(null, "El usuario ha sido activado de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);     
+            JOptionPane.showMessageDialog(null, "El usuario ha sido activado de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);
+            limpiarTabla();
+            mostrarUsuario();
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Error");
         }
-        mostrarUsuario();
+        
     }//GEN-LAST:event_btnActivarActionPerformed
 
 

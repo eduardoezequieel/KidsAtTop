@@ -250,25 +250,23 @@ public class MtoUsuario {
         boolean resp = false;
         try
         {
-            String sql = "UPDATE usuario SET nombre = ?, apellido = ?, id_tipo_usuario = ?, id_estado_usuario = ?, email = ?, telefono = ?, dui = ?, nit = ?, usuario = ?, nip = ?, fecha_nacimiento = ?, "
-                    + "genero = ?, direccion = ?, contraseña = ?, foto = ? WHERE id_usuario = ?";
+            String sql = "UPDATE usuario SET nombre = ?, apellido = ?, id_tipo_usuario = ?, email = ?, telefono = ?, dui = ?, nit = ?, usuario = ?, nip = ?, fecha_nacimiento = ?, "
+                    + "genero = ?, direccion = ?, foto = ? WHERE id_usuario = ?";
             PreparedStatement cmd = cn.prepareCall(sql);
             cmd.setString(1, ctrl.getNombre());
             cmd.setString(2, ctrl.getApellido());
             cmd.setInt(3, ctrl.getId_tipo_usuario());
-            cmd.setInt(4, ctrl.getId_estado_usuario());
-            cmd.setString(5, ctrl.getEmail());
-            cmd.setString(6, ctrl.getTelefono());
-            cmd.setString(7, ctrl.getDui());
-            cmd.setString(8, ctrl.getNit());
-            cmd.setString(9, ctrl.getUsuario());
-            cmd.setString(10, ctrl.getNip());
-            cmd.setString(11, ctrl.getFecha_nacimiento());
-            cmd.setString(12, ctrl.getGenero());
-            cmd.setString(13, ctrl.getDireccion());
-            cmd.setString(14, ctrl.getContraseña());
-            cmd.setBytes(15, ctrl.getFoto());
-            cmd.setInt(16, ctrl.getId_usuario());
+            cmd.setString(4, ctrl.getEmail());
+            cmd.setString(5, ctrl.getTelefono());
+            cmd.setString(6, ctrl.getDui());
+            cmd.setString(7, ctrl.getNit());
+            cmd.setString(8, ctrl.getUsuario());
+            cmd.setString(9, ctrl.getNip());
+            cmd.setString(10, ctrl.getFecha_nacimiento());
+            cmd.setString(11, ctrl.getGenero());
+            cmd.setString(12, ctrl.getDireccion());
+            cmd.setBytes(13, ctrl.getFoto());
+            cmd.setInt(14, ctrl.getId_usuario());
             
             //Ejecutando consulta
             if (!cmd.execute()) {
@@ -307,6 +305,26 @@ public class MtoUsuario {
             PreparedStatement cmd = cn.prepareCall(sql);
             cmd.setInt(1, ctrl.getId_usuario());
             //Ejecutando consulta
+            if (!cmd.execute()) {
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return resp;
+    }
+    
+    public boolean reiniciarContraseña(){
+        boolean resp = false;
+        try
+        {
+            String sql = "UPDATE usuario SET contraseña = ? WHERE id_usuario = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setString(1, ctrl.getContraseña());
+            cmd.setInt(2, ctrl.getId_usuario());
+            
+            //Ejecutando sentencia
             if (!cmd.execute()) {
                 resp = true;
             }
