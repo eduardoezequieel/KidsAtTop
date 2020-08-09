@@ -209,6 +209,23 @@ public class MtoResponsable {
         }
         return resp;
     }
+    public boolean suspenderResponsable(){
+        boolean resp = false;
+        try
+        {
+            String sql = "UPDATE responsable SET id_estado_responsable = 3 WHERE id_responsable = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setInt(1, responsableCtrl.getIdResponsable());
+            //Ejecutando consulta
+            if (!cmd.execute()) {
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+        return resp;
+    }
     // </editor-fold>
     
 }
