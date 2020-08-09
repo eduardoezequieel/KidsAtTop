@@ -222,6 +222,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
     @Override
     public void run() {
         
+        //se crea el contador de hora
         Thread ct=Thread.currentThread();
         
         while(ct==hl)      
@@ -244,6 +245,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         }
     }
 
+    //se crea el metodo para calcular hora dependiendo de AM o PM
     private void calcula() {
         
         Calendar calendario= new GregorianCalendar();
