@@ -12,9 +12,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import modelo.Conexion;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import modelo.MtoResponsable;
 
 /**
@@ -42,7 +44,7 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         btnCorreo.setEnabled(false);
         
         //Llenando jTable
-        modelo.addColumn("id");
+        modelo.addColumn("identifi");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
         modelo.addColumn("DUI");
@@ -51,7 +53,9 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         modelo.addColumn("Parentesco");
         modelo.addColumn("Estado");
         tResponsables.setModel(modelo);
-        tResponsables.removeColumn(tResponsables.getColumnModel().getColumn(0));
+        tResponsables.getColumnModel().getColumn(0).setMinWidth(0);
+        tResponsables.getColumnModel().getColumn(0).setMaxWidth(0);
+        this.vaciarTabla();
         this.mostrarResponsables();
         
         this.llenarParentesco();
@@ -85,7 +89,7 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         tResponsables = new javax.swing.JTable();
         btnSuspender = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        txtBuscar = new javax.swing.JTextField();
         cbParentesco = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(33, 37, 41));
@@ -254,12 +258,20 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jLabel12.setText("Digite lo que desea buscar:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
 
-        jTextField11.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField11.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField11.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 620, 30));
+        txtBuscar.setBackground(new java.awt.Color(33, 37, 41));
+        txtBuscar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        txtBuscar.setForeground(new java.awt.Color(254, 254, 254));
+        txtBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 620, 30));
 
         cbParentesco.setBackground(new java.awt.Color(33, 37, 41));
         cbParentesco.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -278,11 +290,14 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         cbParentesco.setModel(a.llenarParentesco());
     }
     
-    public void mostrarResponsables(){
-        int filas = tResponsables.getRowCount();
+    public void vaciarTabla(){
+       int filas = tResponsables.getRowCount();
         for (int i = 0;filas>i; i++) {
             modelo.removeRow(0);
-        }
+        } 
+    }
+    public void mostrarResponsables(){
+        
         Conexion con = new Conexion();
         Connection datos;
         try
@@ -323,6 +338,7 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
             }else{
                 JOptionPane.showMessageDialog(null, "Error");
             }
+            vaciarTabla();
             mostrarResponsables();
             //System.out.println(txtNombre.getText() + " " + txtApellido.getText() + " " + txtDui.getText() + " " + txtTelefono.getText() + " " + txtEmail.getText());
         }
@@ -353,14 +369,26 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         CtrlResponsable ctr = new CtrlResponsable();
         
         //Obteniendo valores de la tabla
-        txtNombre.setText(String.valueOf(tResponsables.getValueAt(fila, 0)));
-        txtApellido.setText(String.valueOf(tResponsables.getValueAt(fila, 1)));
-        txtDui.setText(String.valueOf(tResponsables.getValueAt(fila, 2)));
-        txtTelefono.setText(String.valueOf(tResponsables.getValueAt(fila, 3)));
-        txtEmail.setText(String.valueOf(tResponsables.getValueAt(fila, 4)));
-        cbParentesco.setSelectedItem(String.valueOf(tResponsables.getValueAt(fila, 5)));
-        ctr.setIdResponsable(Integer.parseInt((String)tResponsables.getModel().getValueAt(fila, 0)));
+        txtNombre.setText(String.valueOf(tResponsables.getValueAt(fila, 1)));
+        txtApellido.setText(String.valueOf(tResponsables.getValueAt(fila, 2)));
+        txtDui.setText(String.valueOf(tResponsables.getValueAt(fila, 3)));
+        txtTelefono.setText(String.valueOf(tResponsables.getValueAt(fila, 4)));
+        txtEmail.setText(String.valueOf(tResponsables.getValueAt(fila, 5)));
+        cbParentesco.setSelectedItem(String.valueOf(tResponsables.getValueAt(fila, 6)));
+        ctr.setIdResponsable(Integer.parseInt((String)tResponsables.getValueAt(fila, 0)));
+        System.out.println(ctr.getIdResponsable());
     }//GEN-LAST:event_tResponsablesMouseClicked
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        String busqueda = txtBuscar.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
+        tResponsables.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(busqueda));
+    }//GEN-LAST:event_txtBuscarKeyReleased
+
+    private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -378,9 +406,9 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField11;
     private javax.swing.JTable tResponsables;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtDui;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNombre;
