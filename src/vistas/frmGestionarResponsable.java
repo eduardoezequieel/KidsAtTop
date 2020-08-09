@@ -49,6 +49,7 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         modelo.addColumn("Teléfono");
         modelo.addColumn("E-mail");
         modelo.addColumn("Parentesco");
+        modelo.addColumn("Estado");
         tResponsables.setModel(modelo);
         tResponsables.removeColumn(tResponsables.getColumnModel().getColumn(0));
         this.mostrarResponsables();
@@ -278,17 +279,21 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
     }
     
     public void mostrarResponsables(){
+        int filas = tResponsables.getRowCount();
+        for (int i = 0;filas>i; i++) {
+            modelo.removeRow(0);
+        }
         Conexion con = new Conexion();
         Connection datos;
         try
         {
             datos = con.conectar();
-            String sql = "SELECT r.id_responsable, r.nombre, r.apellido, r.dui, r.telefono, r.email, p.parentesco FROM responsable r, parentesco p "
-                    + "WHERE r.id_parentesco = p.id_parentesco";
+            String sql = "SELECT r.id_responsable, r.nombre, r.apellido, r.dui, r.telefono, r.email, p.parentesco, e.estado_responsable FROM responsable r, parentesco p, estado_responsable e "
+                    + "WHERE r.id_parentesco = p.id_parentesco AND r.id_estado_responsable = e.id_estado_responsable";
             PreparedStatement dato = datos.prepareStatement(sql);
             ResultSet rs = dato.executeQuery();
             while(rs.next()){
-                Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)};
+                Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)};
                 modelo.addRow(fila);
             }
             tResponsables.setModel(modelo);
@@ -324,7 +329,15 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnSuspenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuspenderActionPerformed
-        // TODO add your handling code here:
+        MtoResponsable mto = new MtoResponsable();
+        if (mto.suspenderResponsable()) {  
+            JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        mostrarResponsables();
     }//GEN-LAST:event_btnSuspenderActionPerformed
 
     private void tResponsablesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tResponsablesMouseClicked
