@@ -5,18 +5,36 @@
  */
 package vistas;
 
+import controlador.CtrlRecuContra;
+import javax.swing.JOptionPane;
+import modelo.ClsCorreo;
+import modelo.RecuContra;
+import org.apache.commons.codec.digest.DigestUtils;
+
 /**
  *
  * @author eduardxlr
  */
 public class frmRecuCorreo extends javax.swing.JFrame {
 
+    //Llamando clases
+    CtrlRecuContra recuCtrl = new CtrlRecuContra();
+    RecuContra recu = new RecuContra();
+    ClsCorreo clsCorreo = new ClsCorreo();
+    
     /**
      * Creates new form RecuCorreoForm
      */
     public frmRecuCorreo() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        //Deshabilitando botones y txt
+        jCodigo.setEnabled(false);
+        btnVerificar.setEnabled(false);
+        jNueva.setEnabled(false);
+        jConfirmar.setEnabled(false);
+        btnAceptar.setEnabled(false);
     }
 
     /**
@@ -30,17 +48,17 @@ public class frmRecuCorreo extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
+        jUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jCodigo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEnviar = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnVerificar = new javax.swing.JButton();
+        jConfirmar = new javax.swing.JPasswordField();
+        jNueva = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -63,66 +81,62 @@ public class frmRecuCorreo extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(45, 255, 120));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 1290, 10));
 
-        jTextField1.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 210, 30));
+        jUsuario.setBackground(new java.awt.Color(33, 37, 41));
+        jUsuario.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jUsuario.setForeground(new java.awt.Color(254, 254, 254));
+        jUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jPanel1.add(jUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 210, 30));
 
         jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(254, 254, 254));
         jLabel2.setText("Usuario a recuperar:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, -1, -1));
 
-        jTextField2.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 160, 30));
-
-        jTextField3.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField3.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 310, 210, 30));
+        jCodigo.setBackground(new java.awt.Color(33, 37, 41));
+        jCodigo.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jCodigo.setForeground(new java.awt.Color(254, 254, 254));
+        jCodigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jCodigo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jPanel1.add(jCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 160, 30));
 
         jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(254, 254, 254));
         jLabel4.setText("Nueva contraseña:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 280, -1, -1));
 
-        jTextField4.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField4.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 390, 210, 30));
-
         jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(254, 254, 254));
         jLabel5.setText("Confirmar contraseña:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 360, -1, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviar_default.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusPainted(false);
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviar_rollover.png"))); // NOI18N
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, 180, 70));
+        btnEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviar_default.png"))); // NOI18N
+        btnEnviar.setBorder(null);
+        btnEnviar.setBorderPainted(false);
+        btnEnviar.setContentAreaFilled(false);
+        btnEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEnviar.setFocusPainted(false);
+        btnEnviar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviar_rollover.png"))); // NOI18N
+        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, 180, 70));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_rollover.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setFocusPainted(false);
-        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_default.png"))); // NOI18N
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 440, 180, 70));
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_rollover.png"))); // NOI18N
+        btnAceptar.setBorder(null);
+        btnAceptar.setBorderPainted(false);
+        btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAceptar.setFocusPainted(false);
+        btnAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_default.png"))); // NOI18N
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 440, 180, 70));
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backpng.png"))); // NOI18N
         btnRegresar.setBorder(null);
@@ -138,14 +152,21 @@ public class frmRecuCorreo extends javax.swing.JFrame {
         });
         jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 660, 180, 70));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_rollover-1.png"))); // NOI18N
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setFocusPainted(false);
-        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_default.png"))); // NOI18N
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 180, 70));
+        btnVerificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_rollover-1.png"))); // NOI18N
+        btnVerificar.setBorder(null);
+        btnVerificar.setBorderPainted(false);
+        btnVerificar.setContentAreaFilled(false);
+        btnVerificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVerificar.setFocusPainted(false);
+        btnVerificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_default.png"))); // NOI18N
+        btnVerificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, 180, 70));
+        jPanel1.add(jConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 400, 210, 30));
+        jPanel1.add(jNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 312, 210, 30));
 
         jLabel1.setFont(new java.awt.Font("Quicksand", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
@@ -208,6 +229,101 @@ public class frmRecuCorreo extends javax.swing.JFrame {
        formulario.setVisible(true);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
+        
+        //Validando campos vacios
+        if (jCodigo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Rellene los campos faltantes.","Campos vacios",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            //Verificando codigos
+            int codigo = Integer.parseInt(jCodigo.getText());
+            
+            if (codigo == recuCtrl.getCodigoVerificacion()) {
+                JOptionPane.showMessageDialog(null, "El código se ha verificado correctamente. Puedes cambiar la contraseña.","Verificación correcta",JOptionPane.INFORMATION_MESSAGE);
+                jCodigo.setEnabled(false);
+                btnVerificar.setEnabled(false);
+                jNueva.setEnabled(true);
+                jConfirmar.setEnabled(true);
+                btnAceptar.setEnabled(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "El código no coincide con el enviado al correo.","Código incorrecto.",JOptionPane.WARNING_MESSAGE);
+            }
+                    
+        }
+    }//GEN-LAST:event_btnVerificarActionPerformed
+
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+        
+        //Validando campos vacios
+        if (jUsuario.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Rellene los campos faltantes.","Campos vacios.",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            recuCtrl.setUsuario(jUsuario.getText());
+            
+            //Verificando usuario
+            if (recu.verificarUsuario()) {
+                
+                //Generando codigo de verificacion
+                recu.generarCodigo();
+                
+                //Mandando codigo al correo
+                String destinatario = recuCtrl.getCorreo();
+                String asunto = "Código de verificación";
+                String mensaje = "Te saludamos del equipo de KidsAtTop! System, has seleccionado recuperar la contraseña por este medio, "
+                                    + "tu código de verificación es: " + String.valueOf(recuCtrl.getCodigoVerificacion());
+                
+                clsCorreo.setDestino(destinatario);
+                clsCorreo.setAsunto(asunto);
+                clsCorreo.setMensaje(mensaje);         
+                clsCorreo.enviarCorreo();
+                
+                jUsuario.setEnabled(false);
+                btnEnviar.setEnabled(false);
+                jCodigo.setEnabled(true);
+                btnVerificar.setEnabled(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha encontrado un usuario con este nombre","Usuario no encontrado",JOptionPane.WARNING_MESSAGE);
+            }
+        }
+     
+    }//GEN-LAST:event_btnEnviarActionPerformed
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+       
+        //Validando campos vacios
+        if (jNueva.getText().trim().isEmpty() || jConfirmar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Rellene los campos faltantes.","Campos vacios.",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            String nueva = new String(jNueva.getPassword());
+            String confirmar = new String(jConfirmar.getPassword());
+            
+            //Verificando que sean igual 
+            if (nueva.equals(confirmar)) {
+                
+                //Reestableciendo contraseña
+                String contra = new String(jConfirmar.getPassword());
+                String encriptado=DigestUtils.sha1Hex(contra);
+                
+                recuCtrl.setNuevaContra(encriptado);
+                
+                if (recu.cambiarContra()) {
+                    JOptionPane.showMessageDialog(null, "La contraseña se ha cambiado correctamente","Contraseña actualizada.",JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(false);
+                    frmMenuRecuperacion formulario = new frmMenuRecuperacion();
+                    formulario.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "La contraseña no se ha cambiado correctamente","Contraseña no actualizada.",JOptionPane.WARNING_MESSAGE);
+                }
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.","Contraseñas incorrectas.",JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -245,10 +361,12 @@ public class frmRecuCorreo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnEnviar;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnVerificar;
+    private javax.swing.JTextField jCodigo;
+    private javax.swing.JPasswordField jConfirmar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -262,11 +380,9 @@ public class frmRecuCorreo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPasswordField jNueva;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jUsuario;
     // End of variables declaration//GEN-END:variables
 }
