@@ -878,6 +878,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         MtoUsuario mto = new MtoUsuario();
         String contraSinEncriptacion="123"; 
         String contraConEncriptacion=DigestUtils.sha1Hex(contraSinEncriptacion);
+        ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
         ctrl.setContraseña(contraConEncriptacion);
         
         if (mto.reiniciarContraseña()) {

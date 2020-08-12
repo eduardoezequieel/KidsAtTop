@@ -61,6 +61,7 @@ public class MtoLogin {
                     if (rs.next()) {
                             retorno=true;
                             usr.setUsuario(rs.getString(1));
+                            usr.setId_usuario(rs.getInt(2));
                     }
                     else
                     {
