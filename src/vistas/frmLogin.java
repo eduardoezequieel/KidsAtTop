@@ -36,19 +36,20 @@ public class frmLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        txtContra = new javax.swing.JPasswordField();
+        btnSalir = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        pnlControlesLogin = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        btnSalir = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        txtContra = new javax.swing.JPasswordField();
         btnIniciarSesion = new javax.swing.JButton();
         btnRecuperar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,6 +60,59 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(254, 254, 254));
         jLabel4.setText("Todos los Derechos Reservados - KidsAtTop! © 2020");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 680, -1, -1));
+
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salirForm.png"))); // NOI18N
+        btnSalir.setBorder(null);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSalir.setFocusPainted(false);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 20, 50, 50));
+
+        jLabel2.setFont(new java.awt.Font("Quicksand", 1, 32)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(134, 134, 134));
+        jLabel2.setText("¿Estás listo para educar?");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 430, -1, -1));
+
+        pnlControlesLogin.setBackground(new java.awt.Color(42, 46, 50));
+        pnlControlesLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user.png"))); // NOI18N
+        pnlControlesLogin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(33, 37, 41));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel6.setText("Usuario");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        txtUsuario.setBackground(new java.awt.Color(33, 37, 41));
+        txtUsuario.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(254, 254, 254));
+        txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUsuario.setBorder(null);
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 300, 30));
+
+        jSeparator2.setBackground(new java.awt.Color(1, 1, 1));
+        jSeparator2.setForeground(new java.awt.Color(141, 141, 141));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 300, 10));
+
+        pnlControlesLogin.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 340, 90));
 
         jPanel3.setBackground(new java.awt.Color(33, 37, 41));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -88,54 +142,7 @@ public class frmLogin extends javax.swing.JFrame {
         });
         jPanel3.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 300, 30));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 340, 90));
-
-        jPanel1.setBackground(new java.awt.Color(33, 37, 41));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel6.setText("Usuario");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        txtUsuario.setBackground(new java.awt.Color(33, 37, 41));
-        txtUsuario.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(254, 254, 254));
-        txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUsuario.setBorder(null);
-        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtUsuarioKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtUsuarioKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 300, 30));
-
-        jSeparator2.setBackground(new java.awt.Color(1, 1, 1));
-        jSeparator2.setForeground(new java.awt.Color(141, 141, 141));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 300, 10));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 340, 90));
-
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salirForm.png"))); // NOI18N
-        btnSalir.setBorder(null);
-        btnSalir.setBorderPainted(false);
-        btnSalir.setContentAreaFilled(false);
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnSalir.setFocusPainted(false);
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 20, 50, 50));
-
-        jLabel2.setFont(new java.awt.Font("Quicksand", 1, 32)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(134, 134, 134));
-        jLabel2.setText("¿Estás listo para educar?");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 430, -1, -1));
+        pnlControlesLogin.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 340, 90));
 
         btnIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnIniciarSesion_default.png"))); // NOI18N
         btnIniciarSesion.setBorder(null);
@@ -149,7 +156,7 @@ public class frmLogin extends javax.swing.JFrame {
                 btnIniciarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, 300, 80));
+        pnlControlesLogin.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
 
         btnRecuperar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRecuperarContraseña_default.png"))); // NOI18N
         btnRecuperar.setBorder(null);
@@ -162,10 +169,9 @@ public class frmLogin extends javax.swing.JFrame {
                 btnRecuperarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRecuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 610, 300, 80));
+        pnlControlesLogin.add(btnRecuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 200, 200));
+        getContentPane().add(pnlControlesLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 360, 670));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoLogin.png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -278,6 +284,7 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JPanel pnlControlesLogin;
     private javax.swing.JPasswordField txtContra;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
