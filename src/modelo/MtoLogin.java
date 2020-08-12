@@ -99,24 +99,6 @@ public class MtoLogin {
         return resp;
     }
     
-    public boolean actualizarContraseña(){
-        CtrlLoginUsuario usr = new CtrlLoginUsuario();
-        FrmActualizarContraseña a = new FrmActualizarContraseña();
-        boolean resp = false;
-        try
-        {
-            String sql = "UPDATE usuario SET contraseña = ? WHERE usuario = ?";
-            PreparedStatement cmd = conexion.prepareCall(sql);
-            cmd.setString(1, usr.getContrasenia());
-            cmd.setString(2, usr.getUsuario());
-            if (!cmd.execute()) {
-                resp = true;
-            }
-            
-        }catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        return resp;
-    }
+    
     
 }

@@ -99,7 +99,7 @@ public class frmLogin extends javax.swing.JFrame {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         txtUsuario.setBackground(new java.awt.Color(33, 37, 41));
-        txtUsuario.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(254, 254, 254));
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUsuario.setBorder(null);
@@ -197,7 +197,7 @@ public class frmLogin extends javax.swing.JFrame {
                 if (modBD.verificarContraseña(mod)) {
                     //Abriendo formulario para cambiar contraseña generica
                     this.setVisible(false);
-                    FrmActualizarContraseña frm = new FrmActualizarContraseña();
+                    FrmActualizarContraseña frm = new FrmActualizarContraseña(mod);
                     frm.setVisible(true);
                 }
                 else

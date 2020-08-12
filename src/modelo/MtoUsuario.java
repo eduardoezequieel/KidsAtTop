@@ -337,7 +337,22 @@ public class MtoUsuario {
         return resp;
     }
     
-    CtrlLoginUsuario usr = new CtrlLoginUsuario();
-    
+    public boolean actualizarContraseña(){
+        boolean resp = false;
+        try
+        {
+            String sql = "UPDATE usuario SET contraseña = ? WHERE usuario = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setString(1, ctrl.getContraseña());
+            cmd.setString(2, ctrl.getUsuario());
+            if (!cmd.execute()) {
+                resp = true;
+            }
+            
+        }catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return resp;
+    }
      //</editor-fold>
 }
