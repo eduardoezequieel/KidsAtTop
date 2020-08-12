@@ -9,7 +9,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.basic.BasicLookAndFeel;
 import modelo.MtoLogin;
-import modelo.BDusuarios;
+import controlador.CtrlLoginUsuario;
 import modelo.Conexion;
 import modelo.ClsCorreo;
 import modelo.Validaciones;
@@ -188,17 +188,26 @@ public class frmLogin extends javax.swing.JFrame {
         if(!txtUsuario.getText().equals("") && !contra.equals(""))
         {
             MtoLogin modBD = new MtoLogin();
-            BDusuarios mod = new BDusuarios();
+            CtrlLoginUsuario mod = new CtrlLoginUsuario();
             
             mod.setUsuario(txtUsuario.getText());
             mod.setContrasenia(encriptado);
             
             if (modBD.validarLogin(mod)) {
+                if (modBD.verificarContraseña(mod)) {
+                    //Abriendo formulario para cambiar contraseña generica
+                    this.setVisible(false);
+                    FrmActualizarContraseña frm = new FrmActualizarContraseña();
+                    frm.setVisible(true);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "Acceso concedido, bienvenido "+mod.getUsuario());
+                    this.setVisible(false);
+                    frmPrincipal formulario = new frmPrincipal();
+                    formulario.setVisible(true);
+                }
                 
-                JOptionPane.showMessageDialog(this, "Acceso concedido, bienvenido "+mod.getUsuario());
-                this.setVisible(false);
-                frmPrincipal formulario = new frmPrincipal();
-                formulario.setVisible(true);
             }
            
             

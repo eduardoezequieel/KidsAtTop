@@ -1,5 +1,6 @@
 package modelo;
 
+import controlador.CtrlLoginUsuario;
 import controlador.CtrlUsuario;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -7,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import vistas.FrmActualizarContraseña;
 /**
  *
  * @author EDUARDO
@@ -334,5 +336,8 @@ public class MtoUsuario {
         }
         return resp;
     }
+    
+    CtrlLoginUsuario usr = new CtrlLoginUsuario();
+    
      //</editor-fold>
 }
