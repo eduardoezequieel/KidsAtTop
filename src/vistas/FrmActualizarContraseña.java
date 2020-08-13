@@ -29,6 +29,7 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         jUsuario.setText(mod.getUsuario());
         jUsuario.setVisible(false);
+        
     }
     
     
@@ -53,6 +54,7 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -61,48 +63,49 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(42, 46, 50));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Una contraseña segura debe ser fácil de recordar para ti, pero prácticamente imposible de adivinar para otra persona.");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, -1, -1));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("<html><p style=overflow:auto;><center>Una contraseña segura debe ser fácil de recordar para ti, pero prácticamente imposible de adivinar para otra persona.</center></p>");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, 630, 70));
 
-        jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Se ha detectado que esta es la primera vez que inicias sesión. Debes actualizar tu contraseña, toma en cuenta los siguientes aspectos:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, -1, -1));
+        jLabel2.setText("<html><p style=overflow:auto;>Se ha detectado que esta es la primera vez que inicias sesión. Debes actualizar tu contraseña, toma en cuenta los siguientes aspectos:</p>");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 800, -1));
 
-        jLabel3.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("- No pongas tu usuario como contraseña.");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("- No pongas la contraseña generica. (123)");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, -1, -1));
 
         jUsuario.setEditable(false);
         jUsuario.setBackground(new java.awt.Color(42, 46, 50));
         jUsuario.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(jUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 190, 200, 30));
+        jPanel1.add(jUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 30));
 
         jConfirmarContraseña.setBackground(new java.awt.Color(42, 46, 50));
         jConfirmarContraseña.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jConfirmarContraseña.setForeground(new java.awt.Color(255, 255, 255));
         jConfirmarContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(jConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 380, 200, 30));
+        jPanel1.add(jConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 410, 260, 40));
 
-        jLabel6.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("- Tu contraseña debe de tener como minimo 8 caracteres.");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fndContraseña.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 520, 540));
 
-        jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Nueva Contraseña:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, -1, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 370, -1, 30));
 
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
         btnActualizar.setBorder(null);
@@ -114,10 +117,15 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, 150, 70));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 470, 150, 70));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fndActualizarContraseña.png"))); // NOI18N
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 1370, 180));
+
+        jLabel9.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("- Tu contraseña debe de tener como minimo 8 caracteres.");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 740));
 
@@ -216,6 +224,7 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jUsuario;
     // End of variables declaration//GEN-END:variables

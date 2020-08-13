@@ -9,6 +9,7 @@ import controlador.CtrlLoginUsuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import vistas.FrmActualizarContraseña;
@@ -54,15 +55,14 @@ public class MtoLogin {
             if (rs1.next()) {
                     //verificar credenciales y estado del usuario
                     int estado=1;
-                    String query="select usuario,id_usuario,id_tipo_usuario from usuario where usuario='"+usr.getUsuario()+"' and contraseña='"+usr.getContrasenia()+"'and id_estado_usuario='"+estado+"'";
+                    String query="select usuario from usuario where usuario='"+usr.getUsuario()+"' and contraseña='"+usr.getContrasenia()+"'and id_estado_usuario='"+estado+"'";
                     Statement st=conexion.createStatement();
                     ResultSet rs=st.executeQuery(query);
 
                     if (rs.next()) {
                             retorno=true;
                             usr.setUsuario(rs.getString(1));
-                            usr.setId_usuario(rs.getInt(2));
-                            usr.setId_tipo_usuario(rs.getInt(3));
+                            
                     }
                     else
                     {
@@ -96,6 +96,31 @@ public class MtoLogin {
         }
         catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
+        }
+        return resp;
+    }
+    CtrlLoginUsuario usr;
+    
+    
+    public boolean obtenerDatosUsuario(CtrlLoginUsuario usr){
+        boolean resp = false;
+        try
+        {
+            String sql = "SELECT id_tipo_usuario, id_usuario FROM usuario WHERE usuario = ?";
+            PreparedStatement cmd = conexion.prepareCall(sql);
+            cmd.setString(1, usr.getUsuario());
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next())
+            {
+                resp = true;
+                usr.setId_tipo_usuario(rs.getInt(1));
+                usr.setId_usuario(rs.getInt(2));
+            }
+            
+        }
+        catch (Exception ex) 
+        {
+            System.out.println(ex);
         }
         return resp;
     }

@@ -221,26 +221,21 @@ public class CtrlLoginUsuario {
         this.contrasenia = contrasenia;
     }
 
-    /**
-     * @return the id_usuario
-     */
-    
-    
-     private int id_usuario;
-     private String nombre;
-     private String apellido;
-     private int id_tipo_usuario;
-     private int id_estado_usuario;
-     private String email;
-     private String telefono;
-     private String dui;
-     private String nit;
-     private String usuario;
-     private String nip;
-     private String fecha_nacimiento;
-     private char genero;
-     private String direccion;
-     private String contrasenia;
+      private int id_usuario;
+      private String nombre;
+      private String apellido;
+      private int id_tipo_usuario;
+      private int id_estado_usuario;
+      private String email;
+      private String telefono;
+      private String dui;
+      private String nit;
+      private String usuario;
+      private String nip;
+      private String fecha_nacimiento;
+      private char genero;
+      private String direccion;
+      private String contrasenia;
 
     
     

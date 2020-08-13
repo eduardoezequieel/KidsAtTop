@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UnsupportedLookAndFeelException;
 import controlador.CtrlLoginUsuario;
+import javax.swing.JOptionPane;
 
 
 
@@ -14,21 +15,24 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
     String hora,minutos,ampm;;
     Calendar calendario;
     Thread hl;
+    
+    
+    
+    
     public frmPrincipal() {
         initComponents();
+        
+    }
+    
+    public frmPrincipal(CtrlLoginUsuario mod){
+        initComponents();
+        this.mod = mod;
+        lblTipoUsuario.setText(String.valueOf(mod.getId_tipo_usuario()));
         this.setLocationRelativeTo(null);
         hl=new Thread(this);
         hl.start();
-
     }
-    public frmPrincipal(CtrlLoginUsuario mod){
     
-        initComponents();
-        this.mod = mod;
-        this.setLocationRelativeTo(null);
-        System.out.println(mod.getUsuario());
-    
-    }
     
 
 
@@ -48,6 +52,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lblTipoUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -59,7 +64,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatricula_default.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.setFocusPainted(false);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatricula_rollover.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +77,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnHerramientasSistemaDefault.png"))); // NOI18N
         jButton6.setBorder(null);
         jButton6.setContentAreaFilled(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.setFocusPainted(false);
         jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnHerramientasSistemaRollover.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +90,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         btnControlAcademico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnControlAcademico_default.png"))); // NOI18N
         btnControlAcademico.setBorder(null);
         btnControlAcademico.setContentAreaFilled(false);
-        btnControlAcademico.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnControlAcademico.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnControlAcademico.setFocusPainted(false);
         btnControlAcademico.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnControlAcademico_rollover.png"))); // NOI18N
         btnControlAcademico.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +109,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarSesion_default.png"))); // NOI18N
         btnCerrarSesion.setBorder(null);
         btnCerrarSesion.setContentAreaFilled(false);
-        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCerrarSesion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarSesion_rollover.png"))); // NOI18N
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +146,9 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroMenu.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, -1, -1));
+
+        lblTipoUsuario.setText("jLabel6");
+        jPanel1.add(lblTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 740));
 
@@ -227,6 +235,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblHora;
+    private javax.swing.JLabel lblTipoUsuario;
     // End of variables declaration//GEN-END:variables
 
     @Override

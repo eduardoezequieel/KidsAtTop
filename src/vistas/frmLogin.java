@@ -202,15 +202,17 @@ public class frmLogin extends javax.swing.JFrame {
             if (modBD.validarLogin(mod)) {
                 if (modBD.verificarContraseña(mod)) {
                     //Abriendo formulario para cambiar contraseña generica
+                    
                     this.setVisible(false);
                     FrmActualizarContraseña frm = new FrmActualizarContraseña(mod);
                     frm.setVisible(true);
                 }
                 else
                 {
+                    modBD.obtenerDatosUsuario(mod);
                     JOptionPane.showMessageDialog(this, "Acceso concedido, bienvenido "+mod.getUsuario());
                     this.setVisible(false);
-                    frmPrincipal formulario = new frmPrincipal();
+                    frmPrincipal formulario = new frmPrincipal(mod);
                     formulario.setVisible(true);
                 }
                 
