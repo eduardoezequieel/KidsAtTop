@@ -9,6 +9,8 @@ import controlador.CtrlLoginUsuario;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UnsupportedLookAndFeelException;
+import modelo.MtoLogin;
+
 
 /**
  *
@@ -17,6 +19,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class frmHerramientasContenedor extends javax.swing.JFrame {
      
     CtrlLoginUsuario mod;
+  
    
     public frmHerramientasContenedor() {
         initComponents();
@@ -25,6 +28,16 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
      public frmHerramientasContenedor(CtrlLoginUsuario mod){
         initComponents();
         this.mod = mod;
+        System.out.println(mod.getId_tipo_usuario());
+        
+        int user=mod.getId_tipo_usuario();
+         if (user==2||user==3||user==4) {
+             
+             jControlarUsuarios.setEnabled(false);
+         }
+         
+        
+        
         
         
     }
@@ -147,7 +160,9 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
 
     private void jControlarUsuarios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jControlarUsuarios1ActionPerformed
         this.setVisible(false);
-        frmPrincipal formulario = new frmPrincipal();
+         MtoLogin log=new MtoLogin();
+         log.obtenerDatosUsuario(mod);
+        frmPrincipal formulario = new frmPrincipal(mod);
         formulario.setVisible(true);
     }//GEN-LAST:event_jControlarUsuarios1ActionPerformed
 

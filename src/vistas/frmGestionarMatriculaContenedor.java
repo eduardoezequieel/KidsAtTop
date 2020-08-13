@@ -5,21 +5,33 @@
  */
 package vistas;
 
+import controlador.CtrlLoginUsuario;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import modelo.MtoLogin;
 
 /**
  *
  * @author katy0
  */
 public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
-
+      CtrlLoginUsuario mod;
     /**
      * Creates new form GestionarMatriculaContenedorForm
      */
     public frmGestionarMatriculaContenedor() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+     public frmGestionarMatriculaContenedor(CtrlLoginUsuario mod) {
+        initComponents();
+        this.mod = mod;
+         int user=mod.getId_tipo_usuario();
+         if (user==3) {
+             
+             jMatricularEstudiante.setEnabled(false);
+             jGestionarResponsables.setEnabled(false);
+         }
     }
 
     /**
@@ -191,8 +203,11 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jGestionarEstudiantesActionPerformed
 
     private void jGestionarResponsables1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarResponsables1ActionPerformed
+       
         this.setVisible(false);
-        frmPrincipal formulario = new frmPrincipal();
+        MtoLogin log=new MtoLogin();
+        log.obtenerDatosUsuario(mod);
+        frmPrincipal formulario = new frmPrincipal(mod);
         formulario.setVisible(true);
     }//GEN-LAST:event_jGestionarResponsables1ActionPerformed
 

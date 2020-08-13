@@ -6,29 +6,36 @@ import java.util.logging.Logger;
 import javax.swing.UnsupportedLookAndFeelException;
 import controlador.CtrlLoginUsuario;
 import javax.swing.JOptionPane;
+import modelo.MtoLogin;
 
 
 
 public class frmPrincipal extends javax.swing.JFrame implements Runnable {
 
+    
     CtrlLoginUsuario mod;
     String hora,minutos,ampm;;
     Calendar calendario;
     Thread hl;
+    MtoLogin log=new MtoLogin();
     
     
     
     
     public frmPrincipal() {
         initComponents();
+       
+        
         
     }
     
     public frmPrincipal(CtrlLoginUsuario mod){
         initComponents();
         this.mod = mod;
+        lblTipoUsuario.setVisible(false);
         lblTipoUsuario.setText(String.valueOf(mod.getId_tipo_usuario()));
         this.setLocationRelativeTo(null);
+        jLabel2.setText("Hola, "+mod.getUsuario());
         hl=new Thread(this);
         hl.start();
     }
@@ -156,6 +163,8 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        
+      
         this.setVisible(false);
         frmLogin formulario = null;
         try {
@@ -167,23 +176,29 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+         MtoLogin log1=new MtoLogin();
+        log1.obtenerDatosUsuario(mod);
         this.setVisible(false);
-        frmGestionarMatriculaContenedor formulario = new frmGestionarMatriculaContenedor();
+        frmGestionarMatriculaContenedor formulario = new frmGestionarMatriculaContenedor(mod);
         formulario.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnControlAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnControlAcademicoActionPerformed
         //Abrir contenedor de Control Academico
+        MtoLogin log1=new MtoLogin();
+        log1.obtenerDatosUsuario(mod);
         this.setVisible(false);
-        frmControlAcademicoContenedor academico = new frmControlAcademicoContenedor();
+        frmControlAcademicoContenedor academico = new frmControlAcademicoContenedor(mod);
         academico.setVisible(true);
         
     }//GEN-LAST:event_btnControlAcademicoActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         //Abrir contenedor de Cuentas Usuario
+        MtoLogin log=new MtoLogin();
+        log.obtenerDatosUsuario(mod);
         this.setVisible(false);
-        frmHerramientasContenedor usuario = new frmHerramientasContenedor();
+        frmHerramientasContenedor usuario = new frmHerramientasContenedor(mod);
         usuario.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
