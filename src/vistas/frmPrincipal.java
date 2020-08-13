@@ -4,11 +4,13 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UnsupportedLookAndFeelException;
+import controlador.CtrlLoginUsuario;
 
 
 
 public class frmPrincipal extends javax.swing.JFrame implements Runnable {
 
+    CtrlLoginUsuario mod;
     String hora,minutos,ampm;;
     Calendar calendario;
     Thread hl;
@@ -18,6 +20,14 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         hl=new Thread(this);
         hl.start();
 
+    }
+    public frmPrincipal(CtrlLoginUsuario mod){
+    
+        initComponents();
+        this.mod = mod;
+        this.setLocationRelativeTo(null);
+        System.out.println(mod.getUsuario());
+    
     }
     
 

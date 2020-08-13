@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import controlador.CtrlLoginUsuario;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -14,14 +15,20 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author katy0
  */
 public class frmHerramientasContenedor extends javax.swing.JFrame {
-
+     CtrlLoginUsuario mod;
     /**
      * Creates new form UsuarioContenedorForm
      */
     public frmHerramientasContenedor() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
+     public frmHerramientasContenedor(CtrlLoginUsuario mod){
+        initComponents();
+        this.mod = mod;
+        this.setLocationRelativeTo(null);
+        System.out.println(mod.getUsuario());
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
