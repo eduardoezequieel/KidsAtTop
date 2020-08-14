@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Calendar;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -191,6 +192,12 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jFechaNacimiento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jFechaNacimiento.setSelectionColor(new java.awt.Color(0, 153, 0));
         jLayer1.add(jFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 150, 30));
+
+        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jCalendarioPropertyChange(evt);
+            }
+        });
         jLayer1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 50, -1));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -466,6 +473,20 @@ public class FrmMiCuenta extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void jCalendarioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendarioPropertyChange
+        try{
+                String dia = Integer.toString(jCalendario.getCalendar().get(Calendar.DATE));
+                String año = Integer.toString(jCalendario.getCalendar().get(Calendar.YEAR));
+                int mesInt = jCalendario.getCalendar().get(Calendar.MONTH) + 1;
+                String mes = Integer.toString(mesInt);
+                String fecha = (mes+"-"+dia+"-"+año);
+                jFechaNacimiento.setText(fecha);
+      
+        }catch (Exception ex) {
+            
+        }
+    }//GEN-LAST:event_jCalendarioPropertyChange
 
     /**
      * @param args the command line arguments
