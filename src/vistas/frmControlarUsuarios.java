@@ -87,6 +87,15 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
       llenarTipoUsuario();
     }
     
+    public void reiniciarBusqueda()
+    {
+        txtBuscar.setText("");
+        String busqueda = txtBuscar.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
+        tUsuarios.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(busqueda));
+    }
+    
     public void llenarTipoUsuario(){
         MtoUsuario a = new MtoUsuario();
         cbTipoUsuario.setModel(a.llenarTipoUsuario());
@@ -128,7 +137,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         txtDireccion.setText("");
         txtId.setText("");
         lblFoto.setIcon(null);
-        
+     
         btnAgregar.setEnabled(true);
         btnActualizar.setEnabled(false);
         btnSuspender.setEnabled(false);
@@ -848,6 +857,8 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
             
             if (mto.actualizarUsuario()) {
                 JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                
+                reiniciarBusqueda();
                 limpiarTabla();
                 mostrarUsuario();
                 limpiarCampo();
@@ -875,9 +886,11 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         
                 ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
                 if (mto.suspenderUsuario()) {  
-                    JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);     
+                    JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);      
+                    reiniciarBusqueda();
                     limpiarTabla();
                     mostrarUsuario();
+                    limpiarCampo();
                 }
                 else
                 {
@@ -905,8 +918,10 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
 
             if (mto.reiniciarContraseña()) {
                 JOptionPane.showMessageDialog(null, "La contraseña de este usuario ha sido reestablecida a 123.","Contraseña reestablecida exitosamente", JOptionPane.INFORMATION_MESSAGE);
+                reiniciarBusqueda();
                 limpiarTabla();
                 mostrarUsuario();
+                limpiarCampo();
             }else
             {
                 JOptionPane.showMessageDialog(null, "Error");
@@ -1017,6 +1032,10 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         person_image = foto;
         ImageIcon imagen = new ImageIcon(new ImageIcon(foto).getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
         lblFoto.setIcon(imagen);
+        
+        
+        
+        
     }//GEN-LAST:event_tUsuariosMouseClicked
 
     private void btnCargarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarFotoActionPerformed
@@ -1061,8 +1080,10 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
                 ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
                 if (mto.activarUsuario()) { 
                     JOptionPane.showMessageDialog(null, "El usuario ha sido activado de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);
+                    reiniciarBusqueda();
                     limpiarTabla();
                     mostrarUsuario();
+                    limpiarCampo();
                 }
                 else
                 {
@@ -1084,6 +1105,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
         tUsuarios.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(busqueda));
+        
     }//GEN-LAST:event_txtBuscarKeyReleased
 
 
