@@ -63,7 +63,7 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         btnAtras.setBorder(null);
         btnAtras.setBorderPainted(false);
         btnAtras.setContentAreaFilled(false);
-        btnAtras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAtras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAtras.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAtrasRollover.png"))); // NOI18N
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +76,7 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         btnFinalizar.setBorder(null);
         btnFinalizar.setBorderPainted(false);
         btnFinalizar.setContentAreaFilled(false);
-        btnFinalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFinalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnFinalizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnFinalizarRollover.png"))); // NOI18N
         btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +92,7 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         btnRegresar.setBorder(null);
         btnRegresar.setBorderPainted(false);
         btnRegresar.setContentAreaFilled(false);
-        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRegresar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back_rollover.png"))); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +108,7 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         jPanel1.add(lblVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 270, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dashboard.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-110, 30, -1, 680));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-110, 0, -1, 730));
 
         jDesktopMatricula.setBackground(new java.awt.Color(33, 37, 41));
 
@@ -129,7 +129,7 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         btnSiguiente.setBorder(null);
         btnSiguiente.setBorderPainted(false);
         btnSiguiente.setContentAreaFilled(false);
-        btnSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSiguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSiguiente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSiguienteRollover.png"))); // NOI18N
         btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -78,7 +78,7 @@ public class frmRecuAdmin extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 680, -1, -1));
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 670, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroHoraFecha.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 640, 260, 170));
@@ -96,7 +96,7 @@ public class frmRecuAdmin extends javax.swing.JFrame {
         jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, -1));
 
         jAdmin.setBackground(new java.awt.Color(33, 37, 41));
-        jAdmin.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jAdmin.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jAdmin.setForeground(new java.awt.Color(254, 254, 254));
         jAdmin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jAdmin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
@@ -111,47 +111,55 @@ public class frmRecuAdmin extends javax.swing.JFrame {
         });
         jPanel1.add(jAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 250, 30));
 
-        jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Usuario administrador:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 250, -1));
 
-        jLabel3.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Contraseña administrador:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 250, -1));
 
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Usuario a recuperar:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 250, -1));
 
         jLabel2.setFont(new java.awt.Font("Quicksand", 1, 32)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(254, 254, 254));
         jLabel2.setText("2");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 40, 30));
 
-        jLabel9.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Nueva Contraseña:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 210, -1));
 
-        jLabel10.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Confirmar Contraseña:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 430, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, 210, -1));
 
         jConfirmar.setBackground(new java.awt.Color(33, 37, 41));
-        jPanel1.add(jConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, 210, 30));
+        jConfirmar.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jPanel1.add(jConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 460, 210, 30));
 
         jContra.setBackground(new java.awt.Color(33, 37, 41));
+        jContra.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jPanel1.add(jContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 240, 250, 30));
 
         jNueva.setBackground(new java.awt.Color(33, 37, 41));
-        jPanel1.add(jNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, 210, 30));
+        jNueva.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jPanel1.add(jNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, 210, 30));
 
         jUsuario.setBackground(new java.awt.Color(33, 37, 41));
-        jUsuario.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jUsuario.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jUsuario.setForeground(new java.awt.Color(254, 254, 254));
         jUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
@@ -179,7 +187,7 @@ public class frmRecuAdmin extends javax.swing.JFrame {
         jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Recuadro1RecuAdmin.png"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Quicksand", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(254, 254, 254));

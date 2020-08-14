@@ -139,6 +139,24 @@ public class MtoLogin {
         return resp;
     }
     
+    public boolean verificarPrimerUso(){
+        boolean resp = false;
+        try
+        {
+            String sql = "SELECT*FROM usuario WHERE id_usuario = 1";
+            PreparedStatement cmd = conexion.prepareCall(sql);
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next())
+            {
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            System.out.println("Error");
+        }
+        return resp;
+    }
+    
     
     
     

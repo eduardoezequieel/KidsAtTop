@@ -83,7 +83,7 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
         jEscritorioLayout.setHorizontalGroup(
             jEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jEscritorioLayout.createSequentialGroup()
-                .addContainerGap(285, Short.MAX_VALUE)
+                .addContainerGap(288, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(253, 253, 253))
         );
@@ -108,10 +108,10 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 620, 240, 70));
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, 240, 70));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fndHerramientasSistema.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 280, 280));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 280, 280));
 
         jControlarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_default.png"))); // NOI18N
         jControlarUsuarios.setBorder(null);
@@ -125,7 +125,7 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
                 jControlarUsuariosActionPerformed(evt);
             }
         });
-        jPanel1.add(jControlarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 360, 70));
+        jPanel1.add(jControlarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 360, 70));
 
         jReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReportesDefault.png"))); // NOI18N
         jReportes.setBorder(null);
@@ -139,12 +139,12 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
                 jReportesActionPerformed(evt);
             }
         });
-        jPanel1.add(jReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 360, 70));
+        jPanel1.add(jReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 360, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dashboard.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, -1, 740));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, -1, 730));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 740));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

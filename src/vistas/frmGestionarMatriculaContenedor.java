@@ -68,7 +68,7 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
         jGestionarResponsables.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarResponsable_default.png"))); // NOI18N
         jGestionarResponsables.setBorder(null);
         jGestionarResponsables.setContentAreaFilled(false);
-        jGestionarResponsables.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jGestionarResponsables.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jGestionarResponsables.setFocusPainted(false);
         jGestionarResponsables.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarResponsable_rollover.png"))); // NOI18N
         jGestionarResponsables.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +82,7 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
         jMatricularEstudiante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatricularEstudianteDefault.png"))); // NOI18N
         jMatricularEstudiante.setBorder(null);
         jMatricularEstudiante.setContentAreaFilled(false);
-        jMatricularEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMatricularEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMatricularEstudiante.setFocusPainted(false);
         jMatricularEstudiante.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatricularEstudianteRollover.png"))); // NOI18N
         jMatricularEstudiante.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +96,7 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
         jGestionarEstudiantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarEstudiantes_default.png"))); // NOI18N
         jGestionarEstudiantes.setBorder(null);
         jGestionarEstudiantes.setContentAreaFilled(false);
-        jGestionarEstudiantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jGestionarEstudiantes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jGestionarEstudiantes.setFocusPainted(false);
         jGestionarEstudiantes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarEstudiantes_rollover.png"))); // NOI18N
         jGestionarEstudiantes.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +134,7 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
         jGestionarResponsables1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backpng.png"))); // NOI18N
         jGestionarResponsables1.setBorder(null);
         jGestionarResponsables1.setContentAreaFilled(false);
-        jGestionarResponsables1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jGestionarResponsables1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jGestionarResponsables1.setFocusPainted(false);
         jGestionarResponsables1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back_rollover.png"))); // NOI18N
         jGestionarResponsables1.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +151,7 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 210));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dashboard.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 30, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, -1, 730));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 740));
 

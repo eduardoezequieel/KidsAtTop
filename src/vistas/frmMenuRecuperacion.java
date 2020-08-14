@@ -45,12 +45,12 @@ public class frmMenuRecuperacion extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 510, 140, 40));
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 670, 140, 40));
 
         jLabel1.setFont(new java.awt.Font("Roboto Light", 0, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/textoRecu.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 640, 50));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 640, 50));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRecuAdmin_default1.png"))); // NOI18N
         jButton1.setBorder(null);
@@ -62,7 +62,7 @@ public class frmMenuRecuperacion extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 150, 190, 290));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, 190, 290));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCorreo_default.png"))); // NOI18N
         jButton5.setBorder(null);
@@ -74,7 +74,7 @@ public class frmMenuRecuperacion extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 240, 140));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 240, 140));
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnPreguntas_default.png"))); // NOI18N
         jButton7.setBorder(null);
@@ -86,16 +86,16 @@ public class frmMenuRecuperacion extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 240, 140));
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 240, 140));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroHoraFecha.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 640, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(33, 37, 41));
         jSeparator1.setForeground(new java.awt.Color(45, 255, 120));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 790, 30));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 790, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 570));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

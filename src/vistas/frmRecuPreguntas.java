@@ -177,25 +177,25 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         });
         jPanel1.add(jUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 210, 30));
 
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(254, 254, 254));
         jLabel4.setText("Nueva contraseña:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 520, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(254, 254, 254));
         jLabel5.setText("Confirmar contraseña:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 600, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 600, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Quicksand", 1, 32)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(254, 254, 254));
         jLabel6.setText("3");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(254, 254, 254));
         jLabel7.setText("Usuario a recuperar:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, -1, -1));
 
         btnAcep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_rollover.png"))); // NOI18N
         btnAcep.setBorder(null);
@@ -224,32 +224,32 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 330, 180, 80));
 
         cbPregunta4.setBackground(new java.awt.Color(33, 37, 41));
-        cbPregunta4.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        cbPregunta4.setForeground(new java.awt.Color(254, 254, 254));
+        cbPregunta4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        cbPregunta4.setForeground(new java.awt.Color(255, 255, 255));
         cbPregunta4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pregunta 4", " " }));
         cbPregunta4.setBorder(null);
         cbPregunta4.setEnabled(false);
         jPanel1.add(cbPregunta4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 430, -1));
 
         cbPregunta3.setBackground(new java.awt.Color(33, 37, 41));
-        cbPregunta3.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        cbPregunta3.setForeground(new java.awt.Color(254, 254, 254));
+        cbPregunta3.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        cbPregunta3.setForeground(new java.awt.Color(255, 255, 255));
         cbPregunta3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pregunta 3", " " }));
         cbPregunta3.setBorder(null);
         cbPregunta3.setEnabled(false);
         jPanel1.add(cbPregunta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 430, -1));
 
         cbPregunta2.setBackground(new java.awt.Color(33, 37, 41));
-        cbPregunta2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        cbPregunta2.setForeground(new java.awt.Color(254, 254, 254));
+        cbPregunta2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        cbPregunta2.setForeground(new java.awt.Color(255, 255, 255));
         cbPregunta2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pregunta 2", " " }));
         cbPregunta2.setBorder(null);
         cbPregunta2.setEnabled(false);
         jPanel1.add(cbPregunta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 430, -1));
 
         cbPregunta1.setBackground(new java.awt.Color(33, 37, 41));
-        cbPregunta1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        cbPregunta1.setForeground(new java.awt.Color(254, 254, 254));
+        cbPregunta1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        cbPregunta1.setForeground(new java.awt.Color(255, 255, 255));
         cbPregunta1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pregunta 1", "Pregunta 2", " " }));
         cbPregunta1.setBorder(null);
         cbPregunta1.setEnabled(false);
@@ -261,7 +261,7 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jNueva.setBackground(new java.awt.Color(33, 37, 41));
         jPanel1.add(jNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 550, 200, 30));
 
-        jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(254, 254, 254));
         jLabel2.setText("Conteste las preguntas:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, -1, -1));
@@ -274,7 +274,7 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(254, 254, 254));
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroRecuCorreo.png"))); // NOI18N
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 100, -1, -1));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backpng.png"))); // NOI18N
         jButton3.setBorder(null);

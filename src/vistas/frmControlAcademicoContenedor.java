@@ -101,7 +101,7 @@ public class frmControlAcademicoContenedor extends javax.swing.JFrame {
         jGestionarSecciones1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backpng.png"))); // NOI18N
         jGestionarSecciones1.setBorder(null);
         jGestionarSecciones1.setContentAreaFilled(false);
-        jGestionarSecciones1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jGestionarSecciones1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jGestionarSecciones1.setFocusPainted(false);
         jGestionarSecciones1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back_rollover.png"))); // NOI18N
         jGestionarSecciones1.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +114,7 @@ public class frmControlAcademicoContenedor extends javax.swing.JFrame {
         jGestionarSecciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"))); // NOI18N
         jGestionarSecciones.setBorder(null);
         jGestionarSecciones.setContentAreaFilled(false);
-        jGestionarSecciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jGestionarSecciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jGestionarSecciones.setFocusPainted(false);
         jGestionarSecciones.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_rollover.png"))); // NOI18N
         jGestionarSecciones.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +127,7 @@ public class frmControlAcademicoContenedor extends javax.swing.JFrame {
         jGestionarAsistencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"))); // NOI18N
         jGestionarAsistencia.setBorder(null);
         jGestionarAsistencia.setContentAreaFilled(false);
-        jGestionarAsistencia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jGestionarAsistencia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jGestionarAsistencia.setFocusPainted(false);
         jGestionarAsistencia.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnControlarAsistencia_rollover.png"))); // NOI18N
         jGestionarAsistencia.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +140,7 @@ public class frmControlAcademicoContenedor extends javax.swing.JFrame {
         jGestionarNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"))); // NOI18N
         jGestionarNotas.setBorder(null);
         jGestionarNotas.setContentAreaFilled(false);
-        jGestionarNotas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jGestionarNotas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jGestionarNotas.setFocusPainted(false);
         jGestionarNotas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_rollover.png"))); // NOI18N
         jGestionarNotas.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +153,7 @@ public class frmControlAcademicoContenedor extends javax.swing.JFrame {
         jGestionarConducta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"))); // NOI18N
         jGestionarConducta.setBorder(null);
         jGestionarConducta.setContentAreaFilled(false);
-        jGestionarConducta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jGestionarConducta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jGestionarConducta.setFocusPainted(false);
         jGestionarConducta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_rollover.png"))); // NOI18N
         jGestionarConducta.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +167,7 @@ public class frmControlAcademicoContenedor extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 210));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dashboard.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 30, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, -1, 730));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 740));
 

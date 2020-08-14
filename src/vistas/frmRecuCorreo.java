@@ -91,27 +91,30 @@ public class frmRecuCorreo extends javax.swing.JFrame {
         jUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
         jPanel1.add(jUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 210, 30));
 
-        jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Usuario a recuperar:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 210, -1));
 
         jCodigo.setBackground(new java.awt.Color(33, 37, 41));
         jCodigo.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jCodigo.setForeground(new java.awt.Color(254, 254, 254));
         jCodigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jCodigo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 160, 30));
+        jPanel1.add(jCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 160, 30));
 
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Nueva contraseña:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 280, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 282, 210, 30));
 
-        jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Confirmar contraseña:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 360, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 372, 210, 30));
 
         btnEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviar_default.png"))); // NOI18N
         btnEnviar.setBorder(null);
@@ -167,7 +170,7 @@ public class frmRecuCorreo extends javax.swing.JFrame {
                 btnVerificarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, 180, 70));
+        jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 180, 70));
         jPanel1.add(jConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 400, 210, 30));
         jPanel1.add(jNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 312, 210, 30));
 
@@ -176,10 +179,11 @@ public class frmRecuCorreo extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroHoraFecha.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 630, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Codigo:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 330, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 160, -1));
 
         jLabel6.setFont(new java.awt.Font("Quicksand", 1, 32)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(254, 254, 254));
@@ -216,10 +220,11 @@ public class frmRecuCorreo extends javax.swing.JFrame {
         jLabel12.setText("Recuperación de Contraseña mediante Correo Electrónico");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Quicksand", 1, 24)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Rellene los siguientes campos.");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 1150, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 740));
 

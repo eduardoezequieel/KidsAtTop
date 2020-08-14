@@ -201,7 +201,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 200, 340, 340));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroMenu.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 0, -1, 740));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 0, -1, 730));
 
         lblTipoUsuario.setText("jLabel6");
         jPanel1.add(lblTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
