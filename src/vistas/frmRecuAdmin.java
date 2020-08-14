@@ -1,13 +1,28 @@
 package vistas;
 
+import controlador.CtrlRecuContra;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.UnsupportedLookAndFeelException;
+import modelo.RecuContra;
 import modelo.Validaciones;
+import org.apache.commons.codec.digest.DigestUtils;
 
 public class frmRecuAdmin extends javax.swing.JFrame {
 
     Validaciones val = new Validaciones();
+    //Llamando clases
+    CtrlRecuContra recuCtrl = new CtrlRecuContra();
+    RecuContra recu = new RecuContra();
+    
     public frmRecuAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        btnAceptar.setEnabled(false);
+        jNueva.setEnabled(false);
+        jConfirmar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -19,19 +34,19 @@ public class frmRecuAdmin extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         btnRegresar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
+        btnVerificar = new javax.swing.JButton();
+        jAdmin = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        jConfirmar = new javax.swing.JPasswordField();
+        jContra = new javax.swing.JPasswordField();
+        jNueva = new javax.swing.JPasswordField();
+        jUsuario = new javax.swing.JTextField();
+        btnAceptar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -68,67 +83,43 @@ public class frmRecuAdmin extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroHoraFecha.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 640, 260, 170));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_rollover-1.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_default.png"))); // NOI18N
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, -1));
-
-        jTextField3.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField3.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField3KeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField3KeyTyped(evt);
+        btnVerificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_rollover-1.png"))); // NOI18N
+        btnVerificar.setBorder(null);
+        btnVerificar.setContentAreaFilled(false);
+        btnVerificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVerificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_default.png"))); // NOI18N
+        btnVerificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerificarActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 250, 30));
+        jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, -1));
+
+        jAdmin.setBackground(new java.awt.Color(33, 37, 41));
+        jAdmin.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jAdmin.setForeground(new java.awt.Color(254, 254, 254));
+        jAdmin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jAdmin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jAdmin.setDisabledTextColor(new java.awt.Color(254, 254, 254));
+        jAdmin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jAdminKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jAdminKeyTyped(evt);
+            }
+        });
+        jPanel1.add(jAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 250, 30));
 
         jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(254, 254, 254));
         jLabel5.setText("Usuario administrador:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField1KeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField1KeyTyped(evt);
-            }
-        });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, 250, 30));
-
         jLabel3.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(254, 254, 254));
         jLabel3.setText("Contraseña administrador:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, -1, -1));
-
-        jTextField2.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField2KeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField2KeyTyped(evt);
-            }
-        });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, 250, 30));
 
         jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(254, 254, 254));
@@ -150,42 +141,42 @@ public class frmRecuAdmin extends javax.swing.JFrame {
         jLabel10.setText("Confirmar Contraseña:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 430, -1, -1));
 
-        jTextField4.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField4.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+        jConfirmar.setBackground(new java.awt.Color(33, 37, 41));
+        jPanel1.add(jConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, 210, 30));
+
+        jContra.setBackground(new java.awt.Color(33, 37, 41));
+        jPanel1.add(jContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 240, 250, 30));
+
+        jNueva.setBackground(new java.awt.Color(33, 37, 41));
+        jPanel1.add(jNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, 210, 30));
+
+        jUsuario.setBackground(new java.awt.Color(33, 37, 41));
+        jUsuario.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jUsuario.setForeground(new java.awt.Color(254, 254, 254));
+        jUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jUsuario.setDisabledTextColor(new java.awt.Color(254, 254, 254));
+        jUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField4KeyPressed(evt);
+                jUsuarioKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField4KeyTyped(evt);
+                jUsuarioKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 250, 30));
+        jPanel1.add(jUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 250, 30));
 
-        jTextField5.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField5.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField5KeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField5KeyTyped(evt);
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_rollover.png"))); // NOI18N
+        btnAceptar.setBorder(null);
+        btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_default.png"))); // NOI18N
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 240, 250, 30));
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_rollover.png"))); // NOI18N
-        jButton3.setBorder(null);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_default.png"))); // NOI18N
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, -1, -1));
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Recuadro1RecuAdmin.png"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, -1, -1));
@@ -215,45 +206,90 @@ public class frmRecuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     //<editor-fold defaultstate="collapsed" desc="Validaciones">
-    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+    private void jUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyTyped
         val.verificarEspeciales(evt);
-    }//GEN-LAST:event_jTextField4KeyTyped
+    }//GEN-LAST:event_jUsuarioKeyTyped
 
-    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+    private void jAdminKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAdminKeyTyped
         val.verificarEspeciales(evt);
-    }//GEN-LAST:event_jTextField3KeyTyped
+    }//GEN-LAST:event_jAdminKeyTyped
 
-    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
-        val.verificarEspeciales(evt);
-    }//GEN-LAST:event_jTextField5KeyTyped
-
-    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
-        val.verificarEspeciales(evt);
-    }//GEN-LAST:event_jTextField2KeyTyped
-
-    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+    private void jUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyPressed
         val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField1KeyPressed
+    }//GEN-LAST:event_jUsuarioKeyPressed
 
-    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-        val.verificarEspeciales(evt);
-    }//GEN-LAST:event_jTextField1KeyTyped
-
-    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
+    private void jAdminKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAdminKeyPressed
         val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField4KeyPressed
+    }//GEN-LAST:event_jAdminKeyPressed
 
-    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
-        val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField3KeyPressed
+    private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
+       
+        //validando campos vacios
+        if ((jUsuario.getText().trim().isEmpty()) || (jAdmin.getText().trim().isEmpty())
+                || (jContra.getText().trim().isEmpty())) {
+             JOptionPane.showMessageDialog(null, "Rellene los campos faltantes.","Campos vacios",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            //Mandando datos a la controlador
+            recuCtrl.setUsuario(jUsuario.getText());
+            recuCtrl.setAdmin(jAdmin.getText());
+            String contra = new String(jContra.getPassword());
+            String encriptado = DigestUtils.sha1Hex(contra);
+            recuCtrl.setContraseña(encriptado);
+            
+            //Verificando admin y usuario
+            if (recu.validarAdmin()) {
+                if (recu.verificarUser()) {
+                    JOptionPane.showMessageDialog(null, "Se ha confirmado las credenciales del administrador y el usuario a recuperar");
+                    btnAceptar.setEnabled(true);
+                    jNueva.setEnabled(true);
+                    jConfirmar.setEnabled(true);
+                    btnVerificar.setEnabled(false);
+                    jUsuario.setEnabled(false);
+                    jAdmin.setEnabled(false);
+                    jContra.setEnabled(false);
+                }
+            }
+        }
+    }//GEN-LAST:event_btnVerificarActionPerformed
 
-    private void jTextField5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyPressed
-        val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField5KeyPressed
-
-    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-        val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField2KeyPressed
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        //Validando campos vacios
+        if (jNueva.getText().trim().isEmpty() || jConfirmar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Rellene los campos faltantes.","Campos vacios.",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            String nueva = new String(jNueva.getPassword());
+            String confirmar = new String(jConfirmar.getPassword());
+            
+            //Verificando que sean igual 
+            if (nueva.equals(confirmar)) {
+                
+                //Reestableciendo contraseña
+                String contra = new String(jConfirmar.getPassword());
+                String encriptado=DigestUtils.sha1Hex(contra);
+                
+                recuCtrl.setNuevaContra(encriptado);
+                
+                if (recu.cambiarContra()) {
+                    JOptionPane.showMessageDialog(null, "La contraseña se ha cambiado correctamente","Contraseña actualizada.",JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(false);
+                    frmLogin formulario = null;
+                    try {
+                        formulario = new frmLogin();
+                    } catch (UnsupportedLookAndFeelException ex) {
+                        Logger.getLogger(frmRecuAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    formulario.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "La contraseña no se ha cambiado correctamente","Contraseña no actualizada.",JOptionPane.WARNING_MESSAGE);
+                }
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.","Contraseñas incorrectas.",JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
     //</editor-fold>
     
     /**
@@ -293,9 +329,12 @@ public class frmRecuAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnVerificar;
+    private javax.swing.JTextField jAdmin;
+    private javax.swing.JPasswordField jConfirmar;
+    private javax.swing.JPasswordField jContra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -308,12 +347,9 @@ public class frmRecuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPasswordField jNueva;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jUsuario;
     // End of variables declaration//GEN-END:variables
 }

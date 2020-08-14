@@ -6,7 +6,10 @@
 package vistas;
 
 import controlador.CtrlRecuContra;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UnsupportedLookAndFeelException;
 import modelo.ClsCorreo;
 import modelo.RecuContra;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -312,7 +315,13 @@ public class frmRecuCorreo extends javax.swing.JFrame {
                 if (recu.cambiarContra()) {
                     JOptionPane.showMessageDialog(null, "La contraseña se ha cambiado correctamente","Contraseña actualizada.",JOptionPane.INFORMATION_MESSAGE);
                     this.setVisible(false);
-                    frmMenuRecuperacion formulario = new frmMenuRecuperacion();
+                    this.setVisible(false);
+                    frmLogin formulario = null;
+                    try {
+                        formulario = new frmLogin();
+                    } catch (UnsupportedLookAndFeelException ex) {
+                        Logger.getLogger(frmRecuCorreo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     formulario.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "La contraseña no se ha cambiado correctamente","Contraseña no actualizada.",JOptionPane.WARNING_MESSAGE);

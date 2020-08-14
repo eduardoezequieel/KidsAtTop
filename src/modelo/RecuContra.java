@@ -44,7 +44,7 @@ public class RecuContra {
         cn = conectar.conectar();
     }
     
-    //Recuperación por correo
+    //<editor-fold defaultstate="collapsed" desc="Recuperacion por correo">
     
     public boolean verificarUsuario(){
         
@@ -80,6 +80,83 @@ public class RecuContra {
         recuCtrl.setCodigoVerificacion(valorEntero);
     }
     
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Recuperacion por administrador">
+    
+     public boolean validarAdmin(){
+         
+        //Declarando variable de retorno
+        boolean retorno=false;
+        try{
+            //verificar existencia
+            String sql="select usuario from usuario where usuario = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            cmd.setString(1, recuCtrl.getAdmin());
+            
+            ResultSet rs1= cmd.executeQuery();
+            
+            if (rs1.next()) {
+                    //verificar credenciales y estado del usuario
+                    String sql2 ="select usuario from usuario where usuario=? and contraseña= ? ";
+                    PreparedStatement cmd2 = cn.prepareStatement(sql2);
+                    cmd2.setString(1, recuCtrl.getAdmin());
+                    cmd2.setString(2, recuCtrl.getContraseña());
+                    
+                    ResultSet rs= cmd2.executeQuery();
+
+                    if (rs.next()) {
+                            retorno = true;
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null,"Las credenciales del admin no son correctas");
+                    }
+            }
+            else
+            {
+                   JOptionPane.showMessageDialog(null,"Administrador no encontrado");
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.toString());
+        }
+        return retorno;
+    }
+     
+    public boolean verificarUser(){
+        
+        //Declarando variable de retorno
+        boolean resp = false;
+        
+        try{
+            
+            //verificando existencia
+            String sql="select usuario from usuario where usuario = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            cmd.setString(1, recuCtrl.getUsuario());
+            
+            ResultSet rs1= cmd.executeQuery();
+            
+            if (rs1.next()) {
+                resp = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha encontrado el usuario a recuperar");
+            }
+            
+        } catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+        
+        //Retornando valor
+        return resp;
+    }
+    
+    //</editor-fold>
+    
     public boolean cambiarContra(){
         
         //Declarando variable de retorno
@@ -105,6 +182,6 @@ public class RecuContra {
         //Retornando variable
         return resp;
     }
-    
+   
   
 }

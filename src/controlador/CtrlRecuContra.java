@@ -16,6 +16,8 @@ public class CtrlRecuContra {
     private static String correo;
     private static String usuario;
     private static String nuevaContra;
+    private static String contraseña;
+    private static String admin;
 
     /**
      * @return the codigoVerificacion
@@ -71,5 +73,33 @@ public class CtrlRecuContra {
      */
     public void setNuevaContra(String nuevaContra) {
         this.nuevaContra = nuevaContra;
+    }
+
+    /**
+     * @return the contraseña
+     */
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    /**
+     * @param contraseña the contraseña to set
+     */
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    /**
+     * @return the admin
+     */
+    public String getAdmin() {
+        return admin;
+    }
+
+    /**
+     * @param admin the admin to set
+     */
+    public void setAdmin(String admin) {
+        this.admin = admin;
     }
 }
