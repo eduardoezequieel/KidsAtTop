@@ -35,7 +35,7 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
-         tResponsables.getTableHeader().setFont(new Font("Roboto Light", Font.BOLD, 12));
+         tResponsables.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 18));
         tResponsables.getTableHeader().setOpaque(false);
         tResponsables.getTableHeader().setBackground(new Color(33, 37, 41));
         tResponsables.getTableHeader().setForeground(new Color(254,254,254));
@@ -72,17 +72,7 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        txtDui = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        txtApellido = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        txtTelefono = new javax.swing.JTextField();
+        btnActivar = new javax.swing.JButton();
         btnCorreo = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -90,6 +80,19 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         btnSuspender = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
+        jLayer1 = new javax.swing.JLayeredPane();
+        jLabel5 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtApellido = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtDui = new javax.swing.JTextField();
+        jLayer2 = new javax.swing.JLayeredPane();
+        jLabel11 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         cbParentesco = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(33, 37, 41));
@@ -104,70 +107,20 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jLabel4.setText("Gestionar Responsables ");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel5.setText("Nombre:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel6.setText("Apellido:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel7.setText("DUI:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel8.setText("Parentesco:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, -1, -1));
-
-        txtNombre.setBackground(new java.awt.Color(33, 37, 41));
-        txtNombre.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtNombre.setForeground(new java.awt.Color(254, 254, 254));
-        txtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 250, 30));
-
-        txtEmail.setBackground(new java.awt.Color(33, 37, 41));
-        txtEmail.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtEmail.setForeground(new java.awt.Color(254, 254, 254));
-        txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 300, 30));
-
-        txtDui.setBackground(new java.awt.Color(33, 37, 41));
-        txtDui.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtDui.setForeground(new java.awt.Color(254, 254, 254));
-        txtDui.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDui.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(txtDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 250, 30));
-
-        jLabel9.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel9.setText("Teléfono:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, -1, -1));
-
-        txtApellido.setBackground(new java.awt.Color(33, 37, 41));
-        txtApellido.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtApellido.setForeground(new java.awt.Color(254, 254, 254));
-        txtApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtApellido.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 250, 30));
-
-        jLabel11.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel11.setText("Email:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
-
-        txtTelefono.setBackground(new java.awt.Color(33, 37, 41));
-        txtTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtTelefono.setForeground(new java.awt.Color(254, 254, 254));
-        txtTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtTelefono.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 190, 30));
+        btnActivar.setBackground(new java.awt.Color(33, 37, 41));
+        btnActivar.setForeground(new java.awt.Color(254, 254, 254));
+        btnActivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActivarDefault.png"))); // NOI18N
+        btnActivar.setBorder(null);
+        btnActivar.setContentAreaFilled(false);
+        btnActivar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnActivar.setFocusPainted(false);
+        btnActivar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActivarRollover.png"))); // NOI18N
+        btnActivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActivarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnActivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, 140, 70));
 
         btnCorreo.setBackground(new java.awt.Color(33, 37, 41));
         btnCorreo.setForeground(new java.awt.Color(254, 254, 254));
@@ -182,7 +135,7 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
                 btnCorreoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 240, 140, 70));
+        jPanel1.add(btnCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 300, 140, 70));
 
         btnActualizar.setBackground(new java.awt.Color(33, 37, 41));
         btnActualizar.setForeground(new java.awt.Color(254, 254, 254));
@@ -197,10 +150,11 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, 140, 70));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 140, 70));
 
         tResponsables.setBackground(new java.awt.Color(33, 37, 41));
-        tResponsables.setFont(new java.awt.Font("Roboto Light", 1, 17)); // NOI18N
+        tResponsables.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        tResponsables.setForeground(new java.awt.Color(255, 255, 255));
         tResponsables.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -227,7 +181,8 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         tResponsables.setGridColor(new java.awt.Color(64, 65, 65));
         tResponsables.setIntercellSpacing(new java.awt.Dimension(0, 0));
         tResponsables.setRowHeight(30);
-        tResponsables.setSelectionBackground(new java.awt.Color(58, 58, 58));
+        tResponsables.setSelectionBackground(new java.awt.Color(45, 252, 119));
+        tResponsables.setSelectionForeground(new java.awt.Color(0, 0, 0));
         tResponsables.setShowVerticalLines(false);
         tResponsables.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -251,9 +206,9 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
                 btnSuspenderActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSuspender, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 160, 140, 70));
+        jPanel1.add(btnSuspender, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 140, 140, 70));
 
-        jLabel12.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(254, 254, 254));
         jLabel12.setText("Digite lo que desea buscar:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
@@ -273,12 +228,97 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         });
         jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 620, 30));
 
+        jLayer1.setNextFocusableComponent(jLayer2);
+
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel5.setText("Nombre:");
+        jLayer1.add(jLabel5);
+        jLabel5.setBounds(20, 0, 60, 30);
+
+        txtNombre.setBackground(new java.awt.Color(33, 37, 41));
+        txtNombre.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(254, 254, 254));
+        txtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jLayer1.add(txtNombre);
+        txtNombre.setBounds(20, 30, 250, 30);
+
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel6.setText("Apellido:");
+        jLayer1.add(jLabel6);
+        jLabel6.setBounds(20, 70, 61, 30);
+
+        txtApellido.setBackground(new java.awt.Color(33, 37, 41));
+        txtApellido.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtApellido.setForeground(new java.awt.Color(254, 254, 254));
+        txtApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtApellido.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jLayer1.add(txtApellido);
+        txtApellido.setBounds(20, 100, 250, 30);
+
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel7.setText("DUI:");
+        jLayer1.add(jLabel7);
+        jLabel7.setBounds(20, 140, 29, 30);
+
+        txtDui.setBackground(new java.awt.Color(33, 37, 41));
+        txtDui.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtDui.setForeground(new java.awt.Color(254, 254, 254));
+        txtDui.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDui.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jLayer1.add(txtDui);
+        txtDui.setBounds(20, 170, 250, 30);
+
+        jPanel1.add(jLayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 280, 220));
+
+        jLayer2.setNextFocusableComponent(jLayer1);
+
+        jLabel11.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel11.setText("Email:");
+        jLayer2.add(jLabel11);
+        jLabel11.setBounds(10, 80, 44, 30);
+
+        txtEmail.setBackground(new java.awt.Color(33, 37, 41));
+        txtEmail.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(254, 254, 254));
+        txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jLayer2.add(txtEmail);
+        txtEmail.setBounds(10, 110, 300, 30);
+
+        txtTelefono.setBackground(new java.awt.Color(33, 37, 41));
+        txtTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtTelefono.setForeground(new java.awt.Color(254, 254, 254));
+        txtTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTelefono.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jLayer2.add(txtTelefono);
+        txtTelefono.setBounds(10, 40, 190, 30);
+
+        jLabel9.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel9.setText("Teléfono:");
+        jLayer2.add(jLabel9);
+        jLabel9.setBounds(10, 10, 67, 30);
+
+        jLabel8.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel8.setText("Parentesco:");
+        jLayer2.add(jLabel8);
+        jLabel8.setBounds(10, 150, 83, 30);
+
         cbParentesco.setBackground(new java.awt.Color(33, 37, 41));
         cbParentesco.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         cbParentesco.setForeground(new java.awt.Color(255, 255, 255));
         cbParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbParentesco.setBorder(null);
-        jPanel1.add(cbParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 290, 30));
+        jLayer2.add(cbParentesco);
+        cbParentesco.setBounds(10, 180, 290, 30);
+
+        jPanel1.add(jLayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 320, 220));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -390,8 +430,13 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarKeyTyped
 
+    private void btnActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActivarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActivar;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCorreo;
     private javax.swing.JButton btnSuspender;
@@ -404,6 +449,8 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLayeredPane jLayer1;
+    private javax.swing.JLayeredPane jLayer2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tResponsables;

@@ -7,14 +7,17 @@ package vistas;
 
 import controlador.CtrlConducta;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import modelo.Conexion;
 import modelo.MtoConducta;
 import modelo.Validaciones;
@@ -42,10 +45,10 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
      */
     public frmGestionarConducta() {
         initComponents();
-         this.setBorder(null);
+        this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
-        tConducta.getTableHeader().setFont(new Font("Roboto Light", Font.BOLD, 12));
+        tConducta.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 18));
         tConducta.getTableHeader().setOpaque(false);
         tConducta.getTableHeader().setBackground(new Color(33, 37, 41));
         tConducta.getTableHeader().setForeground(new Color(254,254,254));
@@ -65,6 +68,15 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         //Mostrando tabla
         this.mostrarConducta();
         
+        //Personalizando jCalendar
+        jCalendario.getJCalendar().setForeground(new Color(254,254,254));
+        jCalendario.getJCalendar().setSundayForeground(Color.WHITE);
+        jCalendario.getJCalendar().setWeekdayForeground(Color.WHITE);
+        jCalendario.getJCalendar().setDecorationBackgroundVisible(false);
+        jCalendario.getJCalendar().setWeekOfYearVisible(false);
+        jCalendario.getJCalendar().setBackground(Color.WHITE);
+        jCalendario.getJCalendar().setPreferredSize(new Dimension(450, 450));
+        
     }
 
     /**
@@ -78,10 +90,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
 
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jFecha = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        cbAño = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
+        btnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tConducta = new javax.swing.JTable();
         btnAgregar = new javax.swing.JButton();
@@ -89,16 +98,19 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jEliminar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jBuscar = new javax.swing.JTextField();
-        jCalendario = new com.toedter.calendar.JDateChooser();
-        cbEstudiante = new javax.swing.JComboBox<>();
-        jLabel13 = new javax.swing.JLabel();
-        cbGradoSeccion = new javax.swing.JComboBox<>();
-        jLabel14 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jObservacion = new javax.swing.JTextArea();
         jId = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
-        cbFiltro = new javax.swing.JComboBox<>();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        jLabel11 = new javax.swing.JLabel();
+        cbAño = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        cbGradoSeccion = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
+        cbEstudiante = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        jFecha = new javax.swing.JTextField();
+        jCalendario = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -109,58 +121,28 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jLabel4.setText("Gestionar Conducta ");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(254, 254, 254));
         jLabel8.setText("Observación:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, -1));
 
-        jFecha.setBackground(new java.awt.Color(33, 37, 41));
-        jFecha.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jFecha.setForeground(new java.awt.Color(254, 254, 254));
-        jFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jFecha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jFecha.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jFechaKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jFechaKeyTyped(evt);
+        btnLimpiar.setBackground(new java.awt.Color(33, 37, 41));
+        btnLimpiar.setForeground(new java.awt.Color(254, 254, 254));
+        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnLimpiarDefault.png"))); // NOI18N
+        btnLimpiar.setBorder(null);
+        btnLimpiar.setContentAreaFilled(false);
+        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpiar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnLimpiarRollover.png"))); // NOI18N
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(jFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, 180, 30));
-
-        jLabel10.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel10.setText("Fecha:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, -1, -1));
-
-        cbAño.setBackground(new java.awt.Color(33, 37, 41));
-        cbAño.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        cbAño.setForeground(new java.awt.Color(254, 254, 254));
-        cbAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbAño.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbAñoItemStateChanged(evt);
-            }
-        });
-        cbAño.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cbAñoMouseClicked(evt);
-            }
-        });
-        cbAño.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                cbAñoPropertyChange(evt);
-            }
-        });
-        getContentPane().add(cbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 240, -1));
-
-        jLabel11.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel11.setText("Año:");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
+        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 340, 140, 70));
 
         tConducta.setBackground(new java.awt.Color(33, 37, 41));
+        tConducta.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        tConducta.setForeground(new java.awt.Color(255, 255, 255));
         tConducta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -187,7 +169,8 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         tConducta.setGridColor(new java.awt.Color(64, 65, 65));
         tConducta.setIntercellSpacing(new java.awt.Dimension(0, 0));
         tConducta.setRowHeight(30);
-        tConducta.setSelectionBackground(new java.awt.Color(58, 58, 58));
+        tConducta.setSelectionBackground(new java.awt.Color(45, 252, 119));
+        tConducta.setSelectionForeground(new java.awt.Color(0, 0, 0));
         tConducta.setShowVerticalLines(false);
         tConducta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -203,50 +186,50 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_default.png"))); // NOI18N
         btnAgregar.setBorder(null);
         btnAgregar.setContentAreaFilled(false);
-        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 140, 140, 70));
+        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 140, 70));
 
         jActualizar.setBackground(new java.awt.Color(33, 37, 41));
         jActualizar.setForeground(new java.awt.Color(254, 254, 254));
         jActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
         jActualizar.setBorder(null);
         jActualizar.setContentAreaFilled(false);
-        jActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
         jActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jActualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(jActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 220, 140, 70));
+        getContentPane().add(jActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 180, 140, 70));
 
         jEliminar.setBackground(new java.awt.Color(33, 37, 41));
         jEliminar.setForeground(new java.awt.Color(254, 254, 254));
-        jEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
+        jEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEliminarDefault.png"))); // NOI18N
         jEliminar.setBorder(null);
         jEliminar.setContentAreaFilled(false);
-        jEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
+        jEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEliminarRollover.png"))); // NOI18N
         jEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(jEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 300, 140, 70));
+        getContentPane().add(jEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, 140, 70));
 
-        jLabel12.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel12.setText("Buscar por:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, -1, -1));
+        jLabel12.setText("Digite lo que desea buscar:");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, -1, 20));
 
         jBuscar.setBackground(new java.awt.Color(33, 37, 41));
-        jBuscar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jBuscar.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jBuscar.setForeground(new java.awt.Color(254, 254, 254));
         jBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
@@ -254,29 +237,61 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jBuscarKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jBuscarKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jBuscarKeyTyped(evt);
             }
         });
-        getContentPane().add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 340, 30));
+        getContentPane().add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 580, 30));
 
-        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jCalendarioPropertyChange(evt);
+        jObservacion.setBackground(new java.awt.Color(33, 37, 41));
+        jObservacion.setColumns(20);
+        jObservacion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jObservacion.setForeground(new java.awt.Color(255, 255, 255));
+        jObservacion.setRows(5);
+        jObservacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(36, 36, 36)));
+        jScrollPane2.setViewportView(jObservacion);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 330, 240));
+        getContentPane().add(jId, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, 60, -1));
+
+        jLayeredPane1.setNextFocusableComponent(jObservacion);
+
+        jLabel11.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel11.setText("Año:");
+        jLayeredPane1.add(jLabel11);
+        jLabel11.setBounds(10, 10, 32, 19);
+
+        cbAño.setBackground(new java.awt.Color(33, 37, 41));
+        cbAño.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbAño.setForeground(new java.awt.Color(254, 254, 254));
+        cbAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbAño.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbAñoItemStateChanged(evt);
             }
         });
-        getContentPane().add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 320, 50, -1));
+        cbAño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbAñoMouseClicked(evt);
+            }
+        });
+        cbAño.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cbAñoPropertyChange(evt);
+            }
+        });
+        jLayeredPane1.add(cbAño);
+        cbAño.setBounds(10, 40, 310, 29);
 
-        cbEstudiante.setBackground(new java.awt.Color(33, 37, 41));
-        cbEstudiante.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        cbEstudiante.setForeground(new java.awt.Color(254, 254, 254));
-        cbEstudiante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cbEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 240, -1));
-
-        jLabel13.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel13.setText("Estudiante:");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, -1, -1));
+        jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel14.setText("Grado/Sección:");
+        jLayeredPane1.add(jLabel14);
+        jLabel14.setBounds(10, 80, 110, 19);
 
         cbGradoSeccion.setBackground(new java.awt.Color(33, 37, 41));
         cbGradoSeccion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -297,37 +312,53 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
                 cbGradoSeccionPropertyChange(evt);
             }
         });
-        getContentPane().add(cbGradoSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 240, -1));
+        jLayeredPane1.add(cbGradoSeccion);
+        cbGradoSeccion.setBounds(10, 110, 310, 29);
 
-        jLabel14.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel14.setText("Grado/Sección:");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
+        jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel13.setText("Estudiante:");
+        jLayeredPane1.add(jLabel13);
+        jLabel13.setBounds(10, 150, 79, 19);
 
-        jObservacion.setBackground(new java.awt.Color(33, 37, 41));
-        jObservacion.setColumns(20);
-        jObservacion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jObservacion.setForeground(new java.awt.Color(255, 255, 255));
-        jObservacion.setRows(5);
-        jObservacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(36, 36, 36)));
-        jScrollPane2.setViewportView(jObservacion);
+        cbEstudiante.setBackground(new java.awt.Color(33, 37, 41));
+        cbEstudiante.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbEstudiante.setForeground(new java.awt.Color(254, 254, 254));
+        cbEstudiante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLayeredPane1.add(cbEstudiante);
+        cbEstudiante.setBounds(10, 180, 310, 29);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 360, 200));
-        getContentPane().add(jId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 60, -1));
+        jLabel10.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel10.setText("Fecha:");
+        jLayeredPane1.add(jLabel10);
+        jLabel10.setBounds(10, 220, 47, 19);
 
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
+        jFecha.setBackground(new java.awt.Color(33, 37, 41));
+        jFecha.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jFecha.setForeground(new java.awt.Color(254, 254, 254));
+        jFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jFecha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jFecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jFechaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFechaKeyTyped(evt);
             }
         });
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 380, -1, -1));
+        jLayeredPane1.add(jFecha);
+        jFecha.setBounds(10, 250, 260, 30);
 
-        cbFiltro.setBackground(new java.awt.Color(33, 37, 41));
-        cbFiltro.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        cbFiltro.setForeground(new java.awt.Color(254, 254, 254));
-        cbFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Observacion", "Estudiante", "Fecha" }));
-        getContentPane().add(cbFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 240, -1));
+        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jCalendarioPropertyChange(evt);
+            }
+        });
+        jLayeredPane1.add(jCalendario);
+        jCalendario.setBounds(270, 250, 50, 30);
+
+        getContentPane().add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 320, 290));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -400,13 +431,13 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
             //Ejecutando mantemiento 
             if (conducta.insertarConducta()) {
                 JOptionPane.showMessageDialog(null, "Ha agregado los datos correctamente");
+                this.limpiarTabla();
+                this.mostrarConducta();
+                this.limpiarCampos();
             } else {
                 JOptionPane.showMessageDialog(null, "No se han agregado los datos correctamente");
             }
             
-            this.limpiarTabla();
-            this.mostrarConducta();
-            this.limpiarCampos();
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -516,15 +547,16 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jId.setText(String.valueOf(idConducta));
     }//GEN-LAST:event_tConductaMouseClicked
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        
-        if (jBuscar.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
-        } else {
-            
-            conducta.buscarConducta(jBuscar.getText(), cbFiltro.getItemAt(cbFiltro.getSelectedIndex()), tConducta);
-        }
-    }//GEN-LAST:event_btnBuscarActionPerformed
+    private void jBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyReleased
+        String busqueda = jBuscar.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
+        tConducta.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(busqueda));
+    }//GEN-LAST:event_jBuscarKeyReleased
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        this.limpiarCampos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="LlenandoComboBox">
@@ -605,10 +637,9 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JComboBox<String> cbAño;
     private javax.swing.JComboBox<String> cbEstudiante;
-    private javax.swing.JComboBox<String> cbFiltro;
     private javax.swing.JComboBox<String> cbGradoSeccion;
     private javax.swing.JButton jActualizar;
     private javax.swing.JTextField jBuscar;
@@ -623,6 +654,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JTextArea jObservacion;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

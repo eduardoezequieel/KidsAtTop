@@ -6,6 +6,8 @@
 package vistas;
 
 import controlador.CtrlLoginUsuario;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import modelo.MtoLogin;
 
 /**
@@ -27,7 +29,7 @@ public class frmControlAcademicoContenedor extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.mod = mod;
         int user=mod.getId_tipo_usuario();
-        if (user==2||user==4) {
+        if (user==4) {
             
             jGestionarSecciones.setEnabled(false);
             jGestionarNotas.setEnabled(false);
@@ -177,6 +179,20 @@ public class frmControlAcademicoContenedor extends javax.swing.JFrame {
         frmGestionarNotas notas = new frmGestionarNotas();
         jEscritorio.add(notas);
         notas.setVisible(true);
+        
+        //Cambiar imagenes
+        Icon Imagenes;
+         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"));
+        jGestionarConducta.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"));
+        jGestionarAsistencia.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_rollover.png"));
+        jGestionarNotas.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
+        jGestionarSecciones.setIcon(Imagenes);
     }//GEN-LAST:event_jGestionarNotasActionPerformed
 
     private void jGestionarConductaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarConductaActionPerformed
@@ -184,13 +200,41 @@ public class frmControlAcademicoContenedor extends javax.swing.JFrame {
         frmGestionarConducta conducta = new frmGestionarConducta();
         jEscritorio.add(conducta);
         conducta.setVisible(true);
+        
+        //Cambiando imagenes
+        Icon Imagenes;
+         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_rollover.png"));
+        jGestionarConducta.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"));
+        jGestionarAsistencia.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"));
+        jGestionarNotas.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
+        jGestionarSecciones.setIcon(Imagenes);
     }//GEN-LAST:event_jGestionarConductaActionPerformed
 
     private void jGestionarSeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarSeccionesActionPerformed
         //Abriendo formulario de Gestionar Secciones
         frmGestionarSecciones secciones = new frmGestionarSecciones();
         jEscritorio.add(secciones);
-        secciones.setVisible(true);        
+        secciones.setVisible(true); 
+        
+        //Setear imagenes
+        Icon Imagenes;
+         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"));
+        jGestionarConducta.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"));
+        jGestionarAsistencia.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"));
+        jGestionarNotas.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_rollover.png"));
+        jGestionarSecciones.setIcon(Imagenes);
     }//GEN-LAST:event_jGestionarSeccionesActionPerformed
 
     private void jGestionarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarAsistenciaActionPerformed
@@ -198,6 +242,20 @@ public class frmControlAcademicoContenedor extends javax.swing.JFrame {
         frmControlarAsistencia asistencia = new frmControlarAsistencia();
         jEscritorio.add(asistencia);
         asistencia.setVisible(true);
+        
+        //Cambiar imagenes
+        Icon Imagenes;
+         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"));
+        jGestionarConducta.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControlarAsistencia_rollover.png"));
+        jGestionarAsistencia.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"));
+        jGestionarNotas.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
+        jGestionarSecciones.setIcon(Imagenes);
     }//GEN-LAST:event_jGestionarAsistenciaActionPerformed
 
     private void jGestionarSecciones1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarSecciones1ActionPerformed

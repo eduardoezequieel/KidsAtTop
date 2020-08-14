@@ -8,6 +8,8 @@ package vistas;
 import controlador.CtrlLoginUsuario;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.UnsupportedLookAndFeelException;
 import modelo.MtoLogin;
 
@@ -56,7 +58,7 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jEscritorio = new javax.swing.JDesktopPane();
         jLabel2 = new javax.swing.JLabel();
-        jControlarUsuarios1 = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jControlarUsuarios = new javax.swing.JButton();
         jReportes = new javax.swing.JButton();
@@ -95,18 +97,18 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
 
         jPanel1.add(jEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 1000, 740));
 
-        jControlarUsuarios1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backpng.png"))); // NOI18N
-        jControlarUsuarios1.setBorder(null);
-        jControlarUsuarios1.setContentAreaFilled(false);
-        jControlarUsuarios1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jControlarUsuarios1.setFocusPainted(false);
-        jControlarUsuarios1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back_rollover.png"))); // NOI18N
-        jControlarUsuarios1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backpng.png"))); // NOI18N
+        btnRegresar.setBorder(null);
+        btnRegresar.setContentAreaFilled(false);
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresar.setFocusPainted(false);
+        btnRegresar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back_rollover.png"))); // NOI18N
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jControlarUsuarios1ActionPerformed(evt);
+                btnRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jControlarUsuarios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 620, 240, 70));
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 620, 240, 70));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fndHerramientasSistema.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 280, 280));
@@ -149,26 +151,38 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
 
     private void jControlarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jControlarUsuariosActionPerformed
         //Abriendo formulario de Controlar Usuarios
-        frmControlarUsuarios usuarios = null;
-        try {
-            usuarios = new frmControlarUsuarios();
-        } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(frmHerramientasContenedor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        MtoLogin log=new MtoLogin();
+        log.obtenerDatosUsuario(mod);
+        frmControlarUsuarios usuarios = new frmControlarUsuarios(mod);
         jEscritorio.add(usuarios);
         usuarios.setVisible(true);
+        
+        //Seteando iconos
+        Icon Imagenes;
+         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_rollover.png"));
+        jControlarUsuarios.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnReportesDefault.png"));
+        jReportes.setIcon(Imagenes);
     }//GEN-LAST:event_jControlarUsuariosActionPerformed
 
-    private void jControlarUsuarios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jControlarUsuarios1ActionPerformed
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         this.setVisible(false);
          MtoLogin log=new MtoLogin();
          log.obtenerDatosUsuario(mod);
         frmPrincipal formulario = new frmPrincipal(mod);
         formulario.setVisible(true);
-    }//GEN-LAST:event_jControlarUsuarios1ActionPerformed
+        
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void jReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jReportesActionPerformed
-        // TODO add your handling code here:
+        //Seteando iconos
+        Icon Imagenes;
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_default.png"));
+        jControlarUsuarios.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnReportesRollover.png"));
+        jReportes.setIcon(Imagenes);
     }//GEN-LAST:event_jReportesActionPerformed
 
     /**
@@ -210,8 +224,8 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JButton jControlarUsuarios;
-    private javax.swing.JButton jControlarUsuarios1;
     private javax.swing.JDesktopPane jEscritorio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

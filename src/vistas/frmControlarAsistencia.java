@@ -6,6 +6,7 @@
 package vistas;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -23,10 +24,19 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
-        tAsistencia.getTableHeader().setFont(new Font("Roboto Light", Font.BOLD, 12));
+        tAsistencia.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 18));
         tAsistencia.getTableHeader().setOpaque(false);
         tAsistencia.getTableHeader().setBackground(new Color(33, 37, 41));
         tAsistencia.getTableHeader().setForeground(new Color(254,254,254));
+        
+        //jCalendar
+        jCalendario.getJCalendar().setForeground(new Color(254,254,254));
+        jCalendario.getJCalendar().setSundayForeground(Color.WHITE);
+        jCalendario.getJCalendar().setWeekdayForeground(Color.WHITE);
+        jCalendario.getJCalendar().setDecorationBackgroundVisible(false);
+        jCalendario.getJCalendar().setWeekOfYearVisible(false);
+        jCalendario.getJCalendar().setBackground(Color.WHITE);
+        jCalendario.getJCalendar().setPreferredSize(new Dimension(450, 450));
     }
 
     /**
@@ -58,11 +68,12 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jTextField2 = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jCalendario = new com.toedter.calendar.JDateChooser();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jButton7 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -76,7 +87,7 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jLabel4.setText("Controlar Asistencia ");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
         jLabel1.setText("Fecha:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, -1, -1));
@@ -95,6 +106,8 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 240, 30));
 
         tAsistencia.setBackground(new java.awt.Color(33, 37, 41));
+        tAsistencia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        tAsistencia.setForeground(new java.awt.Color(255, 255, 255));
         tAsistencia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -120,13 +133,14 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         tAsistencia.setGridColor(new java.awt.Color(64, 65, 65));
         tAsistencia.setIntercellSpacing(new java.awt.Dimension(0, 0));
         tAsistencia.setRowHeight(30);
-        tAsistencia.setSelectionBackground(new java.awt.Color(58, 58, 58));
+        tAsistencia.setSelectionBackground(new java.awt.Color(45, 252, 119));
+        tAsistencia.setSelectionForeground(new java.awt.Color(0, 0, 0));
         tAsistencia.setShowVerticalLines(false);
         jScrollPane1.setViewportView(tAsistencia);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 950, 250));
 
-        jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(254, 254, 254));
         jLabel2.setText("Año:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
@@ -136,9 +150,9 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jTextField1.setForeground(new java.awt.Color(254, 254, 254));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 180, 30));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 190, 30));
 
-        jLabel3.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(254, 254, 254));
         jLabel3.setText("Estudiante ausente:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
@@ -151,12 +165,12 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jComboBox2.setOpaque(false);
         jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 240, 30));
 
-        jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(254, 254, 254));
         jLabel5.setText("Motivo de inasistencia:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(254, 254, 254));
         jLabel6.setText("Observación:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
@@ -167,15 +181,15 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setFocusable(false);
         jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 70, 140, 70));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 50, 140, 70));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnLimpiarDefault.png"))); // NOI18N
         jButton4.setBorder(null);
         jButton4.setContentAreaFilled(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setFocusable(false);
-        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 150, 140, 70));
+        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnLimpiarRollover.png"))); // NOI18N
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 370, 140, 70));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
         jButton5.setBorder(null);
@@ -183,7 +197,7 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.setFocusable(false);
         jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 230, 140, 70));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 210, 140, 70));
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarAsistencia_default.png"))); // NOI18N
         jButton6.setBorder(null);
@@ -191,19 +205,19 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.setFocusable(false);
         jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarAsistencia_rollover.png"))); // NOI18N
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 310, 140, 70));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 290, 140, 70));
 
-        jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(254, 254, 254));
         jLabel7.setText("Digite lo que desea buscar:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, -1, -1));
 
         jTextField2.setBackground(new java.awt.Color(33, 37, 41));
         jTextField2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(254, 254, 254));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 580, 30));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 580, 30));
 
         jComboBox3.setBackground(new java.awt.Color(33, 37, 41));
         jComboBox3.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -213,11 +227,11 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jComboBox3.setOpaque(false);
         jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 240, 30));
 
-        jLabel8.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(254, 254, 254));
         jLabel8.setText("Grado/Sección:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 50, 29));
+        jPanel1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 50, 29));
 
         jTextArea1.setBackground(new java.awt.Color(33, 37, 41));
         jTextArea1.setColumns(20);
@@ -239,6 +253,14 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 133, 320, 90));
 
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
+        jButton7.setBorder(null);
+        jButton7.setContentAreaFilled(false);
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.setFocusable(false);
+        jButton7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 130, 140, 70));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
         pack();
@@ -254,10 +276,11 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

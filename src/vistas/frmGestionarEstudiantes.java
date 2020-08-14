@@ -1,6 +1,7 @@
 package vistas;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import modelo.Validaciones;
@@ -28,10 +29,19 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         bui.setNorthPane(null);
         grupoBotones.add(rbtnMasculino);
         grupoBotones.add(rbtnFemenino);
-        tEstudiantes.getTableHeader().setFont(new Font("Roboto Light", Font.BOLD, 12));
+        tEstudiantes.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 18));
         tEstudiantes.getTableHeader().setOpaque(false);
         tEstudiantes.getTableHeader().setBackground(new Color(33, 37, 41));
         tEstudiantes.getTableHeader().setForeground(new Color(254,254,254));
+        
+        //jCalendar
+        jCalendario.getJCalendar().setForeground(new Color(254,254,254));
+        jCalendario.getJCalendar().setSundayForeground(Color.WHITE);
+        jCalendario.getJCalendar().setWeekdayForeground(Color.WHITE);
+        jCalendario.getJCalendar().setDecorationBackgroundVisible(false);
+        jCalendario.getJCalendar().setWeekOfYearVisible(false);
+        jCalendario.getJCalendar().setBackground(Color.WHITE);
+        jCalendario.getJCalendar().setPreferredSize(new Dimension(450, 450));
     }
 
     /**
@@ -56,7 +66,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         rbtnFemenino = new javax.swing.JRadioButton();
         rbtnMasculino = new javax.swing.JRadioButton();
-        jLabel11 = new javax.swing.JLabel();
+        lblFoto = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
@@ -65,12 +75,14 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tEstudiantes = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jCalendario = new com.toedter.calendar.JDateChooser();
+        jLabel14 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -86,10 +98,10 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jLabel4.setText("Gestionar Estudiantes");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(254, 254, 254));
         jLabel5.setText("Nombre:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
 
         txtNombre.setBackground(new java.awt.Color(33, 37, 41));
         txtNombre.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -104,12 +116,12 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
                 txtNombreKeyTyped(evt);
             }
         });
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 250, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 250, 30));
 
-        jLabel6.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(254, 254, 254));
         jLabel6.setText("Apellido:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
 
         jTextField5.setBackground(new java.awt.Color(33, 37, 41));
         jTextField5.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -124,12 +136,12 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
                 jTextField5KeyTyped(evt);
             }
         });
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 250, 30));
+        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 250, 30));
 
-        jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(254, 254, 254));
         jLabel7.setText("Fecha de nacimiento:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
 
         txtFecha.setBackground(new java.awt.Color(33, 37, 41));
         txtFecha.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -144,20 +156,20 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
                 txtFechaKeyTyped(evt);
             }
         });
-        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 250, 30));
+        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 200, 30));
 
-        jLabel8.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(254, 254, 254));
         jLabel8.setText("Dirección:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
         jLabel9.setText("Género:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, -1));
 
         rbtnFemenino.setBackground(new java.awt.Color(33, 37, 41));
-        rbtnFemenino.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        rbtnFemenino.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         rbtnFemenino.setForeground(new java.awt.Color(254, 254, 254));
         rbtnFemenino.setText("Femenino");
         rbtnFemenino.addActionListener(new java.awt.event.ActionListener() {
@@ -165,10 +177,10 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
                 rbtnFemeninoActionPerformed(evt);
             }
         });
-        jPanel1.add(rbtnFemenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, -1));
+        jPanel1.add(rbtnFemenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
 
         rbtnMasculino.setBackground(new java.awt.Color(33, 37, 41));
-        rbtnMasculino.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        rbtnMasculino.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         rbtnMasculino.setForeground(new java.awt.Color(254, 254, 254));
         rbtnMasculino.setText("Masculino");
         rbtnMasculino.addActionListener(new java.awt.event.ActionListener() {
@@ -176,31 +188,30 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
                 rbtnMasculinoActionPerformed(evt);
             }
         });
-        jPanel1.add(rbtnMasculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
+        jPanel1.add(rbtnMasculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel11.setText("Responsable:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, -1));
+        lblFoto.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblFoto.setForeground(new java.awt.Color(254, 254, 254));
+        jPanel1.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, 160, 160));
 
         jComboBox2.setBackground(new java.awt.Color(33, 37, 41));
         jComboBox2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jComboBox2.setForeground(new java.awt.Color(254, 254, 254));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.setFocusable(false);
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 240, -1));
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 240, -1));
 
-        jLabel12.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel12.setText("Grado y sección:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
+        jLabel12.setText("Grado/Sección:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
 
         jComboBox3.setBackground(new java.awt.Color(33, 37, 41));
         jComboBox3.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jComboBox3.setForeground(new java.awt.Color(254, 254, 254));
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox3.setFocusable(false);
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 240, 30));
+        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 240, 30));
 
         jButton3.setBackground(new java.awt.Color(33, 37, 41));
         jButton3.setForeground(new java.awt.Color(254, 254, 254));
@@ -214,13 +225,13 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
 
         jButton4.setBackground(new java.awt.Color(33, 37, 41));
         jButton4.setForeground(new java.awt.Color(254, 254, 254));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActivarDefault.png"))); // NOI18N
         jButton4.setBorder(null);
         jButton4.setContentAreaFilled(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.setFocusPainted(false);
-        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 230, 140, 70));
+        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActivarRollover.png"))); // NOI18N
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 140, 70));
 
         jButton5.setBackground(new java.awt.Color(33, 37, 41));
         jButton5.setForeground(new java.awt.Color(254, 254, 254));
@@ -230,10 +241,11 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton5.setFocusPainted(false);
         jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCargarFoto_rollover.png"))); // NOI18N
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 330, 170, 70));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 200, 70));
 
         tEstudiantes.setBackground(new java.awt.Color(33, 37, 41));
-        tEstudiantes.setFont(new java.awt.Font("Roboto Light", 1, 17)); // NOI18N
+        tEstudiantes.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        tEstudiantes.setForeground(new java.awt.Color(255, 255, 255));
         tEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -259,26 +271,14 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         tEstudiantes.setGridColor(new java.awt.Color(64, 65, 65));
         tEstudiantes.setIntercellSpacing(new java.awt.Dimension(0, 0));
         tEstudiantes.setRowHeight(30);
-        tEstudiantes.setSelectionBackground(new java.awt.Color(58, 58, 58));
+        tEstudiantes.setSelectionBackground(new java.awt.Color(45, 252, 119));
+        tEstudiantes.setSelectionForeground(new java.awt.Color(0, 0, 0));
         tEstudiantes.setShowVerticalLines(false);
         jScrollPane1.setViewportView(tEstudiantes);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 960, 230));
 
-        jPanel2.setBackground(new java.awt.Color(61, 66, 72));
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, 170, 210));
-
-        jButton6.setBackground(new java.awt.Color(33, 37, 41));
-        jButton6.setForeground(new java.awt.Color(254, 254, 254));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGenerarReporte_default.png"))); // NOI18N
-        jButton6.setBorder(null);
-        jButton6.setContentAreaFilled(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton6.setFocusPainted(false);
-        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGenerarReporte_rollover.png"))); // NOI18N
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 140, 70));
-
-        jLabel13.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));
         jLabel13.setText("Digite lo que desea buscar:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 220, 30));
@@ -306,7 +306,28 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jTextArea1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
         jScrollPane2.setViewportView(jTextArea1);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 240, -1));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 240, -1));
+        jPanel1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 50, -1));
+
+        jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel14.setText("Responsable:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, -1, -1));
+
+        jButton6.setBackground(new java.awt.Color(33, 37, 41));
+        jButton6.setForeground(new java.awt.Color(254, 254, 254));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
+        jButton6.setBorder(null);
+        jButton6.setContentAreaFilled(false);
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton6.setFocusPainted(false);
+        jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 230, 140, 70));
+
+        jLabel15.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fndMarcoFotoPequeño.png"))); // NOI18N
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 200, 200));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -364,11 +385,13 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -376,12 +399,12 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JLabel lblFoto;
     private javax.swing.JRadioButton rbtnFemenino;
     private javax.swing.JRadioButton rbtnMasculino;
     private javax.swing.JTable tEstudiantes;
