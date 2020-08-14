@@ -215,7 +215,7 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
     private void jMatricularEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMatricularEstudianteActionPerformed
         //Abriendo formulario
         this.setVisible(false);
-        FrmMatriculaContenedor frm = new FrmMatriculaContenedor();
+        FrmMatriculaContenedor frm = new FrmMatriculaContenedor(mod);
         frm.setVisible(true); 
         //Cambiando imagenes
         Icon Imagenes;

@@ -13,15 +13,22 @@ import modelo.MtoLogin;
  */
 public class FrmMatriculaContenedor extends javax.swing.JFrame {
 
-    
+    CtrlLoginUsuario mod;
       
     public FrmMatriculaContenedor() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        
+        
+    }
+    public FrmMatriculaContenedor(CtrlLoginUsuario mod){
+        
+        initComponents();
         FrmVerificarDUI frm = new FrmVerificarDUI();
         jDesktopMatricula.add(frm);
         frm.setVisible(true);
         btnFinalizar.setVisible(false);
+        this.setLocationRelativeTo(null);
+        this.mod=mod;
         
     }
 
@@ -136,7 +143,6 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    CtrlLoginUsuario mod;
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         this.setVisible(false);
         MtoLogin log=new MtoLogin();
