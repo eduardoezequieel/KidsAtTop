@@ -18,6 +18,9 @@ public class CtrlRecuContra {
     private static String nuevaContra;
     private static String contraseña;
     private static String admin;
+    private static int idUsuario;
+    private static String[] respuesta;
+    
 
     /**
      * @return the codigoVerificacion
@@ -101,5 +104,33 @@ public class CtrlRecuContra {
      */
     public void setAdmin(String admin) {
         this.admin = admin;
+    }
+
+    /**
+     * @return the idUsuario
+     */
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    /**
+     * @param idUsuario the idUsuario to set
+     */
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    /**
+     * @return the respuesta
+     */
+    public String[] getRespuesta() {
+        return respuesta;
+    }
+
+    /**
+     * @param respuesta the respuesta to set
+     */
+    public void setRespuesta(String[] respuesta) {
+        this.respuesta = respuesta;
     }
 }

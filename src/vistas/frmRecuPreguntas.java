@@ -5,7 +5,14 @@
  */
 package vistas;
 
+import controlador.CtrlRecuContra;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.UnsupportedLookAndFeelException;
+import modelo.RecuContra;
 import modelo.Validaciones;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -14,6 +21,11 @@ import modelo.Validaciones;
 public class frmRecuPreguntas extends javax.swing.JFrame {
 
     Validaciones val = new Validaciones();
+    //Llamando clases
+    CtrlRecuContra recuCtrl = new CtrlRecuContra();
+    RecuContra recu = new RecuContra();
+    
+    
     /**
      * Creates new form RecuPreguntasForm
      */
@@ -21,6 +33,15 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         
+        j1.setEnabled(false);
+        j2.setEnabled(false);
+        j3.setEnabled(false);
+        j4.setEnabled(false);
+        btnAceptar.setEnabled(false);
+        jNueva.setEnabled(false);
+        jConfirmar.setEnabled(false);
+        btnAcep.setEnabled(false);
+        cbRespuestas.setVisible(false);
     }
 
     /**
@@ -35,23 +56,23 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
+        j4 = new javax.swing.JTextField();
+        j1 = new javax.swing.JTextField();
+        j2 = new javax.swing.JTextField();
+        j3 = new javax.swing.JTextField();
+        jUsuario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jbtnAceptar = new javax.swing.JButton();
-        jbtnPreguntas = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        btnAcep = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
+        cbPregunta4 = new javax.swing.JComboBox<>();
+        cbPregunta3 = new javax.swing.JComboBox<>();
+        cbPregunta2 = new javax.swing.JComboBox<>();
+        cbPregunta1 = new javax.swing.JComboBox<>();
+        jConfirmar = new javax.swing.JPasswordField();
+        jNueva = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -61,8 +82,9 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jbtnVerificar = new javax.swing.JButton();
+        btnVerificar = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        cbRespuestas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -80,110 +102,80 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(45, 255, 120));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 1290, 10));
 
-        jTextField10.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField10.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField10.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
+        j4.setBackground(new java.awt.Color(33, 37, 41));
+        j4.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        j4.setForeground(new java.awt.Color(254, 254, 254));
+        j4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        j4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        j4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField10KeyPressed(evt);
+                j4KeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField10KeyTyped(evt);
+                j4KeyTyped(evt);
             }
         });
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 290, 340, 30));
+        jPanel1.add(j4, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 290, 340, 30));
 
-        jTextField6.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField6.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+        j1.setBackground(new java.awt.Color(33, 37, 41));
+        j1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        j1.setForeground(new java.awt.Color(254, 254, 254));
+        j1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        j1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        j1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField6KeyPressed(evt);
+                j1KeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField6KeyTyped(evt);
+                j1KeyTyped(evt);
             }
         });
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 630, 210, 30));
+        jPanel1.add(j1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 170, 340, 30));
 
-        jTextField11.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField11.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField11.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField11.addKeyListener(new java.awt.event.KeyAdapter() {
+        j2.setBackground(new java.awt.Color(33, 37, 41));
+        j2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        j2.setForeground(new java.awt.Color(254, 254, 254));
+        j2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        j2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        j2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField11KeyPressed(evt);
+                j2KeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField11KeyTyped(evt);
+                j2KeyTyped(evt);
             }
         });
-        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 170, 340, 30));
+        jPanel1.add(j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 210, 340, 30));
 
-        jTextField12.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField12.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField12.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField12.addKeyListener(new java.awt.event.KeyAdapter() {
+        j3.setBackground(new java.awt.Color(33, 37, 41));
+        j3.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        j3.setForeground(new java.awt.Color(254, 254, 254));
+        j3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        j3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        j3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField12KeyPressed(evt);
+                j3KeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField12KeyTyped(evt);
+                j3KeyTyped(evt);
             }
         });
-        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 210, 340, 30));
+        jPanel1.add(j3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 250, 340, 30));
 
-        jTextField13.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField13.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField13.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField13.addKeyListener(new java.awt.event.KeyAdapter() {
+        jUsuario.setBackground(new java.awt.Color(33, 37, 41));
+        jUsuario.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jUsuario.setForeground(new java.awt.Color(254, 254, 254));
+        jUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField13KeyPressed(evt);
+                jUsuarioKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField13KeyTyped(evt);
+                jUsuarioKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 250, 340, 30));
-
-        jTextField14.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField14.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField14.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField14.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField14KeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField14KeyTyped(evt);
-            }
-        });
-        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 210, 30));
-
-        jTextField15.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField15.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField15.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField15.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField15KeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField15KeyTyped(evt);
-            }
-        });
-        jPanel1.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 550, 210, 30));
+        jPanel1.add(jUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 210, 30));
 
         jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(254, 254, 254));
@@ -205,59 +197,69 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jLabel7.setText("Usuario a recuperar:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
 
-        jbtnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_rollover.png"))); // NOI18N
-        jbtnAceptar.setBorder(null);
-        jbtnAceptar.setContentAreaFilled(false);
-        jbtnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jbtnAceptar.setFocusPainted(false);
-        jbtnAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_default.png"))); // NOI18N
-        jbtnAceptar.addActionListener(new java.awt.event.ActionListener() {
+        btnAcep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_rollover.png"))); // NOI18N
+        btnAcep.setBorder(null);
+        btnAcep.setContentAreaFilled(false);
+        btnAcep.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAcep.setFocusPainted(false);
+        btnAcep.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_default.png"))); // NOI18N
+        btnAcep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnAceptarActionPerformed(evt);
+                btnAcepActionPerformed(evt);
             }
         });
-        jPanel1.add(jbtnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 550, 180, 80));
+        jPanel1.add(btnAcep, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 550, 180, 80));
 
-        jbtnPreguntas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_rollover.png"))); // NOI18N
-        jbtnPreguntas.setBorder(null);
-        jbtnPreguntas.setContentAreaFilled(false);
-        jbtnPreguntas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jbtnPreguntas.setFocusPainted(false);
-        jbtnPreguntas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_default.png"))); // NOI18N
-        jbtnPreguntas.addActionListener(new java.awt.event.ActionListener() {
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_rollover.png"))); // NOI18N
+        btnAceptar.setBorder(null);
+        btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAceptar.setFocusPainted(false);
+        btnAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_default.png"))); // NOI18N
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnPreguntasActionPerformed(evt);
+                btnAceptarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbtnPreguntas, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 330, 180, 80));
+        jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 330, 180, 80));
 
-        jComboBox1.setBackground(new java.awt.Color(33, 37, 41));
-        jComboBox1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(254, 254, 254));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(null);
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 430, -1));
+        cbPregunta4.setBackground(new java.awt.Color(33, 37, 41));
+        cbPregunta4.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        cbPregunta4.setForeground(new java.awt.Color(254, 254, 254));
+        cbPregunta4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pregunta 4", " " }));
+        cbPregunta4.setBorder(null);
+        cbPregunta4.setEnabled(false);
+        jPanel1.add(cbPregunta4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 430, -1));
 
-        jComboBox4.setBackground(new java.awt.Color(33, 37, 41));
-        jComboBox4.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jComboBox4.setForeground(new java.awt.Color(254, 254, 254));
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox4.setBorder(null);
-        jPanel1.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 430, -1));
+        cbPregunta3.setBackground(new java.awt.Color(33, 37, 41));
+        cbPregunta3.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        cbPregunta3.setForeground(new java.awt.Color(254, 254, 254));
+        cbPregunta3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pregunta 3", " " }));
+        cbPregunta3.setBorder(null);
+        cbPregunta3.setEnabled(false);
+        jPanel1.add(cbPregunta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 430, -1));
 
-        jComboBox3.setBackground(new java.awt.Color(33, 37, 41));
-        jComboBox3.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jComboBox3.setForeground(new java.awt.Color(254, 254, 254));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox3.setBorder(null);
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 430, -1));
+        cbPregunta2.setBackground(new java.awt.Color(33, 37, 41));
+        cbPregunta2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        cbPregunta2.setForeground(new java.awt.Color(254, 254, 254));
+        cbPregunta2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pregunta 2", " " }));
+        cbPregunta2.setBorder(null);
+        cbPregunta2.setEnabled(false);
+        jPanel1.add(cbPregunta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 430, -1));
 
-        jComboBox2.setBackground(new java.awt.Color(33, 37, 41));
-        jComboBox2.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(254, 254, 254));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setBorder(null);
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 430, -1));
+        cbPregunta1.setBackground(new java.awt.Color(33, 37, 41));
+        cbPregunta1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        cbPregunta1.setForeground(new java.awt.Color(254, 254, 254));
+        cbPregunta1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pregunta 1", "Pregunta 2", " " }));
+        cbPregunta1.setBorder(null);
+        cbPregunta1.setEnabled(false);
+        jPanel1.add(cbPregunta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 430, -1));
+
+        jConfirmar.setBackground(new java.awt.Color(33, 37, 41));
+        jPanel1.add(jConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 630, 200, 30));
+
+        jNueva.setBackground(new java.awt.Color(33, 37, 41));
+        jPanel1.add(jNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 550, 200, 30));
 
         jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(254, 254, 254));
@@ -312,36 +314,96 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroRecuCorreo.png"))); // NOI18N
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, -1, -1));
 
-        jbtnVerificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_rollover-1.png"))); // NOI18N
-        jbtnVerificar.setBorder(null);
-        jbtnVerificar.setContentAreaFilled(false);
-        jbtnVerificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jbtnVerificar.setFocusPainted(false);
-        jbtnVerificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_default.png"))); // NOI18N
-        jbtnVerificar.addActionListener(new java.awt.event.ActionListener() {
+        btnVerificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_rollover-1.png"))); // NOI18N
+        btnVerificar.setBorder(null);
+        btnVerificar.setContentAreaFilled(false);
+        btnVerificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVerificar.setFocusPainted(false);
+        btnVerificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_default.png"))); // NOI18N
+        btnVerificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnVerificarActionPerformed(evt);
+                btnVerificarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbtnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 180, 80));
+        jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 180, 80));
 
         jLabel15.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(254, 254, 254));
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroRecuCorreo.png"))); // NOI18N
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
+        cbRespuestas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cbRespuestas, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 230, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 740));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbtnPreguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPreguntasActionPerformed
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        
+        //Validando campos vacios
+        if ((j1.getText().trim().isEmpty()) || (j2.getText().trim().isEmpty()) || (j3.getText().trim().isEmpty()) || 
+                (j4.getText().trim().isEmpty())) {
+            JOptionPane.showMessageDialog(null, "Rellene los campos faltantes.","Campos vacios",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            //Verificando respuestas
+            if (this.verificarRespuestas()) {
+                
+                JOptionPane.showMessageDialog(null, "Las respuesas ingresadas se han verificado correctamente","Respuetas correctas",JOptionPane.INFORMATION_MESSAGE);
+                //Habilitando botones
+                jUsuario.setEnabled(false);
+                btnVerificar.setEnabled(false);
+                j1.setEnabled(false);
+                j2.setEnabled(false);
+                j3.setEnabled(false);
+                j4.setEnabled(false);
+                btnAceptar.setEnabled(false);
+                jNueva.setEnabled(true);
+                jConfirmar.setEnabled(true);
+                btnAcep.setEnabled(true);
+            }
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
-    }//GEN-LAST:event_jbtnPreguntasActionPerformed
-
-    private void jbtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAceptarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnAceptarActionPerformed
+    private void btnAcepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcepActionPerformed
+       //Validando campos vacios
+        if (jNueva.getText().trim().isEmpty() || jConfirmar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Rellene los campos faltantes.","Campos vacios.",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            String nueva = new String(jNueva.getPassword());
+            String confirmar = new String(jConfirmar.getPassword());
+            
+            //Verificando que sean igual 
+            if (nueva.equals(confirmar)) {
+                
+                //Reestableciendo contraseña
+                String contra = new String(jConfirmar.getPassword());
+                String encriptado=DigestUtils.sha1Hex(contra);
+                
+                recuCtrl.setNuevaContra(encriptado);
+                
+                if (recu.cambiarContra()) {
+                    JOptionPane.showMessageDialog(null, "La contraseña se ha cambiado correctamente","Contraseña actualizada.",JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(false);
+                    frmLogin formulario = null;
+                    try {
+                        formulario = new frmLogin();
+                    } catch (UnsupportedLookAndFeelException ex) {
+                        Logger.getLogger(frmRecuAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    formulario.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "La contraseña no se ha cambiado correctamente","Contraseña no actualizada.",JOptionPane.WARNING_MESSAGE);
+                }
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.","Contraseñas incorrectas.",JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnAcepActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        this.setVisible(false);
@@ -349,66 +411,118 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
        formulario.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jbtnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnVerificarActionPerformed
+    private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
         
-    }//GEN-LAST:event_jbtnVerificarActionPerformed
+        //Validando campos vacios
+        if (jUsuario.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Rellene los campos faltantes.","Campos vacios",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+            //Enviando datos al constructor
+            recuCtrl.setUsuario(jUsuario.getText());
+            
+            if (recu.obtenerIdUsuario()) {
+                
+                //Llenanco combobox de preguntas
+                cbPregunta1.setModel(recu.llenarPreguntas());
+                cbPregunta2.setModel(recu.llenarPreguntas());
+                cbPregunta3.setModel(recu.llenarPreguntas());
+                cbPregunta4.setModel(recu.llenarPreguntas());
 
+                
+                cbPregunta1.setSelectedIndex(0);
+                cbPregunta2.setSelectedIndex(1);
+                cbPregunta3.setSelectedIndex(2);
+                cbPregunta4.setSelectedIndex(3);
+                
+                cbRespuestas.setModel(recu.llenarRespuestas());
+                
+                //Habilitando botones
+                jUsuario.setEnabled(false);
+                btnVerificar.setEnabled(false);
+                j1.setEnabled(true);
+                j2.setEnabled(true);
+                j3.setEnabled(true);
+                j4.setEnabled(true);
+                btnAceptar.setEnabled(true);
+            }
+        }
+        
+        
+    }//GEN-LAST:event_btnVerificarActionPerformed
+
+    public boolean verificarRespuestas(){
+        boolean resp = false;
+        
+        if ((j1.getText().equals(cbRespuestas.getItemAt(cbRespuestas.getSelectedIndex())))) {
+            cbRespuestas.setSelectedIndex(1);
+            if ((j2.getText().equals(cbRespuestas.getItemAt(cbRespuestas.getSelectedIndex())))) {
+                cbRespuestas.setSelectedIndex(2);
+                if ((j3.getText().equals(cbRespuestas.getItemAt(cbRespuestas.getSelectedIndex())))) {
+                    cbRespuestas.setSelectedIndex(3);
+                    if ((j4.getText().equals(cbRespuestas.getItemAt(cbRespuestas.getSelectedIndex())))) {
+                        
+                        resp = true;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "La cuarta respuesta no es correcta","Respuesta incorrecta",JOptionPane.WARNING_MESSAGE);
+                        cbRespuestas.setSelectedIndex(0);
+                    }
+                } else {
+                      JOptionPane.showMessageDialog(null, "La tercera respuesta no es correcta","Respuesta incorrecta",JOptionPane.WARNING_MESSAGE);
+                      cbRespuestas.setSelectedIndex(0);
+                }
+            } else {
+              JOptionPane.showMessageDialog(null, "La segunda respuesta no es correcta","Respuesta incorrecta",JOptionPane.WARNING_MESSAGE);
+              cbRespuestas.setSelectedIndex(0);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "La primera respuesta no es correcta","Respuesta incorrecta",JOptionPane.WARNING_MESSAGE);
+            cbRespuestas.setSelectedIndex(0);
+        }
+        
+        return resp;
+    }
+    
     //<editor-fold defaultstate="collapsed" desc="Validaciones">
-    private void jTextField14KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField14KeyTyped
+    private void jUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyTyped
         val.verificarEspeciales(evt);
-    }//GEN-LAST:event_jTextField14KeyTyped
+    }//GEN-LAST:event_jUsuarioKeyTyped
 
-    private void jTextField15KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField15KeyTyped
-        val.verificarEspeciales(evt);
-    }//GEN-LAST:event_jTextField15KeyTyped
-
-    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
-        val.verificarEspeciales(evt);
-    }//GEN-LAST:event_jTextField6KeyTyped
-
-    private void jTextField11KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyTyped
+    private void j1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j1KeyTyped
         val.verificarAlfanumerico(evt);
-    }//GEN-LAST:event_jTextField11KeyTyped
+    }//GEN-LAST:event_j1KeyTyped
 
-    private void jTextField12KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyTyped
+    private void j2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j2KeyTyped
         val.verificarAlfanumerico(evt);
-    }//GEN-LAST:event_jTextField12KeyTyped
+    }//GEN-LAST:event_j2KeyTyped
 
-    private void jTextField13KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField13KeyTyped
+    private void j3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j3KeyTyped
         val.verificarAlfanumerico(evt);
-    }//GEN-LAST:event_jTextField13KeyTyped
+    }//GEN-LAST:event_j3KeyTyped
 
-    private void jTextField10KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyTyped
+    private void j4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j4KeyTyped
         val.verificarAlfanumerico(evt);
-    }//GEN-LAST:event_jTextField10KeyTyped
+    }//GEN-LAST:event_j4KeyTyped
 
-    private void jTextField14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField14KeyPressed
+    private void jUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyPressed
         val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField14KeyPressed
+    }//GEN-LAST:event_jUsuarioKeyPressed
 
-    private void jTextField15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField15KeyPressed
+    private void j1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j1KeyPressed
         val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField15KeyPressed
+    }//GEN-LAST:event_j1KeyPressed
 
-    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+    private void j2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j2KeyPressed
         val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField6KeyPressed
+    }//GEN-LAST:event_j2KeyPressed
 
-    private void jTextField11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField11KeyPressed
+    private void j3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j3KeyPressed
         val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField11KeyPressed
+    }//GEN-LAST:event_j3KeyPressed
 
-    private void jTextField12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyPressed
+    private void j4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j4KeyPressed
         val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField12KeyPressed
-
-    private void jTextField13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField13KeyPressed
-        val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField13KeyPressed
-
-    private void jTextField10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyPressed
-        val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField10KeyPressed
+    }//GEN-LAST:event_j4KeyPressed
     //</editor-fold>
     
     /**
@@ -448,11 +562,20 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAcep;
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnVerificar;
+    private javax.swing.JComboBox<String> cbPregunta1;
+    private javax.swing.JComboBox<String> cbPregunta2;
+    private javax.swing.JComboBox<String> cbPregunta3;
+    private javax.swing.JComboBox<String> cbPregunta4;
+    private javax.swing.JComboBox<String> cbRespuestas;
+    private javax.swing.JTextField j1;
+    private javax.swing.JTextField j2;
+    private javax.swing.JTextField j3;
+    private javax.swing.JTextField j4;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JPasswordField jConfirmar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -467,17 +590,9 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPasswordField jNueva;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JButton jbtnAceptar;
-    private javax.swing.JButton jbtnPreguntas;
-    private javax.swing.JButton jbtnVerificar;
+    private javax.swing.JTextField jUsuario;
     // End of variables declaration//GEN-END:variables
 }

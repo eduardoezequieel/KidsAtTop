@@ -6,10 +6,12 @@
 package modelo;
 
 import controlador.CtrlRecuContra;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Random;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -156,6 +158,86 @@ public class RecuContra {
     }
     
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Recuperacion por preguntas de seguridad">
+    public boolean obtenerIdUsuario(){
+        boolean resp = false;
+        try{
+            
+            //Preparando sentencia sql
+            String sql = "SELECT id_usuario FROM usuario WHERE usuario = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            cmd.setString(1, recuCtrl.getUsuario());
+            
+            ResultSet rs = cmd.executeQuery();
+            if(rs.next()){
+               recuCtrl.setIdUsuario(rs.getInt(1));
+               resp = true;
+            } else {
+                JOptionPane.showMessageDialog(null,"Usuario no encontrado");
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        
+        return resp;
+    }
+    
+    public DefaultComboBoxModel llenarPreguntas(){
+        
+        //Creando instancia del modelo
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        try
+        {
+            
+            //Llamando procedimiento almacenado
+            CallableStatement cmd = cn.prepareCall("{CALL cbPreguntas(?)}");
+            
+            cmd.setInt(1, recuCtrl.getIdUsuario());
+            
+            //Ejecutando sentencia
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next())
+            {
+                //Agregando elementos al combobox
+                modelo.addElement(rs.getString(1));
+            }
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }       
+      return modelo;
+    }
+   
+    public DefaultComboBoxModel llenarRespuestas(){
+        
+        //Creando instancia del modelo
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        try
+        {
+            
+            //Llamando procedimiento almacenado
+            CallableStatement cmd = cn.prepareCall("{CALL cbRespuestas(?)}");
+            
+            cmd.setInt(1, recuCtrl.getIdUsuario());
+            
+            //Ejecutando sentencia
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next())
+            {
+                //Agregando elementos al combobox
+                modelo.addElement(rs.getString(1));
+            }
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }       
+      return modelo;
+    }
+     //</editor-fold>
     
     public boolean cambiarContra(){
         
