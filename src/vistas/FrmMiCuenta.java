@@ -112,6 +112,7 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jDireccion = new javax.swing.JTextArea();
+        btnCambiarContraseña = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -319,6 +320,19 @@ public class FrmMiCuenta extends javax.swing.JFrame {
 
         jPanel1.add(jLayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, 250, 440));
 
+        btnCambiarContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCambiarContraseña.png"))); // NOI18N
+        btnCambiarContraseña.setBorder(null);
+        btnCambiarContraseña.setBorderPainted(false);
+        btnCambiarContraseña.setContentAreaFilled(false);
+        btnCambiarContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCambiarContraseña.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCambiarContraseña_rollover.png"))); // NOI18N
+        btnCambiarContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarContraseñaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCambiarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 600, 140, 70));
+
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -348,7 +362,7 @@ public class FrmMiCuenta extends javax.swing.JFrame {
                 btnCargarFotoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCargarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 480, 340, 70));
+        jPanel1.add(btnCargarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 470, 340, 70));
 
         jLabel14.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -367,7 +381,7 @@ public class FrmMiCuenta extends javax.swing.JFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 590, 160, 70));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 600, 140, 70));
 
         idUsuario.setBackground(new java.awt.Color(33, 37, 41));
         idUsuario.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -488,6 +502,14 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCalendarioPropertyChange
 
+    private void btnCambiarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarContraseñaActionPerformed
+        this.setVisible(false);
+        MtoLogin log1=new MtoLogin();
+        log1.obtenerDatosUsuario(mod);
+        FrmCambiarContraseña frm = new FrmCambiarContraseña(mod);
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnCambiarContraseñaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -526,6 +548,7 @@ public class FrmMiCuenta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgGenero;
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnCambiarContraseña;
     private javax.swing.JButton btnCargarFoto;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JTextField idUsuario;
