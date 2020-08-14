@@ -19,11 +19,12 @@ public class frmControlAcademicoContenedor extends javax.swing.JFrame {
      */
     public frmControlAcademicoContenedor() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        
     }
     public frmControlAcademicoContenedor(CtrlLoginUsuario mod){
     
         initComponents();
+        this.setLocationRelativeTo(null);
         this.mod = mod;
         int user=mod.getId_tipo_usuario();
         if (user==2||user==4) {

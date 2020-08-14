@@ -1,9 +1,11 @@
 package vistas;
 
+import controlador.CtrlLoginUsuario;
 import controlador.CtrlResponsable;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import modelo.MtoLogin;
 
 /**
  *
@@ -134,9 +136,12 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    CtrlLoginUsuario mod;
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         this.setVisible(false);
-        frmGestionarMatriculaContenedor frm = new frmGestionarMatriculaContenedor();
+        MtoLogin log=new MtoLogin();
+        log.obtenerDatosUsuario(mod);
+        frmGestionarMatriculaContenedor frm = new frmGestionarMatriculaContenedor(mod);
         frm.setVisible(true);
     }//GEN-LAST:event_btnRegresarActionPerformed
 

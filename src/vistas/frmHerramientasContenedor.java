@@ -23,10 +23,11 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
    
     public frmHerramientasContenedor() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        
     }
      public frmHerramientasContenedor(CtrlLoginUsuario mod){
         initComponents();
+        this.setLocationRelativeTo(null);
         this.mod = mod;
         System.out.println(mod.getId_tipo_usuario());
         

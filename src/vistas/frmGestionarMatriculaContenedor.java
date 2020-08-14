@@ -21,10 +21,11 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
      */
     public frmGestionarMatriculaContenedor() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        
     }
      public frmGestionarMatriculaContenedor(CtrlLoginUsuario mod) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.mod = mod;
          int user=mod.getId_tipo_usuario();
          if (user==3) {
