@@ -182,14 +182,14 @@ public class CtrlLoginUsuario {
     /**
      * @return the genero
      */
-    public char getGenero() {
+    public String getGenero() {
         return genero;
     }
 
     /**
      * @param genero the genero to set
      */
-    public void setGenero(char genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
@@ -221,6 +221,20 @@ public class CtrlLoginUsuario {
         this.contrasenia = contrasenia;
     }
 
+    /**
+     * @return the foto
+     */
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    /**
+     * @param foto the foto to set
+     */
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
       private int id_usuario;
       private String nombre;
       private String apellido;
@@ -233,10 +247,8 @@ public class CtrlLoginUsuario {
       private String usuario;
       private String nip;
       private String fecha_nacimiento;
-      private char genero;
+      private String genero;
       private String direccion;
       private String contrasenia;
-
-    
-    
+      private byte[] foto;
 }

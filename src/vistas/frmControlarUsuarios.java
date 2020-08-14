@@ -215,7 +215,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         btnReiniciarCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReiniciarCuenta_default.png"))); // NOI18N
         btnReiniciarCuenta.setBorder(null);
         btnReiniciarCuenta.setContentAreaFilled(false);
-        btnReiniciarCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReiniciarCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnReiniciarCuenta.setFocusPainted(false);
         btnReiniciarCuenta.setFocusable(false);
         btnReiniciarCuenta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReiniciarCuenta_rollover.png"))); // NOI18N
@@ -231,7 +231,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
         btnActualizar.setBorder(null);
         btnActualizar.setContentAreaFilled(false);
-        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnActualizar.setFocusPainted(false);
         btnActualizar.setFocusable(false);
         btnActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
@@ -247,7 +247,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         btnActivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActivarDefault.png"))); // NOI18N
         btnActivar.setBorder(null);
         btnActivar.setContentAreaFilled(false);
-        btnActivar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActivar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnActivar.setFocusPainted(false);
         btnActivar.setFocusable(false);
         btnActivar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActivarRollover.png"))); // NOI18N
@@ -263,7 +263,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         btnSuspender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
         btnSuspender.setBorder(null);
         btnSuspender.setContentAreaFilled(false);
-        btnSuspender.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSuspender.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSuspender.setFocusPainted(false);
         btnSuspender.setFocusable(false);
         btnSuspender.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
@@ -556,9 +556,9 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
 
         jLabel9.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel9.setText("Email:");
+        jLabel9.setText("Correo Electrónico:");
         jLayer3.add(jLabel9);
-        jLabel9.setBounds(0, 20, 45, 19);
+        jLabel9.setBounds(0, 20, 170, 19);
 
         txtEmail.setBackground(new java.awt.Color(33, 37, 41));
         txtEmail.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -637,7 +637,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         btnCargarFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCargarFoto_default.png"))); // NOI18N
         btnCargarFoto.setBorder(null);
         btnCargarFoto.setContentAreaFilled(false);
-        btnCargarFoto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCargarFoto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCargarFoto.setFocusPainted(false);
         btnCargarFoto.setFocusable(false);
         btnCargarFoto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCargarFoto_rollover.png"))); // NOI18N
@@ -653,7 +653,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnLimpiarDefault.png"))); // NOI18N
         btnLimpiar.setBorder(null);
         btnLimpiar.setContentAreaFilled(false);
-        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLimpiar.setFocusPainted(false);
         btnLimpiar.setFocusable(false);
         btnLimpiar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnLimpiarRollover.png"))); // NOI18N
@@ -669,7 +669,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_default.png"))); // NOI18N
         btnAgregar.setBorder(null);
         btnAgregar.setContentAreaFilled(false);
-        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAgregar.setFocusPainted(false);
         btnAgregar.setFocusable(false);
         btnAgregar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N

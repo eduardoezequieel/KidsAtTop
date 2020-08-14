@@ -106,15 +106,29 @@ public class MtoLogin {
         boolean resp = false;
         try
         {
-            String sql = "SELECT id_tipo_usuario, id_usuario FROM usuario WHERE usuario = ?";
+            String sql = "SELECT * FROM usuario WHERE usuario = ?";
             PreparedStatement cmd = conexion.prepareCall(sql);
             cmd.setString(1, usr.getUsuario());
             ResultSet rs = cmd.executeQuery();
             while(rs.next())
             {
                 resp = true;
-                usr.setId_tipo_usuario(rs.getInt(1));
-                usr.setId_usuario(rs.getInt(2));
+                usr.setId_usuario(rs.getInt(1));
+                usr.setNombre(rs.getString(2));
+                usr.setApellido(rs.getString(3));
+                usr.setId_tipo_usuario(rs.getInt(4));
+                usr.setId_estado_usuario(rs.getInt(5));
+                usr.setEmail(rs.getString(6));
+                usr.setTelefono(rs.getString(7));
+                usr.setDui(rs.getString(8));
+                usr.setNit(rs.getString(9));
+                usr.setUsuario(rs.getString(10));
+                usr.setNip(rs.getString(11));
+                usr.setFecha_nacimiento(rs.getString(12));
+                usr.setGenero(rs.getString(13));
+                usr.setDireccion(rs.getString(14));
+                usr.setContrasenia(rs.getString(15));
+                usr.setFoto(rs.getBytes(16));
             }
             
         }
@@ -124,6 +138,8 @@ public class MtoLogin {
         }
         return resp;
     }
+    
+    
     
     
     

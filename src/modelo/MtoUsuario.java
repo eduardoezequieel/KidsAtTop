@@ -354,5 +354,37 @@ public class MtoUsuario {
         }
         return resp;
     }
+    
+    public boolean actualizarMiCuenta(){
+        boolean resp = false;
+        try
+        {
+            String sql = "UPDATE usuario SET nombre = ?, apellido = ?, email = ?, telefono = ?, dui = ?, nit = ?, usuario = ?, nip = ?, fecha_nacimiento = ?, "
+                    + "genero = ?, direccion = ?, foto = ? WHERE id_usuario = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setString(1, ctrl.getNombre());
+            cmd.setString(2, ctrl.getApellido());
+            cmd.setString(3, ctrl.getEmail());
+            cmd.setString(4, ctrl.getTelefono());
+            cmd.setString(5, ctrl.getDui());
+            cmd.setString(6, ctrl.getNit());
+            cmd.setString(7, ctrl.getUsuario());
+            cmd.setString(8, ctrl.getNip());
+            cmd.setString(9, ctrl.getFecha_nacimiento());
+            cmd.setString(10, ctrl.getGenero());
+            cmd.setString(11, ctrl.getDireccion());
+            cmd.setBytes(12, ctrl.getFoto());
+            cmd.setInt(13, ctrl.getId_usuario());
+            
+            //Ejecutando consulta
+            if (!cmd.execute()) {
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return resp;
+    }
      //</editor-fold>
 }

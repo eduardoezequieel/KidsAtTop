@@ -90,7 +90,7 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
             .addGroup(jEscritorioLayout.createSequentialGroup()
                 .addGap(202, 202, 202)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
 
         jPanel1.add(jEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 1000, 740));
@@ -98,7 +98,7 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
         jControlarUsuarios1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backpng.png"))); // NOI18N
         jControlarUsuarios1.setBorder(null);
         jControlarUsuarios1.setContentAreaFilled(false);
-        jControlarUsuarios1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jControlarUsuarios1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jControlarUsuarios1.setFocusPainted(false);
         jControlarUsuarios1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back_rollover.png"))); // NOI18N
         jControlarUsuarios1.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +114,7 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
         jControlarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_default.png"))); // NOI18N
         jControlarUsuarios.setBorder(null);
         jControlarUsuarios.setContentAreaFilled(false);
-        jControlarUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jControlarUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jControlarUsuarios.setFocusPainted(false);
         jControlarUsuarios.setFocusable(false);
         jControlarUsuarios.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_rollover.png"))); // NOI18N
@@ -128,7 +128,7 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
         jReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReportesDefault.png"))); // NOI18N
         jReportes.setBorder(null);
         jReportes.setContentAreaFilled(false);
-        jReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jReportes.setFocusPainted(false);
         jReportes.setFocusable(false);
         jReportes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReportesRollover.png"))); // NOI18N
