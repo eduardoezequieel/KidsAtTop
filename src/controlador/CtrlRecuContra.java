@@ -19,7 +19,6 @@ public class CtrlRecuContra {
     private static String contraseña;
     private static String admin;
     private static int idUsuario;
-    private static String[] respuesta;
     
 
     /**
@@ -120,17 +119,4 @@ public class CtrlRecuContra {
         this.idUsuario = idUsuario;
     }
 
-    /**
-     * @return the respuesta
-     */
-    public String[] getRespuesta() {
-        return respuesta;
-    }
-
-    /**
-     * @param respuesta the respuesta to set
-     */
-    public void setRespuesta(String[] respuesta) {
-        this.respuesta = respuesta;
-    }
 }
