@@ -86,14 +86,14 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         txtApellido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtDui = new javax.swing.JTextField();
+        txtDui = new javax.swing.JFormattedTextField();
         jLayer2 = new javax.swing.JLayeredPane();
         jLabel11 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cbParentesco = new javax.swing.JComboBox<>();
+        txtTelefono = new javax.swing.JFormattedTextField();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -265,10 +265,14 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jLabel7.setBounds(20, 140, 29, 30);
 
         txtDui.setBackground(new java.awt.Color(33, 37, 41));
-        txtDui.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtDui.setForeground(new java.awt.Color(254, 254, 254));
+        txtDui.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            txtDui.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         txtDui.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDui.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        txtDui.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLayer1.add(txtDui);
         txtDui.setBounds(20, 170, 250, 30);
 
@@ -290,14 +294,6 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jLayer2.add(txtEmail);
         txtEmail.setBounds(10, 110, 300, 30);
 
-        txtTelefono.setBackground(new java.awt.Color(33, 37, 41));
-        txtTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtTelefono.setForeground(new java.awt.Color(254, 254, 254));
-        txtTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtTelefono.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jLayer2.add(txtTelefono);
-        txtTelefono.setBounds(10, 40, 190, 30);
-
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
         jLabel9.setText("Teléfono:");
@@ -317,6 +313,18 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         cbParentesco.setBorder(null);
         jLayer2.add(cbParentesco);
         cbParentesco.setBounds(10, 180, 290, 30);
+
+        txtTelefono.setBackground(new java.awt.Color(33, 37, 41));
+        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            txtTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLayer2.add(txtTelefono);
+        txtTelefono.setBounds(10, 40, 270, 30);
 
         jPanel1.add(jLayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 320, 220));
 
@@ -456,9 +464,9 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
     private javax.swing.JTable tResponsables;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtDui;
+    private javax.swing.JFormattedTextField txtDui;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JFormattedTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

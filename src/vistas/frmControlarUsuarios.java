@@ -187,14 +187,14 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jCalendario = new com.toedter.calendar.JDateChooser();
         txtFecha = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        txtNit = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        txtNIP = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtDUI = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtTelefono = new javax.swing.JTextField();
+        txtDUI = new javax.swing.JFormattedTextField();
+        txtTelefono = new javax.swing.JFormattedTextField();
+        txtNit = new javax.swing.JFormattedTextField();
+        txtNIP = new javax.swing.JFormattedTextField();
         jLayer3 = new javax.swing.JLayeredPane();
         jLabel9 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
@@ -424,6 +424,8 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
 
         jCalendario.setBackground(new java.awt.Color(255, 255, 255));
         jCalendario.setForeground(new java.awt.Color(255, 255, 255));
+        jCalendario.setMaxSelectableDate(new java.util.Date(1072854073000L));
+        jCalendario.setMinSelectableDate(new java.util.Date(-315590327000L));
         jCalendario.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jCalendarioFocusGained(evt);
@@ -477,37 +479,11 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLayer2.add(jLabel15);
         jLabel15.setBounds(10, 150, 151, 19);
 
-        txtNit.setBackground(new java.awt.Color(33, 37, 41));
-        txtNit.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtNit.setForeground(new java.awt.Color(254, 254, 254));
-        txtNit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNit.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        txtNit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNitActionPerformed(evt);
-            }
-        });
-        jLayer2.add(txtNit);
-        txtNit.setBounds(10, 110, 220, 30);
-
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));
         jLabel13.setText("NIT:");
         jLayer2.add(jLabel13);
         jLabel13.setBounds(10, 90, 29, 19);
-
-        txtNIP.setBackground(new java.awt.Color(33, 37, 41));
-        txtNIP.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtNIP.setForeground(new java.awt.Color(254, 254, 254));
-        txtNIP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNIP.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        txtNIP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNIPActionPerformed(evt);
-            }
-        });
-        jLayer2.add(txtNIP);
-        txtNIP.setBounds(50, 50, 180, 30);
 
         jLabel20.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(254, 254, 254));
@@ -521,19 +497,6 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLayer2.add(jLabel11);
         jLabel11.setBounds(10, 10, 29, 30);
 
-        txtDUI.setBackground(new java.awt.Color(33, 37, 41));
-        txtDUI.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtDUI.setForeground(new java.awt.Color(254, 254, 254));
-        txtDUI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDUI.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        txtDUI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDUIActionPerformed(evt);
-            }
-        });
-        jLayer2.add(txtDUI);
-        txtDUI.setBounds(50, 10, 180, 30);
-
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(254, 254, 254));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -541,18 +504,53 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLayer2.add(jLabel10);
         jLabel10.setBounds(10, 210, 67, 20);
 
+        txtDUI.setBackground(new java.awt.Color(33, 37, 41));
+        txtDUI.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            txtDUI.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtDUI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDUI.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLayer2.add(txtDUI);
+        txtDUI.setBounds(50, 10, 180, 30);
+
         txtTelefono.setBackground(new java.awt.Color(33, 37, 41));
-        txtTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtTelefono.setForeground(new java.awt.Color(254, 254, 254));
+        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            txtTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         txtTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtTelefono.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonoActionPerformed(evt);
-            }
-        });
+        txtTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLayer2.add(txtTelefono);
         txtTelefono.setBounds(10, 230, 220, 30);
+
+        txtNit.setBackground(new java.awt.Color(33, 37, 41));
+        txtNit.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            txtNit.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-######-###-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtNit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNit.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLayer2.add(txtNit);
+        txtNit.setBounds(10, 110, 220, 30);
+
+        txtNIP.setBackground(new java.awt.Color(33, 37, 41));
+        txtNIP.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            txtNIP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtNIP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNIP.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLayer2.add(txtNIP);
+        txtNIP.setBounds(50, 50, 180, 30);
 
         jPanel1.add(jLayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 240, 270));
 
@@ -788,29 +786,13 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_txtApellidoActionPerformed
 
-    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
-         
-    }//GEN-LAST:event_txtTelefonoActionPerformed
-
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
          
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void txtDUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDUIActionPerformed
-         
-    }//GEN-LAST:event_txtDUIActionPerformed
-
     private void txtDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMouseClicked
         
     }//GEN-LAST:event_txtDireccionMouseClicked
-
-    private void txtNitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNitActionPerformed
-       
-    }//GEN-LAST:event_txtNitActionPerformed
-
-    private void txtNIPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNIPActionPerformed
-      
-    }//GEN-LAST:event_txtNIPActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
        
@@ -1147,15 +1129,15 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JTable tUsuarios;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtDUI;
+    private javax.swing.JFormattedTextField txtDUI;
     private javax.swing.JTextArea txtDireccion;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNIP;
-    private javax.swing.JTextField txtNit;
+    private javax.swing.JFormattedTextField txtNIP;
+    private javax.swing.JFormattedTextField txtNit;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JFormattedTextField txtTelefono;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

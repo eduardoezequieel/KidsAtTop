@@ -94,24 +94,24 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jFechaNacimiento = new javax.swing.JTextField();
         jCalendario = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
-        jTelefono = new javax.swing.JTextField();
         jCorreo = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jNombre = new javax.swing.JTextField();
+        jTelefono = new javax.swing.JFormattedTextField();
         jLayer2 = new javax.swing.JLayeredPane();
         jLabel3 = new javax.swing.JLabel();
-        jDUI = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jNIP = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jNIT = new javax.swing.JTextField();
         jUsuario = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jDireccion = new javax.swing.JTextArea();
+        jNIT = new javax.swing.JFormattedTextField();
+        jDUI = new javax.swing.JFormattedTextField();
+        jNIP = new javax.swing.JFormattedTextField();
         btnCambiarContraseña = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -194,6 +194,8 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jFechaNacimiento.setSelectionColor(new java.awt.Color(0, 153, 0));
         jLayer1.add(jFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 180, 30));
 
+        jCalendario.setMaxSelectableDate(new java.util.Date(1072854075000L));
+        jCalendario.setMinSelectableDate(new java.util.Date(-315590325000L));
         jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jCalendarioPropertyChange(evt);
@@ -206,13 +208,6 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Teléfono:");
         jLayer1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 230, 30));
-
-        jTelefono.setBackground(new java.awt.Color(33, 37, 41));
-        jTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jTelefono.setForeground(new java.awt.Color(255, 255, 255));
-        jTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTelefono.setSelectionColor(new java.awt.Color(0, 153, 0));
-        jLayer1.add(jTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 230, 30));
 
         jCorreo.setBackground(new java.awt.Color(33, 37, 41));
         jCorreo.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -246,6 +241,17 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jNombre.setSelectionColor(new java.awt.Color(0, 153, 0));
         jLayer1.add(jNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 230, 30));
 
+        jTelefono.setBackground(new java.awt.Color(33, 37, 41));
+        jTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            jTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLayer1.add(jTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 230, 30));
+
         jPanel1.add(jLayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 250, 450));
 
         jLayer2.setNextFocusableComponent(jLayer1);
@@ -257,38 +263,17 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jLabel3.setText("DUI:");
         jLayer2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 230, 30));
 
-        jDUI.setBackground(new java.awt.Color(33, 37, 41));
-        jDUI.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jDUI.setForeground(new java.awt.Color(255, 255, 255));
-        jDUI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jDUI.setSelectionColor(new java.awt.Color(0, 153, 0));
-        jLayer2.add(jDUI, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 230, 30));
-
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("NIP:");
         jLayer2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 230, 30));
 
-        jNIP.setBackground(new java.awt.Color(33, 37, 41));
-        jNIP.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jNIP.setForeground(new java.awt.Color(255, 255, 255));
-        jNIP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jNIP.setSelectionColor(new java.awt.Color(0, 153, 0));
-        jLayer2.add(jNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 230, 30));
-
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("NIT:");
         jLayer2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 230, 30));
-
-        jNIT.setBackground(new java.awt.Color(33, 37, 41));
-        jNIT.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jNIT.setForeground(new java.awt.Color(255, 255, 255));
-        jNIT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jNIT.setSelectionColor(new java.awt.Color(0, 153, 0));
-        jLayer2.add(jNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 230, 30));
 
         jUsuario.setBackground(new java.awt.Color(33, 37, 41));
         jUsuario.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -317,6 +302,39 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jDireccion);
 
         jLayer2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 230, 110));
+
+        jNIT.setBackground(new java.awt.Color(33, 37, 41));
+        jNIT.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            jNIT.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-######-###-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jNIT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jNIT.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLayer2.add(jNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 230, 30));
+
+        jDUI.setBackground(new java.awt.Color(33, 37, 41));
+        jDUI.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            jDUI.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jDUI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jDUI.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLayer2.add(jDUI, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 230, 30));
+
+        jNIP.setBackground(new java.awt.Color(33, 37, 41));
+        jNIP.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            jNIP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jNIP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jNIP.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLayer2.add(jNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 230, 30));
 
         jPanel1.add(jLayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, 250, 440));
 
@@ -555,7 +573,7 @@ public class FrmMiCuenta extends javax.swing.JFrame {
     private javax.swing.JTextField jApellido;
     private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JTextField jCorreo;
-    private javax.swing.JTextField jDUI;
+    private javax.swing.JFormattedTextField jDUI;
     private javax.swing.JTextArea jDireccion;
     private javax.swing.JTextField jFechaNacimiento;
     private javax.swing.JLabel jLabel1;
@@ -575,12 +593,12 @@ public class FrmMiCuenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayer1;
     private javax.swing.JLayeredPane jLayer2;
-    private javax.swing.JTextField jNIP;
-    private javax.swing.JTextField jNIT;
+    private javax.swing.JFormattedTextField jNIP;
+    private javax.swing.JFormattedTextField jNIT;
     private javax.swing.JTextField jNombre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTelefono;
+    private javax.swing.JFormattedTextField jTelefono;
     private javax.swing.JTextField jUsuario;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JRadioButton rbFemenino;

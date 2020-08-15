@@ -80,9 +80,9 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jDireccion = new javax.swing.JTextArea();
         jLabel16 = new javax.swing.JLabel();
-        jNIP = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jNIT = new javax.swing.JFormattedTextField();
+        jNIP = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         lblFoto = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -269,12 +269,6 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         jLabel16.setText("NIP:");
         jLayeredPane2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 280, -1));
 
-        jNIP.setBackground(new java.awt.Color(33, 37, 41));
-        jNIP.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jNIP.setForeground(new java.awt.Color(255, 255, 255));
-        jNIP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jLayeredPane2.add(jNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 280, 40));
-
         jLabel17.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -291,6 +285,17 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         jNIT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jNIT.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLayeredPane2.add(jNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 280, 40));
+
+        jNIP.setBackground(new java.awt.Color(33, 37, 41));
+        jNIP.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            jNIP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jNIP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jNIP.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLayeredPane2.add(jNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 280, 40));
 
         jPanel1.add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 330, 610));
 
@@ -537,7 +542,7 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
-    private javax.swing.JTextField jNIP;
+    private javax.swing.JFormattedTextField jNIP;
     private javax.swing.JFormattedTextField jNIT;
     private javax.swing.JTextField jNombre;
     private javax.swing.JPanel jPanel1;

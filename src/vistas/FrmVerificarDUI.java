@@ -44,7 +44,6 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jApellido = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTel = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jCorreo = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -53,12 +52,13 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         btnAgregar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jTel = new javax.swing.JFormattedTextField();
         pnlVerificar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btnVerificar = new javax.swing.JButton();
-        jDui = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jDui = new javax.swing.JFormattedTextField();
         jSeparator1 = new javax.swing.JSeparator();
 
         setPreferredSize(new java.awt.Dimension(1080, 650));
@@ -77,7 +77,7 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         jNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
         pnlResponsable.add(jNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 230, 30));
 
-        jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Parentesco:");
         pnlResponsable.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 110, 30));
@@ -89,19 +89,12 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         jApellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
         pnlResponsable.add(jApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 230, 30));
 
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Apellido:");
         pnlResponsable.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 80, 30));
 
-        jTel.setBackground(new java.awt.Color(33, 37, 41));
-        jTel.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jTel.setForeground(new java.awt.Color(255, 255, 255));
-        jTel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        pnlResponsable.add(jTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 230, 30));
-
-        jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Teléfono:");
         pnlResponsable.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 80, 30));
@@ -113,7 +106,7 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         jCorreo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
         pnlResponsable.add(jCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 230, 30));
 
-        jLabel6.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Correo Electrónico:");
         pnlResponsable.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 160, 30));
@@ -125,7 +118,7 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         cbParentesco.setBorder(null);
         pnlResponsable.add(cbParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 230, -1));
 
-        jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Registro del responsable:");
         pnlResponsable.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 210, 30));
@@ -156,17 +149,28 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         });
         pnlResponsable.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, 180, 90));
 
-        jLabel8.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Nombre:");
         pnlResponsable.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 80, 30));
+
+        jTel.setBackground(new java.awt.Color(33, 37, 41));
+        jTel.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            jTel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jTel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTel.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        pnlResponsable.add(jTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 230, 30));
 
         jPanel1.add(pnlResponsable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 1060, 320));
 
         pnlVerificar.setBackground(new java.awt.Color(33, 37, 41));
         pnlVerificar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("<html><p style=overflow:auto;>Para continuar, ingrese el DUI del responsable para verificar si este existe o no, si el DUI ingresado no existe, podra ingresar los datos del nuevo responsable.</p>");
         pnlVerificar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 970, -1));
@@ -184,14 +188,7 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         });
         pnlVerificar.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 180, 70));
 
-        jDui.setBackground(new java.awt.Color(33, 37, 41));
-        jDui.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jDui.setForeground(new java.awt.Color(255, 255, 255));
-        jDui.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jDui.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        pnlVerificar.add(jDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 170, 30));
-
-        jLabel3.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("DUI: ");
         pnlVerificar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 40, 30));
@@ -207,6 +204,17 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
             }
         });
         pnlVerificar.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 180, 70));
+
+        jDui.setBackground(new java.awt.Color(33, 37, 41));
+        jDui.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            jDui.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jDui.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jDui.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        pnlVerificar.add(jDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 180, 30));
 
         jPanel1.add(pnlVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1060, 220));
 
@@ -313,7 +321,7 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JTextField jCorreo;
-    private javax.swing.JTextField jDui;
+    private javax.swing.JFormattedTextField jDui;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -325,7 +333,7 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jNombre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTel;
+    private javax.swing.JFormattedTextField jTel;
     private javax.swing.JPanel pnlResponsable;
     private javax.swing.JPanel pnlVerificar;
     // End of variables declaration//GEN-END:variables
