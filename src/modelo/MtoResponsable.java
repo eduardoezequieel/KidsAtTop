@@ -121,6 +121,25 @@ public class MtoResponsable {
         
     }
     
+    public void obtenerIdEstado(){
+        try{
+            
+            //Preparando sentencia sql
+            String sql = "SELECT id_estado_responsable FROM responsable WHERE id_responsable = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setInt(1, responsableCtrl.getIdResponsable());
+            
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+               responsableCtrl.setIdEstado(rs.getInt(1));
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }
+    
     //Obteniendo id del responsable
     public void obtenerUltimoId(){ 
         try{
@@ -214,6 +233,24 @@ public class MtoResponsable {
         try
         {
             String sql = "UPDATE responsable SET id_estado_responsable = 3 WHERE id_responsable = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setInt(1, responsableCtrl.getIdResponsable());
+            //Ejecutando consulta
+            if (!cmd.execute()) {
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+        return resp;
+    }
+    
+    public boolean activarResponsable(){
+        boolean resp = false;
+        try
+        {
+            String sql = "UPDATE responsable SET id_estado_responsable = 1 WHERE id_responsable = ?";
             PreparedStatement cmd = cn.prepareCall(sql);
             cmd.setInt(1, responsableCtrl.getIdResponsable());
             //Ejecutando consulta
