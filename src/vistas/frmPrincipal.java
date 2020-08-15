@@ -34,8 +34,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
     public frmPrincipal(CtrlLoginUsuario mod){
         initComponents();
         this.mod = mod;
-        lblTipoUsuario.setVisible(false);
-        lblTipoUsuario.setText(String.valueOf(mod.getId_tipo_usuario()));
+        
         this.setLocationRelativeTo(null);
         
         //Seteando usuario logueado
@@ -85,14 +84,15 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         lblFoto = new javax.swing.JLabel();
         lblTipo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
         lblHora = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        lblTipoUsuario = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        btnMinimizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -184,6 +184,19 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         jLabel2.setText("Hola,");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 80, -1, -1));
 
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarDefault.png"))); // NOI18N
+        btnSalir.setBorder(null);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setFocusPainted(false);
+        btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarRollover.png"))); // NOI18N
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 30, 30));
+
         lblHora.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         lblHora.setForeground(new java.awt.Color(254, 254, 254));
         lblHora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -203,9 +216,6 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroMenu.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 0, -1, 730));
 
-        lblTipoUsuario.setText("jLabel6");
-        jPanel1.add(lblTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 30)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(236, 236, 236));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroHoraFecha.png"))); // NOI18N
@@ -222,22 +232,36 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         jSeparator2.setEnabled(false);
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 560, 20));
 
+        btnMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMinimizarDefault.png"))); // NOI18N
+        btnMinimizar.setBorder(null);
+        btnMinimizar.setContentAreaFilled(false);
+        btnMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMinimizar.setFocusPainted(false);
+        btnMinimizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMinimizarRollover.png"))); // NOI18N
+        btnMinimizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 30, 30));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 740));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-        
-      
-        this.setVisible(false);
-        frmLogin formulario = null;
-        try {
-            formulario = new frmLogin();
-        } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(frmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        formulario.setVisible(true);
+        int mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas cerrar sesión?","Advertencia",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+        if (mensaje == JOptionPane.YES_OPTION) {
+                this.setVisible(false);
+                frmLogin formulario = null;
+                try {
+                    formulario = new frmLogin();
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(frmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                formulario.setVisible(true);
+            }
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -274,6 +298,18 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         FrmMiCuenta frm = new FrmMiCuenta(mod);
         frm.setVisible(true);
     }//GEN-LAST:event_btnMiCuentaActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        int mensaje;
+        mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres cerrar el sistema?","Advertencia",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+        if (mensaje == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
+        this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_btnMinimizarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -314,6 +350,8 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnControlAcademico;
     private javax.swing.JButton btnMiCuenta;
+    private javax.swing.JButton btnMinimizar;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
@@ -327,7 +365,6 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblTipo;
-    private javax.swing.JLabel lblTipoUsuario;
     private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables
 

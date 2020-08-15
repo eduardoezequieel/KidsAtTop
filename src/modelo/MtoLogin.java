@@ -157,6 +157,25 @@ public class MtoLogin {
         return resp;
     }
     
+    public boolean continuarPrimerUso()
+    {
+        boolean resp = false;
+        try
+        {
+            String sql = "SELECT contraseña FROM usuario WHERE id_usuario = 1 AND contraseña = '3a9f3478bc9a9ec348ea30534618d4592ad5a519'";
+            PreparedStatement cmd = conexion.prepareCall(sql);
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next())
+            {
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return resp;
+    }
+    
     
     
     

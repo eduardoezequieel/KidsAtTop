@@ -33,9 +33,19 @@ public class frmLogin extends javax.swing.JFrame {
         
         //Validando primer uso
         MtoLogin mto = new MtoLogin();
+        btnContinuar.setVisible(false);
         if (mto.verificarPrimerUso()) {
             btnPrimerUso.setVisible(false);
             icnPrimerUso.setVisible(false);
+            if (mto.continuarPrimerUso()) {
+                btnPrimerUso.setVisible(false);
+                icnPrimerUso.setVisible(true);
+                btnContinuar.setVisible(true);
+                pnlControlesLogin.setVisible(false);
+                for (Component component : pnlControlesLogin.getComponents()) {
+                    component.setVisible(false);  
+                }
+            }
         }
         else
         {
@@ -45,6 +55,7 @@ public class frmLogin extends javax.swing.JFrame {
             for (Component component : pnlControlesLogin.getComponents()) {
                 component.setVisible(false);  
                 }
+            
         }
     }
     
@@ -56,9 +67,9 @@ public class frmLogin extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         pnlControlesLogin = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -67,19 +78,20 @@ public class frmLogin extends javax.swing.JFrame {
         btnRecuperar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         btnPrimerUso = new javax.swing.JButton();
+        btnContinuar = new javax.swing.JButton();
         icnPrimerUso = new javax.swing.JLabel();
         btnMinimizar = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(254, 254, 254));
         jLabel4.setText("Todos los Derechos Reservados - KidsAtTop! © 2020");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 680, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 700, -1, -1));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarDefault.png"))); // NOI18N
         btnSalir.setBorder(null);
@@ -101,11 +113,6 @@ public class frmLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(33, 37, 41));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel6.setText("Usuario:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
         txtUsuario.setBackground(new java.awt.Color(33, 37, 41));
         txtUsuario.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(254, 254, 254));
@@ -124,6 +131,11 @@ public class frmLogin extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(1, 1, 1));
         jSeparator2.setForeground(new java.awt.Color(141, 141, 141));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 300, 10));
+
+        jLabel9.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel9.setText("Usuario:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         pnlControlesLogin.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 340, 90));
 
@@ -186,7 +198,7 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user.png"))); // NOI18N
         pnlControlesLogin.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, -1));
 
-        getContentPane().add(pnlControlesLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 360, 640));
+        getContentPane().add(pnlControlesLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 360, 640));
 
         btnPrimerUso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnPrimerUsoDefault.png"))); // NOI18N
         btnPrimerUso.setBorder(null);
@@ -200,6 +212,19 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnPrimerUso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 300, 80));
+
+        btnContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnContinuarDefault.png"))); // NOI18N
+        btnContinuar.setBorder(null);
+        btnContinuar.setBorderPainted(false);
+        btnContinuar.setContentAreaFilled(false);
+        btnContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnContinuar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnContinuarRollover.png"))); // NOI18N
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 300, 80));
 
         icnPrimerUso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnPrimerUso.png"))); // NOI18N
         getContentPane().add(icnPrimerUso, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
@@ -218,8 +243,11 @@ public class frmLogin extends javax.swing.JFrame {
         });
         getContentPane().add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 30, 30));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoKidsAtTop.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, -1, -1));
+        jLabel8.setFont(new java.awt.Font("Roboto Black", 0, 32)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(119, 119, 119));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("¿Estás listo para educar?");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 440, 400, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoLogin.png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 728));
@@ -308,12 +336,23 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtContraKeyPressed
 
     private void btnPrimerUsoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimerUsoActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        FrmPrimerUso1 frm = new FrmPrimerUso1();
+        frm.setVisible(true);
     }//GEN-LAST:event_btnPrimerUsoActionPerformed
 
     private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
        this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_btnMinimizarActionPerformed
+
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+
+        JOptionPane.showMessageDialog(null, "Bienvenido, a continuación podras continuar con el registro de primer uso.","Información",JOptionPane.INFORMATION_MESSAGE);
+        this.setVisible(false);
+        FrmPrimerUso3 frm = new FrmPrimerUso3();
+        frm.setVisible(true);
+        
+    }//GEN-LAST:event_btnContinuarActionPerformed
     //</editor-fold>
     
     public static void main(String args[]) {
@@ -332,6 +371,7 @@ public class frmLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JButton btnMinimizar;
     private javax.swing.JButton btnPrimerUso;
@@ -341,9 +381,9 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel icnPrimerUso;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;

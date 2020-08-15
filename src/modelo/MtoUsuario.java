@@ -151,6 +151,27 @@ public class MtoUsuario {
         }
         return resp;
     }
+    
+    public String capturarUsuario(Integer id)
+    {
+        String usuario = null;
+        try
+        {
+            String sql = "SELECT usuario FROM usuario WHERE id_usuario = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setInt(1, id);
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next())
+            {
+                usuario = rs.getString(1);
+            }
+            
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return usuario;
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="ComboBox">
@@ -341,10 +362,10 @@ public class MtoUsuario {
         boolean resp = false;
         try
         {
-            String sql = "UPDATE usuario SET contraseña = ? WHERE usuario = ?";
+            String sql = "UPDATE usuario SET contraseña = ? WHERE id_usuario = ?";
             PreparedStatement cmd = cn.prepareCall(sql);
             cmd.setString(1, ctrl.getContraseña());
-            cmd.setString(2, ctrl.getUsuario());
+            cmd.setInt(2, ctrl.getId_usuario());
             if (!cmd.execute()) {
                 resp = true;
             }

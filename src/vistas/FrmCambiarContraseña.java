@@ -47,6 +47,8 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
         jUsuario = new javax.swing.JTextField();
         jNuevaContraseña = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jConfirmarContraseña = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -109,7 +111,7 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Nueva Contraseña:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 410, 260, 40));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 390, 260, 40));
 
         jUsuario.setBackground(new java.awt.Color(42, 46, 50));
         jUsuario.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -121,12 +123,24 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
         jNuevaContraseña.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jNuevaContraseña.setForeground(new java.awt.Color(255, 255, 255));
         jNuevaContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(jNuevaContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 450, 260, 40));
+        jPanel1.add(jNuevaContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, 260, 40));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("- Tu contraseña debe de tener como minimo 8 caracteres.");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, 480, 30));
+
+        jLabel9.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Confirmar Contraseña:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 390, 260, 40));
+
+        jConfirmarContraseña.setBackground(new java.awt.Color(42, 46, 50));
+        jConfirmarContraseña.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jConfirmarContraseña.setForeground(new java.awt.Color(255, 255, 255));
+        jConfirmarContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(jConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 430, 260, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 740));
 
@@ -142,17 +156,18 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        if (jNuevaContraseña.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Campos vacios.","Advertencia",JOptionPane.WARNING_MESSAGE);
-        }
-        else if(jNuevaContraseña.getText().length()<8)
-        {
-            JOptionPane.showMessageDialog(null, "Esta contraseña tiene menos de 8 caracteres, escriba otra.","Advertencia",JOptionPane.WARNING_MESSAGE);
-        }else if(jNuevaContraseña.getText().equals(jUsuario.getText()))
-        {
+        if (jNuevaContraseña.getText().trim().equals(mod.getUsuario()) && jConfirmarContraseña.getText().trim().equals(mod.getUsuario())) {
             JOptionPane.showMessageDialog(null, "Tu contraseña no puede ser igual a tu usuario.","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
-        else
+        else if(jNuevaContraseña.getText().trim().isEmpty() || jConfirmarContraseña.getText().trim().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Campos vacios.","Advertencia",JOptionPane.WARNING_MESSAGE);
+        }
+        else if(jNuevaContraseña.getText().trim().length() < 8 && jConfirmarContraseña.getText().trim().length() < 8)
+        {
+            JOptionPane.showMessageDialog(null, "Esta contraseña posee menos de 8 caracteres,","Advertencia",JOptionPane.WARNING_MESSAGE);
+        }
+        else if(jNuevaContraseña.getText().trim().equals(jConfirmarContraseña.getText().trim()))
         {
             int mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres que esta sea tu nueva contraseña?","Aviso",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
             if (mensaje == JOptionPane.YES_OPTION) {
@@ -161,7 +176,7 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
                 String contraseña = jNuevaContraseña.getText();
                 String contraseñaEncriptada = DigestUtils.sha1Hex(contraseña);
                 ctrl.setContraseña(contraseñaEncriptada);
-                ctrl.setUsuario(jUsuario.getText());
+                ctrl.setId_usuario(mod.getId_usuario());
                 
                 if (mto.actualizarContraseña()) {
                     JOptionPane.showMessageDialog(null, "Contraseña actualizada exitosamente.","Exito",JOptionPane.INFORMATION_MESSAGE);
@@ -176,6 +191,10 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "error");
                 }
             }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
@@ -217,6 +236,7 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JTextField jConfirmarContraseña;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -225,6 +245,7 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jNuevaContraseña;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jUsuario;
