@@ -77,6 +77,10 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jUsuarioKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jUsuarioKeyTyped"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="190" y="360" width="210" height="30"/>
@@ -269,6 +273,10 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JPasswordField" name="jConfirmar">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jConfirmarKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jConfirmarKeyTyped"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="970" y="400" width="210" height="30"/>
@@ -276,6 +284,10 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JPasswordField" name="jNueva">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jNuevaKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jNuevaKeyTyped"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="970" y="312" width="210" height="30"/>

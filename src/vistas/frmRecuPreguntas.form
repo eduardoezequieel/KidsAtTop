@@ -356,9 +356,6 @@
                 <StringItem index="1" value=" "/>
               </StringArray>
             </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
@@ -387,9 +384,6 @@
                 <StringItem index="1" value=" "/>
               </StringArray>
             </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
@@ -417,9 +411,6 @@
                 <StringItem index="0" value="Pregunta 2"/>
                 <StringItem index="1" value=" "/>
               </StringArray>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -450,9 +441,6 @@
                 <StringItem index="2" value=" "/>
               </StringArray>
             </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
@@ -470,6 +458,10 @@
               <Color blue="29" green="25" red="21" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jConfirmarKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jConfirmarKeyTyped"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="510" y="630" width="200" height="30"/>
@@ -482,6 +474,10 @@
               <Color blue="29" green="25" red="21" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jNuevaKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jNuevaKeyTyped"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="510" y="550" width="200" height="30"/>

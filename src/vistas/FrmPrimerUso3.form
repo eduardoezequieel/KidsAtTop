@@ -121,6 +121,10 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jContrase&#xf1;aKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jContrase&#xf1;aKeyTyped"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="730" y="310" width="350" height="50"/>
@@ -219,6 +223,10 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jConfirmarContrase&#xf1;aKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jConfirmarContrase&#xf1;aKeyTyped"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="730" y="410" width="350" height="50"/>

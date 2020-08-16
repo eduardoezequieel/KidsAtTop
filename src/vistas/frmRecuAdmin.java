@@ -148,14 +148,38 @@ public class frmRecuAdmin extends javax.swing.JFrame {
 
         jConfirmar.setBackground(new java.awt.Color(33, 37, 41));
         jConfirmar.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jConfirmar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jConfirmarKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jConfirmarKeyTyped(evt);
+            }
+        });
         jPanel1.add(jConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 460, 210, 30));
 
         jContra.setBackground(new java.awt.Color(33, 37, 41));
         jContra.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jContra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jContraKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jContraKeyTyped(evt);
+            }
+        });
         jPanel1.add(jContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 240, 250, 30));
 
         jNueva.setBackground(new java.awt.Color(33, 37, 41));
         jNueva.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jNueva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jNuevaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jNuevaKeyTyped(evt);
+            }
+        });
         jPanel1.add(jNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, 210, 30));
 
         jUsuario.setBackground(new java.awt.Color(33, 37, 41));
@@ -298,6 +322,36 @@ public class frmRecuAdmin extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void jContraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jContraKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jContraKeyTyped
+
+    private void jContraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jContraKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jContraKeyPressed
+
+    private void jNuevaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNuevaKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jNuevaKeyTyped
+
+    private void jNuevaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNuevaKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jNuevaKeyPressed
+
+    private void jConfirmarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jConfirmarKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jConfirmarKeyTyped
+
+    private void jConfirmarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jConfirmarKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jConfirmarKeyPressed
     //</editor-fold>
     
     /**

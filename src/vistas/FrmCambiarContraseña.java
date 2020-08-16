@@ -4,6 +4,7 @@ import controlador.CtrlUsuario;
 import javax.swing.JOptionPane;
 import modelo.MtoLogin;
 import modelo.MtoUsuario;
+import modelo.Validaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 /**
  *
@@ -12,6 +13,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 public class FrmCambiarContraseña extends javax.swing.JFrame {
 
     CtrlLoginUsuario mod;
+    Validaciones val = new Validaciones();
     
     public FrmCambiarContraseña() {
         initComponents();
@@ -123,6 +125,14 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
         jNuevaContraseña.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jNuevaContraseña.setForeground(new java.awt.Color(255, 255, 255));
         jNuevaContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jNuevaContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jNuevaContraseñaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jNuevaContraseñaKeyTyped(evt);
+            }
+        });
         jPanel1.add(jNuevaContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, 260, 40));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -140,6 +150,14 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
         jConfirmarContraseña.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jConfirmarContraseña.setForeground(new java.awt.Color(255, 255, 255));
         jConfirmarContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jConfirmarContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jConfirmarContraseñaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jConfirmarContraseñaKeyTyped(evt);
+            }
+        });
         jPanel1.add(jConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 430, 260, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 740));
@@ -197,6 +215,26 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void jNuevaContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNuevaContraseñaKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jNuevaContraseñaKeyPressed
+
+    private void jConfirmarContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jConfirmarContraseñaKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jConfirmarContraseñaKeyPressed
+
+    private void jNuevaContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNuevaContraseñaKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jNuevaContraseñaKeyTyped
+
+    private void jConfirmarContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jConfirmarContraseñaKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jConfirmarContraseñaKeyTyped
 
     /**
      * @param args the command line arguments

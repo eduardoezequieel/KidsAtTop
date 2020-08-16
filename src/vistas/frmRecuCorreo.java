@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UnsupportedLookAndFeelException;
 import modelo.ClsCorreo;
 import modelo.RecuContra;
+import modelo.Validaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 
 /**
@@ -22,6 +23,7 @@ public class frmRecuCorreo extends javax.swing.JFrame {
 
     //Llamando clases
     CtrlRecuContra recuCtrl = new CtrlRecuContra();
+    Validaciones val = new Validacioes();
     RecuContra recu = new RecuContra();
     ClsCorreo clsCorreo = new ClsCorreo();
     
@@ -89,6 +91,14 @@ public class frmRecuCorreo extends javax.swing.JFrame {
         jUsuario.setForeground(new java.awt.Color(254, 254, 254));
         jUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jUsuarioKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jUsuarioKeyTyped(evt);
+            }
+        });
         jPanel1.add(jUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 210, 30));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -171,7 +181,25 @@ public class frmRecuCorreo extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 180, 70));
+
+        jConfirmar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jConfirmarKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jConfirmarKeyTyped(evt);
+            }
+        });
         jPanel1.add(jConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 400, 210, 30));
+
+        jNueva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jNuevaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jNuevaKeyTyped(evt);
+            }
+        });
         jPanel1.add(jNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 312, 210, 30));
 
         jLabel1.setFont(new java.awt.Font("Quicksand", 1, 24)); // NOI18N
@@ -337,6 +365,36 @@ public class frmRecuCorreo extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void jUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jUsuarioKeyTyped
+
+    private void jNuevaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNuevaKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jNuevaKeyTyped
+
+    private void jUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jUsuarioKeyPressed
+
+    private void jNuevaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNuevaKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jNuevaKeyPressed
+
+    private void jConfirmarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jConfirmarKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jConfirmarKeyTyped
+
+    private void jConfirmarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jConfirmarKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jConfirmarKeyPressed
 
     /**
      * @param args the command line arguments

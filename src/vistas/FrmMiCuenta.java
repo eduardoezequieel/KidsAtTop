@@ -14,6 +14,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import modelo.MtoLogin;
 import modelo.MtoUsuario;
+import modelo.Validaciones;
 
 /**
  *
@@ -22,6 +23,7 @@ import modelo.MtoUsuario;
 public class FrmMiCuenta extends javax.swing.JFrame {
 
     CtrlLoginUsuario mod;
+    Validaciones val = new Validaciones();
     byte[] person_image = null;
     String filename = null;
     
@@ -92,7 +94,6 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         rbMasculino = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
         jFechaNacimiento = new javax.swing.JTextField();
-        jCalendario = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
         jCorreo = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -154,6 +155,14 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jApellido.setForeground(new java.awt.Color(255, 255, 255));
         jApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jApellido.setSelectionColor(new java.awt.Color(0, 153, 0));
+        jApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jApellidoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jApellidoKeyTyped(evt);
+            }
+        });
         jLayer1.add(jApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 230, 30));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -194,15 +203,6 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jFechaNacimiento.setSelectionColor(new java.awt.Color(0, 153, 0));
         jLayer1.add(jFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 180, 30));
 
-        jCalendario.setMaxSelectableDate(new java.util.Date(1072854075000L));
-        jCalendario.setMinSelectableDate(new java.util.Date(-315590325000L));
-        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jCalendarioPropertyChange(evt);
-            }
-        });
-        jLayer1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 50, -1));
-
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -214,6 +214,14 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jCorreo.setForeground(new java.awt.Color(255, 255, 255));
         jCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jCorreo.setSelectionColor(new java.awt.Color(0, 153, 0));
+        jCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCorreoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jCorreoKeyTyped(evt);
+            }
+        });
         jLayer1.add(jCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 230, 30));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -239,6 +247,14 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jNombre.setForeground(new java.awt.Color(255, 255, 255));
         jNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jNombre.setSelectionColor(new java.awt.Color(0, 153, 0));
+        jNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jNombreKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jNombreKeyTyped(evt);
+            }
+        });
         jLayer1.add(jNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 230, 30));
 
         jTelefono.setBackground(new java.awt.Color(33, 37, 41));
@@ -280,6 +296,14 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jUsuario.setSelectionColor(new java.awt.Color(0, 153, 0));
+        jUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jUsuarioKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jUsuarioKeyTyped(evt);
+            }
+        });
         jLayer2.add(jUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 230, 30));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -528,6 +552,45 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         frm.setVisible(true);
     }//GEN-LAST:event_btnCambiarContraseñaActionPerformed
 
+    private void jNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jNombreKeyTyped
+
+    private void jNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jNombreKeyPressed
+
+    private void jApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jApellidoKeyTyped
+
+    private void jApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jApellidoKeyPressed
+
+    private void jCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCorreoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCorreoKeyTyped
+
+    private void jCorreoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCorreoKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jCorreoKeyPressed
+
+    private void jUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jUsuarioKeyTyped
+
+    private void jUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jUsuarioKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -571,7 +634,6 @@ public class FrmMiCuenta extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresar;
     private javax.swing.JTextField idUsuario;
     private javax.swing.JTextField jApellido;
-    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JTextField jCorreo;
     private javax.swing.JFormattedTextField jDUI;
     private javax.swing.JTextArea jDireccion;

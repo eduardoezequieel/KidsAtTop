@@ -227,7 +227,6 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         cbPregunta4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         cbPregunta4.setForeground(new java.awt.Color(255, 255, 255));
         cbPregunta4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pregunta 4", " " }));
-        cbPregunta4.setBorder(null);
         cbPregunta4.setEnabled(false);
         jPanel1.add(cbPregunta4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 430, -1));
 
@@ -235,7 +234,6 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         cbPregunta3.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         cbPregunta3.setForeground(new java.awt.Color(255, 255, 255));
         cbPregunta3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pregunta 3", " " }));
-        cbPregunta3.setBorder(null);
         cbPregunta3.setEnabled(false);
         jPanel1.add(cbPregunta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 430, -1));
 
@@ -243,7 +241,6 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         cbPregunta2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         cbPregunta2.setForeground(new java.awt.Color(255, 255, 255));
         cbPregunta2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pregunta 2", " " }));
-        cbPregunta2.setBorder(null);
         cbPregunta2.setEnabled(false);
         jPanel1.add(cbPregunta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 430, -1));
 
@@ -251,14 +248,29 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
         cbPregunta1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         cbPregunta1.setForeground(new java.awt.Color(255, 255, 255));
         cbPregunta1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pregunta 1", "Pregunta 2", " " }));
-        cbPregunta1.setBorder(null);
         cbPregunta1.setEnabled(false);
         jPanel1.add(cbPregunta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 430, -1));
 
         jConfirmar.setBackground(new java.awt.Color(33, 37, 41));
+        jConfirmar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jConfirmarKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jConfirmarKeyTyped(evt);
+            }
+        });
         jPanel1.add(jConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 630, 200, 30));
 
         jNueva.setBackground(new java.awt.Color(33, 37, 41));
+        jNueva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jNuevaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jNuevaKeyTyped(evt);
+            }
+        });
         jPanel1.add(jNueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 550, 200, 30));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -523,6 +535,26 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
     private void j4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j4KeyPressed
         val.verificarPegar(evt);
     }//GEN-LAST:event_j4KeyPressed
+
+    private void jNuevaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNuevaKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jNuevaKeyTyped
+
+    private void jNuevaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNuevaKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jNuevaKeyPressed
+
+    private void jConfirmarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jConfirmarKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jConfirmarKeyTyped
+
+    private void jConfirmarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jConfirmarKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jConfirmarKeyPressed
     //</editor-fold>
     
     /**

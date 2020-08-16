@@ -3,6 +3,7 @@ import controlador.CtrlLoginUsuario;
 import controlador.CtrlUsuario;
 import javax.swing.JOptionPane;
 import modelo.MtoUsuario;
+import modelo.Validaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 /**
  *
@@ -11,6 +12,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 public class FrmPrimerUso3 extends javax.swing.JFrame {
     
     FrmPrimerUso2 frm = new FrmPrimerUso2();
+    Validaciones val = new Validaciones();
     
     public FrmPrimerUso3() {
         initComponents();
@@ -72,6 +74,14 @@ public class FrmPrimerUso3 extends javax.swing.JFrame {
         jContraseña.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jContraseña.setForeground(new java.awt.Color(255, 255, 255));
         jContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jContraseñaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jContraseñaKeyTyped(evt);
+            }
+        });
         jPanel1.add(jContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 310, 350, 50));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnCuadrado.png"))); // NOI18N
@@ -111,6 +121,14 @@ public class FrmPrimerUso3 extends javax.swing.JFrame {
         jConfirmarContraseña.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jConfirmarContraseña.setForeground(new java.awt.Color(255, 255, 255));
         jConfirmarContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jConfirmarContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jConfirmarContraseñaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jConfirmarContraseñaKeyTyped(evt);
+            }
+        });
         jPanel1.add(jConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 410, 350, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 728));
@@ -167,6 +185,26 @@ public class FrmPrimerUso3 extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jContraseñaKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jContraseñaKeyTyped
+
+    private void jContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jContraseñaKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jContraseñaKeyPressed
+
+    private void jConfirmarContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jConfirmarContraseñaKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_jConfirmarContraseñaKeyTyped
+
+    private void jConfirmarContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jConfirmarContraseñaKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jConfirmarContraseñaKeyPressed
 
     /**
      * @param args the command line arguments

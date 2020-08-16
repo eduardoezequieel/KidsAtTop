@@ -117,6 +117,10 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jApellidoKeyPressed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jApellidoKeyTyped"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="120" width="280" height="40"/>
@@ -160,24 +164,6 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jCalendario">
-              <Properties>
-                <Property name="maxSelectableDate" type="java.util.Date" editor="org.netbeans.beaninfo.editors.DateEditor">
-                  <SerializedValue value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,117,116,105,108,46,68,97,116,101,104,106,-127,1,75,89,116,25,3,0,0,120,112,119,8,0,0,0,-7,-53,22,100,56,120"/>
-                </Property>
-                <Property name="minSelectableDate" type="java.util.Date" editor="org.netbeans.beaninfo.editors.DateEditor">
-                  <SerializedValue value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,117,116,105,108,46,68,97,116,101,104,106,-127,1,75,89,116,25,3,0,0,120,112,119,8,-1,-1,-1,-74,-123,90,42,-72,120"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jCalendarioPropertyChange"/>
-              </Events>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="240" y="200" width="50" height="40"/>
-                </Constraint>
-              </Constraints>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -208,6 +194,10 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jNombreKeyPressed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jNombreKeyTyped"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="40" width="280" height="40"/>
@@ -244,6 +234,10 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jUsuarioKeyPressed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jUsuarioKeyTyped"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="280" width="280" height="40"/>
@@ -506,6 +500,10 @@
                       </Border>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jDireccionKeyPressed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jDireccionKeyTyped"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
