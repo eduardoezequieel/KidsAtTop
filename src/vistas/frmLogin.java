@@ -15,6 +15,7 @@ import modelo.Conexion;
 import modelo.ClsCorreo;
 import modelo.Validaciones;
 import org.apache.commons.codec.digest.DigestUtils;
+import modelo.MtoBitacoras;
 
 /**
  *
@@ -25,7 +26,7 @@ public class frmLogin extends javax.swing.JFrame {
     Validaciones val = new Validaciones();
     public frmLogin() throws UnsupportedLookAndFeelException {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);    
         //Cargando estilos
         BasicLookAndFeel darcula = new DarculaLaf();
         UIManager.setLookAndFeel(darcula);
@@ -97,7 +98,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnSalir.setBorder(null);
         btnSalir.setBorderPainted(false);
         btnSalir.setContentAreaFilled(false);
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalir.setFocusPainted(false);
         btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarRollover.png"))); // NOI18N
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +174,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnIniciarSesion.setBorder(null);
         btnIniciarSesion.setBorderPainted(false);
         btnIniciarSesion.setContentAreaFilled(false);
-        btnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnIniciarSesion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnIniciarSesion_rollover.png"))); // NOI18N
         btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,7 +187,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnRecuperar.setBorder(null);
         btnRecuperar.setBorderPainted(false);
         btnRecuperar.setContentAreaFilled(false);
-        btnRecuperar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRecuperar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRecuperar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRecuperarContraseña_rollover.png"))); // NOI18N
         btnRecuperar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,7 +205,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnPrimerUso.setBorder(null);
         btnPrimerUso.setBorderPainted(false);
         btnPrimerUso.setContentAreaFilled(false);
-        btnPrimerUso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPrimerUso.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnPrimerUso.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnPrimerUsoRollover.png"))); // NOI18N
         btnPrimerUso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,7 +218,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnContinuar.setBorder(null);
         btnContinuar.setBorderPainted(false);
         btnContinuar.setContentAreaFilled(false);
-        btnContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnContinuar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnContinuar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnContinuarRollover.png"))); // NOI18N
         btnContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,7 +234,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnMinimizar.setBorder(null);
         btnMinimizar.setBorderPainted(false);
         btnMinimizar.setContentAreaFilled(false);
-        btnMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMinimizar.setFocusPainted(false);
         btnMinimizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMinimizarRollover.png"))); // NOI18N
         btnMinimizar.addActionListener(new java.awt.event.ActionListener() {
@@ -274,9 +275,12 @@ public class frmLogin extends javax.swing.JFrame {
         {
             MtoLogin modBD = new MtoLogin();
             CtrlLoginUsuario mod = new CtrlLoginUsuario();
+            MtoBitacoras bitacora=new MtoBitacoras();
             
             mod.setUsuario(txtUsuario.getText());
             mod.setContrasenia(encriptado);
+            
+            int id=bitacora.capturarIdBitacora()+1;
             
             if (modBD.validarLogin(mod)) {
                 if (modBD.verificarContraseña(mod)) {
@@ -289,10 +293,19 @@ public class frmLogin extends javax.swing.JFrame {
                 else
                 {
                     modBD.obtenerDatosUsuario(mod);
+                    
                     JOptionPane.showMessageDialog(this, "Acceso concedido, bienvenido "+mod.getUsuario());
                     this.setVisible(false);
                     frmPrincipal formulario = new frmPrincipal(mod);
                     formulario.setVisible(true);
+                    
+                  
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    bitacora.agregarBitacoraEntrada(mod);
+                           
+                    
+                    
                 }
                 
             }

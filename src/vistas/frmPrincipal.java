@@ -9,6 +9,8 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.MtoLogin;
+import modelo.MtoBitacoras;
+
 
 
 
@@ -39,7 +41,9 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         
         //Seteando usuario logueado
         lblUsuario.setText(mod.getUsuario());
-        
+        //Seteando id de usuario para bitacora
+        lblId.setText(Integer.toString(mod.getId_usuario()));
+        lblId.setVisible(false);
         //Seteando foto del usuario
         byte[] foto = mod.getFoto();
         ImageIcon imagen = new ImageIcon(new ImageIcon(foto).getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
@@ -93,6 +97,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         jLabel7 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         btnMinimizar = new javax.swing.JButton();
+        lblId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -104,7 +109,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatricula_default.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.setFocusPainted(false);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatricula_rollover.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +122,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnHerramientasSistemaDefault.png"))); // NOI18N
         jButton6.setBorder(null);
         jButton6.setContentAreaFilled(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.setFocusPainted(false);
         jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnHerramientasSistemaRollover.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +135,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         btnControlAcademico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnControlAcademico_default.png"))); // NOI18N
         btnControlAcademico.setBorder(null);
         btnControlAcademico.setContentAreaFilled(false);
-        btnControlAcademico.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnControlAcademico.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnControlAcademico.setFocusPainted(false);
         btnControlAcademico.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnControlAcademico_rollover.png"))); // NOI18N
         btnControlAcademico.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +148,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         btnMiCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMiCuenta_default.png"))); // NOI18N
         btnMiCuenta.setBorder(null);
         btnMiCuenta.setContentAreaFilled(false);
-        btnMiCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMiCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMiCuenta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMiCuenta_rollover.png"))); // NOI18N
         btnMiCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,7 +160,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarSesion_default.png"))); // NOI18N
         btnCerrarSesion.setBorder(null);
         btnCerrarSesion.setContentAreaFilled(false);
-        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCerrarSesion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarSesion_rollover.png"))); // NOI18N
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,7 +192,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarDefault.png"))); // NOI18N
         btnSalir.setBorder(null);
         btnSalir.setContentAreaFilled(false);
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalir.setFocusPainted(false);
         btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarRollover.png"))); // NOI18N
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -235,7 +240,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         btnMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMinimizarDefault.png"))); // NOI18N
         btnMinimizar.setBorder(null);
         btnMinimizar.setContentAreaFilled(false);
-        btnMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMinimizar.setFocusPainted(false);
         btnMinimizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMinimizarRollover.png"))); // NOI18N
         btnMinimizar.addActionListener(new java.awt.event.ActionListener() {
@@ -244,6 +249,9 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
             }
         });
         jPanel1.add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 30, 30));
+
+        lblId.setText("jLabel3");
+        jPanel1.add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 560, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 740));
 
@@ -254,6 +262,15 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
         int mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas cerrar sesión?","Advertencia",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
         if (mensaje == JOptionPane.YES_OPTION) {
                 this.setVisible(false);
+                CtrlLoginUsuario log=new CtrlLoginUsuario();
+                MtoBitacoras modBD = new MtoBitacoras();
+                MtoLogin data=new MtoLogin();
+                int id=modBD.capturarIdBitacora()+1;
+                data.obtenerDatosUsuario(log);
+                log.setId_usuario(Integer.parseInt(lblId.getText()));
+                log.setId_bitacora(id);
+                modBD.agregarBitacoraSalida(log);
+                
                 frmLogin formulario = null;
                 try {
                     formulario = new frmLogin();
@@ -364,6 +381,7 @@ public class frmPrincipal extends javax.swing.JFrame implements Runnable {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblHora;
+    private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblTipo;
     private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables

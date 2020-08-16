@@ -43,7 +43,7 @@ public class MtoLogin {
         conexion=con.conectar();
     
     }
-    
+   //<editor-fold defaultstate="collapsed" desc="Login">   
      public boolean validarLogin(CtrlLoginUsuario usr){
         boolean retorno=false;
         try{
@@ -55,13 +55,14 @@ public class MtoLogin {
             if (rs1.next()) {
                     //verificar credenciales y estado del usuario
                     int estado=1;
-                    String query="select usuario from usuario where usuario='"+usr.getUsuario()+"' and contraseña='"+usr.getContrasenia()+"'and id_estado_usuario='"+estado+"'";
+                    String query="select usuario,id_usuario from usuario where usuario='"+usr.getUsuario()+"' and contraseña='"+usr.getContrasenia()+"'and id_estado_usuario='"+estado+"'";
                     Statement st=conexion.createStatement();
                     ResultSet rs=st.executeQuery(query);
 
                     if (rs.next()) {
                             retorno=true;
                             usr.setUsuario(rs.getString(1));
+                            usr.setId_usuario(rs.getInt(2));
                             
                     }
                     else
@@ -176,27 +177,8 @@ public class MtoLogin {
         return resp;
     }
     
-    public Integer capturarIdBitacora()
-    {
-        int id = 0;
-        try
-        {
-            String sql = "SELECT max(id_bitacora) FROM bitacora";
-            PreparedStatement cmd = conexion.prepareCall(sql);
-            ResultSet rs = cmd.executeQuery();
-            
-            while(rs.next())
-            {
-                id = rs.getInt(1);
-            }
-        }
-        catch (Exception ex) {
-            System.out.println(ex);
-        }
-        return id;
-    }
-    
-    
+    //</editor-fold>
+   
     
     
 }
