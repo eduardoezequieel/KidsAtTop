@@ -21,21 +21,21 @@
 				<staticText>
 					<reportElement x="297" y="37" width="100" height="22" uuid="809fb67d-782d-498d-b53f-bdf679a4b133"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Roboto Light" size="16"/>
+						<font fontName="Segoe UI Semilight" size="16"/>
 					</textElement>
 					<text><![CDATA[Tipo]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="177" y="37" width="100" height="22" uuid="ca81a550-8436-4589-8c60-8effd2f3635d"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Roboto Light" size="16"/>
+						<font fontName="Segoe UI Semilight" size="16"/>
 					</textElement>
 					<text><![CDATA[Fecha]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="177" y="0" width="220" height="20" uuid="73906ee9-2b2c-4437-b242-25d9bb3fb5b1"/>
+					<reportElement x="177" y="0" width="220" height="25" uuid="73906ee9-2b2c-4437-b242-25d9bb3fb5b1"/>
 					<textElement textAlignment="Center">
-						<font fontName="Roboto Light" size="16" isBold="true" isUnderline="true"/>
+						<font fontName="Segoe UI" size="16" isBold="true" isUnderline="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{usuario}]]></textFieldExpression>
 				</textField>
@@ -53,28 +53,28 @@
 			<staticText>
 				<reportElement x="15" y="23" width="84" height="24" forecolor="#666666" uuid="9e3fb299-4b68-4703-89b5-9581db12b343"/>
 				<textElement textAlignment="Center">
-					<font fontName="Roboto Light" size="18" isBold="true"/>
+					<font fontName="Segoe UI Semilight" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Bitacora]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="397" y="23" width="125" height="24" forecolor="#666666" uuid="11cff097-cb27-463d-9be9-6b566d146d28"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Roboto Light" size="18" isBold="true"/>
+					<font fontName="Segoe UI Semilight" size="18" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="522" y="23" width="40" height="24" forecolor="#666666" uuid="00df8c35-ffeb-4912-88ad-90fb30602656"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Roboto Light" size="18" isBold="true"/>
+					<font fontName="Segoe UI Semilight" size="18" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="230" y="23" width="112" height="24" forecolor="#666666" uuid="711b101b-a6fe-477c-a14a-b7402f8be4ff"/>
 				<textElement textAlignment="Center">
-					<font fontName="Roboto Light" size="18" isBold="true"/>
+					<font fontName="Segoe UI Semilight" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[KidsAtTop!]]></text>
 			</staticText>
@@ -91,14 +91,14 @@
 			<textField>
 				<reportElement x="177" y="12" width="100" height="20" uuid="cd77d06f-026b-41b0-83c6-ad5dfdffcfb8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Roboto Light" size="12"/>
+					<font fontName="Segoe UI Semilight" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="297" y="11" width="100" height="20" uuid="9f1e11f3-70cb-4a31-af08-2dee371aea54"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Roboto Light" size="12"/>
+					<font fontName="Segoe UI Semilight" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
@@ -112,21 +112,21 @@
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="0" y="0" width="153" height="28" uuid="f4a82dea-eca7-416b-944d-b0e66cd9c500"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Roboto Light" size="12"/>
+					<font fontName="Segoe UI Semilight" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField pattern="h.mm a">
 				<reportElement x="153" y="0" width="127" height="28" uuid="cca08556-cb48-41b5-b7df-fd39c9298dd5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Roboto Light" size="12"/>
+					<font fontName="Segoe UI Semilight" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="280" y="0" width="291" height="28" uuid="47c48fd9-0645-4d41-948e-53e019d8aeb4"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Roboto Light" size="12"/>
+					<font fontName="Segoe UI Semilight" size="12"/>
 				</textElement>
 				<text><![CDATA[Todos los Derechos Reservados - KidsAtTop! © 2020]]></text>
 			</staticText>
