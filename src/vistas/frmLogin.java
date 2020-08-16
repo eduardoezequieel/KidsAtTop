@@ -82,7 +82,6 @@ public class frmLogin extends javax.swing.JFrame {
         icnPrimerUso = new javax.swing.JLabel();
         btnMinimizar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -250,14 +249,6 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel8.setText("¿Estás listo para educar?");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 440, 400, -1));
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
-
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoLogin.png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 728));
 
@@ -362,12 +353,6 @@ public class frmLogin extends javax.swing.JFrame {
         frm.setVisible(true);
         
     }//GEN-LAST:event_btnContinuarActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MtoLogin mto = new MtoLogin();
-        int id = mto.capturarIdBitacora()+1;
-        JOptionPane.showMessageDialog(null, id);
-    }//GEN-LAST:event_jButton1ActionPerformed
     //</editor-fold>
     
     public static void main(String args[]) {
@@ -394,7 +379,6 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel icnPrimerUso;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;

@@ -70,6 +70,7 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jTelefono = new javax.swing.JFormattedTextField();
         jDUI = new javax.swing.JFormattedTextField();
+        jCalendario = new com.toedter.calendar.JDateChooser();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -221,6 +222,13 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         jDUI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jDUI.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLayeredPane1.add(jDUI, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 280, 40));
+
+        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jCalendarioPropertyChange(evt);
+            }
+        });
+        jLayeredPane1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 50, 40));
 
         jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 300, 520));
 
@@ -583,6 +591,7 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JTextField jCorreo;
     private javax.swing.JFormattedTextField jDUI;
     private javax.swing.JTextArea jDireccion;

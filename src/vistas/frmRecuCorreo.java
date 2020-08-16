@@ -23,7 +23,7 @@ public class frmRecuCorreo extends javax.swing.JFrame {
 
     //Llamando clases
     CtrlRecuContra recuCtrl = new CtrlRecuContra();
-    Validaciones val = new Validacioes();
+    Validaciones val = new Validaciones();
     RecuContra recu = new RecuContra();
     ClsCorreo clsCorreo = new ClsCorreo();
     
