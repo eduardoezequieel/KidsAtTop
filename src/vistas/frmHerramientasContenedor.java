@@ -83,7 +83,7 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
         jEscritorioLayout.setHorizontalGroup(
             jEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jEscritorioLayout.createSequentialGroup()
-                .addContainerGap(288, Short.MAX_VALUE)
+                .addContainerGap(272, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(253, 253, 253))
         );
@@ -92,10 +92,10 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
             .addGroup(jEscritorioLayout.createSequentialGroup()
                 .addGap(202, 202, 202)
                 .addComponent(jLabel2)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 1000, 740));
+        jPanel1.add(jEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 1000, 730));
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backpng.png"))); // NOI18N
         btnRegresar.setBorder(null);
@@ -176,6 +176,10 @@ public class frmHerramientasContenedor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void jReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jReportesActionPerformed
+        FrmReportes reportes = new FrmReportes();
+        jEscritorio.add(reportes);
+        reportes.setVisible(true);
+        
         //Seteando iconos
         Icon Imagenes;
         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_default.png"));
