@@ -163,7 +163,7 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
 
     private void jGestionarResponsablesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarResponsablesActionPerformed
         //Abriendo formulario de Gestionar Conducta
-        frmGestionarResponsable responsable = new frmGestionarResponsable();
+        frmGestionarResponsable responsable = new frmGestionarResponsable(mod);
         jDesktop.add(responsable);
         responsable.setVisible(true);
     
@@ -183,7 +183,7 @@ public class frmGestionarMatriculaContenedor extends javax.swing.JFrame {
     private void jGestionarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarEstudiantesActionPerformed
        
         //Abriendo formulario de Gestionar Conducta
-        frmGestionarEstudiantes estudiante = new frmGestionarEstudiantes();
+        frmGestionarEstudiantes estudiante = new frmGestionarEstudiantes(mod);
         jDesktop.add(estudiante);
         estudiante.setVisible(true);
         

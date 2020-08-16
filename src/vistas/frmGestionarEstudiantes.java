@@ -22,6 +22,8 @@ import javax.swing.table.TableRowSorter;
 import modelo.Conexion;
 import modelo.MtoEstudiante;
 import modelo.Validaciones;
+import modelo.MtoBitacoras;
+import controlador.CtrlLoginUsuario;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -35,6 +37,7 @@ import modelo.Validaciones;
  */
 public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
 
+    CtrlLoginUsuario mod;
     Validaciones val = new Validaciones();
     
     //Llamando clases 
@@ -52,6 +55,13 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
      */
     public frmGestionarEstudiantes() {
         initComponents();
+       
+    }
+    
+    public frmGestionarEstudiantes(CtrlLoginUsuario mod){
+       initComponents();
+       this.mod=mod;
+       System.out.println(mod.getId_usuario());
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
@@ -660,7 +670,11 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
                 
                 if (estudiante.actualizarEstudiante()) {
                     JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
-
+                    MtoBitacoras add=new MtoBitacoras();
+                    int id=add.capturarIdBitacora()+1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraActualizar(mod);
                     reiniciarBusqueda();
                     limpiarTabla();
                     mostrarEstudiantes();
@@ -684,7 +698,12 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
             if (mensaje == JOptionPane.YES_OPTION) {
                 estudianteCtrl.setIdEstudiante(Integer.parseInt(jId.getText()));
                 if (estudiante.suspenderEstudiante()) {  
-                    JOptionPane.showMessageDialog(null, "El estudiante ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);      
+                    JOptionPane.showMessageDialog(null, "El estudiante ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);   
+                    MtoBitacoras add=new MtoBitacoras();
+                    int id=add.capturarIdBitacora()+1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraSuspender(mod);
                     reiniciarBusqueda();
                     limpiarTabla();
                     mostrarEstudiantes();
@@ -708,7 +727,12 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
             if (mensaje == JOptionPane.YES_OPTION) {
                 estudianteCtrl.setIdEstudiante(Integer.parseInt(jId.getText()));
                 if (estudiante.activarEstudiante()) {  
-                    JOptionPane.showMessageDialog(null, "El estudiante ha sido activado de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);      
+                    JOptionPane.showMessageDialog(null, "El estudiante ha sido activado de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);
+                    MtoBitacoras add=new MtoBitacoras();
+                    int id=add.capturarIdBitacora()+1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraActivar(mod);
                     reiniciarBusqueda();
                     limpiarTabla();
                     mostrarEstudiantes();
@@ -732,7 +756,12 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
             if (mensaje == JOptionPane.YES_OPTION) {
                 estudianteCtrl.setIdEstudiante(Integer.parseInt(jId.getText()));
                 if (estudiante.retirarEstudiante()) {  
-                    JOptionPane.showMessageDialog(null, "El estudiante ha sido retirado de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);      
+                    JOptionPane.showMessageDialog(null, "El estudiante ha sido retirado de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);  
+                    MtoBitacoras add=new MtoBitacoras();
+                    int id=add.capturarIdBitacora()+1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraRetirarEstudiante(mod);
                     reiniciarBusqueda();
                     limpiarTabla();
                     mostrarEstudiantes();

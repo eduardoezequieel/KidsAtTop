@@ -19,6 +19,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.MtoResponsable;
 import modelo.Validaciones;
+import modelo.MtoBitacoras;
+import controlador.CtrlLoginUsuario;
 
 /**
  *
@@ -26,22 +28,31 @@ import modelo.Validaciones;
  */
 public class frmGestionarResponsable extends javax.swing.JInternalFrame {
 
+    CtrlLoginUsuario mod;
     DefaultTableModel modelo = new DefaultTableModel();
     CtrlResponsable ctrl = new CtrlResponsable();
     Validaciones val = new Validaciones();
+
     /**
      * Creates new form GestionarResponsableForm
      */
     public frmGestionarResponsable() {
         initComponents();
+
+    }
+
+    public frmGestionarResponsable(CtrlLoginUsuario mod) {
+        initComponents();
+        this.mod = mod;
+        System.out.println(mod.getId_usuario());
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
-         tResponsables.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 18));
+        tResponsables.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 18));
         tResponsables.getTableHeader().setOpaque(false);
         tResponsables.getTableHeader().setBackground(new Color(33, 37, 41));
-        tResponsables.getTableHeader().setForeground(new Color(254,254,254));
-        
+        tResponsables.getTableHeader().setForeground(new Color(254, 254, 254));
+
         //Llenando jTable
         modelo.addColumn("identifi");
         modelo.addColumn("Nombre");
@@ -56,8 +67,9 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         tResponsables.getColumnModel().getColumn(0).setMaxWidth(0);
         this.vaciarTabla();
         this.mostrarResponsables();
-        
+
         this.llenarParentesco();
+
     }
 
     /**
@@ -357,19 +369,19 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     @SuppressWarnings("unchecked")
-    public void llenarParentesco(){
+    public void llenarParentesco() {
         MtoResponsable a = new MtoResponsable();
         cbParentesco.setModel(a.llenarParentesco());
     }
-    
-    public void vaciarTabla(){
-       int filas = tResponsables.getRowCount();
-        for (int i = 0;filas>i; i++) {
+
+    public void vaciarTabla() {
+        int filas = tResponsables.getRowCount();
+        for (int i = 0; filas > i; i++) {
             modelo.removeRow(0);
-        } 
+        }
     }
-    
-    public void vaciarCampos(){
+
+    public void vaciarCampos() {
         btnActualizar.setEnabled(false);
         btnSuspender.setEnabled(false);
         btnCorreo.setEnabled(false);
@@ -381,38 +393,36 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         txtTelefono.setText("");
         txtApellido.setText("");
     }
-    
-    public void mostrarResponsables(){
-        
+
+    public void mostrarResponsables() {
+
         Conexion con = new Conexion();
         Connection datos;
-        try
-        {
+        try {
             datos = con.conectar();
             String sql = "SELECT r.id_responsable, r.nombre, r.apellido, r.dui, r.telefono, r.email, p.parentesco, e.estado_responsable FROM responsable r, parentesco p, estado_responsable e "
                     + "WHERE r.id_parentesco = p.id_parentesco AND r.id_estado_responsable = e.id_estado_responsable";
             PreparedStatement dato = datos.prepareStatement(sql);
             ResultSet rs = dato.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)};
                 modelo.addRow(fila);
             }
             tResponsables.setModel(modelo);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
-    
+
     private void btnCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorreoActionPerformed
         frmCorreo formulario = new frmCorreo();
         formulario.setVisible(true);
     }//GEN-LAST:event_btnCorreoActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        if(txtNombre.getText().trim().equals("") || txtApellido.getText().trim().equals("") || txtDui.getText().trim().equals("") || txtTelefono.getText().trim().equals("") || txtEmail.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
-        }else{
+        if (txtNombre.getText().trim().equals("") || txtApellido.getText().trim().equals("") || txtDui.getText().trim().equals("") || txtTelefono.getText().trim().equals("") || txtEmail.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campos vacios.", "Rellene los campos faltantes.", JOptionPane.WARNING_MESSAGE);
+        } else {
             MtoResponsable mto = new MtoResponsable();
             ctrl.setNombre(txtNombre.getText());
             ctrl.setApellido(txtApellido.getText());
@@ -421,12 +431,17 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
             ctrl.setTelefono(txtTelefono.getText());
             if (mto.actualizarResponsable(String.valueOf(cbParentesco.getSelectedItem()))) {
                 JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraActualizar(mod);
                 txtBuscar.setText("");
                 String busqueda = txtBuscar.getText();
                 TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
                 tResponsables.setRowSorter(tr);
                 tr.setRowFilter(RowFilter.regexFilter(busqueda));
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Error");
             }
             vaciarCampos();
@@ -438,16 +453,19 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
 
     private void btnSuspenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuspenderActionPerformed
         MtoResponsable mto = new MtoResponsable();
-        if (mto.suspenderResponsable()) {  
-            JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);
+        if (mto.suspenderResponsable()) {
+            JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.", "Exito", JOptionPane.INFORMATION_MESSAGE);
             txtBuscar.setText("");
+            MtoBitacoras add = new MtoBitacoras();
+            int id = add.capturarIdBitacora() + 1;
+            mod.setId_usuario(mod.getId_usuario());
+            mod.setId_bitacora(id);
+            add.agregarBitacoraSuspender(mod);
             String busqueda = txtBuscar.getText();
             TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
             tResponsables.setRowSorter(tr);
             tr.setRowFilter(RowFilter.regexFilter(busqueda));
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "Error");
         }
         vaciarCampos();
@@ -458,25 +476,25 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
     private void tResponsablesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tResponsablesMouseClicked
         //Obtener fila seleccionada
         int fila = tResponsables.getSelectedRow();
-        
+
         //Creando objeto de controlador
         CtrlResponsable ctr = new CtrlResponsable();
         MtoResponsable mto = new MtoResponsable();
-        ctr.setIdResponsable(Integer.parseInt((String)tResponsables.getValueAt(fila, 0)));
-        
+        ctr.setIdResponsable(Integer.parseInt((String) tResponsables.getValueAt(fila, 0)));
+
         mto.obtenerIdEstado();
         if (ctr.getIdEstado() == 3) {
             btnActualizar.setEnabled(false);
             btnSuspender.setEnabled(false);
             btnCorreo.setEnabled(false);
             btnActivar.setEnabled(true);
-        }else{
+        } else {
             btnActualizar.setEnabled(true);
             btnSuspender.setEnabled(true);
             btnCorreo.setEnabled(true);
             btnActivar.setEnabled(false);
         }
-        
+
         //Obteniendo valores de la tabla
         txtNombre.setText(String.valueOf(tResponsables.getValueAt(fila, 1)));
         txtApellido.setText(String.valueOf(tResponsables.getValueAt(fila, 2)));
@@ -500,22 +518,25 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
 
     private void btnActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarActionPerformed
         MtoResponsable mto = new MtoResponsable();
-        if (mto.activarResponsable()) {  
-            JOptionPane.showMessageDialog(null, "El responsable ha sido activado de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);
+        if (mto.activarResponsable()) {
+            JOptionPane.showMessageDialog(null, "El responsable ha sido activado de forma exitosa.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+            MtoBitacoras add = new MtoBitacoras();
+            int id = add.capturarIdBitacora() + 1;
+            mod.setId_usuario(mod.getId_usuario());
+            mod.setId_bitacora(id);
+            add.agregarBitacoraActivar(mod);
             txtBuscar.setText("");
             String busqueda = txtBuscar.getText();
             TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
             tResponsables.setRowSorter(tr);
             tr.setRowFilter(RowFilter.regexFilter(busqueda));
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "Error");
         }
         vaciarCampos();
         vaciarTabla();
         mostrarResponsables();
-        
+
     }//GEN-LAST:event_btnActivarActionPerformed
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
