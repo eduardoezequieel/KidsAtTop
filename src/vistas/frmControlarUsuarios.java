@@ -31,6 +31,7 @@ import javax.swing.table.TableRowSorter;
 import modelo.Conexion;
 import modelo.MtoUsuario;
 import org.apache.commons.codec.digest.DigestUtils;
+import modelo.MtoBitacoras;
 /**
  *
  * @author katy0
@@ -50,7 +51,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     public frmControlarUsuarios(CtrlLoginUsuario mod) {
         initComponents();
         this.mod = mod;
-         txtId.setVisible(false);
+        txtId.setVisible(false);
         btnActualizar.setEnabled(false);
         btnSuspender.setEnabled(false);
         btnActivar.setEnabled(false);
@@ -765,6 +766,14 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
 
             if (mto.insertarUsuario()) {
                 JOptionPane.showMessageDialog(null, "Se ha ingresado el nuevo usuario. Su contraseña por defecto es: 123","Exito",JOptionPane.INFORMATION_MESSAGE);
+                
+                
+                MtoBitacoras add=new MtoBitacoras();
+                int id=add.capturarIdBitacora()+1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraAgregar(mod);
+                
                 limpiarTabla();
                 mostrarUsuario();
                 limpiarCampo();
@@ -839,7 +848,11 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
             
             if (mto.actualizarUsuario()) {
                 JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
-                
+                MtoBitacoras add=new MtoBitacoras();
+                int id=add.capturarIdBitacora()+1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraActualizar(mod);
                 reiniciarBusqueda();
                 limpiarTabla();
                 mostrarUsuario();
@@ -868,7 +881,13 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         
                 ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
                 if (mto.suspenderUsuario()) {  
-                    JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);      
+                    JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);  
+                    MtoBitacoras add=new MtoBitacoras();
+                    int id=add.capturarIdBitacora()+1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraSuspender(mod);
+
                     reiniciarBusqueda();
                     limpiarTabla();
                     mostrarUsuario();
@@ -1062,6 +1081,12 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
                 ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
                 if (mto.activarUsuario()) { 
                     JOptionPane.showMessageDialog(null, "El usuario ha sido activado de forma exitosa.","Exito",JOptionPane.INFORMATION_MESSAGE);
+                    MtoBitacoras add=new MtoBitacoras();
+                    int id=add.capturarIdBitacora()+1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraActivar(mod);
+
                     reiniciarBusqueda();
                     limpiarTabla();
                     mostrarUsuario();

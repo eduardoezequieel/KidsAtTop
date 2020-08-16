@@ -37,7 +37,7 @@ public class MtoBitacoras {
         Conexion con=new Conexion();
         conexion=con.conectar();
     }
-    
+   //<editor-fold defaultstate="collapsed" desc="Capturador de id_bitacora">     
      public Integer capturarIdBitacora()
     {
         int id = 0;
@@ -57,7 +57,10 @@ public class MtoBitacoras {
         }
         return id;
     }
-    
+     
+     //</editor-fold>
+     
+   //<editor-fold defaultstate="collapsed" desc="Bitacoras para Log In">     
     public boolean agregarBitacoraEntrada(CtrlLoginUsuario usr){
     
        boolean retorno=false;
@@ -108,7 +111,111 @@ public class MtoBitacoras {
        return retorno;
     }
     
+     //</editor-fold>
+   
+   //<editor-fold defaultstate="collapsed" desc="Bitacoras para los mantenimientos">   
+    public boolean agregarBitacoraActualizar(CtrlLoginUsuario usr){
     
+     boolean retorno=false;
+       try{
+           
+           String query = "declare @fecha datetime\n"
+                   + "set @fecha=(select GETDATE());\n"
+                   + "\n"
+                   + "Insert into bitacora (id_bitacora,id_usuario,fecha,tipo) values ('"+usr.getId_bitacora()+"','"+usr.getId_usuario()+"',@fecha,'Actualiza')";
+           PreparedStatement cmd=conexion.prepareStatement(query);
+           
+           
+           if (!cmd.execute()) {
+               
+                retorno=true;
+           }
+         
+       }
+       catch(Exception e){
+       
+           System.out.println(e.toString());
+       }
+       return retorno;
+    
+    }
+    public boolean agregarBitacoraSuspender(CtrlLoginUsuario usr){
+    
+     boolean retorno=false;
+       try{
+           
+           String query = "declare @fecha datetime\n"
+                   + "set @fecha=(select GETDATE());\n"
+                   + "\n"
+                   + "Insert into bitacora (id_bitacora,id_usuario,fecha,tipo) values ('"+usr.getId_bitacora()+"','"+usr.getId_usuario()+"',@fecha,'Suspensión')";
+           PreparedStatement cmd=conexion.prepareStatement(query);
+           
+           
+           if (!cmd.execute()) {
+               
+                retorno=true;
+           }
+         
+       }
+       catch(Exception e){
+       
+           System.out.println(e.toString());
+       }
+       return retorno;
+    
+    }
+    public boolean agregarBitacoraActivar(CtrlLoginUsuario usr){
+    
+     boolean retorno=false;
+       try{
+           
+           String query = "declare @fecha datetime\n"
+                   + "set @fecha=(select GETDATE());\n"
+                   + "\n"
+                   + "Insert into bitacora (id_bitacora,id_usuario,fecha,tipo) values ('"+usr.getId_bitacora()+"','"+usr.getId_usuario()+"',@fecha,'Activación')";
+           PreparedStatement cmd=conexion.prepareStatement(query);
+           
+           
+           if (!cmd.execute()) {
+               
+                retorno=true;
+           }
+         
+       }
+       catch(Exception e){
+       
+           System.out.println(e.toString());
+       }
+       return retorno;
+    
+    }
+    public boolean agregarBitacoraAgregar(CtrlLoginUsuario usr){
+    
+     boolean retorno=false;
+       try{
+           
+           String query = "declare @fecha datetime\n"
+                   + "set @fecha=(select GETDATE());\n"
+                   + "\n"
+                   + "Insert into bitacora (id_bitacora,id_usuario,fecha,tipo) values ('"+usr.getId_bitacora()+"','"+usr.getId_usuario()+"',@fecha,'Registro')";
+           PreparedStatement cmd=conexion.prepareStatement(query);
+           
+           
+           if (!cmd.execute()) {
+               
+                retorno=true;
+           }
+         
+       }
+       catch(Exception e){
+       
+           System.out.println(e.toString());
+       }
+       return retorno;
+    
+    }
+    
+    //</editor-fold>
     
     
     

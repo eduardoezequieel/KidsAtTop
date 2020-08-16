@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import modelo.MtoLogin;
 import modelo.MtoUsuario;
 import modelo.Validaciones;
-
+import modelo.MtoBitacoras;
 /**
  *
  * @author EDUARDO
@@ -525,8 +525,13 @@ public class FrmMiCuenta extends javax.swing.JFrame {
                 if (mto.actualizarMiCuenta()) {
                     JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
                     this.setVisible(false);
+                    MtoBitacoras add=new MtoBitacoras();
                     MtoLogin log1=new MtoLogin();
                     log1.obtenerDatosUsuario(mod);
+                    int id=add.capturarIdBitacora()+1;
+                    mod.setId_usuario(Integer.parseInt(idUsuario.getText()));
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraActualizar(mod);
                     frmPrincipal frm = new frmPrincipal(mod);
                     frm.setVisible(true);
                 }
