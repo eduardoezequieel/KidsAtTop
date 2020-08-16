@@ -139,6 +139,31 @@ public class MtoBitacoras {
        return retorno;
     
     }
+    public boolean agregarBitacoraEliminar(CtrlLoginUsuario usr){
+    
+     boolean retorno=false;
+       try{
+           
+           String query = "declare @fecha datetime\n"
+                   + "set @fecha=(select GETDATE());\n"
+                   + "\n"
+                   + "Insert into bitacora (id_bitacora,id_usuario,fecha,tipo) values ('"+usr.getId_bitacora()+"','"+usr.getId_usuario()+"',@fecha,'Eliminar')";
+           PreparedStatement cmd=conexion.prepareStatement(query);
+           
+           
+           if (!cmd.execute()) {
+               
+                retorno=true;
+           }
+         
+       }
+       catch(Exception e){
+       
+           System.out.println(e.toString());
+       }
+       return retorno;
+    
+    }
     public boolean agregarBitacoraRetirarEstudiante(CtrlLoginUsuario usr){
     
      boolean retorno=false;

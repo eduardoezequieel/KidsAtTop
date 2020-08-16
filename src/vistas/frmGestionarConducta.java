@@ -21,6 +21,8 @@ import javax.swing.table.TableRowSorter;
 import modelo.Conexion;
 import modelo.MtoConducta;
 import modelo.Validaciones;
+import controlador.CtrlLoginUsuario;
+import modelo.MtoBitacoras;
 
 /**
  *
@@ -32,55 +34,64 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
     Validaciones val = new Validaciones();
     CtrlConducta conductaCtrl = new CtrlConducta();
     MtoConducta conducta = new MtoConducta();
-    
+    CtrlLoginUsuario mod;
+
     //Declarando variables
     int idGS;
     int idEstudiante;
-    
+
     //Modelo de la tabla
     DefaultTableModel modelo = new DefaultTableModel();
-    
+
     /**
      * Creates new form GestionarConductaForm
      */
     public frmGestionarConducta() {
         initComponents();
+
+    }
+
+    public frmGestionarConducta(CtrlLoginUsuario mod) {
+
+        this.mod = mod;
+        initComponents();
+        System.out.println(mod.getId_usuario());
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
         tConducta.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 18));
         tConducta.getTableHeader().setOpaque(false);
         tConducta.getTableHeader().setBackground(new Color(33, 37, 41));
-        tConducta.getTableHeader().setForeground(new Color(254,254,254));
+        tConducta.getTableHeader().setForeground(new Color(254, 254, 254));
         jId.setVisible(false);
-        
+
         //LlenandoCombobox
         this.llenarAnio();
         this.llenarGradoSeccion();
         this.llenarEstudiante();
-        
+
         //Creando modelo de la tabla
         modelo.addColumn("Observacion");
         modelo.addColumn("Estudiante");
         modelo.addColumn("Fecha");
         tConducta.setModel(modelo);
-        
+
         //Mostrando tabla
         this.mostrarConducta();
-        
+
         //Personalizando jCalendar
-        jCalendario.getJCalendar().setForeground(new Color(254,254,254));
+        jCalendario.getJCalendar().setForeground(new Color(254, 254, 254));
         jCalendario.getJCalendar().setSundayForeground(Color.WHITE);
         jCalendario.getJCalendar().setWeekdayForeground(Color.WHITE);
         jCalendario.getJCalendar().setDecorationBackgroundVisible(false);
         jCalendario.getJCalendar().setWeekOfYearVisible(false);
         jCalendario.getJCalendar().setBackground(Color.WHITE);
         jCalendario.getJCalendar().setPreferredSize(new Dimension(450, 450));
-        
+
         //Deshabilitando botones 
         jActualizar.setEnabled(false);
         jEliminar.setEnabled(false);
-        
+
     }
 
     /**
@@ -371,27 +382,27 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
 
     //<editor-fold defaultstate="collapsed" desc="Validaciones">
     private void jBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyTyped
-        
+
     }//GEN-LAST:event_jBuscarKeyTyped
 
     private void jFechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFechaKeyTyped
-     
+
     }//GEN-LAST:event_jFechaKeyTyped
 
     private void jFechaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFechaKeyPressed
-       
+
     }//GEN-LAST:event_jFechaKeyPressed
 
     private void jBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyPressed
-       
+
     }//GEN-LAST:event_jBuscarKeyPressed
 
     private void cbAñoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cbAñoPropertyChange
-         
+
     }//GEN-LAST:event_cbAñoPropertyChange
 
     private void cbAñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbAñoMouseClicked
-        
+
     }//GEN-LAST:event_cbAñoMouseClicked
 
     private void cbGradoSeccionPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cbGradoSeccionPropertyChange
@@ -399,7 +410,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbGradoSeccionPropertyChange
 
     private void cbGradoSeccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbGradoSeccionMouseClicked
-        
+
     }//GEN-LAST:event_cbGradoSeccionMouseClicked
 
     private void cbGradoSeccionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbGradoSeccionItemStateChanged
@@ -411,11 +422,11 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbAñoItemStateChanged
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-           
+
         if (jObservacion.getText().trim().isEmpty() || jFecha.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Campos vacios.", "Rellene los campos faltantes.", JOptionPane.WARNING_MESSAGE);
         } else {
-            
+
             //Dividiendo el apellido y el nombre
             String estudiante = cbEstudiante.getItemAt(cbEstudiante.getSelectedIndex());
             String[] parte = estudiante.split("-");
@@ -434,41 +445,45 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
             conductaCtrl.setIdEstudiante(idEstudiante);
             conductaCtrl.setFecha(jFecha.getText());
 
-            //Ejecutando mantemiento 
+            //Ejecutando mantenimiento 
             if (conducta.insertarConducta()) {
                 JOptionPane.showMessageDialog(null, "Ha agregado los datos correctamente");
+                MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraAgregar(mod);
                 this.limpiarTabla();
                 this.mostrarConducta();
                 this.limpiarCampos();
             } else {
                 JOptionPane.showMessageDialog(null, "No se han agregado los datos correctamente");
             }
-            
+
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void jCalendarioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendarioPropertyChange
-        try{
+        try {
             String dia = Integer.toString(jCalendario.getCalendar().get(Calendar.DATE));
             String año = Integer.toString(jCalendario.getCalendar().get(Calendar.YEAR));
             int mesInt = jCalendario.getCalendar().get(Calendar.MONTH) + 1;
             String mes = Integer.toString(mesInt);
-            String fecha = (mes+"-"+dia+"-"+año);
+            String fecha = (mes + "-" + dia + "-" + año);
             jFecha.setText(fecha);
-            
-      
-        }catch (Exception ex) {
+
+        } catch (Exception ex) {
             System.out.println(ex.toString());
         }
     }//GEN-LAST:event_jCalendarioPropertyChange
 
     private void jActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActualizarActionPerformed
-        
+
         //Validando campos vacios
         if (jObservacion.getText().trim().isEmpty() || jFecha.getText().trim().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
-        } else{
-            
+            JOptionPane.showMessageDialog(null, "Campos vacios.", "Rellene los campos faltantes.", JOptionPane.WARNING_MESSAGE);
+        } else {
+
             //Dividiendo el apellido y el nombre
             String estudiante = cbEstudiante.getItemAt(cbEstudiante.getSelectedIndex());
             String[] parte = estudiante.split("-");
@@ -487,11 +502,16 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
             //Ejecutando mantemiento 
             if (conducta.actualizarConducta()) {
                 JOptionPane.showMessageDialog(null, "Ha actualizado los datos correctamente");
-               
+                MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraActualizar(mod);
+
             } else {
                 JOptionPane.showMessageDialog(null, "No se han actualizado los datos correctamente");
             }
-            
+
             this.limpiarTabla();
             this.mostrarConducta();
             this.limpiarCampos();
@@ -500,25 +520,30 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jActualizarActionPerformed
 
     private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
-        
+
         if (jId.getText().trim().isEmpty() || jObservacion.getText().trim().isEmpty() || jFecha.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Campos vacios.", "Rellene los campos faltantes.", JOptionPane.WARNING_MESSAGE);
         } else {
-            
+
             conductaCtrl.setIdConducta(Integer.parseInt(jId.getText()));
             int eliminar = JOptionPane.showConfirmDialog(this, "¿Estás seguro de eliminar este resgistro?",
-                                                                "Atención",JOptionPane.YES_NO_OPTION);
+                    "Atención", JOptionPane.YES_NO_OPTION);
             if (eliminar == 0) {
-                
+
                 if (conducta.eliminarConducta()) {
-                  JOptionPane.showMessageDialog(null, "Ha eliminado los datos correctamente");
+                    JOptionPane.showMessageDialog(null, "Ha eliminado los datos correctamente");
+                    MtoBitacoras add = new MtoBitacoras();
+                    int id = add.capturarIdBitacora() + 1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraEliminar(mod);
 
                 } else {
                     JOptionPane.showMessageDialog(null, "No se han eliminado los datos correctamente");
                 }
             }
         }
-        
+
         this.limpiarTabla();
         this.mostrarConducta();
         this.limpiarCampos();
@@ -526,39 +551,39 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jEliminarActionPerformed
 
     private void tConductaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tConductaMouseClicked
-        
+
         //Deshabilitando botones 
         jActualizar.setEnabled(true);
         jEliminar.setEnabled(true);
         btnAgregar.setEnabled(false);
-        
+
         //Obteniendo el valor de la fila
         int fila = tConducta.getSelectedRow();
-        
+
         //Obteniendo valores de la fila
         String observacion = String.valueOf(tConducta.getValueAt(fila, 0));
         String fecha = String.valueOf(tConducta.getValueAt(fila, 2));
-        
+
         //Seteando valores a los campos
         jObservacion.setText(observacion);
         jFecha.setText(fecha);
-        
+
         //Dividiendo del estudiante
         String student = String.valueOf(tConducta.getValueAt(fila, 1));
         String[] parte = student.split("-");
         String apellido = parte[0];
         String nombre = parte[1];
-        
+
         //Setetando combo de grado/seccion
         String itemGS = conducta.getItemConducta(apellido, nombre);
         cbGradoSeccion.setSelectedItem(itemGS);
-        
+
         //Seteando el combo de anio
         String itemAnio = conducta.getItemAnio(apellido, nombre);
         cbAño.setSelectedItem(itemAnio);
-        
+
         //obteniendo id de conducta 
-        int idConducta = conducta.obtenerIdConducta(observacion, fecha ,apellido, nombre);
+        int idConducta = conducta.obtenerIdConducta(observacion, fecha, apellido, nombre);
         jId.setText(String.valueOf(idConducta));
     }//GEN-LAST:event_tConductaMouseClicked
 
@@ -573,91 +598,87 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         this.limpiarCampos();
     }//GEN-LAST:event_btnLimpiarActionPerformed
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="LlenandoComboBox">
     //Método para combobox del año
-    public void llenarAnio(){
-        
+    public void llenarAnio() {
+
         //Seteando modelo del combo
         cbAño.setModel(conducta.llenarAnio());
-        
+
     }
-    
+
     //Método para combobox de grado/seccion
-    public void llenarGradoSeccion(){
-        
+    public void llenarGradoSeccion() {
+
         //Obteniendo parametro del año
         String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
         conductaCtrl.setAnio(anio);
-        
+
         //Seteando modelo del combo
         cbGradoSeccion.setModel(conducta.llenarGradoSeccion());
     }
-    
+
     //Método para combobocx de estudiante
-    public void llenarEstudiante(){
-        
+    public void llenarEstudiante() {
+
         //Dividiendo el grado y la seccion
         String gradoSeccion = cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
         String[] parte = gradoSeccion.split("-");
         String grado = parte[0];
         String seccion = parte[1];
-        
+
         //Obteniendo id del gradoSeccion
         idGS = conducta.obtenerIdGS(grado, seccion);
         conductaCtrl.setIdGradoSeccion(idGS);
-        
-        
+
         //Llenando el combobox
         cbEstudiante.setModel(conducta.llenarEstudiante());
     }
     //</editor-fold>
-    
-    public void reiniciarBusqueda()
-    {
+
+    public void reiniciarBusqueda() {
         jBuscar.setText("");
         String busqueda = jBuscar.getText();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
         tConducta.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(busqueda));
     }
-    
-    public void mostrarConducta(){
+
+    public void mostrarConducta() {
         Conexion con = new Conexion();
         Connection datos;
-        try
-        {
+        try {
             datos = con.conectar();
             String sql = "SELECT c.observacion, CONCAT(e.apellido,'-',e.nombre) as Estudiante, c.fecha FROM conducta c, estudiante e WHERE c.id_estudiante = e.id_estudiante";
             PreparedStatement dato = datos.prepareStatement(sql);
             ResultSet rs = dato.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3)};
                 modelo.addRow(fila);
             }
             tConducta.setModel(modelo);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
-    
-    public void limpiarTabla(){
+
+    public void limpiarTabla() {
         //Limpiar tabla
         int filas = tConducta.getRowCount();
-        for (int i = 0;filas>i; i++) {
+        for (int i = 0; filas > i; i++) {
             modelo.removeRow(0);
         }
     }
-    
-    public void limpiarCampos(){
-        
+
+    public void limpiarCampos() {
+
         //limpiando campos
         jObservacion.setText("");
         jId.setText("");
         jFecha.setText("");
         jBuscar.setText("");
-        
+
         //Deshabilitando botones 
         jActualizar.setEnabled(false);
         jEliminar.setEnabled(false);

@@ -197,7 +197,7 @@ public class frmControlAcademicoContenedor extends javax.swing.JFrame {
 
     private void jGestionarConductaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarConductaActionPerformed
         //Abriendo formulario de Gestionar Conducta
-        frmGestionarConducta conducta = new frmGestionarConducta();
+        frmGestionarConducta conducta = new frmGestionarConducta(mod);
         jEscritorio.add(conducta);
         conducta.setVisible(true);
         
@@ -218,7 +218,7 @@ public class frmControlAcademicoContenedor extends javax.swing.JFrame {
 
     private void jGestionarSeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarSeccionesActionPerformed
         //Abriendo formulario de Gestionar Secciones
-        frmGestionarSecciones secciones = new frmGestionarSecciones();
+        frmGestionarSecciones secciones = new frmGestionarSecciones(mod);
         jEscritorio.add(secciones);
         secciones.setVisible(true); 
         

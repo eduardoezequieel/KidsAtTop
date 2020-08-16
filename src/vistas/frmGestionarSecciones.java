@@ -19,6 +19,8 @@ import javax.swing.table.TableRowSorter;
 import modelo.Conexion;
 import modelo.MtoSecciones;
 import modelo.Validaciones;
+import modelo.MtoBitacoras;
+import controlador.CtrlLoginUsuario;
 
 /**
  *
@@ -26,21 +28,31 @@ import modelo.Validaciones;
  */
 public class frmGestionarSecciones extends javax.swing.JInternalFrame {
 
+    CtrlLoginUsuario mod;
     DefaultTableModel modelo = new DefaultTableModel();
     CtrlSecciones ctrl = new CtrlSecciones();
     Validaciones val = new Validaciones();
+
     /**
      * Creates new form GestionarSeccionesForm
      */
     public frmGestionarSecciones() {
         initComponents();
+
+    }
+
+    public frmGestionarSecciones(CtrlLoginUsuario mod) {
+
+        initComponents();
+        System.out.println(mod.getId_usuario());
+        this.mod = mod;
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
         tSecciones.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 18));
         tSecciones.getTableHeader().setOpaque(false);
         tSecciones.getTableHeader().setBackground(new Color(33, 37, 41));
-        tSecciones.getTableHeader().setForeground(new Color(254,254,254));
+        tSecciones.getTableHeader().setForeground(new Color(254, 254, 254));
         calAnio.setFont(new Font("Roboto", Font.PLAIN, 16));
         modelo.addColumn("identifi");
         modelo.addColumn("Grado");
@@ -51,17 +63,17 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         tSecciones.setModel(modelo);
         tSecciones.getColumnModel().getColumn(0).setMinWidth(0);
         tSecciones.getColumnModel().getColumn(0).setMaxWidth(0);
-        
+
         btnActualizar.setEnabled(false);
         btnSuspender.setEnabled(false);
-        
+
         mostrarSecciones();
         llenarUsuarios();
         llenarGrados();
         llenarSecciones();
+
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -259,49 +271,49 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     @SuppressWarnings("unchecked")
-    public void llenarUsuarios(){
+    public void llenarUsuarios() {
         MtoSecciones mto = new MtoSecciones();
         cbUsuario.setModel(mto.obtenerUsuarios());
     }
-    public void llenarSecciones(){
+
+    public void llenarSecciones() {
         MtoSecciones mto = new MtoSecciones();
         cbSecciones.setModel(mto.obtenerSecciones());
     }
-    public void llenarGrados(){
+
+    public void llenarGrados() {
         MtoSecciones mto = new MtoSecciones();
         cbGrados.setModel(mto.obtenerGrados());
     }
-    
-    public void vaciarTabla(){
-       int filas = tSecciones.getRowCount();
-        for (int i = 0;filas>i; i++) {
+
+    public void vaciarTabla() {
+        int filas = tSecciones.getRowCount();
+        for (int i = 0; filas > i; i++) {
             modelo.removeRow(0);
-        } 
+        }
     }
-    
-    public void mostrarSecciones(){
-        
+
+    public void mostrarSecciones() {
+
         Conexion con = new Conexion();
         Connection datos;
-        try
-        {
+        try {
             datos = con.conectar();
             String sql = "Select gs.id_grado_seccion, g.grado, s.seccion, u.usuario, gs.anio_seccion, e.estado_gs "
                     + "from grado_seccion gs, grado g, seccion s, usuario u, estado_gs e "
                     + "where gs.id_usuario = u.id_usuario and gs.id_grado = g.id_grado and gs.id_seccion = s.id_seccion and gs.id_estado_gs = e.id_estado_gs";
             PreparedStatement dato = datos.prepareStatement(sql);
             ResultSet rs = dato.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)};
                 modelo.addRow(fila);
             }
             tSecciones.setModel(modelo);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
-    
+
     //<editor-fold defaultstate="collapsed" desc="Validaciones">
     private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
         char c = evt.getKeyChar();
@@ -315,38 +327,38 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtBuscarKeyPressed
     //</editor-fold>
     private void calAnioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calAnioMousePressed
-        
+
     }//GEN-LAST:event_calAnioMousePressed
 
     private void tSeccionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tSeccionesMouseClicked
         MtoSecciones mto = new MtoSecciones();
-        
+
         //Obtener fila seleccionada
         int fila = tSecciones.getSelectedRow();
-        
+
         if (String.valueOf(tSecciones.getValueAt(fila, 5)).equals("Suspendido")) {
             btnActualizar.setEnabled(true);
             btnSuspender.setEnabled(false);
-        }else{
+        } else {
             btnActualizar.setEnabled(true);
             btnSuspender.setEnabled(true);
         }
-        ctrl.setIdGradoSeccion(Integer.parseInt((String)tSecciones.getValueAt(fila, 0)));
-        cbGrados.setSelectedItem((String)tSecciones.getValueAt(fila, 1));
-        cbSecciones.setSelectedItem((String)tSecciones.getValueAt(fila, 2));
-        cbUsuario.setSelectedItem((String)tSecciones.getValueAt(fila, 3));
-        calAnio.setValue(Integer.parseInt((String)tSecciones.getValueAt(fila, 4)));
+        ctrl.setIdGradoSeccion(Integer.parseInt((String) tSecciones.getValueAt(fila, 0)));
+        cbGrados.setSelectedItem((String) tSecciones.getValueAt(fila, 1));
+        cbSecciones.setSelectedItem((String) tSecciones.getValueAt(fila, 2));
+        cbUsuario.setSelectedItem((String) tSecciones.getValueAt(fila, 3));
+        calAnio.setValue(Integer.parseInt((String) tSecciones.getValueAt(fila, 4)));
         mto.obtenerIdGrado();
         mto.obtenerIdUsuario();
         mto.obtenerIdSeccion();
-        
+
     }//GEN-LAST:event_tSeccionesMouseClicked
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         MtoSecciones mto = new MtoSecciones();
-        ctrl.setGrado((String)cbGrados.getSelectedItem());
-        ctrl.setSeccion((String)cbSecciones.getSelectedItem());
-        ctrl.setUsuario((String)cbUsuario.getSelectedItem());
+        ctrl.setGrado((String) cbGrados.getSelectedItem());
+        ctrl.setSeccion((String) cbSecciones.getSelectedItem());
+        ctrl.setUsuario((String) cbUsuario.getSelectedItem());
         ctrl.setAnio(String.valueOf(calAnio.getValue()));
         mto.obtenerUltimoId();
         mto.obtenerIdGrado();
@@ -354,10 +366,16 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         mto.obtenerIdSeccion();
         if (mto.verificarRegistro()) {
             JOptionPane.showMessageDialog(null, "El grado que intenta ingresar ya ha sido registrado");
-        }else{
+        } else {
             if (mto.insertarGradoSeccion()) {
                 JOptionPane.showMessageDialog(null, "Se han ingresado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
-            }else{
+                MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraAgregar(mod);
+
+            } else {
                 JOptionPane.showMessageDialog(null, "Error");
             }
         }
@@ -372,21 +390,27 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         MtoSecciones mto = new MtoSecciones();
-        ctrl.setGrado((String)cbGrados.getSelectedItem());
-        ctrl.setSeccion((String)cbSecciones.getSelectedItem());
-        ctrl.setUsuario((String)cbUsuario.getSelectedItem());
+        ctrl.setGrado((String) cbGrados.getSelectedItem());
+        ctrl.setSeccion((String) cbSecciones.getSelectedItem());
+        ctrl.setUsuario((String) cbUsuario.getSelectedItem());
         ctrl.setAnio(String.valueOf(calAnio.getValue()));
         mto.obtenerIdGrado();
         mto.obtenerIdUsuario();
         mto.obtenerIdSeccion();
         if (mto.verificarRegistro()) {
             JOptionPane.showMessageDialog(null, "El grado que intenta ingresar ya ha sido registrado");
-        }else{
+        } else {
             if (mto.actualizarGradoSeccion()) {
                 JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraActualizar(mod);
+
                 btnActualizar.setEnabled(false);
                 btnSuspender.setEnabled(false);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Error");
             }
         }
@@ -401,11 +425,15 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
 
     private void btnSuspenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuspenderActionPerformed
         MtoSecciones mto = new MtoSecciones();
-        if (mto.suspenderSeccion()) {  
-            JOptionPane.showMessageDialog(null, "La sección ha sido suspendida de forma exitosa.","Éxito",JOptionPane.INFORMATION_MESSAGE);
-        }
-        else
-        {
+        if (mto.suspenderSeccion()) {
+            JOptionPane.showMessageDialog(null, "La sección ha sido suspendida de forma exitosa.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            MtoBitacoras add = new MtoBitacoras();
+            int id = add.capturarIdBitacora() + 1;
+            mod.setId_usuario(mod.getId_usuario());
+            mod.setId_bitacora(id);
+            add.agregarBitacoraSuspender(mod);
+
+        } else {
             JOptionPane.showMessageDialog(null, "Error");
         }
         txtBuscar.setText("");
