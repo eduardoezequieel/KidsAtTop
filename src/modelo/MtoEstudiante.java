@@ -94,6 +94,32 @@ public class MtoEstudiante {
         }       
       return modelo;
     }
+    
+    public DefaultComboBoxModel llenarResponable(){
+        
+        //Creando instancia del modelo
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        try
+        {
+            
+            //Preparando sentencia
+            String sql = "SELECT CONCAT(nombre, '-' , apellido) as responsable FROM responsable";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            //Ejecutando sentencia
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next())
+            {
+                //Agregando elementos al combobox
+                modelo.addElement(rs.getString(1));
+            }
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }       
+      return modelo;
+    }
+    
     // </editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Obteniendo Ids">
@@ -140,7 +166,84 @@ public class MtoEstudiante {
         }
 
     }
+    
+    //Obteniendo id del grado_Seccion
+    public void obtenerIdResponsable(String nombre, String apellido){
+
+        try{
+            
+            //Preparando sentencia sql
+            String sql = "SELECT id_responsable FROM responsable WHERE nombre = ? AND apellido = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            cmd.setString(1, nombre);
+            cmd.setString(2, apellido);
+            
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+               estudianteCtrl.setIdResponsable(rs.getInt(1));
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        
+    }
     // </editor-fold>
+    
+    //Obteniendo id del grado_Seccion
+    public void obtenerCampos(String apellido, String nombre, String genero, int idResponsable, int gs){
+
+        try{
+            
+            //Preparando sentencia sql
+            String sql = "SELECT id_estudiante, anio_ingreso, fecha_nacimiento, direccion, foto, id_estado_estudiante FROM estudiante WHERE apellido = ? AND nombre = ? AND genero = ? AND id_responsable = ? AND id_grado_seccion = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            cmd.setString(1, apellido);
+            cmd.setString(2, nombre);
+            cmd.setString(3, genero);
+            cmd.setInt(4, idResponsable);
+            cmd.setInt(5, gs);
+            
+            
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+               estudianteCtrl.setIdEstudiante(rs.getInt(1));
+               estudianteCtrl.setAnioIngreso(rs.getString(2));
+               estudianteCtrl.setFechaNacimiento(rs.getString(3));
+               estudianteCtrl.setDireccion(rs.getString(4));
+               estudianteCtrl.setFoto(rs.getBytes(5));
+               estudianteCtrl.setIdEstado(rs.getInt(6));
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        
+    }
+    
+    public byte[] capturarFoto(int id){
+        byte[] foto = null;
+        try{
+            String sql = "SELECT foto FROM estudiante WHERE id_estudiante = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setInt(1,id);
+            
+            //Ejecutando consulta
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+                foto = rs.getBytes(1); 
+            }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return foto;
+    }
+    
     
     //<editor-fold defaultstate="collapsed" desc="CRUD">
     public boolean insertarEstudiante(){
@@ -177,6 +280,91 @@ public class MtoEstudiante {
             JOptionPane.showMessageDialog(null, ex);
         }
         //Retornando valor
+        return resp;
+    }
+    
+    public boolean actualizarEstudiante(){
+        boolean resp = false;
+        try
+        {
+            String sql = "UPDATE estudiante SET nombre = ?, apellido = ?, anio_ingreso = ?, fecha_nacimiento = ?, direccion = ?, genero = ?, id_estado_estudiante = ?, id_responsable = ?, id_grado_seccion = ?, foto = ? "
+                    + "WHERE id_estudiante = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            
+            cmd.setString(1, estudianteCtrl.getNombre());
+            cmd.setString(2, estudianteCtrl.getApellido());
+            cmd.setString(3, estudianteCtrl.getAnioIngreso());
+            cmd.setString(4, estudianteCtrl.getFechaNacimiento());
+            cmd.setString(5, estudianteCtrl.getDireccion());
+            cmd.setString(6, estudianteCtrl.getGenero());
+            cmd.setInt(7, estudianteCtrl.getIdEstado());
+            cmd.setInt(8, estudianteCtrl.getIdResponsable());
+            cmd.setInt(9, estudianteCtrl.getIdGradoSeccion());
+            cmd.setBytes(10, estudianteCtrl.getFoto());
+            cmd.setInt(11, estudianteCtrl.getIdEstudiante());
+            
+            //Ejecutando consulta
+            if (!cmd.execute()) {
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return resp;
+    }
+    
+    public boolean suspenderEstudiante(){
+        boolean resp = false;
+        try
+        {
+            String sql = "UPDATE estudiante SET id_estado_estudiante = 3 WHERE id_estudiante = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setInt(1, estudianteCtrl.getIdEstudiante());
+            //Ejecutando consulta
+            if (!cmd.execute()) {
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return resp;
+    }
+    
+    public boolean activarEstudiante(){
+        boolean resp = false;
+        try
+        {
+            String sql = "UPDATE estudiante SET id_estado_estudiante = 1 WHERE id_estudiante = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setInt(1, estudianteCtrl.getIdEstudiante());
+            //Ejecutando consulta
+            if (!cmd.execute()) {
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return resp;
+    }
+    
+    public boolean retirarEstudiante(){
+        boolean resp = false;
+        try
+        {
+            String sql = "UPDATE estudiante SET id_estado_estudiante = 2 WHERE id_estudiante = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setInt(1, estudianteCtrl.getIdEstudiante());
+            //Ejecutando consulta
+            if (!cmd.execute()) {
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
         return resp;
     }
     // </editor-fold>
