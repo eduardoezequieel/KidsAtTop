@@ -12,8 +12,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import modelo.Conexion;
 import modelo.MtoSecciones;
 import modelo.Validaciones;
@@ -45,6 +47,7 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         modelo.addColumn("Sección");
         modelo.addColumn("Usuario Asignado");
         modelo.addColumn("Año");
+        modelo.addColumn("Estado");
         tSecciones.setModel(modelo);
         tSecciones.getColumnModel().getColumn(0).setMinWidth(0);
         tSecciones.getColumnModel().getColumn(0).setMaxWidth(0);
@@ -81,7 +84,7 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         btnActualizar = new javax.swing.JButton();
         btnSuspender = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtBuscar = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         cbGrados = new javax.swing.JComboBox<>();
         calAnio = new com.toedter.calendar.JYearChooser();
@@ -186,6 +189,11 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         btnActualizar.setContentAreaFilled(false);
         btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 150, 140, 70));
 
         btnSuspender.setBackground(new java.awt.Color(33, 37, 41));
@@ -195,6 +203,11 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         btnSuspender.setContentAreaFilled(false);
         btnSuspender.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSuspender.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
+        btnSuspender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuspenderActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnSuspender, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 230, 140, 70));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -202,20 +215,23 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         jLabel13.setText("Año:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(33, 37, 41));
-        jTextField1.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(254, 254, 254));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtBuscar.setBackground(new java.awt.Color(33, 37, 41));
+        txtBuscar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        txtBuscar.setForeground(new java.awt.Color(254, 254, 254));
+        txtBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField1KeyPressed(evt);
+                txtBuscarKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField1KeyTyped(evt);
+                txtBuscarKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 560, 30));
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 560, 30));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(254, 254, 254));
@@ -270,13 +286,13 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         try
         {
             datos = con.conectar();
-            String sql = "Select gs.id_grado_seccion, g.grado, s.seccion, u.usuario, gs.anio_seccion "
-                    + "from grado_seccion gs, grado g, seccion s, usuario u "
-                    + "where gs.id_usuario = u.id_usuario and gs.id_grado = g.id_grado and gs.id_seccion = s.id_seccion";
+            String sql = "Select gs.id_grado_seccion, g.grado, s.seccion, u.usuario, gs.anio_seccion, e.estado_gs "
+                    + "from grado_seccion gs, grado g, seccion s, usuario u, estado_gs e "
+                    + "where gs.id_usuario = u.id_usuario and gs.id_grado = g.id_grado and gs.id_seccion = s.id_seccion and gs.id_estado_gs = e.id_estado_gs";
             PreparedStatement dato = datos.prepareStatement(sql);
             ResultSet rs = dato.executeQuery();
             while(rs.next()){
-                Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)};
+                Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)};
                 modelo.addRow(fila);
             }
             tSecciones.setModel(modelo);
@@ -287,24 +303,43 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
     }
     
     //<editor-fold defaultstate="collapsed" desc="Validaciones">
-    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+    private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
         char c = evt.getKeyChar();
         if (!Character.isWhitespace(c) && c != '@' && c != '.' && c != '_') {
             val.verificarAlfanumerico(evt);
         }
-    }//GEN-LAST:event_jTextField1KeyTyped
+    }//GEN-LAST:event_txtBuscarKeyTyped
 
-    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+    private void txtBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyPressed
         val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextField1KeyPressed
-
+    }//GEN-LAST:event_txtBuscarKeyPressed
+    //</editor-fold>
     private void calAnioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calAnioMousePressed
         
     }//GEN-LAST:event_calAnioMousePressed
 
     private void tSeccionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tSeccionesMouseClicked
-        btnActualizar.setEnabled(true);
-        btnSuspender.setEnabled(true);
+        MtoSecciones mto = new MtoSecciones();
+        
+        //Obtener fila seleccionada
+        int fila = tSecciones.getSelectedRow();
+        
+        if (String.valueOf(tSecciones.getValueAt(fila, 5)).equals("Suspendido")) {
+            btnActualizar.setEnabled(true);
+            btnSuspender.setEnabled(false);
+        }else{
+            btnActualizar.setEnabled(true);
+            btnSuspender.setEnabled(true);
+        }
+        ctrl.setIdGradoSeccion(Integer.parseInt((String)tSecciones.getValueAt(fila, 0)));
+        cbGrados.setSelectedItem((String)tSecciones.getValueAt(fila, 1));
+        cbSecciones.setSelectedItem((String)tSecciones.getValueAt(fila, 2));
+        cbUsuario.setSelectedItem((String)tSecciones.getValueAt(fila, 3));
+        calAnio.setValue(Integer.parseInt((String)tSecciones.getValueAt(fila, 4)));
+        mto.obtenerIdGrado();
+        mto.obtenerIdUsuario();
+        mto.obtenerIdSeccion();
+        
     }//GEN-LAST:event_tSeccionesMouseClicked
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -326,12 +361,69 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Error");
             }
         }
+        txtBuscar.setText("");
+        String busqueda = txtBuscar.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
+        tSecciones.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(busqueda));
         vaciarTabla();
         mostrarSecciones();
     }//GEN-LAST:event_btnAgregarActionPerformed
-    
-    
-    //</editor-fold>
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        MtoSecciones mto = new MtoSecciones();
+        ctrl.setGrado((String)cbGrados.getSelectedItem());
+        ctrl.setSeccion((String)cbSecciones.getSelectedItem());
+        ctrl.setUsuario((String)cbUsuario.getSelectedItem());
+        ctrl.setAnio(String.valueOf(calAnio.getValue()));
+        mto.obtenerIdGrado();
+        mto.obtenerIdUsuario();
+        mto.obtenerIdSeccion();
+        if (mto.verificarRegistro()) {
+            JOptionPane.showMessageDialog(null, "El grado que intenta ingresar ya ha sido registrado");
+        }else{
+            if (mto.actualizarGradoSeccion()) {
+                JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                btnActualizar.setEnabled(false);
+                btnSuspender.setEnabled(false);
+            }else{
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+        }
+        txtBuscar.setText("");
+        String busqueda = txtBuscar.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
+        tSecciones.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(busqueda));
+        vaciarTabla();
+        mostrarSecciones();
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnSuspenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuspenderActionPerformed
+        MtoSecciones mto = new MtoSecciones();
+        if (mto.suspenderSeccion()) {  
+            JOptionPane.showMessageDialog(null, "La sección ha sido suspendida de forma exitosa.","Éxito",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        txtBuscar.setText("");
+        String busqueda = txtBuscar.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
+        tSecciones.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(busqueda));
+        vaciarTabla();
+        mostrarSecciones();
+    }//GEN-LAST:event_btnSuspenderActionPerformed
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        String busqueda = txtBuscar.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
+        tSecciones.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(busqueda));
+    }//GEN-LAST:event_txtBuscarKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -349,7 +441,7 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tSecciones;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

@@ -198,8 +198,8 @@ public class MtoSecciones {
         try{
                        
             //Preparando sentencia
-            String sql = "INSERT INTO grado_seccion(id_grado_seccion, id_grado, id_seccion, id_usuario, anio_seccion)"
-                            + "VALUES(?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO grado_seccion(id_grado_seccion, id_grado, id_seccion, id_usuario, anio_seccion, id_estado_gs)"
+                            + "VALUES(?, ?, ?, ?, ?, 1)";
             PreparedStatement cmd = cn.prepareStatement(sql);
             
             cmd.setInt(1, ctrl.getIdGradoSeccion());
@@ -218,6 +218,45 @@ public class MtoSecciones {
         }
         
         //Retornando valor
+        return resp;
+    }
+    
+    public boolean actualizarGradoSeccion(){
+        boolean resp = false;
+        try{            
+            //Se actualiza el responsable seleccionado
+            String sql = "UPDATE grado_seccion set id_grado = ?, id_seccion = ?, id_usuario = ?, anio_seccion = ? WHERE id_grado_seccion = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setInt(1, ctrl.getIdGrado());
+            cmd.setInt(2, ctrl.getIdSeccion());
+            cmd.setInt(3, ctrl.getIdUsuario());
+            cmd.setString(4, ctrl.getAnio());
+            cmd.setInt(5, ctrl.getIdGradoSeccion());
+            
+            if (!cmd.execute()) {
+                resp = true;
+            }
+        }catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+        return resp;
+    }
+    
+    public boolean suspenderSeccion(){
+        boolean resp = false;
+        try
+        {
+            String sql = "UPDATE grado_seccion SET id_estado_gs = 2 WHERE id_grado_seccion = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setInt(1, ctrl.getIdGradoSeccion());
+            //Ejecutando consulta
+            if (!cmd.execute()) {
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
         return resp;
     }
     
