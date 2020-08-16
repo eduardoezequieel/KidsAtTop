@@ -77,6 +77,10 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jCalendario.getJCalendar().setBackground(Color.WHITE);
         jCalendario.getJCalendar().setPreferredSize(new Dimension(450, 450));
         
+        //Deshabilitando botones 
+        jActualizar.setEnabled(false);
+        jEliminar.setEnabled(false);
+        
     }
 
     /**
@@ -263,7 +267,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jLabel11.setForeground(new java.awt.Color(254, 254, 254));
         jLabel11.setText("Año:");
         jLayeredPane1.add(jLabel11);
-        jLabel11.setBounds(10, 10, 32, 19);
+        jLabel11.setBounds(10, 10, 32, 21);
 
         cbAño.setBackground(new java.awt.Color(33, 37, 41));
         cbAño.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -285,13 +289,13 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
             }
         });
         jLayeredPane1.add(cbAño);
-        cbAño.setBounds(10, 40, 310, 29);
+        cbAño.setBounds(10, 40, 310, 31);
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(254, 254, 254));
         jLabel14.setText("Grado/Sección:");
         jLayeredPane1.add(jLabel14);
-        jLabel14.setBounds(10, 80, 110, 19);
+        jLabel14.setBounds(10, 80, 109, 21);
 
         cbGradoSeccion.setBackground(new java.awt.Color(33, 37, 41));
         cbGradoSeccion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -313,32 +317,34 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
             }
         });
         jLayeredPane1.add(cbGradoSeccion);
-        cbGradoSeccion.setBounds(10, 110, 310, 29);
+        cbGradoSeccion.setBounds(10, 110, 310, 31);
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));
         jLabel13.setText("Estudiante:");
         jLayeredPane1.add(jLabel13);
-        jLabel13.setBounds(10, 150, 79, 19);
+        jLabel13.setBounds(10, 150, 78, 21);
 
         cbEstudiante.setBackground(new java.awt.Color(33, 37, 41));
         cbEstudiante.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         cbEstudiante.setForeground(new java.awt.Color(254, 254, 254));
         cbEstudiante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jLayeredPane1.add(cbEstudiante);
-        cbEstudiante.setBounds(10, 180, 310, 29);
+        cbEstudiante.setBounds(10, 180, 310, 31);
 
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(254, 254, 254));
         jLabel10.setText("Fecha:");
         jLayeredPane1.add(jLabel10);
-        jLabel10.setBounds(10, 220, 47, 19);
+        jLabel10.setBounds(10, 220, 48, 21);
 
         jFecha.setBackground(new java.awt.Color(33, 37, 41));
         jFecha.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jFecha.setForeground(new java.awt.Color(254, 254, 254));
         jFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jFecha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jFecha.setDisabledTextColor(new java.awt.Color(254, 254, 254));
+        jFecha.setEnabled(false);
         jFecha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jFechaKeyPressed(evt);
@@ -356,7 +362,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
             }
         });
         jLayeredPane1.add(jCalendario);
-        jCalendario.setBounds(270, 250, 50, 30);
+        jCalendario.setBounds(270, 250, 50, 29);
 
         getContentPane().add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 320, 290));
 
@@ -481,6 +487,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
             //Ejecutando mantemiento 
             if (conducta.actualizarConducta()) {
                 JOptionPane.showMessageDialog(null, "Ha actualizado los datos correctamente");
+               
             } else {
                 JOptionPane.showMessageDialog(null, "No se han actualizado los datos correctamente");
             }
@@ -488,6 +495,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
             this.limpiarTabla();
             this.mostrarConducta();
             this.limpiarCampos();
+            this.reiniciarBusqueda();
         }
     }//GEN-LAST:event_jActualizarActionPerformed
 
@@ -504,6 +512,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
                 
                 if (conducta.eliminarConducta()) {
                   JOptionPane.showMessageDialog(null, "Ha eliminado los datos correctamente");
+
                 } else {
                     JOptionPane.showMessageDialog(null, "No se han eliminado los datos correctamente");
                 }
@@ -513,9 +522,15 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         this.limpiarTabla();
         this.mostrarConducta();
         this.limpiarCampos();
+        this.reiniciarBusqueda();
     }//GEN-LAST:event_jEliminarActionPerformed
 
     private void tConductaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tConductaMouseClicked
+        
+        //Deshabilitando botones 
+        jActualizar.setEnabled(true);
+        jEliminar.setEnabled(true);
+        btnAgregar.setEnabled(false);
         
         //Obteniendo el valor de la fila
         int fila = tConducta.getSelectedRow();
@@ -598,6 +613,15 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
     }
     //</editor-fold>
     
+    public void reiniciarBusqueda()
+    {
+        jBuscar.setText("");
+        String busqueda = jBuscar.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
+        tConducta.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(busqueda));
+    }
+    
     public void mostrarConducta(){
         Conexion con = new Conexion();
         Connection datos;
@@ -633,6 +657,11 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jId.setText("");
         jFecha.setText("");
         jBuscar.setText("");
+        
+        //Deshabilitando botones 
+        jActualizar.setEnabled(false);
+        jEliminar.setEnabled(false);
+        btnAgregar.setEnabled(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
