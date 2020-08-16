@@ -176,6 +176,25 @@ public class MtoLogin {
         return resp;
     }
     
+    public Integer capturarIdBitacora()
+    {
+        int id = 0;
+        try
+        {
+            String sql = "SELECT max(id_bitacora) FROM bitacora";
+            PreparedStatement cmd = conexion.prepareCall(sql);
+            ResultSet rs = cmd.executeQuery();
+            
+            while(rs.next())
+            {
+                id = rs.getInt(1);
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return id;
+    }
     
     
     
