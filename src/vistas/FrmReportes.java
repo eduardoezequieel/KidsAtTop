@@ -44,6 +44,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnGenerarBitacora = new javax.swing.JButton();
+        btnGenerarGradoSeccion = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(33, 37, 41));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,6 +65,14 @@ public class FrmReportes extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(btnGenerarBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 210, 120));
+
+        btnGenerarGradoSeccion.setText("Grados su docente");
+        btnGenerarGradoSeccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarGradoSeccionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnGenerarGradoSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 220, 130));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
@@ -128,9 +137,68 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnGenerarBitacoraActionPerformed
 
+    private void btnGenerarGradoSeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarGradoSeccionActionPerformed
+        int mensaje = JOptionPane.showConfirmDialog(null, "¿Deseas filtrar los grados por año?","Información",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
+        if (mensaje == JOptionPane.YES_OPTION) {
+                String mensaje2 = JOptionPane.showInputDialog(null, "Escribe el año del cual quieres un reporte de grados.","Aviso",JOptionPane.INFORMATION_MESSAGE);
+                try {
+                    Conexion con = new Conexion();
+                   String reports = "RptGradosMaestrosParametro";
+                   String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
+
+                   archivo = URLDecoder.decode(archivo,"UTF-8");
+                   JasperReport report =
+                   JasperCompileManager.compileReport(archivo);
+                   Map<String,Object> parametros = new HashMap<String,Object>();
+                   parametros.put("ANIO_SECCION",mensaje2); 
+                   JasperPrint print = JasperFillManager.fillReport(report,
+                   parametros, con.conectar());
+                   JasperViewer visor = new JasperViewer(print, false);
+                   visor.setTitle("Reporte de Grados");
+                   visor.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                   visor.setVisible(true);
+                   reports="";
+                } 
+                catch (JRException e) {
+                    System.out.println("AQUI1");
+                    System.out.println(e.getMessage());
+                }catch (UnsupportedEncodingException ex) { 
+                    Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
+                } 
+        }
+        else if(mensaje == JOptionPane.NO_OPTION)
+        {
+                try {
+                    Conexion con = new Conexion();
+                   String reports = "RptGradosSinParametro";
+                   String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
+                   String mensaje2 = "";
+                   archivo = URLDecoder.decode(archivo,"UTF-8");
+                   JasperReport report =
+                   JasperCompileManager.compileReport(archivo);
+                   Map<String,Object> parametros = new HashMap<String,Object>();
+                   parametros.put("",mensaje2); 
+                   JasperPrint print = JasperFillManager.fillReport(report,
+                   parametros, con.conectar());
+                   JasperViewer visor = new JasperViewer(print, false);
+                   visor.setTitle("Reporte de Grados");
+                   visor.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                   visor.setVisible(true);
+                   reports="";
+                } 
+                catch (JRException e) {
+                    System.out.println("AQUI1");
+                    System.out.println(e.getMessage());
+                }catch (UnsupportedEncodingException ex) { 
+                    Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
+                } 
+        }
+    }//GEN-LAST:event_btnGenerarGradoSeccionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerarBitacora;
+    private javax.swing.JButton btnGenerarGradoSeccion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
