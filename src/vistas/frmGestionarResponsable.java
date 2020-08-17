@@ -300,6 +300,11 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         }
         txtDui.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDui.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtDui.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDuiKeyPressed(evt);
+            }
+        });
         jLayer1.add(txtDui);
         txtDui.setBounds(20, 170, 250, 30);
 
@@ -345,7 +350,11 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         cbParentesco.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         cbParentesco.setForeground(new java.awt.Color(255, 255, 255));
         cbParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbParentesco.setBorder(null);
+        cbParentesco.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbParentescoKeyPressed(evt);
+            }
+        });
         jLayer2.add(cbParentesco);
         cbParentesco.setBounds(10, 180, 290, 30);
 
@@ -358,6 +367,11 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         }
         txtTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyPressed(evt);
+            }
+        });
         jLayer2.add(txtTelefono);
         txtTelefono.setBounds(10, 40, 270, 30);
 
@@ -513,7 +527,10 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtBuscarKeyReleased
 
     private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
-        val.verificarEspeciales(evt);
+        char c = evt.getKeyChar();
+        if (!Character.isWhitespace(c) && c != '@' && c != '.' && c != '_') {
+            val.verificarAlfanumerico(evt);
+        }
     }//GEN-LAST:event_txtBuscarKeyTyped
 
     private void btnActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarActionPerformed
@@ -562,6 +579,21 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
     private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
         val.verificarPegar(evt);
     }//GEN-LAST:event_txtEmailKeyPressed
+
+    private void txtDuiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuiKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtDuiKeyPressed
+
+    private void txtTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtTelefonoKeyPressed
+
+    private void cbParentescoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbParentescoKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_cbParentescoKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

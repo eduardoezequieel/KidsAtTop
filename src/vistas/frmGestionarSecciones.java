@@ -99,7 +99,6 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         txtBuscar = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         cbGrados = new javax.swing.JComboBox<>();
-        calAnio = new com.toedter.calendar.JYearChooser();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -127,6 +126,11 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         cbSecciones.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         cbSecciones.setForeground(new java.awt.Color(254, 254, 254));
         cbSecciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbSecciones.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbSeccionesKeyPressed(evt);
+            }
+        });
         jPanel1.add(cbSecciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 220, -1));
 
         tSecciones.setBackground(new java.awt.Color(33, 37, 41));
@@ -178,6 +182,11 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         cbUsuario.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         cbUsuario.setForeground(new java.awt.Color(254, 254, 254));
         cbUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbUsuarioKeyPressed(evt);
+            }
+        });
         jPanel1.add(cbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 270, -1));
 
         btnAgregar.setBackground(new java.awt.Color(33, 37, 41));
@@ -254,16 +263,12 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         cbGrados.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         cbGrados.setForeground(new java.awt.Color(254, 254, 254));
         cbGrados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cbGrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 220, -1));
-
-        calAnio.setEndYear(2040);
-        calAnio.setStartYear(2000);
-        calAnio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                calAnioMousePressed(evt);
+        cbGrados.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbGradosKeyPressed(evt);
             }
         });
-        jPanel1.add(calAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 80, 30));
+        jPanel1.add(cbGrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 220, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -452,12 +457,26 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         tr.setRowFilter(RowFilter.regexFilter(busqueda));
     }//GEN-LAST:event_txtBuscarKeyReleased
 
+    private void cbGradosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbGradosKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_cbGradosKeyPressed
+
+    private void cbSeccionesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbSeccionesKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_cbSeccionesKeyPressed
+
+    private void cbUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbUsuarioKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_cbUsuarioKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnSuspender;
-    private com.toedter.calendar.JYearChooser calAnio;
     private javax.swing.JComboBox<String> cbGrados;
     private javax.swing.JComboBox<String> cbSecciones;
     private javax.swing.JComboBox<String> cbUsuario;

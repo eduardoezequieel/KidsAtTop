@@ -125,7 +125,6 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         cbEstudiante = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jFecha = new javax.swing.JTextField();
-        jCalendario = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -146,7 +145,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnLimpiarDefault.png"))); // NOI18N
         btnLimpiar.setBorder(null);
         btnLimpiar.setContentAreaFilled(false);
-        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLimpiar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnLimpiarRollover.png"))); // NOI18N
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,7 +200,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_default.png"))); // NOI18N
         btnAgregar.setBorder(null);
         btnAgregar.setContentAreaFilled(false);
-        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAgregar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,7 +214,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
         jActualizar.setBorder(null);
         jActualizar.setContentAreaFilled(false);
-        jActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
         jActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +228,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEliminarDefault.png"))); // NOI18N
         jEliminar.setBorder(null);
         jEliminar.setContentAreaFilled(false);
-        jEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEliminarRollover.png"))); // NOI18N
         jEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,6 +266,14 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jObservacion.setForeground(new java.awt.Color(255, 255, 255));
         jObservacion.setRows(5);
         jObservacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(36, 36, 36)));
+        jObservacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jObservacionKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jObservacionKeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(jObservacion);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 330, 240));
@@ -299,8 +306,13 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
                 cbAñoPropertyChange(evt);
             }
         });
+        cbAño.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbAñoKeyPressed(evt);
+            }
+        });
         jLayeredPane1.add(cbAño);
-        cbAño.setBounds(10, 40, 310, 31);
+        cbAño.setBounds(10, 40, 310, 30);
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(254, 254, 254));
@@ -327,8 +339,13 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
                 cbGradoSeccionPropertyChange(evt);
             }
         });
+        cbGradoSeccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbGradoSeccionKeyPressed(evt);
+            }
+        });
         jLayeredPane1.add(cbGradoSeccion);
-        cbGradoSeccion.setBounds(10, 110, 310, 31);
+        cbGradoSeccion.setBounds(10, 110, 310, 30);
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));
@@ -340,8 +357,13 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         cbEstudiante.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         cbEstudiante.setForeground(new java.awt.Color(254, 254, 254));
         cbEstudiante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbEstudiante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbEstudianteKeyPressed(evt);
+            }
+        });
         jLayeredPane1.add(cbEstudiante);
-        cbEstudiante.setBounds(10, 180, 310, 31);
+        cbEstudiante.setBounds(10, 180, 310, 30);
 
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(254, 254, 254));
@@ -367,14 +389,6 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jLayeredPane1.add(jFecha);
         jFecha.setBounds(10, 250, 260, 30);
 
-        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jCalendarioPropertyChange(evt);
-            }
-        });
-        jLayeredPane1.add(jCalendario);
-        jCalendario.setBounds(270, 250, 50, 29);
-
         getContentPane().add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 320, 290));
 
         pack();
@@ -382,7 +396,10 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
 
     //<editor-fold defaultstate="collapsed" desc="Validaciones">
     private void jBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyTyped
-
+char c = evt.getKeyChar();
+        if (!Character.isWhitespace(c) && c != '@' && c != '.' && c != '_') {
+            val.verificarAlfanumerico(evt);
+        }
     }//GEN-LAST:event_jBuscarKeyTyped
 
     private void jFechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFechaKeyTyped
@@ -394,7 +411,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jFechaKeyPressed
 
     private void jBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyPressed
-
+        val.verificarPegar(evt);
     }//GEN-LAST:event_jBuscarKeyPressed
 
     private void cbAñoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cbAñoPropertyChange
@@ -597,6 +614,31 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         this.limpiarCampos();
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void cbAñoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbAñoKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_cbAñoKeyPressed
+
+    private void cbGradoSeccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbGradoSeccionKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_cbGradoSeccionKeyPressed
+
+    private void cbEstudianteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbEstudianteKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_cbEstudianteKeyPressed
+
+    private void jObservacionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jObservacionKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jObservacionKeyPressed
+
+    private void jObservacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jObservacionKeyTyped
+        // TODO add your handling code here:
+        val.verificarAlfanumerico(evt);
+    }//GEN-LAST:event_jObservacionKeyTyped
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="LlenandoComboBox">
@@ -693,7 +735,6 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbGradoSeccion;
     private javax.swing.JButton jActualizar;
     private javax.swing.JTextField jBuscar;
-    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JButton jEliminar;
     private javax.swing.JTextField jFecha;
     private javax.swing.JTextField jId;

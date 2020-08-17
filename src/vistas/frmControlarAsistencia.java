@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import modelo.Validaciones;
 
 /**
  *
@@ -19,6 +20,9 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
     /**
      * Creates new form ControlarAsistenciaForm
      */
+    
+    Validaciones val = new Validaciones();
+    
     public frmControlarAsistencia() {
         initComponents();
         this.setBorder(null);
@@ -68,7 +72,6 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jTextField2 = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jCalendario = new com.toedter.calendar.JDateChooser();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -101,6 +104,11 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
+            }
+        });
+        jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox1KeyPressed(evt);
             }
         });
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 240, 30));
@@ -163,6 +171,11 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.setFocusable(false);
         jComboBox2.setOpaque(false);
+        jComboBox2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox2KeyPressed(evt);
+            }
+        });
         jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 240, 30));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -217,6 +230,11 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jTextField2.setForeground(new java.awt.Color(254, 254, 254));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 580, 30));
 
         jComboBox3.setBackground(new java.awt.Color(33, 37, 41));
@@ -225,13 +243,17 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox3.setFocusable(false);
         jComboBox3.setOpaque(false);
+        jComboBox3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox3KeyPressed(evt);
+            }
+        });
         jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 240, 30));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(254, 254, 254));
         jLabel8.setText("Grado/Sección:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
-        jPanel1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 50, 29));
 
         jTextArea1.setBackground(new java.awt.Color(33, 37, 41));
         jTextArea1.setColumns(20);
@@ -239,6 +261,14 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setRows(5);
         jTextArea1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(36, 36, 36)));
+        jTextArea1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextArea1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextArea1KeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 320, 100));
@@ -249,6 +279,14 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jTextArea2.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea2.setRows(5);
         jTextArea2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(36, 36, 36)));
+        jTextArea2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextArea2KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextArea2KeyTyped(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTextArea2);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 133, 320, 90));
@@ -270,6 +308,46 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void jTextArea2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea2KeyTyped
+        // TODO add your handling code here:
+        val.verificarAlfanumerico(evt);
+    }//GEN-LAST:event_jTextArea2KeyTyped
+
+    private void jTextArea1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyTyped
+        // TODO add your handling code here:
+        val.verificarAlfanumerico(evt);
+    }//GEN-LAST:event_jTextArea1KeyTyped
+
+    private void jTextArea2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea2KeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextArea2KeyPressed
+
+    private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextArea1KeyPressed
+
+    private void jComboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jComboBox1KeyPressed
+
+    private void jComboBox3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox3KeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jComboBox3KeyPressed
+
+    private void jComboBox2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox2KeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jComboBox2KeyPressed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField2KeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
@@ -277,7 +355,6 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;

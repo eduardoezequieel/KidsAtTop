@@ -70,7 +70,6 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jTelefono = new javax.swing.JFormattedTextField();
         jDUI = new javax.swing.JFormattedTextField();
-        jCalendario = new com.toedter.calendar.JDateChooser();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -210,6 +209,11 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         }
         jTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTelefonoKeyPressed(evt);
+            }
+        });
         jLayeredPane1.add(jTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 280, 40));
 
         jDUI.setBackground(new java.awt.Color(33, 37, 41));
@@ -221,14 +225,12 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         }
         jDUI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jDUI.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jLayeredPane1.add(jDUI, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 280, 40));
-
-        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jCalendarioPropertyChange(evt);
+        jDUI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jDUIKeyPressed(evt);
             }
         });
-        jLayeredPane1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 50, 40));
+        jLayeredPane1.add(jDUI, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 280, 40));
 
         jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 300, 520));
 
@@ -316,6 +318,11 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         }
         jNIT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jNIT.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jNIT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jNITKeyPressed(evt);
+            }
+        });
         jLayeredPane2.add(jNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 280, 40));
 
         jNIP.setBackground(new java.awt.Color(33, 37, 41));
@@ -327,6 +334,11 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         }
         jNIP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jNIP.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jNIP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jNIPKeyPressed(evt);
+            }
+        });
         jLayeredPane2.add(jNIP, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 280, 40));
 
         jPanel1.add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 330, 610));
@@ -511,7 +523,7 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
 
     private void jNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyTyped
         // TODO add your handling code here:
-        val.verificarEspeciales(evt);
+        val.verificarLetras(evt);
     }//GEN-LAST:event_jNombreKeyTyped
 
     private void jNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyPressed
@@ -521,7 +533,7 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
 
     private void jApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyTyped
         // TODO add your handling code here:
-        val.verificarEspeciales(evt);
+        val.verificarLetras(evt);
     }//GEN-LAST:event_jApellidoKeyTyped
 
     private void jApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyPressed
@@ -548,6 +560,26 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         // TODO add your handling code here:
         val.verificarPegar(evt);
     }//GEN-LAST:event_jDireccionKeyPressed
+
+    private void jTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTelefonoKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTelefonoKeyPressed
+
+    private void jDUIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDUIKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jDUIKeyPressed
+
+    private void jNIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNIPKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jNIPKeyPressed
+
+    private void jNITKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNITKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jNITKeyPressed
 
     /**
      * @param args the command line arguments
@@ -591,7 +623,6 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JTextField jCorreo;
     private javax.swing.JFormattedTextField jDUI;
     private javax.swing.JTextArea jDireccion;

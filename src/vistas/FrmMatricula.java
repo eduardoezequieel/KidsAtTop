@@ -11,6 +11,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import modelo.MtoEstudiante;
+import modelo.Validaciones;
 
 /**
  *
@@ -19,6 +20,7 @@ import modelo.MtoEstudiante;
 public class FrmMatricula extends javax.swing.JInternalFrame {
 
     //Llamando clases 
+    Validaciones val = new Validaciones();
     CtrlEstudiante estudianteCtrl = new CtrlEstudiante();
     MtoEstudiante estudiante = new MtoEstudiante();
     
@@ -60,7 +62,6 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         jApellido = new javax.swing.JTextField();
         rbF = new javax.swing.JRadioButton();
         rbM = new javax.swing.JRadioButton();
-        jCalendario = new com.toedter.calendar.JDateChooser();
         cbGS = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jDireccion = new javax.swing.JTextArea();
@@ -123,6 +124,14 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         jResponsable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
         jResponsable.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jResponsable.setEnabled(false);
+        jResponsable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jResponsableKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jResponsableKeyTyped(evt);
+            }
+        });
         jPanel1.add(jResponsable, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 240, 30));
 
         jNombre.setBackground(new java.awt.Color(33, 37, 41));
@@ -130,6 +139,14 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         jNombre.setForeground(new java.awt.Color(255, 255, 255));
         jNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jNombreKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jNombreKeyTyped(evt);
+            }
+        });
         jPanel1.add(jNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 240, 30));
 
         jFecha.setEditable(false);
@@ -145,6 +162,14 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         jApellido.setForeground(new java.awt.Color(255, 255, 255));
         jApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jApellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jApellidoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jApellidoKeyTyped(evt);
+            }
+        });
         jPanel1.add(jApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 240, 30));
 
         rbF.setBackground(new java.awt.Color(33, 37, 41));
@@ -161,13 +186,6 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         rbM.setText("Masculino");
         jPanel1.add(rbM, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, -1, -1));
 
-        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jCalendarioPropertyChange(evt);
-            }
-        });
-        jPanel1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 50, -1));
-
         cbGS.setBackground(new java.awt.Color(33, 37, 41));
         cbGS.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         cbGS.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,6 +198,14 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         jDireccion.setForeground(new java.awt.Color(255, 255, 255));
         jDireccion.setRows(5);
         jDireccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jDireccionKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jDireccionKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(jDireccion);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 240, 120));
@@ -222,6 +248,14 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         jAño.setForeground(new java.awt.Color(255, 255, 255));
         jAño.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jAño.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jAño.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jAñoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jAñoKeyTyped(evt);
+            }
+        });
         jPanel1.add(jAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 240, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 680));
@@ -305,6 +339,56 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jCalendarioPropertyChange
 
+    private void jNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jNombreKeyPressed
+
+    private void jNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyTyped
+        // TODO add your handling code here:
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_jNombreKeyTyped
+
+    private void jApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jApellidoKeyPressed
+
+    private void jApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyTyped
+        // TODO add your handling code here:
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_jApellidoKeyTyped
+
+    private void jDireccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDireccionKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jDireccionKeyPressed
+
+    private void jDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDireccionKeyTyped
+        // TODO add your handling code here:
+        val.verificarAlfanumerico(evt);
+    }//GEN-LAST:event_jDireccionKeyTyped
+
+    private void jResponsableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jResponsableKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jResponsableKeyPressed
+
+    private void jResponsableKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jResponsableKeyTyped
+        // TODO add your handling code here:
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_jResponsableKeyTyped
+
+    private void jAñoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAñoKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jAñoKeyPressed
+
+    private void jAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAñoKeyTyped
+        // TODO add your handling code here:
+        val.verificarEnteros(evt);
+    }//GEN-LAST:event_jAñoKeyTyped
+
     public void llenarGS(){
         
         //Llenando combobox
@@ -331,7 +415,6 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbGS;
     private javax.swing.JTextField jApellido;
     private javax.swing.JTextField jAño;
-    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JTextArea jDireccion;
     private javax.swing.JTextField jFecha;
     private javax.swing.JLabel jLabel1;

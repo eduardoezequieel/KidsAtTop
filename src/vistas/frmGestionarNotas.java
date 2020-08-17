@@ -8,6 +8,7 @@ package vistas;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import modelo.Validaciones;
 
 /**
  *
@@ -18,6 +19,9 @@ public class frmGestionarNotas extends javax.swing.JInternalFrame {
     /**
      * Creates new form GestionarNotasForm
      */
+    
+    Validaciones val = new Validaciones();
+    
     public frmGestionarNotas() {
         initComponents();
          this.setBorder(null);
@@ -80,6 +84,11 @@ public class frmGestionarNotas extends javax.swing.JInternalFrame {
         jComboBox1.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(254, 254, 254));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox1KeyPressed(evt);
+            }
+        });
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 290, -1));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -96,12 +105,22 @@ public class frmGestionarNotas extends javax.swing.JInternalFrame {
         jComboBox3.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jComboBox3.setForeground(new java.awt.Color(254, 254, 254));
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox3KeyPressed(evt);
+            }
+        });
         jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 240, 180, -1));
 
         jComboBox2.setBackground(new java.awt.Color(33, 37, 41));
         jComboBox2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jComboBox2.setForeground(new java.awt.Color(254, 254, 254));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox2KeyPressed(evt);
+            }
+        });
         jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 550, -1));
 
         tNotas.setBackground(new java.awt.Color(33, 37, 41));
@@ -146,6 +165,11 @@ public class frmGestionarNotas extends javax.swing.JInternalFrame {
         jComboBox4.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jComboBox4.setForeground(new java.awt.Color(254, 254, 254));
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox4KeyPressed(evt);
+            }
+        });
         jPanel1.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 290, -1));
 
         jTextField1.setBackground(new java.awt.Color(33, 37, 41));
@@ -153,6 +177,14 @@ public class frmGestionarNotas extends javax.swing.JInternalFrame {
         jTextField1.setForeground(new java.awt.Color(254, 254, 254));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 210, 30));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -194,12 +226,22 @@ public class frmGestionarNotas extends javax.swing.JInternalFrame {
         jComboBox5.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jComboBox5.setForeground(new java.awt.Color(254, 254, 254));
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox5KeyPressed(evt);
+            }
+        });
         jPanel1.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 290, -1));
 
         jComboBox6.setBackground(new java.awt.Color(33, 37, 41));
         jComboBox6.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jComboBox6.setForeground(new java.awt.Color(254, 254, 254));
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox6KeyPressed(evt);
+            }
+        });
         jPanel1.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 180, -1));
 
         jLabel16.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -215,6 +257,49 @@ public class frmGestionarNotas extends javax.swing.JInternalFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jComboBox4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox4KeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jComboBox4KeyPressed
+
+    private void jComboBox6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox6KeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jComboBox6KeyPressed
+
+    private void jComboBox5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox5KeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jComboBox5KeyPressed
+
+    private void jComboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jComboBox1KeyPressed
+
+    private void jComboBox2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox2KeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jComboBox2KeyPressed
+
+    private void jComboBox3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox3KeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jComboBox3KeyPressed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (!Character.isWhitespace(c) && c != '@' && c != '.' && c != '_') {
+            val.verificarAlfanumerico(evt);
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -139,7 +139,6 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jBuscar = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jDireccion = new javax.swing.JTextArea();
-        jCalendario = new com.toedter.calendar.JDateChooser();
         jLabel14 = new javax.swing.JLabel();
         btnSuspender = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
@@ -396,13 +395,6 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(jDireccion);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 240, -1));
-
-        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jCalendarioPropertyChange(evt);
-            }
-        });
-        jPanel1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 50, -1));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(254, 254, 254));
@@ -865,7 +857,6 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jApellido;
     private javax.swing.JTextField jAño;
     private javax.swing.JTextField jBuscar;
-    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JTextArea jDireccion;
     private javax.swing.JTextField jFecha;
     private javax.swing.JTextField jId;

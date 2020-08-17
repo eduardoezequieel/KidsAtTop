@@ -101,7 +101,6 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jNombre = new javax.swing.JTextField();
         jTelefono = new javax.swing.JFormattedTextField();
-        jCalendario = new com.toedter.calendar.JDateChooser();
         jLayer2 = new javax.swing.JLayeredPane();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -268,13 +267,6 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLayer1.add(jTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 230, 30));
-
-        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jCalendarioPropertyChange(evt);
-            }
-        });
-        jLayer1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 50, 30));
 
         jPanel1.add(jLayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 250, 450));
 
@@ -567,7 +559,7 @@ public class FrmMiCuenta extends javax.swing.JFrame {
 
     private void jNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyTyped
         // TODO add your handling code here:
-        val.verificarEspeciales(evt);
+        val.verificarLetras(evt);
     }//GEN-LAST:event_jNombreKeyTyped
 
     private void jNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyPressed
@@ -577,7 +569,7 @@ public class FrmMiCuenta extends javax.swing.JFrame {
 
     private void jApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyTyped
         // TODO add your handling code here:
-        val.verificarEspeciales(evt);
+        val.verificarLetras(evt);
     }//GEN-LAST:event_jApellidoKeyTyped
 
     private void jApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyPressed
@@ -647,7 +639,6 @@ public class FrmMiCuenta extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresar;
     private javax.swing.JTextField idUsuario;
     private javax.swing.JTextField jApellido;
-    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JTextField jCorreo;
     private javax.swing.JFormattedTextField jDUI;
     private javax.swing.JTextArea jDireccion;

@@ -32,6 +32,7 @@ import modelo.Conexion;
 import modelo.MtoUsuario;
 import org.apache.commons.codec.digest.DigestUtils;
 import modelo.MtoBitacoras;
+import modelo.Validaciones;
 /**
  *
  * @author katy0
@@ -43,6 +44,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         byte[] person_image = null;
         DefaultTableModel modelo = new DefaultTableModel();
         CtrlLoginUsuario mod;
+        Validaciones val = new Validaciones();
        
     public frmControlarUsuarios(){
         initComponents();
@@ -185,7 +187,6 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         rbFemenino = new javax.swing.JRadioButton();
         rbMasculino = new javax.swing.JRadioButton();
         jLayer2 = new javax.swing.JLayeredPane();
-        jCalendario = new com.toedter.calendar.JDateChooser();
         txtFecha = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -297,6 +298,9 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         txtBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscarKeyReleased(evt);
             }
@@ -329,6 +333,14 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
                 txtNombreActionPerformed(evt);
             }
         });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
         jLayer1.add(txtNombre);
         txtNombre.setBounds(90, 10, 170, 30);
 
@@ -336,20 +348,24 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         cbTipoUsuario.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         cbTipoUsuario.setForeground(new java.awt.Color(254, 254, 254));
         cbTipoUsuario.setToolTipText("");
-        cbTipoUsuario.setBorder(null);
         cbTipoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbTipoUsuarioActionPerformed(evt);
             }
         });
+        cbTipoUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbTipoUsuarioKeyPressed(evt);
+            }
+        });
         jLayer1.add(cbTipoUsuario);
-        cbTipoUsuario.setBounds(20, 110, 240, 29);
+        cbTipoUsuario.setBounds(20, 110, 240, 30);
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(254, 254, 254));
         jLabel7.setText("Tipo de Usuario:");
         jLayer1.add(jLabel7);
-        jLabel7.setBounds(20, 90, 130, 19);
+        jLabel7.setBounds(20, 90, 130, 21);
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(254, 254, 254));
@@ -365,6 +381,14 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApellidoActionPerformed(evt);
+            }
+        });
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyTyped(evt);
             }
         });
         jLayer1.add(txtApellido);
@@ -386,6 +410,14 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
                 txtUsuarioActionPerformed(evt);
             }
         });
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyTyped(evt);
+            }
+        });
         jLayer1.add(txtUsuario);
         txtUsuario.setBounds(20, 170, 240, 30);
 
@@ -393,7 +425,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLabel16.setForeground(new java.awt.Color(254, 254, 254));
         jLabel16.setText("Género:");
         jLayer1.add(jLabel16);
-        jLabel16.setBounds(20, 210, 54, 20);
+        jLabel16.setBounds(20, 210, 56, 20);
 
         rbFemenino.setBackground(new java.awt.Color(33, 37, 41));
         btgBotones.add(rbFemenino);
@@ -406,7 +438,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
             }
         });
         jLayer1.add(rbFemenino);
-        rbFemenino.setBounds(40, 240, 102, 28);
+        rbFemenino.setBounds(40, 240, 95, 29);
 
         rbMasculino.setBackground(new java.awt.Color(33, 37, 41));
         btgBotones.add(rbMasculino);
@@ -419,46 +451,9 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
             }
         });
         jLayer1.add(rbMasculino);
-        rbMasculino.setBounds(150, 240, 106, 28);
+        rbMasculino.setBounds(150, 240, 95, 29);
 
         jPanel1.add(jLayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 270, 270));
-
-        jCalendario.setBackground(new java.awt.Color(255, 255, 255));
-        jCalendario.setForeground(new java.awt.Color(255, 255, 255));
-        jCalendario.setMaxSelectableDate(new java.util.Date(1072854073000L));
-        jCalendario.setMinSelectableDate(new java.util.Date(-315590327000L));
-        jCalendario.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jCalendarioFocusGained(evt);
-            }
-        });
-        jCalendario.addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
-            public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
-                jCalendarioAncestorMoved(evt);
-            }
-            public void ancestorResized(java.awt.event.HierarchyEvent evt) {
-            }
-        });
-        jCalendario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCalendarioMouseClicked(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jCalendarioMouseReleased(evt);
-            }
-        });
-        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jCalendarioPropertyChange(evt);
-            }
-        });
-        jCalendario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jCalendarioKeyPressed(evt);
-            }
-        });
-        jLayer2.add(jCalendario);
-        jCalendario.setBounds(180, 170, 50, 29);
 
         txtFecha.setEditable(false);
         txtFecha.setBackground(new java.awt.Color(33, 37, 41));
@@ -478,13 +473,13 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLabel15.setForeground(new java.awt.Color(254, 254, 254));
         jLabel15.setText("Fecha de nacimiento:");
         jLayer2.add(jLabel15);
-        jLabel15.setBounds(10, 150, 151, 19);
+        jLabel15.setBounds(10, 150, 150, 21);
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));
         jLabel13.setText("NIT:");
         jLayer2.add(jLabel13);
-        jLabel13.setBounds(10, 90, 29, 19);
+        jLabel13.setBounds(10, 90, 27, 21);
 
         jLabel20.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(254, 254, 254));
@@ -496,14 +491,14 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLabel11.setForeground(new java.awt.Color(254, 254, 254));
         jLabel11.setText("DUI:");
         jLayer2.add(jLabel11);
-        jLabel11.setBounds(10, 10, 29, 30);
+        jLabel11.setBounds(10, 10, 30, 30);
 
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(254, 254, 254));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Teléfono:");
         jLayer2.add(jLabel10);
-        jLabel10.setBounds(10, 210, 67, 20);
+        jLabel10.setBounds(10, 210, 64, 20);
 
         txtDUI.setBackground(new java.awt.Color(33, 37, 41));
         txtDUI.setForeground(new java.awt.Color(255, 255, 255));
@@ -514,6 +509,11 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         }
         txtDUI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDUI.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtDUI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDUIKeyPressed(evt);
+            }
+        });
         jLayer2.add(txtDUI);
         txtDUI.setBounds(50, 10, 180, 30);
 
@@ -526,6 +526,11 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         }
         txtTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyPressed(evt);
+            }
+        });
         jLayer2.add(txtTelefono);
         txtTelefono.setBounds(10, 230, 220, 30);
 
@@ -538,6 +543,11 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         }
         txtNit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtNit.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtNit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNitKeyPressed(evt);
+            }
+        });
         jLayer2.add(txtNit);
         txtNit.setBounds(10, 110, 220, 30);
 
@@ -550,6 +560,11 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         }
         txtNIP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtNIP.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        txtNIP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNIPKeyPressed(evt);
+            }
+        });
         jLayer2.add(txtNIP);
         txtNIP.setBounds(50, 50, 180, 30);
 
@@ -559,7 +574,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
         jLabel9.setText("Correo Electrónico:");
         jLayer3.add(jLabel9);
-        jLabel9.setBounds(0, 20, 170, 19);
+        jLabel9.setBounds(0, 20, 170, 21);
 
         txtEmail.setBackground(new java.awt.Color(33, 37, 41));
         txtEmail.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -571,6 +586,11 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
                 txtEmailActionPerformed(evt);
             }
         });
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmailKeyPressed(evt);
+            }
+        });
         jLayer3.add(txtEmail);
         txtEmail.setBounds(0, 40, 230, 30);
 
@@ -578,7 +598,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLabel17.setForeground(new java.awt.Color(254, 254, 254));
         jLabel17.setText("Dirección:");
         jLayer3.add(jLabel17);
-        jLabel17.setBounds(0, 80, 70, 20);
+        jLabel17.setBounds(0, 80, 71, 20);
 
         txtDireccion.setBackground(new java.awt.Color(33, 37, 41));
         txtDireccion.setColumns(20);
@@ -590,6 +610,14 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         txtDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtDireccionMouseClicked(evt);
+            }
+        });
+        txtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDireccionKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireccionKeyTyped(evt);
             }
         });
         jScrollPane2.setViewportView(txtDireccion);
@@ -1115,6 +1143,81 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_txtBuscarKeyReleased
 
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        // TODO add your handling code here:
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+        // TODO add your handling code here:
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_txtApellidoKeyTyped
+
+    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
+        // TODO add your handling code here:
+        val.verificarEspeciales(evt);
+    }//GEN-LAST:event_txtUsuarioKeyTyped
+
+    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtNombreKeyPressed
+
+    private void txtApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtApellidoKeyPressed
+
+    private void cbTipoUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbTipoUsuarioKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_cbTipoUsuarioKeyPressed
+
+    private void txtUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtUsuarioKeyPressed
+
+    private void txtDUIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDUIKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtDUIKeyPressed
+
+    private void txtNIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNIPKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtNIPKeyPressed
+
+    private void txtNitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNitKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtNitKeyPressed
+
+    private void txtTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtTelefonoKeyPressed
+
+    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtEmailKeyPressed
+
+    private void txtDireccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtDireccionKeyPressed
+
+    private void txtDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyTyped
+        // TODO add your handling code here:
+        val.verificarAlfanumerico(evt);
+    }//GEN-LAST:event_txtDireccionKeyTyped
+
+    private void txtBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_txtBuscarKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgBotones;
@@ -1126,7 +1229,6 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnReiniciarCuenta;
     private javax.swing.JButton btnSuspender;
     private javax.swing.JComboBox<String> cbTipoUsuario;
-    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

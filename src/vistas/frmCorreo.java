@@ -6,6 +6,7 @@
 package vistas;
 
 import modelo.ClsCorreo;
+import modelo.Validaciones;
 
 /**
  *
@@ -16,6 +17,7 @@ public class frmCorreo extends javax.swing.JFrame {
     /**
      * Creates new form CorreoForm
      */
+    Validaciones val = new Validaciones();
     public frmCorreo() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -58,6 +60,14 @@ public class frmCorreo extends javax.swing.JFrame {
         jDestinatario.setForeground(new java.awt.Color(254, 254, 254));
         jDestinatario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jDestinatario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jDestinatario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jDestinatarioKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jDestinatarioKeyTyped(evt);
+            }
+        });
         jPanel1.add(jDestinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 430, 30));
 
         jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
@@ -70,6 +80,14 @@ public class frmCorreo extends javax.swing.JFrame {
         jAsunto.setForeground(new java.awt.Color(254, 254, 254));
         jAsunto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jAsunto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jAsunto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jAsuntoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jAsuntoKeyTyped(evt);
+            }
+        });
         jPanel1.add(jAsunto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 430, 30));
 
         jMensaje.setBackground(new java.awt.Color(33, 37, 41));
@@ -78,6 +96,14 @@ public class frmCorreo extends javax.swing.JFrame {
         jMensaje.setForeground(new java.awt.Color(254, 254, 254));
         jMensaje.setRows(5);
         jMensaje.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jMensaje.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jMensajeKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jMensajeKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(jMensaje);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 430, 290));
@@ -122,14 +148,45 @@ public class frmCorreo extends javax.swing.JFrame {
 
     private void jEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEnviarActionPerformed
        
-        //Llamando clase de correos
+        //Llamando clases
         ClsCorreo correo = new ClsCorreo();
+        
         
         correo.setDestino(jDestinatario.getText());
         correo.setAsunto(jAsunto.getText());
         correo.setMensaje(jMensaje.getText());
         correo.enviarCorreo();
     }//GEN-LAST:event_jEnviarActionPerformed
+
+    private void jMensajeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMensajeKeyPressed
+        // TODO add your handling code here:
+       val.verificarPegar(evt);
+    }//GEN-LAST:event_jMensajeKeyPressed
+
+    private void jMensajeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMensajeKeyTyped
+        // TODO add your handling code here:
+        val.verificarAlfanumerico(evt);
+    }//GEN-LAST:event_jMensajeKeyTyped
+
+    private void jDestinatarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDestinatarioKeyTyped
+        // TODO add your handling code here:
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_jDestinatarioKeyTyped
+
+    private void jAsuntoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAsuntoKeyTyped
+        // TODO add your handling code here:
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_jAsuntoKeyTyped
+
+    private void jDestinatarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDestinatarioKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jDestinatarioKeyPressed
+
+    private void jAsuntoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAsuntoKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jAsuntoKeyPressed
 
     /**
      * @param args the command line arguments
