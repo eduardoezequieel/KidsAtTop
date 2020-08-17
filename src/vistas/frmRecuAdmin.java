@@ -248,10 +248,21 @@ public class frmRecuAdmin extends javax.swing.JFrame {
 
     private void jUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyPressed
         val.verificarPegar(evt);
+        String Caracteres = jUsuario.getText();
+        if(Caracteres.length()>=25){
+            jUsuario.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jUsuarioKeyPressed
 
     private void jAdminKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAdminKeyPressed
         val.verificarPegar(evt);
+        
+        String Caracteres = jAdmin.getText();
+        if(Caracteres.length()>=25){
+            jAdmin.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jAdminKeyPressed
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
@@ -329,7 +340,11 @@ public class frmRecuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jContraKeyTyped
 
     private void jContraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jContraKeyPressed
-        // TODO add your handling code here:
+        String Caracteres = jContra.getText();
+        if(Caracteres.length()>=16){
+            jContra.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jContraKeyPressed
 
@@ -339,7 +354,11 @@ public class frmRecuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jNuevaKeyTyped
 
     private void jNuevaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNuevaKeyPressed
-        // TODO add your handling code here:
+        String Caracteres = jNueva.getText();
+        if(Caracteres.length()>=16){
+            jNueva.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jNuevaKeyPressed
 
@@ -349,7 +368,11 @@ public class frmRecuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jConfirmarKeyTyped
 
     private void jConfirmarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jConfirmarKeyPressed
-        // TODO add your handling code here:
+        String Caracteres = jConfirmar.getText();
+        if(Caracteres.length()>=16){
+            jConfirmar.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jConfirmarKeyPressed
     //</editor-fold>

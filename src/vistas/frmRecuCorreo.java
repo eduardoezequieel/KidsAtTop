@@ -87,7 +87,7 @@ public class frmRecuCorreo extends javax.swing.JFrame {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 1290, 10));
 
         jUsuario.setBackground(new java.awt.Color(33, 37, 41));
-        jUsuario.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jUsuario.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jUsuario.setForeground(new java.awt.Color(254, 254, 254));
         jUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
@@ -108,10 +108,18 @@ public class frmRecuCorreo extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 210, -1));
 
         jCodigo.setBackground(new java.awt.Color(33, 37, 41));
-        jCodigo.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jCodigo.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jCodigo.setForeground(new java.awt.Color(254, 254, 254));
         jCodigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jCodigo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCodigoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jCodigoKeyTyped(evt);
+            }
+        });
         jPanel1.add(jCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 160, 30));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -182,6 +190,8 @@ public class frmRecuCorreo extends javax.swing.JFrame {
         });
         jPanel1.add(btnVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 180, 70));
 
+        jConfirmar.setBackground(new java.awt.Color(33, 37, 41));
+        jConfirmar.setForeground(new java.awt.Color(255, 255, 255));
         jConfirmar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jConfirmarKeyPressed(evt);
@@ -192,6 +202,8 @@ public class frmRecuCorreo extends javax.swing.JFrame {
         });
         jPanel1.add(jConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 400, 210, 30));
 
+        jNueva.setBackground(new java.awt.Color(33, 37, 41));
+        jNueva.setForeground(new java.awt.Color(255, 255, 255));
         jNueva.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jNuevaKeyPressed(evt);
@@ -377,12 +389,20 @@ public class frmRecuCorreo extends javax.swing.JFrame {
     }//GEN-LAST:event_jNuevaKeyTyped
 
     private void jUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyPressed
-        // TODO add your handling code here:
+        String Caracteres = jUsuario.getText();
+        if(Caracteres.length()>=25){
+            jUsuario.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jUsuarioKeyPressed
 
     private void jNuevaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNuevaKeyPressed
-        // TODO add your handling code here:
+        String Caracteres = jNueva.getText();
+        if(Caracteres.length()>=16){
+            jNueva.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jNuevaKeyPressed
 
@@ -392,9 +412,27 @@ public class frmRecuCorreo extends javax.swing.JFrame {
     }//GEN-LAST:event_jConfirmarKeyTyped
 
     private void jConfirmarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jConfirmarKeyPressed
-        // TODO add your handling code here:
+        String Caracteres = jConfirmar.getText();
+        if(Caracteres.length()>=16){
+            jConfirmar.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jConfirmarKeyPressed
+
+    private void jCodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCodigoKeyPressed
+        String Caracteres = jCodigo.getText();
+        if(Caracteres.length()>=4){
+            jCodigo.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jCodigoKeyPressed
+
+    private void jCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCodigoKeyTyped
+        val.verificarEnteros(evt);
+    }//GEN-LAST:event_jCodigoKeyTyped
 
     /**
      * @param args the command line arguments

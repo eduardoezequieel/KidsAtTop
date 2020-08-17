@@ -79,7 +79,7 @@ public class ClsCorreo {
             transportar.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));          
             transportar.close();
             
-            JOptionPane.showMessageDialog(null, "Su correo ha sido enviado correctamente");
+            JOptionPane.showMessageDialog(null, "Su correo ha sido enviado correctamente.");
             
             
         } catch (AddressException ex) {

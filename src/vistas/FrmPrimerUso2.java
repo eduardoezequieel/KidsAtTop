@@ -116,6 +116,8 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         jLayeredPane1.setNextFocusableComponent(jLayeredPane2);
         jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jCalendario.setMaxSelectableDate(new java.util.Date(1041404483000L));
+        jCalendario.setMinSelectableDate(new java.util.Date(-315590317000L));
         jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jCalendarioPropertyChange(evt);
@@ -279,6 +281,11 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         jCorreo.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jCorreo.setForeground(new java.awt.Color(255, 255, 255));
         jCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCorreoKeyPressed(evt);
+            }
+        });
         jLayeredPane2.add(jCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 280, 40));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -474,46 +481,54 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         }
         else if (rbMasculino.isSelected() || rbFemenino.isSelected()) 
         {
-            int mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres registrarte con estos datos?","Aviso",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
-            if (mensaje == JOptionPane.YES_OPTION) {
-                CtrlUsuario ctrl = new CtrlUsuario();
-                MtoUsuario mto = new MtoUsuario();
-
-                ctrl.setId_usuario(1);
-                ctrl.setNombre(jNombre.getText());
-                ctrl.setApellido(jApellido.getText());
-                ctrl.setId_tipo_usuario(1);
-                ctrl.setId_estado_usuario(1);
-                ctrl.setEmail(jCorreo.getText());
-                ctrl.setTelefono(jTelefono.getText());
-                ctrl.setDui(jDUI.getText());
-                ctrl.setNit(jNIT.getText());
-                ctrl.setUsuario(jUsuario.getText());
+            if (val.email(jCorreo.getText())) {
                 
-                ctrl.setNip(jNIP.getText());
-                ctrl.setFecha_nacimiento(jFechaNacimiento.getText());
-                String genero = null;
-                if (rbMasculino.isSelected()) {
-                    genero = "M";
-                }
-                else if(rbFemenino.isSelected())
-                {
-                    genero = "F";
-                }
-                ctrl.setGenero(genero);
-                ctrl.setDireccion(jDireccion.getText());
-                String contraseña = "txt";
-                String contraseñaEncriptada = DigestUtils.sha1Hex(contraseña);
-                ctrl.setContraseña(contraseñaEncriptada);
-                ctrl.setFoto(person_image);
+                int mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres registrarte con estos datos?","Aviso",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
+                if (mensaje == JOptionPane.YES_OPTION) {
+                    CtrlUsuario ctrl = new CtrlUsuario();
+                    MtoUsuario mto = new MtoUsuario();
 
-                if (mto.insertarUsuario()) {
-                    JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente.","Exito",JOptionPane.INFORMATION_MESSAGE);
-                    this.setVisible(false);
-                    FrmPrimerUso3 frm = new FrmPrimerUso3();
-                    frm.setVisible(true);
+                    ctrl.setId_usuario(1);
+                    ctrl.setNombre(jNombre.getText());
+                    ctrl.setApellido(jApellido.getText());
+                    ctrl.setId_tipo_usuario(1);
+                    ctrl.setId_estado_usuario(1);
+                    ctrl.setEmail(jCorreo.getText());
+                    ctrl.setTelefono(jTelefono.getText());
+                    ctrl.setDui(jDUI.getText());
+                    ctrl.setNit(jNIT.getText());
+                    ctrl.setUsuario(jUsuario.getText());
+
+                    ctrl.setNip(jNIP.getText());
+                    ctrl.setFecha_nacimiento(jFechaNacimiento.getText());
+                    String genero = null;
+                    if (rbMasculino.isSelected()) {
+                        genero = "M";
+                    }
+                    else if(rbFemenino.isSelected())
+                    {
+                        genero = "F";
+                    }
+                    ctrl.setGenero(genero);
+                    ctrl.setDireccion(jDireccion.getText());
+                    String contraseña = "txt";
+                    String contraseñaEncriptada = DigestUtils.sha1Hex(contraseña);
+                    ctrl.setContraseña(contraseñaEncriptada);
+                    ctrl.setFoto(person_image);
+
+                    if (mto.insertarUsuario()) {
+                        JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente.","Exito",JOptionPane.INFORMATION_MESSAGE);
+                        this.setVisible(false);
+                        FrmPrimerUso3 frm = new FrmPrimerUso3();
+                        frm.setVisible(true);
+                    }
                 }
             }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Correo invalido.","Advertencia",JOptionPane.WARNING_MESSAGE);
+            }
+            
         }
         else
         {
@@ -536,6 +551,11 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
 
     private void jNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jNombre.getText();
+        if(Caracteres.length()>=30){
+            jNombre.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jNombreKeyPressed
 
@@ -546,6 +566,11 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
 
     private void jApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jApellido.getText();
+        if(Caracteres.length()>=30){
+            jApellido.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jApellidoKeyPressed
 
@@ -556,6 +581,11 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
 
     private void jUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jUsuario.getText();
+        if(Caracteres.length()>=25){
+            jUsuario.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jUsuarioKeyPressed
 
@@ -566,6 +596,11 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
 
     private void jDireccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDireccionKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jDireccion.getText();
+        if(Caracteres.length()>=200){
+            jDireccion.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jDireccionKeyPressed
 
@@ -588,6 +623,16 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
         // TODO add your handling code here:
         val.verificarPegar(evt);
     }//GEN-LAST:event_jNITKeyPressed
+
+    private void jCorreoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCorreoKeyPressed
+        String Caracteres = jCorreo.getText();
+        if(Caracteres.length()>=50){
+            jCorreo.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jCorreoKeyPressed
 
     /**
      * @param args the command line arguments

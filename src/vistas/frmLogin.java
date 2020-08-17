@@ -38,7 +38,7 @@ public class frmLogin extends javax.swing.JFrame {
         if (mto.verificarPrimerUso()) {
             btnPrimerUso.setVisible(false);
             icnPrimerUso.setVisible(false);
-            if (mto.continuarPrimerUso()) {
+            if (mto.continuarPrimerUso1()) {
                 btnPrimerUso.setVisible(false);
                 icnPrimerUso.setVisible(true);
                 btnContinuar.setVisible(true);
@@ -83,6 +83,7 @@ public class frmLogin extends javax.swing.JFrame {
         icnPrimerUso = new javax.swing.JLabel();
         btnMinimizar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        btnContinuarPreguntas = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -199,7 +200,7 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user.png"))); // NOI18N
         pnlControlesLogin.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, -1));
 
-        getContentPane().add(pnlControlesLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 360, 640));
+        getContentPane().add(pnlControlesLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 360, 640));
 
         btnPrimerUso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnPrimerUsoDefault.png"))); // NOI18N
         btnPrimerUso.setBorder(null);
@@ -212,7 +213,7 @@ public class frmLogin extends javax.swing.JFrame {
                 btnPrimerUsoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnPrimerUso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 300, 80));
+        getContentPane().add(btnPrimerUso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 520, 300, 80));
 
         btnContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnContinuarDefault.png"))); // NOI18N
         btnContinuar.setBorder(null);
@@ -225,7 +226,7 @@ public class frmLogin extends javax.swing.JFrame {
                 btnContinuarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 300, 80));
+        getContentPane().add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 300, 80));
 
         icnPrimerUso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnPrimerUso.png"))); // NOI18N
         getContentPane().add(icnPrimerUso, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
@@ -249,6 +250,19 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("¿Estás listo para educar?");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 440, 400, -1));
+
+        btnContinuarPreguntas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnContinuarDefault.png"))); // NOI18N
+        btnContinuarPreguntas.setBorder(null);
+        btnContinuarPreguntas.setBorderPainted(false);
+        btnContinuarPreguntas.setContentAreaFilled(false);
+        btnContinuarPreguntas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnContinuarPreguntas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnContinuarRollover.png"))); // NOI18N
+        btnContinuarPreguntas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuarPreguntasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnContinuarPreguntas, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 300, 80));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoLogin.png"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 728));
@@ -342,10 +356,22 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void txtUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyPressed
         val.verificarPegar(evt);
+        
+        String Caracteres = txtUsuario.getText();
+        if(Caracteres.length()>=25){
+            txtUsuario.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_txtUsuarioKeyPressed
 
     private void txtContraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraKeyPressed
         val.verificarPegar(evt);
+        
+        String Caracteres = txtContra.getText();
+        if(Caracteres.length()>=16){
+            txtContra.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_txtContraKeyPressed
 
     private void btnPrimerUsoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimerUsoActionPerformed
@@ -366,6 +392,13 @@ public class frmLogin extends javax.swing.JFrame {
         frm.setVisible(true);
         
     }//GEN-LAST:event_btnContinuarActionPerformed
+
+    private void btnContinuarPreguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarPreguntasActionPerformed
+        JOptionPane.showMessageDialog(null, "Bienvenido, a continuación podras continuar con el registro de primer uso.","Información",JOptionPane.INFORMATION_MESSAGE);
+        this.setVisible(false);
+        FrmPrimerUso3 frm = new FrmPrimerUso3();
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnContinuarPreguntasActionPerformed
     //</editor-fold>
     
     public static void main(String args[]) {
@@ -385,6 +418,7 @@ public class frmLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
+    private javax.swing.JButton btnContinuarPreguntas;
     private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JButton btnMinimizar;
     private javax.swing.JButton btnPrimerUso;

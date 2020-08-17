@@ -22,6 +22,7 @@ import modelo.Conexion;
 import modelo.MtoConducta;
 import modelo.Validaciones;
 import controlador.CtrlLoginUsuario;
+import java.util.Date;
 import modelo.MtoBitacoras;
 
 /**
@@ -35,6 +36,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
     CtrlConducta conductaCtrl = new CtrlConducta();
     MtoConducta conducta = new MtoConducta();
     CtrlLoginUsuario mod;
+    
 
     //Declarando variables
     int idGS;
@@ -87,7 +89,8 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jCalendario.getJCalendar().setWeekOfYearVisible(false);
         jCalendario.getJCalendar().setBackground(Color.WHITE);
         jCalendario.getJCalendar().setPreferredSize(new Dimension(450, 450));
-
+        Date Fecha = new Date();
+        jCalendario.setMaxSelectableDate(Fecha);
         //Deshabilitando botones 
         jActualizar.setEnabled(false);
         jEliminar.setEnabled(false);
@@ -390,6 +393,8 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jLayeredPane1.add(jFecha);
         jFecha.setBounds(10, 250, 260, 30);
 
+        jCalendario.setMaxSelectableDate(new java.util.Date(1657609311000L));
+        jCalendario.setMinSelectableDate(new java.util.Date(1577862111000L));
         jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jCalendarioPropertyChange(evt);
@@ -488,20 +493,6 @@ char c = evt.getKeyChar();
 
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void jCalendarioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendarioPropertyChange
-        try {
-            String dia = Integer.toString(jCalendario.getCalendar().get(Calendar.DATE));
-            String año = Integer.toString(jCalendario.getCalendar().get(Calendar.YEAR));
-            int mesInt = jCalendario.getCalendar().get(Calendar.MONTH) + 1;
-            String mes = Integer.toString(mesInt);
-            String fecha = (mes + "-" + dia + "-" + año);
-            jFecha.setText(fecha);
-
-        } catch (Exception ex) {
-            System.out.println(ex.toString());
-        }
-    }//GEN-LAST:event_jCalendarioPropertyChange
 
     private void jActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActualizarActionPerformed
 
@@ -641,6 +632,12 @@ char c = evt.getKeyChar();
 
     private void jObservacionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jObservacionKeyPressed
         // TODO add your handling code here:
+        
+        String Caracteres = jObservacion.getText();
+        if(Caracteres.length()>=200){
+            jObservacion.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jObservacionKeyPressed
 
@@ -648,6 +645,20 @@ char c = evt.getKeyChar();
         // TODO add your handling code here:
         val.verificarAlfanumerico(evt);
     }//GEN-LAST:event_jObservacionKeyTyped
+
+    private void jCalendarioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendarioPropertyChange
+        try {
+            String dia = Integer.toString(jCalendario.getCalendar().get(Calendar.DATE));
+            String año = Integer.toString(jCalendario.getCalendar().get(Calendar.YEAR));
+            int mesInt = jCalendario.getCalendar().get(Calendar.MONTH) + 1;
+            String mes = Integer.toString(mesInt);
+            String fecha = (mes + "-" + dia + "-" + año);
+            jFecha.setText(fecha);
+
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+    }//GEN-LAST:event_jCalendarioPropertyChange
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="LlenandoComboBox">

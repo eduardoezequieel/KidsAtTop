@@ -5,6 +5,7 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import modelo.MtoResponsable;
+import modelo.Validaciones;
 
 /**
  *
@@ -15,6 +16,7 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
     //Llamando clases
     CtrlResponsable responsableCtrl = new CtrlResponsable();
     MtoResponsable responsable = new MtoResponsable();
+    Validaciones val = new Validaciones();
     
     public FrmVerificarDUI() {
         initComponents();
@@ -75,6 +77,14 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         jNombre.setForeground(new java.awt.Color(255, 255, 255));
         jNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jNombreKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jNombreKeyTyped(evt);
+            }
+        });
         pnlResponsable.add(jNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 230, 30));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -87,6 +97,14 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         jApellido.setForeground(new java.awt.Color(255, 255, 255));
         jApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jApellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jApellidoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jApellidoKeyTyped(evt);
+            }
+        });
         pnlResponsable.add(jApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 230, 30));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -104,6 +122,11 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         jCorreo.setForeground(new java.awt.Color(255, 255, 255));
         jCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jCorreo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCorreoKeyPressed(evt);
+            }
+        });
         pnlResponsable.add(jCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 230, 30));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -277,8 +300,9 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         if ((jNombre.getText().trim().isEmpty()) || (jApellido.getText().trim().isEmpty()) 
                 || (jTel.getText().trim().isEmpty()) || (jCorreo.getText().trim().isEmpty())) {
             JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
-        } else {
-            
+        }
+        else if(val.email(jCorreo.getText())) 
+        {
             //Enviando datos a la tabla
             responsableCtrl.setNombre(jNombre.getText());
             responsableCtrl.setApellido(jApellido.getText());
@@ -298,7 +322,49 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "No se ha agregado el responsable correctamente. Seleccionar siguiente para seguir el proceso");
             }
         }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Correo invalido.","Advertencia",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void jNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyPressed
+        // TODO add your handling code here:
+        String Caracteres = jNombre.getText();
+        if(Caracteres.length()>=30){
+            jNombre.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jNombreKeyPressed
+
+    private void jNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyTyped
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_jNombreKeyTyped
+
+    private void jApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyPressed
+        String Caracteres = jApellido.getText();
+        if(Caracteres.length()>=30){
+            jApellido.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jApellidoKeyPressed
+
+    private void jApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyTyped
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_jApellidoKeyTyped
+
+    private void jCorreoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCorreoKeyPressed
+        String Caracteres = jCorreo.getText();
+        if(Caracteres.length()>=50){
+            jCorreo.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jCorreoKeyPressed
        
     public void limpiarCampos(){
         jNombre.setText("");

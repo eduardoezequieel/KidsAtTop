@@ -1,6 +1,9 @@
 package vistas;
 
 import controlador.CtrlEstudiante;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -40,6 +43,17 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         //Mostrando responsable
         estudiante.obteniendoResponsable();  
         jResponsable.setText(estudianteCtrl.getResponsable());
+        
+        ycAño.setForeground(Color.white);
+        ycAño.setFont(new Font("Roboto Black", Font.PLAIN, 16));
+        
+        jCalendario.getJCalendar().setForeground(new Color(254,254,254));
+        jCalendario.getJCalendar().setSundayForeground(Color.WHITE);
+        jCalendario.getJCalendar().setWeekdayForeground(Color.WHITE);
+        jCalendario.getJCalendar().setDecorationBackgroundVisible(false);
+        jCalendario.getJCalendar().setWeekOfYearVisible(false);
+        jCalendario.getJCalendar().setBackground(Color.WHITE);
+        jCalendario.getJCalendar().setPreferredSize(new Dimension(450, 450));
     }
 
     @SuppressWarnings("unchecked")
@@ -70,54 +84,55 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         btnAgregar = new javax.swing.JButton();
         btnCargarFoto = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jAño = new javax.swing.JTextField();
         jCalendario = new com.toedter.calendar.JDateChooser();
+        ycAño = new com.toedter.calendar.JYearChooser();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(33, 37, 41));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Dirección:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Una vez ingresados los datos del responsable, se procedera a la matricula del nuevo estudiante.");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nombre:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, 20));
 
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Apellido:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Fecha de nacimiento:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Género:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Responsable:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Grado/Sección:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
 
+        jResponsable.setEditable(false);
         jResponsable.setBackground(new java.awt.Color(33, 37, 41));
         jResponsable.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jResponsable.setForeground(new java.awt.Color(255, 255, 255));
@@ -175,14 +190,14 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
 
         rbF.setBackground(new java.awt.Color(33, 37, 41));
         rbGenero.add(rbF);
-        rbF.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        rbF.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         rbF.setForeground(new java.awt.Color(255, 255, 255));
         rbF.setText("Femenino");
         jPanel1.add(rbF, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, -1, -1));
 
         rbM.setBackground(new java.awt.Color(33, 37, 41));
         rbGenero.add(rbM);
-        rbM.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        rbM.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         rbM.setForeground(new java.awt.Color(255, 255, 255));
         rbM.setText("Masculino");
         jPanel1.add(rbM, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, -1, -1));
@@ -239,34 +254,23 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btnCargarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 410, 180, 80));
 
-        jLabel9.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Año Ingreso:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, -1));
 
-        jAño.setBackground(new java.awt.Color(33, 37, 41));
-        jAño.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jAño.setForeground(new java.awt.Color(255, 255, 255));
-        jAño.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jAño.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        jAño.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jAñoKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jAñoKeyTyped(evt);
-            }
-        });
-        jPanel1.add(jAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 240, 30));
-
-        jCalendario.setMaxSelectableDate(new java.util.Date(1325401287000L));
-        jCalendario.setMinSelectableDate(new java.util.Date(1483254087000L));
+        jCalendario.setMaxSelectableDate(new java.util.Date(1483254087000L));
+        jCalendario.setMinSelectableDate(new java.util.Date(1325401287000L));
         jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jCalendarioPropertyChange(evt);
             }
         });
         jPanel1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 50, -1));
+
+        ycAño.setEndYear(2021);
+        ycAño.setStartYear(2020);
+        jPanel1.add(ycAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 90, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 680));
 
@@ -286,7 +290,7 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
             estudianteCtrl.setNombre(jNombre.getText());
             estudianteCtrl.setApellido(jApellido.getText());
             estudianteCtrl.setFechaNacimiento(jFecha.getText());
-            estudianteCtrl.setAnioIngreso(jAño.getText());
+            estudianteCtrl.setAnioIngreso(String.valueOf(ycAño.getValue()));
             estudianteCtrl.setDireccion(jDireccion.getText());
             if (rbF.isSelected()) {
                 estudianteCtrl.setGenero("F");
@@ -351,6 +355,11 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
 
     private void jNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jNombre.getText();
+        if(Caracteres.length()>=30){
+            jNombre.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jNombreKeyPressed
 
@@ -361,6 +370,11 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
 
     private void jApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jApellido.getText();
+        if(Caracteres.length()>=30){
+            jApellido.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jApellidoKeyPressed
 
@@ -371,6 +385,11 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
 
     private void jDireccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDireccionKeyPressed
         // TODO add your handling code here:
+       String Caracteres = jDireccion.getText();
+        if(Caracteres.length()>=200){
+            jDireccion.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jDireccionKeyPressed
 
@@ -389,16 +408,6 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         val.verificarLetras(evt);
     }//GEN-LAST:event_jResponsableKeyTyped
 
-    private void jAñoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAñoKeyPressed
-        // TODO add your handling code here:
-        val.verificarPegar(evt);
-    }//GEN-LAST:event_jAñoKeyPressed
-
-    private void jAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAñoKeyTyped
-        // TODO add your handling code here:
-        val.verificarEnteros(evt);
-    }//GEN-LAST:event_jAñoKeyTyped
-
     public void llenarGS(){
         
         //Llenando combobox
@@ -411,7 +420,7 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         jNombre.setText("");
         jApellido.setText("");
         jFecha.setText("");
-        jAño.setText("");
+        ycAño.setValue(2020);
         rbF.setSelected(false);
         rbM.setSelected(false);
         jDireccion.setText("");
@@ -424,7 +433,6 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCargarFoto;
     private javax.swing.JComboBox<String> cbGS;
     private javax.swing.JTextField jApellido;
-    private javax.swing.JTextField jAño;
     private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JTextArea jDireccion;
     private javax.swing.JTextField jFecha;
@@ -446,5 +454,6 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rbF;
     private javax.swing.ButtonGroup rbGenero;
     private javax.swing.JRadioButton rbM;
+    private com.toedter.calendar.JYearChooser ycAño;
     // End of variables declaration//GEN-END:variables
 }

@@ -269,6 +269,8 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jLayer1.add(jTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 230, 30));
 
+        jCalendario.setMaxSelectableDate(new java.util.Date(1041404460000L));
+        jCalendario.setMinSelectableDate(new java.util.Date(-315590340000L));
         jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jCalendarioPropertyChange(evt);
@@ -331,6 +333,11 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         jDireccion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jDireccion.setForeground(new java.awt.Color(255, 255, 255));
         jDireccion.setRows(5);
+        jDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jDireccionKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jDireccion);
 
         jLayer2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 230, 110));
@@ -494,7 +501,7 @@ public class FrmMiCuenta extends javax.swing.JFrame {
              jUsuario.getText().isEmpty() || jDUI.getText().isEmpty() || jNIP.getText().isEmpty() || jNIT.getText().isEmpty() || jDireccion.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Campos vacios.","Error",JOptionPane.WARNING_MESSAGE);
         }
-        else
+        else if(val.email(jCorreo.getText()))
         {
             int mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas actualizar estos datos?","Aviso",JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
             if (mensaje == JOptionPane.YES_OPTION) {
@@ -541,6 +548,10 @@ public class FrmMiCuenta extends javax.swing.JFrame {
                 }
             }
         }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Correo invalido.","Error",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void jCalendarioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendarioPropertyChange
@@ -572,6 +583,11 @@ public class FrmMiCuenta extends javax.swing.JFrame {
 
     private void jNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jNombre.getText();
+        if(Caracteres.length()>=30){
+            jNombre.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jNombreKeyPressed
 
@@ -582,6 +598,11 @@ public class FrmMiCuenta extends javax.swing.JFrame {
 
     private void jApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jApellido.getText();
+        if(Caracteres.length()>=30){
+            jApellido.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jApellidoKeyPressed
 
@@ -591,6 +612,12 @@ public class FrmMiCuenta extends javax.swing.JFrame {
 
     private void jCorreoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCorreoKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jCorreo.getText();
+        if(Caracteres.length()>=50){
+            jCorreo.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+        
         val.verificarPegar(evt);
     }//GEN-LAST:event_jCorreoKeyPressed
 
@@ -601,8 +628,24 @@ public class FrmMiCuenta extends javax.swing.JFrame {
 
     private void jUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jUsuario.getText();
+        if(Caracteres.length()>=25){
+            jUsuario.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jUsuarioKeyPressed
+
+    private void jDireccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDireccionKeyPressed
+        // TODO add your handling code here:
+        String Caracteres = jDireccion.getText();
+        if(Caracteres.length()>=200){
+            jDireccion.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jDireccionKeyPressed
 
     /**
      * @param args the command line arguments

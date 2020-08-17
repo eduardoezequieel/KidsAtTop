@@ -92,8 +92,8 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     
     public void reiniciarBusqueda()
     {
-        txtBuscar.setText("");
-        String busqueda = txtBuscar.getText();
+        jBuscar.setText("");
+        String busqueda = jBuscar.getText();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
         tUsuarios.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(busqueda));
@@ -126,18 +126,18 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     }
     
     public void limpiarCampo(){
-        txtNombre.setText("");
-        txtApellido.setText("");
-        txtUsuario.setText("");
+        jNombre.setText("");
+        jApellido.setText("");
+        jUsuario.setText("");
         rbFemenino.setSelected(false);
         rbMasculino.setSelected(false);
-        txtDUI.setText("");
-        txtNIP.setText("");
-        txtNit.setText("");
-        txtFecha.setText("");
-        txtTelefono.setText("");
-        txtEmail.setText("");
-        txtDireccion.setText("");
+        jDUI.setText("");
+        jNIP.setText("");
+        jNIT.setText("");
+        jFecha.setText("");
+        jTelefono.setText("");
+        jCorreo.setText("");
+        jDireccion.setText("");
         txtId.setText("");
         lblFoto.setIcon(null);
      
@@ -172,38 +172,38 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         btnActivar = new javax.swing.JButton();
         btnSuspender = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
-        txtBuscar = new javax.swing.JTextField();
+        jBuscar = new javax.swing.JTextField();
         txtId = new javax.swing.JTextField();
         jLayer1 = new javax.swing.JLayeredPane();
         jLabel5 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
+        jNombre = new javax.swing.JTextField();
         cbTipoUsuario = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtApellido = new javax.swing.JTextField();
+        jApellido = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
+        jUsuario = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         rbFemenino = new javax.swing.JRadioButton();
         rbMasculino = new javax.swing.JRadioButton();
         jLayer2 = new javax.swing.JLayeredPane();
-        txtFecha = new javax.swing.JTextField();
+        jFecha = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtDUI = new javax.swing.JFormattedTextField();
-        txtTelefono = new javax.swing.JFormattedTextField();
-        txtNit = new javax.swing.JFormattedTextField();
-        txtNIP = new javax.swing.JFormattedTextField();
+        jDUI = new javax.swing.JFormattedTextField();
+        jTelefono = new javax.swing.JFormattedTextField();
+        jNIT = new javax.swing.JFormattedTextField();
+        jNIP = new javax.swing.JFormattedTextField();
         jCalendario = new com.toedter.calendar.JDateChooser();
         jLayer3 = new javax.swing.JLayeredPane();
         jLabel9 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
+        jCorreo = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtDireccion = new javax.swing.JTextArea();
+        jDireccion = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         tUsuarios = new javax.swing.JTable();
         btnCargarFoto = new javax.swing.JButton();
@@ -293,20 +293,20 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLabel18.setText("Digite lo que desea buscar:");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 230, -1));
 
-        txtBuscar.setBackground(new java.awt.Color(33, 37, 41));
-        txtBuscar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        txtBuscar.setForeground(new java.awt.Color(254, 254, 254));
-        txtBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+        jBuscar.setBackground(new java.awt.Color(33, 37, 41));
+        jBuscar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jBuscar.setForeground(new java.awt.Color(254, 254, 254));
+        jBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyPressed(evt);
+                jBuscarKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyReleased(evt);
+                jBuscarKeyReleased(evt);
             }
         });
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 550, 30));
+        jPanel1.add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 550, 30));
 
         txtId.setBackground(new java.awt.Color(33, 37, 41));
         txtId.setFont(new java.awt.Font("Roboto Light", 1, 16)); // NOI18N
@@ -324,26 +324,26 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLayer1.add(jLabel5);
         jLabel5.setBounds(20, 10, 70, 30);
 
-        txtNombre.setBackground(new java.awt.Color(33, 37, 41));
-        txtNombre.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtNombre.setForeground(new java.awt.Color(254, 254, 254));
-        txtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+        jNombre.setBackground(new java.awt.Color(33, 37, 41));
+        jNombre.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jNombre.setForeground(new java.awt.Color(254, 254, 254));
+        jNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
+                jNombreActionPerformed(evt);
             }
         });
-        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+        jNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNombreKeyPressed(evt);
+                jNombreKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNombreKeyTyped(evt);
+                jNombreKeyTyped(evt);
             }
         });
-        jLayer1.add(txtNombre);
-        txtNombre.setBounds(90, 10, 170, 30);
+        jLayer1.add(jNombre);
+        jNombre.setBounds(90, 10, 170, 30);
 
         cbTipoUsuario.setBackground(new java.awt.Color(33, 37, 41));
         cbTipoUsuario.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -374,26 +374,26 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLayer1.add(jLabel6);
         jLabel6.setBounds(20, 50, 61, 30);
 
-        txtApellido.setBackground(new java.awt.Color(33, 37, 41));
-        txtApellido.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtApellido.setForeground(new java.awt.Color(254, 254, 254));
-        txtApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtApellido.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        txtApellido.addActionListener(new java.awt.event.ActionListener() {
+        jApellido.setBackground(new java.awt.Color(33, 37, 41));
+        jApellido.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jApellido.setForeground(new java.awt.Color(254, 254, 254));
+        jApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jApellido.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidoActionPerformed(evt);
+                jApellidoActionPerformed(evt);
             }
         });
-        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+        jApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtApellidoKeyPressed(evt);
+                jApellidoKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtApellidoKeyTyped(evt);
+                jApellidoKeyTyped(evt);
             }
         });
-        jLayer1.add(txtApellido);
-        txtApellido.setBounds(90, 50, 170, 30);
+        jLayer1.add(jApellido);
+        jApellido.setBounds(90, 50, 170, 30);
 
         jLabel12.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(254, 254, 254));
@@ -401,26 +401,26 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLayer1.add(jLabel12);
         jLabel12.setBounds(20, 150, 58, 20);
 
-        txtUsuario.setBackground(new java.awt.Color(33, 37, 41));
-        txtUsuario.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(254, 254, 254));
-        txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
+        jUsuario.setBackground(new java.awt.Color(33, 37, 41));
+        jUsuario.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jUsuario.setForeground(new java.awt.Color(254, 254, 254));
+        jUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsuarioActionPerformed(evt);
+                jUsuarioActionPerformed(evt);
             }
         });
-        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+        jUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtUsuarioKeyPressed(evt);
+                jUsuarioKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtUsuarioKeyTyped(evt);
+                jUsuarioKeyTyped(evt);
             }
         });
-        jLayer1.add(txtUsuario);
-        txtUsuario.setBounds(20, 170, 240, 30);
+        jLayer1.add(jUsuario);
+        jUsuario.setBounds(20, 170, 240, 30);
 
         jLabel16.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(254, 254, 254));
@@ -456,19 +456,19 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
 
         jPanel1.add(jLayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 270, 270));
 
-        txtFecha.setEditable(false);
-        txtFecha.setBackground(new java.awt.Color(33, 37, 41));
-        txtFecha.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtFecha.setForeground(new java.awt.Color(254, 254, 254));
-        txtFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtFecha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        txtFecha.addActionListener(new java.awt.event.ActionListener() {
+        jFecha.setEditable(false);
+        jFecha.setBackground(new java.awt.Color(33, 37, 41));
+        jFecha.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jFecha.setForeground(new java.awt.Color(254, 254, 254));
+        jFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jFecha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaActionPerformed(evt);
+                jFechaActionPerformed(evt);
             }
         });
-        jLayer2.add(txtFecha);
-        txtFecha.setBounds(10, 170, 170, 30);
+        jLayer2.add(jFecha);
+        jFecha.setBounds(10, 170, 170, 30);
 
         jLabel15.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(254, 254, 254));
@@ -501,73 +501,73 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLayer2.add(jLabel10);
         jLabel10.setBounds(10, 210, 67, 20);
 
-        txtDUI.setBackground(new java.awt.Color(33, 37, 41));
-        txtDUI.setForeground(new java.awt.Color(255, 255, 255));
+        jDUI.setBackground(new java.awt.Color(33, 37, 41));
+        jDUI.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            txtDUI.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########-#")));
+            jDUI.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########-#")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtDUI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDUI.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtDUI.addKeyListener(new java.awt.event.KeyAdapter() {
+        jDUI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jDUI.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jDUI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtDUIKeyPressed(evt);
+                jDUIKeyPressed(evt);
             }
         });
-        jLayer2.add(txtDUI);
-        txtDUI.setBounds(50, 10, 180, 30);
+        jLayer2.add(jDUI);
+        jDUI.setBounds(50, 10, 180, 30);
 
-        txtTelefono.setBackground(new java.awt.Color(33, 37, 41));
-        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        jTelefono.setBackground(new java.awt.Color(33, 37, 41));
+        jTelefono.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            txtTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+            jTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtTelefonoKeyPressed(evt);
+                jTelefonoKeyPressed(evt);
             }
         });
-        jLayer2.add(txtTelefono);
-        txtTelefono.setBounds(10, 230, 220, 30);
+        jLayer2.add(jTelefono);
+        jTelefono.setBounds(10, 230, 220, 30);
 
-        txtNit.setBackground(new java.awt.Color(33, 37, 41));
-        txtNit.setForeground(new java.awt.Color(255, 255, 255));
+        jNIT.setBackground(new java.awt.Color(33, 37, 41));
+        jNIT.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            txtNit.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-######-###-#")));
+            jNIT.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-######-###-#")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtNit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNit.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtNit.addKeyListener(new java.awt.event.KeyAdapter() {
+        jNIT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jNIT.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jNIT.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNitKeyPressed(evt);
+                jNITKeyPressed(evt);
             }
         });
-        jLayer2.add(txtNit);
-        txtNit.setBounds(10, 110, 220, 30);
+        jLayer2.add(jNIT);
+        jNIT.setBounds(10, 110, 220, 30);
 
-        txtNIP.setBackground(new java.awt.Color(33, 37, 41));
-        txtNIP.setForeground(new java.awt.Color(255, 255, 255));
+        jNIP.setBackground(new java.awt.Color(33, 37, 41));
+        jNIP.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            txtNIP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######")));
+            jNIP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtNIP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNIP.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtNIP.addKeyListener(new java.awt.event.KeyAdapter() {
+        jNIP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jNIP.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jNIP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNIPKeyPressed(evt);
+                jNIPKeyPressed(evt);
             }
         });
-        jLayer2.add(txtNIP);
-        txtNIP.setBounds(50, 50, 180, 30);
+        jLayer2.add(jNIP);
+        jNIP.setBounds(50, 50, 180, 30);
 
         jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -585,23 +585,23 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLayer3.add(jLabel9);
         jLabel9.setBounds(0, 20, 170, 19);
 
-        txtEmail.setBackground(new java.awt.Color(33, 37, 41));
-        txtEmail.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtEmail.setForeground(new java.awt.Color(254, 254, 254));
-        txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+        jCorreo.setBackground(new java.awt.Color(33, 37, 41));
+        jCorreo.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jCorreo.setForeground(new java.awt.Color(254, 254, 254));
+        jCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jCorreo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
+                jCorreoActionPerformed(evt);
             }
         });
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+        jCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtEmailKeyPressed(evt);
+                jCorreoKeyPressed(evt);
             }
         });
-        jLayer3.add(txtEmail);
-        txtEmail.setBounds(0, 40, 230, 30);
+        jLayer3.add(jCorreo);
+        jCorreo.setBounds(0, 40, 230, 30);
 
         jLabel17.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(254, 254, 254));
@@ -609,27 +609,27 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLayer3.add(jLabel17);
         jLabel17.setBounds(0, 80, 70, 20);
 
-        txtDireccion.setBackground(new java.awt.Color(33, 37, 41));
-        txtDireccion.setColumns(20);
-        txtDireccion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtDireccion.setForeground(new java.awt.Color(255, 255, 255));
-        txtDireccion.setRows(5);
-        txtDireccion.setBorder(null);
-        txtDireccion.setNextFocusableComponent(jLayer1);
-        txtDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
+        jDireccion.setBackground(new java.awt.Color(33, 37, 41));
+        jDireccion.setColumns(20);
+        jDireccion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jDireccion.setForeground(new java.awt.Color(255, 255, 255));
+        jDireccion.setRows(5);
+        jDireccion.setBorder(null);
+        jDireccion.setNextFocusableComponent(jLayer1);
+        jDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtDireccionMouseClicked(evt);
+                jDireccionMouseClicked(evt);
             }
         });
-        txtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+        jDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtDireccionKeyPressed(evt);
+                jDireccionKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDireccionKeyTyped(evt);
+                jDireccionKeyTyped(evt);
             }
         });
-        jScrollPane2.setViewportView(txtDireccion);
+        jScrollPane2.setViewportView(jDireccion);
 
         jLayer3.add(jScrollPane2);
         jScrollPane2.setBounds(0, 110, 230, 140);
@@ -766,147 +766,157 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        if (txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || txtTelefono.getText().isEmpty() || txtUsuario.getText().isEmpty() || txtDUI.getText().isEmpty() ||
-            txtDireccion.getText().isEmpty() || txtFecha.getText().isEmpty() || txtEmail.getText().isEmpty() || txtNIP.getText().isEmpty() || txtNit.getText().isEmpty()) {
+        if (jNombre.getText().isEmpty() || jApellido.getText().isEmpty() || jTelefono.getText().isEmpty() || jUsuario.getText().isEmpty() || jDUI.getText().isEmpty() ||
+            jDireccion.getText().isEmpty() || jFecha.getText().isEmpty() || jCorreo.getText().isEmpty() || jNIP.getText().isEmpty() || jNIT.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
         }
         else if(rbMasculino.isSelected() || rbFemenino.isSelected()){
-            CtrlUsuario ctrl = new CtrlUsuario();
-            MtoUsuario mto = new MtoUsuario();
-            mto.capturarMaxIdUsuario();
-            ctrl.setId_usuario(mto.maxIdUsuario+1);
-            ctrl.setNombre(txtNombre.getText());
-            ctrl.setApellido(txtApellido.getText());
-            int idTipoUsuario = mto.getIdTipoUsuario(cbTipoUsuario.getItemAt(cbTipoUsuario.getSelectedIndex()));
-            ctrl.setId_tipo_usuario(idTipoUsuario);
-            int idEstadoUsuario = 1;
-            ctrl.setId_estado_usuario(idEstadoUsuario);
-            ctrl.setEmail(txtEmail.getText());
-            ctrl.setTelefono(txtTelefono.getText());
-            ctrl.setDui(txtDUI.getText());
-            ctrl.setNit(txtNit.getText());
-            ctrl.setUsuario(txtUsuario.getText());
-            ctrl.setNip(txtNIP.getText());
-            ctrl.setFecha_nacimiento(txtFecha.getText());
-            if (rbFemenino.isSelected()) {
-                ctrl.setGenero("F");
-            }
-            else if(rbMasculino.isSelected())
-            {
-                ctrl.setGenero("M");
-            }
-            ctrl.setDireccion(txtDireccion.getText());
-            String contraSinEncriptacion="txt"; 
-            String contraConEncriptacion=DigestUtils.sha1Hex(contraSinEncriptacion);
-            ctrl.setContraseña(contraConEncriptacion);
-            ctrl.setFoto(person_image);
+            if (val.email(jCorreo.getText())) {
+                 CtrlUsuario ctrl = new CtrlUsuario();
+                MtoUsuario mto = new MtoUsuario();
+                mto.capturarMaxIdUsuario();
+                ctrl.setId_usuario(mto.maxIdUsuario+1);
+                ctrl.setNombre(jNombre.getText());
+                ctrl.setApellido(jApellido.getText());
+                int idTipoUsuario = mto.getIdTipoUsuario(cbTipoUsuario.getItemAt(cbTipoUsuario.getSelectedIndex()));
+                ctrl.setId_tipo_usuario(idTipoUsuario);
+                int idEstadoUsuario = 1;
+                ctrl.setId_estado_usuario(idEstadoUsuario);
+                ctrl.setEmail(jCorreo.getText());
+                ctrl.setTelefono(jTelefono.getText());
+                ctrl.setDui(jDUI.getText());
+                ctrl.setNit(jNIT.getText());
+                ctrl.setUsuario(jUsuario.getText());
+                ctrl.setNip(jNIP.getText());
+                ctrl.setFecha_nacimiento(jFecha.getText());
+                if (rbFemenino.isSelected()) {
+                    ctrl.setGenero("F");
+                }
+                else if(rbMasculino.isSelected())
+                {
+                    ctrl.setGenero("M");
+                }
+                ctrl.setDireccion(jDireccion.getText());
+                String contraSinEncriptacion="txt"; 
+                String contraConEncriptacion=DigestUtils.sha1Hex(contraSinEncriptacion);
+                ctrl.setContraseña(contraConEncriptacion);
+                ctrl.setFoto(person_image);
 
-            if (mto.insertarUsuario()) {
-                JOptionPane.showMessageDialog(null, "Se ha ingresado el nuevo usuario. Su contraseña por defecto es: 123","Exito",JOptionPane.INFORMATION_MESSAGE);
-                
-                
-                MtoBitacoras add=new MtoBitacoras();
-                int id=add.capturarIdBitacora()+1;
-                mod.setId_usuario(mod.getId_usuario());
-                mod.setId_bitacora(id);
-                add.agregarBitacoraAgregar(mod);
-                
-                limpiarTabla();
-                mostrarUsuario();
-                limpiarCampo();
+                if (mto.insertarUsuario()) {
+                    JOptionPane.showMessageDialog(null, "Se ha ingresado el nuevo usuario. Su contraseña por defecto es: 123","Exito",JOptionPane.INFORMATION_MESSAGE);
+
+
+                    MtoBitacoras add=new MtoBitacoras();
+                    int id=add.capturarIdBitacora()+1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraAgregar(mod);
+
+                    limpiarTabla();
+                    mostrarUsuario();
+                    limpiarCampo();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "Error");
+                JOptionPane.showMessageDialog(null, "Correo Invalido","Advertencia",JOptionPane.WARNING_MESSAGE);
             }
         }
-        
-        
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Seleccione un género.","Advertencia",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+    private void jNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNombreActionPerformed
        
-    }//GEN-LAST:event_txtNombreActionPerformed
+    }//GEN-LAST:event_jNombreActionPerformed
 
-    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
+    private void jApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jApellidoActionPerformed
         
-    }//GEN-LAST:event_txtApellidoActionPerformed
+    }//GEN-LAST:event_jApellidoActionPerformed
 
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+    private void jUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUsuarioActionPerformed
          
-    }//GEN-LAST:event_txtUsuarioActionPerformed
+    }//GEN-LAST:event_jUsuarioActionPerformed
 
-    private void txtDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMouseClicked
+    private void jDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDireccionMouseClicked
         
-    }//GEN-LAST:event_txtDireccionMouseClicked
+    }//GEN-LAST:event_jDireccionMouseClicked
 
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+    private void jCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCorreoActionPerformed
        
-    }//GEN-LAST:event_txtEmailActionPerformed
+    }//GEN-LAST:event_jCorreoActionPerformed
 
     private void cbTipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoUsuarioActionPerformed
       
     }//GEN-LAST:event_cbTipoUsuarioActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        if (txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || txtTelefono.getText().isEmpty() || txtUsuario.getText().isEmpty() || txtDUI.getText().isEmpty() ||
-            txtDireccion.getText().isEmpty() || txtFecha.getText().isEmpty() || txtEmail.getText().isEmpty() || txtNIP.getText().isEmpty() || txtNit.getText().isEmpty()) {
+        if (jNombre.getText().isEmpty() || jApellido.getText().isEmpty() || jTelefono.getText().isEmpty() || jUsuario.getText().isEmpty() || jDUI.getText().isEmpty() ||
+            jDireccion.getText().isEmpty() || jFecha.getText().isEmpty() || jCorreo.getText().isEmpty() || jNIP.getText().isEmpty() || jNIT.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error", "Existen campos vacios", JOptionPane.WARNING_MESSAGE);
         }
-        else
+        else if(val.email(jCorreo.getText()))
         {
             int mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas actualizar estos campos?","Advertencia",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
             if (mensaje == JOptionPane.YES_OPTION) {
                 //Asignando datos
-            CtrlUsuario ctrl = new CtrlUsuario();
-            MtoUsuario mto = new MtoUsuario();
-            
-            ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
-            ctrl.setNombre(txtNombre.getText());
-            ctrl.setApellido(txtApellido.getText());
-            int idTipoUsuario = mto.getIdTipoUsuario(cbTipoUsuario.getItemAt(cbTipoUsuario.getSelectedIndex()));
-            ctrl.setId_tipo_usuario(idTipoUsuario);
-            ctrl.setEmail(txtEmail.getText());
-            ctrl.setTelefono(txtTelefono.getText());
-            ctrl.setDui(txtDUI.getText());
-            ctrl.setNit(txtNit.getText());
-            ctrl.setUsuario(txtUsuario.getText());
-            ctrl.setNip(txtNIP.getText());
-            ctrl.setFecha_nacimiento(txtFecha.getText());
-            if (rbMasculino.isSelected()) {
-                ctrl.setGenero("M");
-            }
-            else if(rbFemenino.isSelected())
-            {
-                ctrl.setGenero("F");
-            }
-            ctrl.setDireccion(txtDireccion.getText());
-            ctrl.setFoto(person_image);
-            
-            if (mto.actualizarUsuario()) {
-                JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
-                MtoBitacoras add=new MtoBitacoras();
-                int id=add.capturarIdBitacora()+1;
-                mod.setId_usuario(mod.getId_usuario());
-                mod.setId_bitacora(id);
-                add.agregarBitacoraActualizar(mod);
-                reiniciarBusqueda();
-                limpiarTabla();
-                mostrarUsuario();
-                limpiarCampo();
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null, "Error");
-            }
+                CtrlUsuario ctrl = new CtrlUsuario();
+                MtoUsuario mto = new MtoUsuario();
+                ctrl.setId_usuario(Integer.parseInt(txtId.getText()));
+                ctrl.setNombre(jNombre.getText());
+                ctrl.setApellido(jApellido.getText());
+                int idTipoUsuario = mto.getIdTipoUsuario(cbTipoUsuario.getItemAt(cbTipoUsuario.getSelectedIndex()));
+                ctrl.setId_tipo_usuario(idTipoUsuario);
+                ctrl.setEmail(jCorreo.getText());
+                ctrl.setTelefono(jTelefono.getText());
+                ctrl.setDui(jDUI.getText());
+                ctrl.setNit(jNIT.getText());
+                ctrl.setUsuario(jUsuario.getText());
+                ctrl.setNip(jNIP.getText());
+                ctrl.setFecha_nacimiento(jFecha.getText());
+                if (rbMasculino.isSelected()) {
+                    ctrl.setGenero("M");
+                }
+                else if(rbFemenino.isSelected())
+                {
+                    ctrl.setGenero("F");
+                }
+                ctrl.setDireccion(jDireccion.getText());
+                ctrl.setFoto(person_image);
 
+                if (mto.actualizarUsuario()) {
+                    JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                    MtoBitacoras add=new MtoBitacoras();
+                    int id=add.capturarIdBitacora()+1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraActualizar(mod);
+                    reiniciarBusqueda();
+                    limpiarTabla();
+                    mostrarUsuario();
+                    limpiarCampo();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
             }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Correo invalido.","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnSuspenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuspenderActionPerformed
-         if (txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || txtTelefono.getText().isEmpty() || txtUsuario.getText().isEmpty() || txtDUI.getText().isEmpty() ||
-            txtDireccion.getText().isEmpty() || txtFecha.getText().isEmpty() || txtEmail.getText().isEmpty() || txtNIP.getText().isEmpty() || txtNit.getText().isEmpty()) {
+         if (jNombre.getText().isEmpty() || jApellido.getText().isEmpty() || jTelefono.getText().isEmpty() || jUsuario.getText().isEmpty() || jDUI.getText().isEmpty() ||
+            jDireccion.getText().isEmpty() || jFecha.getText().isEmpty() || jCorreo.getText().isEmpty() || jNIP.getText().isEmpty() || jNIT.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error", "Existen campos vacios", JOptionPane.WARNING_MESSAGE);
         }
         else
@@ -967,9 +977,9 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnReiniciarCuentaActionPerformed
 
-    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
+    private void jFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFechaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaActionPerformed
+    }//GEN-LAST:event_jFechaActionPerformed
 
     private void jCalendarioAncestorMoved(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_jCalendarioAncestorMoved
         // TODO add your handling code here:
@@ -990,7 +1000,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
             int mesInt = jCalendario.getCalendar().get(Calendar.MONTH) + 1;
             String mes = Integer.toString(mesInt);
             String fecha = (mes+"-"+dia+"-"+año);
-            txtFecha.setText(fecha);
+            jFecha.setText(fecha);
       
         }catch (Exception ex) {
             
@@ -1054,16 +1064,16 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         
         //Seteando datos restantes
         mto.capturarDatosUsuario(usuario);
-        txtNombre.setText(nombre);
-        txtApellido.setText(apellido);
-        txtEmail.setText(mto.email);
-        txtTelefono.setText(mto.telefono);
-        txtDUI.setText(mto.dui);
-        txtDireccion.setText(mto.direccion);
-        txtNit.setText(mto.nit);
-        txtNIP.setText(mto.nip);
-        txtFecha.setText(mto.fecha_nacimiento);
-        txtUsuario.setText(usuario);
+        jNombre.setText(nombre);
+        jApellido.setText(apellido);
+        jCorreo.setText(mto.email);
+        jTelefono.setText(mto.telefono);
+        jDUI.setText(mto.dui);
+        jDireccion.setText(mto.direccion);
+        jNIT.setText(mto.nit);
+        jNIP.setText(mto.nip);
+        jFecha.setText(mto.fecha_nacimiento);
+        jUsuario.setText(usuario);
         
         //Capturando datos del usuario
         byte[] foto = mto.capturarFoto(usuario);
@@ -1104,8 +1114,8 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarActionPerformed
-        if (txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || txtTelefono.getText().isEmpty() || txtUsuario.getText().isEmpty() || txtDUI.getText().isEmpty() ||
-            txtDireccion.getText().isEmpty() || txtFecha.getText().isEmpty() || txtEmail.getText().isEmpty() || txtNIP.getText().isEmpty() || txtNit.getText().isEmpty()) {
+        if (jNombre.getText().isEmpty() || jApellido.getText().isEmpty() || jTelefono.getText().isEmpty() || jUsuario.getText().isEmpty() || jDUI.getText().isEmpty() ||
+            jDireccion.getText().isEmpty() || jFecha.getText().isEmpty() || jCorreo.getText().isEmpty() || jNIP.getText().isEmpty() || jNIT.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error", "Existen campos vacios", JOptionPane.WARNING_MESSAGE);
         }
         else
@@ -1144,88 +1154,114 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnActivarActionPerformed
 
-    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
-        String busqueda = txtBuscar.getText();
+    private void jBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyReleased
+        String busqueda = jBuscar.getText();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
         tUsuarios.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(busqueda));
         
-    }//GEN-LAST:event_txtBuscarKeyReleased
+    }//GEN-LAST:event_jBuscarKeyReleased
 
-    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+    private void jNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyTyped
         // TODO add your handling code here:
         val.verificarLetras(evt);
-    }//GEN-LAST:event_txtNombreKeyTyped
+    }//GEN-LAST:event_jNombreKeyTyped
 
-    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+    private void jApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyTyped
         // TODO add your handling code here:
         val.verificarLetras(evt);
-    }//GEN-LAST:event_txtApellidoKeyTyped
+    }//GEN-LAST:event_jApellidoKeyTyped
 
-    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
+    private void jUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyTyped
         // TODO add your handling code here:
         val.verificarEspeciales(evt);
-    }//GEN-LAST:event_txtUsuarioKeyTyped
+    }//GEN-LAST:event_jUsuarioKeyTyped
 
-    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
+    private void jNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jNombre.getText();
+        if(Caracteres.length()>=30){
+            jNombre.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
-    }//GEN-LAST:event_txtNombreKeyPressed
+    }//GEN-LAST:event_jNombreKeyPressed
 
-    private void txtApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyPressed
+    private void jApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jApellido.getText();
+        if(Caracteres.length()>=30){
+            jApellido.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
-    }//GEN-LAST:event_txtApellidoKeyPressed
+    }//GEN-LAST:event_jApellidoKeyPressed
 
     private void cbTipoUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbTipoUsuarioKeyPressed
         // TODO add your handling code here:
         val.verificarPegar(evt);
     }//GEN-LAST:event_cbTipoUsuarioKeyPressed
 
-    private void txtUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyPressed
+    private void jUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyPressed
+        // TODO add your handling code here:
+        String Caracteres = jUsuario.getText();
+        if(Caracteres.length()>=25){
+            jUsuario.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jUsuarioKeyPressed
+
+    private void jDUIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDUIKeyPressed
         // TODO add your handling code here:
         val.verificarPegar(evt);
-    }//GEN-LAST:event_txtUsuarioKeyPressed
+    }//GEN-LAST:event_jDUIKeyPressed
 
-    private void txtDUIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDUIKeyPressed
+    private void jNIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNIPKeyPressed
         // TODO add your handling code here:
         val.verificarPegar(evt);
-    }//GEN-LAST:event_txtDUIKeyPressed
+    }//GEN-LAST:event_jNIPKeyPressed
 
-    private void txtNIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNIPKeyPressed
+    private void jNITKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNITKeyPressed
         // TODO add your handling code here:
         val.verificarPegar(evt);
-    }//GEN-LAST:event_txtNIPKeyPressed
+    }//GEN-LAST:event_jNITKeyPressed
 
-    private void txtNitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNitKeyPressed
+    private void jTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTelefonoKeyPressed
         // TODO add your handling code here:
         val.verificarPegar(evt);
-    }//GEN-LAST:event_txtNitKeyPressed
+    }//GEN-LAST:event_jTelefonoKeyPressed
 
-    private void txtTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyPressed
+    private void jCorreoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCorreoKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jCorreo.getText();
+        if(Caracteres.length()>=50){
+            jCorreo.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
-    }//GEN-LAST:event_txtTelefonoKeyPressed
+    }//GEN-LAST:event_jCorreoKeyPressed
 
-    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
+    private void jDireccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDireccionKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jDireccion.getText();
+        if(Caracteres.length()>=200){
+            jDireccion.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
-    }//GEN-LAST:event_txtEmailKeyPressed
+    }//GEN-LAST:event_jDireccionKeyPressed
 
-    private void txtDireccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyPressed
-        // TODO add your handling code here:
-        val.verificarPegar(evt);
-    }//GEN-LAST:event_txtDireccionKeyPressed
-
-    private void txtDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyTyped
+    private void jDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDireccionKeyTyped
         // TODO add your handling code here:
         val.verificarAlfanumerico(evt);
-    }//GEN-LAST:event_txtDireccionKeyTyped
+    }//GEN-LAST:event_jDireccionKeyTyped
 
-    private void txtBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyPressed
+    private void jBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyPressed
         // TODO add your handling code here:
         val.verificarPegar(evt);
-    }//GEN-LAST:event_txtBuscarKeyPressed
+    }//GEN-LAST:event_jBuscarKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1238,7 +1274,13 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnReiniciarCuenta;
     private javax.swing.JButton btnSuspender;
     private javax.swing.JComboBox<String> cbTipoUsuario;
+    private javax.swing.JTextField jApellido;
+    private javax.swing.JTextField jBuscar;
     private com.toedter.calendar.JDateChooser jCalendario;
+    private javax.swing.JTextField jCorreo;
+    private javax.swing.JFormattedTextField jDUI;
+    private javax.swing.JTextArea jDireccion;
+    private javax.swing.JTextField jFecha;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1256,25 +1298,19 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JLayeredPane jLayer1;
     private javax.swing.JLayeredPane jLayer2;
     private javax.swing.JLayeredPane jLayer3;
+    private javax.swing.JFormattedTextField jNIP;
+    private javax.swing.JFormattedTextField jNIT;
+    private javax.swing.JTextField jNombre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JFormattedTextField jTelefono;
+    private javax.swing.JTextField jUsuario;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblMarco;
     private javax.swing.JRadioButton rbFemenino;
     private javax.swing.JRadioButton rbMasculino;
     private javax.swing.JTable tUsuarios;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtBuscar;
-    private javax.swing.JFormattedTextField txtDUI;
-    private javax.swing.JTextArea txtDireccion;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtId;
-    private javax.swing.JFormattedTextField txtNIP;
-    private javax.swing.JFormattedTextField txtNit;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JFormattedTextField txtTelefono;
-    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

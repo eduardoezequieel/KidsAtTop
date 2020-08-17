@@ -90,21 +90,21 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         tResponsables = new javax.swing.JTable();
         btnSuspender = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        txtBuscar = new javax.swing.JTextField();
+        jBuscar = new javax.swing.JTextField();
         jLayer1 = new javax.swing.JLayeredPane();
         jLabel5 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
+        jNombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtApellido = new javax.swing.JTextField();
+        jApellido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtDui = new javax.swing.JFormattedTextField();
+        jDUI = new javax.swing.JFormattedTextField();
         jLayer2 = new javax.swing.JLayeredPane();
         jLabel11 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
+        jEmail = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cbParentesco = new javax.swing.JComboBox<>();
-        txtTelefono = new javax.swing.JFormattedTextField();
+        jTelefono = new javax.swing.JFormattedTextField();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -224,20 +224,20 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jLabel12.setText("Digite lo que desea buscar:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
 
-        txtBuscar.setBackground(new java.awt.Color(33, 37, 41));
-        txtBuscar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        txtBuscar.setForeground(new java.awt.Color(254, 254, 254));
-        txtBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+        jBuscar.setBackground(new java.awt.Color(33, 37, 41));
+        jBuscar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jBuscar.setForeground(new java.awt.Color(254, 254, 254));
+        jBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jBuscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyReleased(evt);
+                jBuscarKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyTyped(evt);
+                jBuscarKeyTyped(evt);
             }
         });
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 620, 30));
+        jPanel1.add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 620, 30));
 
         jLayer1.setNextFocusableComponent(jLayer2);
 
@@ -247,21 +247,21 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jLayer1.add(jLabel5);
         jLabel5.setBounds(20, 0, 60, 30);
 
-        txtNombre.setBackground(new java.awt.Color(33, 37, 41));
-        txtNombre.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtNombre.setForeground(new java.awt.Color(254, 254, 254));
-        txtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+        jNombre.setBackground(new java.awt.Color(33, 37, 41));
+        jNombre.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jNombre.setForeground(new java.awt.Color(254, 254, 254));
+        jNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNombreKeyPressed(evt);
+                jNombreKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNombreKeyTyped(evt);
+                jNombreKeyTyped(evt);
             }
         });
-        jLayer1.add(txtNombre);
-        txtNombre.setBounds(20, 30, 250, 30);
+        jLayer1.add(jNombre);
+        jNombre.setBounds(20, 30, 250, 30);
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(254, 254, 254));
@@ -269,44 +269,44 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jLayer1.add(jLabel6);
         jLabel6.setBounds(20, 70, 61, 30);
 
-        txtApellido.setBackground(new java.awt.Color(33, 37, 41));
-        txtApellido.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtApellido.setForeground(new java.awt.Color(254, 254, 254));
-        txtApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtApellido.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+        jApellido.setBackground(new java.awt.Color(33, 37, 41));
+        jApellido.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jApellido.setForeground(new java.awt.Color(254, 254, 254));
+        jApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jApellido.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtApellidoKeyPressed(evt);
+                jApellidoKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtApellidoKeyTyped(evt);
+                jApellidoKeyTyped(evt);
             }
         });
-        jLayer1.add(txtApellido);
-        txtApellido.setBounds(20, 100, 250, 30);
+        jLayer1.add(jApellido);
+        jApellido.setBounds(20, 100, 250, 30);
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(254, 254, 254));
         jLabel7.setText("DUI:");
         jLayer1.add(jLabel7);
-        jLabel7.setBounds(20, 140, 30, 30);
+        jLabel7.setBounds(20, 140, 29, 30);
 
-        txtDui.setBackground(new java.awt.Color(33, 37, 41));
-        txtDui.setForeground(new java.awt.Color(255, 255, 255));
+        jDUI.setBackground(new java.awt.Color(33, 37, 41));
+        jDUI.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            txtDui.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########-#")));
+            jDUI.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########-#")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtDui.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDui.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtDui.addKeyListener(new java.awt.event.KeyAdapter() {
+        jDUI.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jDUI.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jDUI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtDuiKeyPressed(evt);
+                jDUIKeyPressed(evt);
             }
         });
-        jLayer1.add(txtDui);
-        txtDui.setBounds(20, 170, 250, 30);
+        jLayer1.add(jDUI);
+        jDUI.setBounds(20, 170, 250, 30);
 
         jPanel1.add(jLayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 280, 220));
 
@@ -318,33 +318,33 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jLayer2.add(jLabel11);
         jLabel11.setBounds(10, 80, 44, 30);
 
-        txtEmail.setBackground(new java.awt.Color(33, 37, 41));
-        txtEmail.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtEmail.setForeground(new java.awt.Color(254, 254, 254));
-        txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+        jEmail.setBackground(new java.awt.Color(33, 37, 41));
+        jEmail.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jEmail.setForeground(new java.awt.Color(254, 254, 254));
+        jEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
+        jEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtEmailKeyPressed(evt);
+                jEmailKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtEmailKeyTyped(evt);
+                jEmailKeyTyped(evt);
             }
         });
-        jLayer2.add(txtEmail);
-        txtEmail.setBounds(10, 110, 300, 30);
+        jLayer2.add(jEmail);
+        jEmail.setBounds(10, 110, 300, 30);
 
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
         jLabel9.setText("Teléfono:");
         jLayer2.add(jLabel9);
-        jLabel9.setBounds(10, 10, 64, 30);
+        jLabel9.setBounds(10, 10, 67, 30);
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(254, 254, 254));
         jLabel8.setText("Parentesco:");
         jLayer2.add(jLabel8);
-        jLabel8.setBounds(10, 150, 84, 30);
+        jLabel8.setBounds(10, 150, 83, 30);
 
         cbParentesco.setBackground(new java.awt.Color(33, 37, 41));
         cbParentesco.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -358,22 +358,22 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jLayer2.add(cbParentesco);
         cbParentesco.setBounds(10, 180, 290, 30);
 
-        txtTelefono.setBackground(new java.awt.Color(33, 37, 41));
-        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        jTelefono.setBackground(new java.awt.Color(33, 37, 41));
+        jTelefono.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            txtTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+            jTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTelefono.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtTelefonoKeyPressed(evt);
+                jTelefonoKeyPressed(evt);
             }
         });
-        jLayer2.add(txtTelefono);
-        txtTelefono.setBounds(10, 40, 270, 30);
+        jLayer2.add(jTelefono);
+        jTelefono.setBounds(10, 40, 270, 30);
 
         jPanel1.add(jLayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 320, 220));
 
@@ -400,12 +400,12 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         btnSuspender.setEnabled(false);
         btnCorreo.setEnabled(false);
         btnActivar.setEnabled(false);
-        txtNombre.setText("");
-        txtDui.setText("");
-        txtNombre.setText("");
-        txtEmail.setText("");
-        txtTelefono.setText("");
-        txtApellido.setText("");
+        jNombre.setText("");
+        jDUI.setText("");
+        jNombre.setText("");
+        jEmail.setText("");
+        jTelefono.setText("");
+        jApellido.setText("");
     }
 
     public void mostrarResponsables() {
@@ -434,15 +434,17 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCorreoActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        if (txtNombre.getText().trim().equals("") || txtApellido.getText().trim().equals("") || txtDui.getText().trim().equals("") || txtTelefono.getText().trim().equals("") || txtEmail.getText().trim().equals("")) {
+        if (jNombre.getText().trim().equals("") || jApellido.getText().trim().equals("") || jDUI.getText().trim().equals("") || jTelefono.getText().trim().equals("") || jEmail.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Campos vacios.", "Rellene los campos faltantes.", JOptionPane.WARNING_MESSAGE);
-        } else {
+        } 
+        else if(val.email(jEmail.getText()))
+        {
             MtoResponsable mto = new MtoResponsable();
-            ctrl.setNombre(txtNombre.getText());
-            ctrl.setApellido(txtApellido.getText());
-            ctrl.setDui(txtDui.getText());
-            ctrl.setEmail(txtEmail.getText());
-            ctrl.setTelefono(txtTelefono.getText());
+            ctrl.setNombre(jNombre.getText());
+            ctrl.setApellido(jApellido.getText());
+            ctrl.setDui(jDUI.getText());
+            ctrl.setEmail(jEmail.getText());
+            ctrl.setTelefono(jTelefono.getText());
             if (mto.actualizarResponsable(String.valueOf(cbParentesco.getSelectedItem()))) {
                 JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
                 MtoBitacoras add = new MtoBitacoras();
@@ -450,12 +452,14 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
                 mod.setId_usuario(mod.getId_usuario());
                 mod.setId_bitacora(id);
                 add.agregarBitacoraActualizar(mod);
-                txtBuscar.setText("");
-                String busqueda = txtBuscar.getText();
+                jBuscar.setText("");
+                String busqueda = jBuscar.getText();
                 TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
                 tResponsables.setRowSorter(tr);
                 tr.setRowFilter(RowFilter.regexFilter(busqueda));
-            } else {
+            } 
+            else 
+            {
                 JOptionPane.showMessageDialog(null, "Error");
             }
             vaciarCampos();
@@ -463,19 +467,23 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
             mostrarResponsables();
             //System.out.println(txtNombre.getText() + " " + txtApellido.getText() + " " + txtDui.getText() + " " + txtTelefono.getText() + " " + txtEmail.getText());
         }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Correo invalido.","Advertencia",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnSuspenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuspenderActionPerformed
         MtoResponsable mto = new MtoResponsable();
         if (mto.suspenderResponsable()) {
             JOptionPane.showMessageDialog(null, "El usuario ha sido suspendido de forma exitosa.", "Exito", JOptionPane.INFORMATION_MESSAGE);
-            txtBuscar.setText("");
+            jBuscar.setText("");
             MtoBitacoras add = new MtoBitacoras();
             int id = add.capturarIdBitacora() + 1;
             mod.setId_usuario(mod.getId_usuario());
             mod.setId_bitacora(id);
             add.agregarBitacoraSuspender(mod);
-            String busqueda = txtBuscar.getText();
+            String busqueda = jBuscar.getText();
             TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
             tResponsables.setRowSorter(tr);
             tr.setRowFilter(RowFilter.regexFilter(busqueda));
@@ -510,28 +518,28 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         }
 
         //Obteniendo valores de la tabla
-        txtNombre.setText(String.valueOf(tResponsables.getValueAt(fila, 1)));
-        txtApellido.setText(String.valueOf(tResponsables.getValueAt(fila, 2)));
-        txtDui.setText(String.valueOf(tResponsables.getValueAt(fila, 3)));
-        txtTelefono.setText(String.valueOf(tResponsables.getValueAt(fila, 4)));
-        txtEmail.setText(String.valueOf(tResponsables.getValueAt(fila, 5)));
+        jNombre.setText(String.valueOf(tResponsables.getValueAt(fila, 1)));
+        jApellido.setText(String.valueOf(tResponsables.getValueAt(fila, 2)));
+        jDUI.setText(String.valueOf(tResponsables.getValueAt(fila, 3)));
+        jTelefono.setText(String.valueOf(tResponsables.getValueAt(fila, 4)));
+        jEmail.setText(String.valueOf(tResponsables.getValueAt(fila, 5)));
         cbParentesco.setSelectedItem(String.valueOf(tResponsables.getValueAt(fila, 6)));
         System.out.println(ctr.getIdResponsable());
     }//GEN-LAST:event_tResponsablesMouseClicked
 
-    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
-        String busqueda = txtBuscar.getText();
+    private void jBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyReleased
+        String busqueda = jBuscar.getText();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
         tResponsables.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(busqueda));
-    }//GEN-LAST:event_txtBuscarKeyReleased
+    }//GEN-LAST:event_jBuscarKeyReleased
 
-    private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
+    private void jBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyTyped
         char c = evt.getKeyChar();
         if (!Character.isWhitespace(c) && c != '@' && c != '.' && c != '_') {
             val.verificarAlfanumerico(evt);
         }
-    }//GEN-LAST:event_txtBuscarKeyTyped
+    }//GEN-LAST:event_jBuscarKeyTyped
 
     private void btnActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarActionPerformed
         MtoResponsable mto = new MtoResponsable();
@@ -542,8 +550,8 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
             mod.setId_usuario(mod.getId_usuario());
             mod.setId_bitacora(id);
             add.agregarBitacoraActivar(mod);
-            txtBuscar.setText("");
-            String busqueda = txtBuscar.getText();
+            jBuscar.setText("");
+            String busqueda = jBuscar.getText();
             TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
             tResponsables.setRowSorter(tr);
             tr.setRowFilter(RowFilter.regexFilter(busqueda));
@@ -556,39 +564,57 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnActivarActionPerformed
 
-    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+    private void jNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyTyped
         val.verificarLetras(evt);
-    }//GEN-LAST:event_txtNombreKeyTyped
+    }//GEN-LAST:event_jNombreKeyTyped
 
-    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+    private void jApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyTyped
         val.verificarLetras(evt);
-    }//GEN-LAST:event_txtApellidoKeyTyped
+    }//GEN-LAST:event_jApellidoKeyTyped
 
-    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
+    private void jEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jEmailKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailKeyTyped
+    }//GEN-LAST:event_jEmailKeyTyped
 
-    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
+    private void jNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyPressed
         val.verificarPegar(evt);
-    }//GEN-LAST:event_txtNombreKeyPressed
+        
+        String Caracteres = jNombre.getText();
+        if(Caracteres.length()>=30){
+            jNombre.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jNombreKeyPressed
 
-    private void txtApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyPressed
+    private void jApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyPressed
         val.verificarPegar(evt);
-    }//GEN-LAST:event_txtApellidoKeyPressed
+        
+        String Caracteres = jApellido.getText();
+        if(Caracteres.length()>=30){
+            jApellido.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jApellidoKeyPressed
 
-    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
+    private void jEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jEmailKeyPressed
         val.verificarPegar(evt);
-    }//GEN-LAST:event_txtEmailKeyPressed
+        
+        String Caracteres = jEmail.getText();
+        if(Caracteres.length()>=50){
+            jEmail.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jEmailKeyPressed
 
-    private void txtDuiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuiKeyPressed
+    private void jDUIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDUIKeyPressed
         // TODO add your handling code here:
         val.verificarPegar(evt);
-    }//GEN-LAST:event_txtDuiKeyPressed
+    }//GEN-LAST:event_jDUIKeyPressed
 
-    private void txtTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyPressed
+    private void jTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTelefonoKeyPressed
         // TODO add your handling code here:
         val.verificarPegar(evt);
-    }//GEN-LAST:event_txtTelefonoKeyPressed
+    }//GEN-LAST:event_jTelefonoKeyPressed
 
     private void cbParentescoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbParentescoKeyPressed
         // TODO add your handling code here:
@@ -602,6 +628,10 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCorreo;
     private javax.swing.JButton btnSuspender;
     private javax.swing.JComboBox<String> cbParentesco;
+    private javax.swing.JTextField jApellido;
+    private javax.swing.JTextField jBuscar;
+    private javax.swing.JFormattedTextField jDUI;
+    private javax.swing.JTextField jEmail;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel4;
@@ -612,14 +642,10 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayer1;
     private javax.swing.JLayeredPane jLayer2;
+    private javax.swing.JTextField jNombre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JFormattedTextField jTelefono;
     private javax.swing.JTable tResponsables;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtBuscar;
-    private javax.swing.JFormattedTextField txtDui;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JFormattedTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

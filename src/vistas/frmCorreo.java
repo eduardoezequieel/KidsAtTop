@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import javax.swing.JOptionPane;
 import modelo.ClsCorreo;
 import modelo.Validaciones;
 
@@ -42,6 +43,7 @@ public class frmCorreo extends javax.swing.JFrame {
         jEnviar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -50,13 +52,13 @@ public class frmCorreo extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(33, 37, 41));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel1.setText("Asunto:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        jLabel1.setText("Mensaje:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
 
         jDestinatario.setBackground(new java.awt.Color(33, 37, 41));
-        jDestinatario.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jDestinatario.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jDestinatario.setForeground(new java.awt.Color(254, 254, 254));
         jDestinatario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jDestinatario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
@@ -68,15 +70,15 @@ public class frmCorreo extends javax.swing.JFrame {
                 jDestinatarioKeyTyped(evt);
             }
         });
-        jPanel1.add(jDestinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 430, 30));
+        jPanel1.add(jDestinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 430, 30));
 
-        jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(254, 254, 254));
         jLabel2.setText("Destinatario:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
 
         jAsunto.setBackground(new java.awt.Color(33, 37, 41));
-        jAsunto.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jAsunto.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         jAsunto.setForeground(new java.awt.Color(254, 254, 254));
         jAsunto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jAsunto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
@@ -88,11 +90,11 @@ public class frmCorreo extends javax.swing.JFrame {
                 jAsuntoKeyTyped(evt);
             }
         });
-        jPanel1.add(jAsunto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 430, 30));
+        jPanel1.add(jAsunto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 430, 30));
 
         jMensaje.setBackground(new java.awt.Color(33, 37, 41));
         jMensaje.setColumns(20);
-        jMensaje.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jMensaje.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jMensaje.setForeground(new java.awt.Color(254, 254, 254));
         jMensaje.setRows(5);
         jMensaje.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
@@ -106,7 +108,7 @@ public class frmCorreo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jMensaje);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 430, 290));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 1100, 320));
 
         jEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAceptar_rollover.png"))); // NOI18N
         jEnviar.setBorder(null);
@@ -119,7 +121,7 @@ public class frmCorreo extends javax.swing.JFrame {
                 jEnviarActionPerformed(evt);
             }
         });
-        jPanel1.add(jEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 180, 60));
+        jPanel1.add(jEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 550, 180, 60));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backpng.png"))); // NOI18N
         jButton2.setBorder(null);
@@ -132,12 +134,17 @@ public class frmCorreo extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 590, 180, 60));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 650, 180, 60));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroHoraFecha.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 570, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 630, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 660));
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel4.setText("Asunto:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -147,15 +154,24 @@ public class frmCorreo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEnviarActionPerformed
-       
-        //Llamando clases
+        if (jDestinatario.getText().isEmpty() || jAsunto.getText().isEmpty() || jMensaje.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No se permiten campos vacios.","Advertencia",JOptionPane.WARNING_MESSAGE);
+        }
+        else if(val.email(jDestinatario.getText()))
+        {
+            //Llamando clases
         ClsCorreo correo = new ClsCorreo();
-        
         
         correo.setDestino(jDestinatario.getText());
         correo.setAsunto(jAsunto.getText());
         correo.setMensaje(jMensaje.getText());
         correo.enviarCorreo();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Ingrese un destinatario valido.","Advertencia",JOptionPane.WARNING_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jEnviarActionPerformed
 
     private void jMensajeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMensajeKeyPressed
@@ -180,11 +196,23 @@ public class frmCorreo extends javax.swing.JFrame {
 
     private void jDestinatarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDestinatarioKeyPressed
         // TODO add your handling code here:
+        
+        String Caracteres = jDestinatario.getText();
+        if(Caracteres.length()>=50){
+            jDestinatario.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jDestinatarioKeyPressed
 
     private void jAsuntoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAsuntoKeyPressed
         // TODO add your handling code here:
+        
+        String Caracteres = jAsunto.getText();
+        if(Caracteres.length()>=30){
+            jAsunto.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jAsuntoKeyPressed
 
@@ -232,6 +260,7 @@ public class frmCorreo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextArea jMensaje;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

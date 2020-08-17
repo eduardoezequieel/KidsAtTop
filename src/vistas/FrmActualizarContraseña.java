@@ -221,6 +221,11 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
 
     private void jNuevaContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNuevaContraseñaKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jNuevaContraseña.getText();
+        if(Caracteres.length()>=16){
+            jNuevaContraseña.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jNuevaContraseñaKeyPressed
 
@@ -230,6 +235,11 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
 
     private void jConfirmarContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jConfirmarContraseñaKeyPressed
         // TODO add your handling code here:
+        String Caracteres = jConfirmarContraseña.getText();
+        if(Caracteres.length()>=16){
+            jConfirmarContraseña.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jConfirmarContraseñaKeyPressed
 

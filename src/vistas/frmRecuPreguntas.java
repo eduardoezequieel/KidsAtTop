@@ -518,10 +518,20 @@ public class frmRecuPreguntas extends javax.swing.JFrame {
 
     private void jUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyPressed
         val.verificarPegar(evt);
+        String Caracteres = jUsuario.getText();
+        if(Caracteres.length()>=25){
+            jUsuario.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jUsuarioKeyPressed
 
     private void j1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j1KeyPressed
         val.verificarPegar(evt);
+        String Caracteres = j1.getText();
+        if(Caracteres.length()>=50){
+            j1.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_j1KeyPressed
 
     private void j2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j2KeyPressed

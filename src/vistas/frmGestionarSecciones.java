@@ -62,7 +62,8 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         tSecciones.setModel(modelo);
         tSecciones.getColumnModel().getColumn(0).setMinWidth(0);
         tSecciones.getColumnModel().getColumn(0).setMaxWidth(0);
-
+        calAnio.setForeground(Color.white);
+        calAnio.setFont(new Font("Roboto Black", Font.PLAIN, 16));
         btnActualizar.setEnabled(false);
         btnSuspender.setEnabled(false);
 
@@ -272,7 +273,6 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
 
         calAnio.setBackground(new java.awt.Color(255, 255, 255));
         calAnio.setForeground(new java.awt.Color(255, 255, 255));
-        calAnio.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jPanel1.add(calAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 114, 70, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
@@ -334,6 +334,11 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
 
     private void txtBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyPressed
         val.verificarPegar(evt);
+        String Caracteres = txtBuscar.getText();
+        if(Caracteres.length()>=30){
+            txtBuscar.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_txtBuscarKeyPressed
     //</editor-fold>
     private void calAnioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calAnioMousePressed
@@ -357,6 +362,8 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         cbGrados.setSelectedItem((String) tSecciones.getValueAt(fila, 1));
         cbSecciones.setSelectedItem((String) tSecciones.getValueAt(fila, 2));
         cbUsuario.setSelectedItem((String) tSecciones.getValueAt(fila, 3));
+        calAnio.setForeground(Color.white);
+        calAnio.setFont(new Font("Roboto Black", Font.PLAIN, 16));
         calAnio.setValue(Integer.parseInt((String) tSecciones.getValueAt(fila, 4)));
         mto.obtenerIdGrado();
         mto.obtenerIdUsuario();

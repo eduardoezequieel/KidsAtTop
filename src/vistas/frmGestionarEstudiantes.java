@@ -80,7 +80,9 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jCalendario.getJCalendar().setWeekOfYearVisible(false);
         jCalendario.getJCalendar().setBackground(Color.WHITE);
         jCalendario.getJCalendar().setPreferredSize(new Dimension(450, 450));
-        
+      
+        ycAño.setForeground(Color.white);
+        ycAño.setFont(new Font("Roboto Black", Font.PLAIN, 16));
         //Modelo de la tabla
         modelo.addColumn("Apellido");
         modelo.addColumn("Nombre");
@@ -143,10 +145,10 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         btnSuspender = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jAño = new javax.swing.JTextField();
         jId = new javax.swing.JTextField();
         btnRetirar = new javax.swing.JButton();
         jCalendario = new com.toedter.calendar.JDateChooser();
+        ycAño = new com.toedter.calendar.JYearChooser();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -230,7 +232,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
         jLabel9.setText("Género:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
 
         rbF.setBackground(new java.awt.Color(33, 37, 41));
         grupoBotones.add(rbF);
@@ -242,7 +244,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
                 rbFActionPerformed(evt);
             }
         });
-        jPanel1.add(rbF, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, -1, -1));
+        jPanel1.add(rbF, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, -1, -1));
 
         rbM.setBackground(new java.awt.Color(33, 37, 41));
         grupoBotones.add(rbM);
@@ -254,7 +256,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
                 rbMActionPerformed(evt);
             }
         });
-        jPanel1.add(rbM, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, -1));
+        jPanel1.add(rbM, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, -1, -1));
 
         lblFoto.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         lblFoto.setForeground(new java.awt.Color(254, 254, 254));
@@ -307,7 +309,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
                 btnActivarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 260, 140, 70));
+        jPanel1.add(btnActivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 250, 140, 70));
 
         btnFoto.setBackground(new java.awt.Color(33, 37, 41));
         btnFoto.setForeground(new java.awt.Color(254, 254, 254));
@@ -393,6 +395,14 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jDireccion.setForeground(new java.awt.Color(255, 255, 255));
         jDireccion.setRows(5);
         jDireccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jDireccionKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jDireccionKeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(jDireccion);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 240, -1));
@@ -425,45 +435,33 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(254, 254, 254));
         jLabel10.setText("Año ingreso:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, -1));
-
-        jAño.setBackground(new java.awt.Color(33, 37, 41));
-        jAño.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jAño.setForeground(new java.awt.Color(254, 254, 254));
-        jAño.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jAño.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jAño.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jAñoKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jAñoKeyTyped(evt);
-            }
-        });
-        jPanel1.add(jAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 160, 30));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, 30));
         jPanel1.add(jId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 70, -1));
 
         btnRetirar.setBackground(new java.awt.Color(33, 37, 41));
         btnRetirar.setForeground(new java.awt.Color(254, 254, 254));
-        btnRetirar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActivarDefault.png"))); // NOI18N
+        btnRetirar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRetirarDefault.png"))); // NOI18N
         btnRetirar.setBorder(null);
         btnRetirar.setContentAreaFilled(false);
         btnRetirar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRetirar.setFocusPainted(false);
-        btnRetirar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActivarRollover.png"))); // NOI18N
+        btnRetirar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRetirarRollover.png"))); // NOI18N
         btnRetirar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRetirarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 140, 70));
+        jPanel1.add(btnRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 330, 140, 70));
 
+        jCalendario.setMaxSelectableDate(new java.util.Date(1483254083000L));
+        jCalendario.setMinSelectableDate(new java.util.Date(1009868483000L));
         jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jCalendarioPropertyChange(evt);
             }
         });
         jPanel1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 50, -1));
+        jPanel1.add(ycAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 150, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -499,10 +497,22 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBuscarKeyTyped
 
     private void jNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyPressed
+
+        String Caracteres = jNombre.getText();
+        if(Caracteres.length()>=30){
+            jNombre.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jNombreKeyPressed
 
     private void jApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jApellidoKeyPressed
+        
+        String Caracteres = jApellido.getText();
+        if(Caracteres.length()>=30){
+            jApellido.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
         val.verificarPegar(evt);
     }//GEN-LAST:event_jApellidoKeyPressed
 
@@ -512,6 +522,13 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
 
     private void jBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyPressed
         val.verificarPegar(evt);
+        
+        
+        String Caracteres = jBuscar.getText();
+        if(Caracteres.length()>=30){
+            jBuscar.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jBuscarKeyPressed
 
     private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
@@ -551,14 +568,6 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jCalendarioPropertyChange
 
-    private void jAñoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAñoKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jAñoKeyPressed
-
-    private void jAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAñoKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jAñoKeyTyped
-
     private void tEstudiantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tEstudiantesMouseClicked
         
         btnActualizar.setEnabled(true);
@@ -597,7 +606,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         estudiante.obtenerCampos(jApellido.getText(), jNombre.getText(), genero,estudianteCtrl.getIdResponsable(), estudianteCtrl.getIdGradoSeccion());
         
         jId.setText(String.valueOf(estudianteCtrl.getIdEstudiante()));
-        jAño.setText(estudianteCtrl.getAnioIngreso());
+        ycAño.setValue(Integer.parseInt(estudianteCtrl.getAnioIngreso()));
         jFecha.setText(estudianteCtrl.getFechaNacimiento());
         jDireccion.setText(estudianteCtrl.getDireccion());
         
@@ -630,7 +639,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         
         //validando campos vacios 
         if ((jNombre.getText().trim().isEmpty()) || (jApellido.getText().trim().isEmpty()) || (jFecha.getText().trim().isEmpty())
-                || (jAño.getText().trim().isEmpty()) || (jDireccion.getText().trim().isEmpty()) || (rbF.isSelected() == false && rbM.isSelected()== false) || (lblFoto.getIcon() == null)) {
+                || (jDireccion.getText().trim().isEmpty()) || (rbF.isSelected() == false && rbM.isSelected()== false) || (lblFoto.getIcon() == null)) {
             JOptionPane.showMessageDialog(null, "Error", "Existen campos vacios", JOptionPane.WARNING_MESSAGE);
         } else {
             int mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas actualizar estos campos?","Advertencia",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
@@ -640,7 +649,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
                 estudianteCtrl.setNombre(jNombre.getText());
                 estudianteCtrl.setApellido(jApellido.getText());
                 estudianteCtrl.setFechaNacimiento(jFecha.getText());
-                estudianteCtrl.setAnioIngreso(jAño.getText());
+                estudianteCtrl.setAnioIngreso(String.valueOf(ycAño.getValue()));
                 if (rbM.isSelected()) {
                    estudianteCtrl.setGenero("M");
                 }
@@ -691,7 +700,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         
         //Validnado campos vacios
         if ((jNombre.getText().trim().isEmpty()) || (jApellido.getText().trim().isEmpty()) || (jFecha.getText().trim().isEmpty())
-                || (jAño.getText().trim().isEmpty()) || (jDireccion.getText().trim().isEmpty()) || (rbF.isSelected() == false && rbM.isSelected()== false) || (lblFoto.getIcon() == null)) {
+                || (jDireccion.getText().trim().isEmpty()) || (rbF.isSelected() == false && rbM.isSelected()== false) || (lblFoto.getIcon() == null)) {
             JOptionPane.showMessageDialog(null, "Error", "Existen campos vacios", JOptionPane.WARNING_MESSAGE);
         } else {
             int mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas suspender a este estudiante?","Advertencia",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
@@ -720,7 +729,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
     private void btnActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarActionPerformed
         //Validnado campos vacios
         if ((jNombre.getText().trim().isEmpty()) || (jApellido.getText().trim().isEmpty()) || (jFecha.getText().trim().isEmpty())
-                || (jAño.getText().trim().isEmpty()) || (jDireccion.getText().trim().isEmpty()) || (rbF.isSelected() == false && rbM.isSelected()== false) || (lblFoto.getIcon() == null)) {
+                || (jDireccion.getText().trim().isEmpty()) || (rbF.isSelected() == false && rbM.isSelected()== false) || (lblFoto.getIcon() == null)) {
             JOptionPane.showMessageDialog(null, "Error", "Existen campos vacios", JOptionPane.WARNING_MESSAGE);
         } else {
             int mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas activar a este estudiante?","Advertencia",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
@@ -749,7 +758,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
     private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
        //Validnado campos vacios
         if ((jNombre.getText().trim().isEmpty()) || (jApellido.getText().trim().isEmpty()) || (jFecha.getText().trim().isEmpty())
-                || (jAño.getText().trim().isEmpty()) || (jDireccion.getText().trim().isEmpty()) || (rbF.isSelected() == false && rbM.isSelected()== false) || (lblFoto.getIcon() == null)) {
+                || (jDireccion.getText().trim().isEmpty()) || (rbF.isSelected() == false && rbM.isSelected()== false) || (lblFoto.getIcon() == null)) {
             JOptionPane.showMessageDialog(null, "Error", "Existen campos vacios", JOptionPane.WARNING_MESSAGE);
         } else {
             int mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas retirar a este estudiante?","Advertencia",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
@@ -781,6 +790,20 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         tEstudiantes.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(busqueda));
     }//GEN-LAST:event_jBuscarKeyReleased
+
+    private void jDireccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDireccionKeyPressed
+        String Caracteres = jDireccion.getText();
+        if(Caracteres.length()>=200){
+            jDireccion.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+        
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_jDireccionKeyPressed
+
+    private void jDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDireccionKeyTyped
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_jDireccionKeyTyped
     //</editor-fold>
     
      public void reiniciarBusqueda()
@@ -810,7 +833,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jNombre.setText("");
         jApellido.setText("");
         jFecha.setText("");
-        jAño.setText("");
+        ycAño.setValue(2020);
         rbF.setSelected(false);
         rbM.setSelected(false);
         jDireccion.setText("");
@@ -863,7 +886,6 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbResponsable;
     private javax.swing.ButtonGroup grupoBotones;
     private javax.swing.JTextField jApellido;
-    private javax.swing.JTextField jAño;
     private javax.swing.JTextField jBuscar;
     private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JTextArea jDireccion;
@@ -888,5 +910,6 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rbF;
     private javax.swing.JRadioButton rbM;
     private javax.swing.JTable tEstudiantes;
+    private com.toedter.calendar.JYearChooser ycAño;
     // End of variables declaration//GEN-END:variables
 }
