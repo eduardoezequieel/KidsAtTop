@@ -48,6 +48,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         btnGenerarEstudiantesGS = new javax.swing.JButton();
         btnLista = new javax.swing.JButton();
         btnInasistencias = new javax.swing.JButton();
+        btnGenerarAsistenciaDia = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(33, 37, 41));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,7 +70,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btnGenerarBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 210, 120));
 
-        btnGenerarGradoSeccion.setText("Grados su docente");
+        btnGenerarGradoSeccion.setText("Grados y su docente");
         btnGenerarGradoSeccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarGradoSeccionActionPerformed(evt);
@@ -100,6 +101,14 @@ public class FrmReportes extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(btnInasistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 210, 130));
+
+        btnGenerarAsistenciaDia.setText("Asistencia por día");
+        btnGenerarAsistenciaDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarAsistenciaDiaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnGenerarAsistenciaDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 432, 220, 130));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1000, 710));
 
@@ -324,8 +333,41 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 } 
     }//GEN-LAST:event_btnInasistenciasActionPerformed
 
+    private void btnGenerarAsistenciaDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarAsistenciaDiaActionPerformed
+        String mensaje1 = JOptionPane.showInputDialog(null, "Escribe la fecha del cual quieres un reporte de asistencia (MM/dd/yyyy).","Aviso",JOptionPane.INFORMATION_MESSAGE);
+        String mensaje2 = JOptionPane.showInputDialog(null, "Escribe el grado del cual quieres un reporte de asistencia.","Aviso",JOptionPane.INFORMATION_MESSAGE);
+        String mensaje3 = JOptionPane.showInputDialog(null, "Escribe la seccion del cual quieres un reporte de asistencia.","Aviso",JOptionPane.INFORMATION_MESSAGE);
+        try {
+            Conexion con = new Conexion();
+            String reports = "RptAsistenciaDiaParametro";
+            String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
+
+            archivo = URLDecoder.decode(archivo,"UTF-8");
+            JasperReport report =
+            JasperCompileManager.compileReport(archivo);
+            Map<String,Object> parametros = new HashMap<String,Object>();
+            parametros.put("FECHA",mensaje1); 
+            parametros.put("GRADO",mensaje2); 
+            parametros.put("SECCION",mensaje3); 
+            JasperPrint print = JasperFillManager.fillReport(report,
+            parametros, con.conectar());
+            JasperViewer visor = new JasperViewer(print, false);
+            visor.setTitle("Reporte de Asistencia");
+            visor.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            visor.setVisible(true);
+            reports="";
+        } 
+        catch (JRException e) {
+            System.out.println("AQUI1");
+            System.out.println(e.getMessage());
+        }catch (UnsupportedEncodingException ex) { 
+            Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnGenerarAsistenciaDiaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGenerarAsistenciaDia;
     private javax.swing.JButton btnGenerarBitacora;
     private javax.swing.JButton btnGenerarEstudiantesGS;
     private javax.swing.JButton btnGenerarGradoSeccion;
