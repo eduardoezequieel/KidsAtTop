@@ -334,7 +334,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnInasistenciasActionPerformed
 
     private void btnGenerarAsistenciaDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarAsistenciaDiaActionPerformed
-        String mensaje1 = JOptionPane.showInputDialog(null, "Escribe la fecha del cual quieres un reporte de asistencia (MM/dd/yyyy).","Aviso",JOptionPane.INFORMATION_MESSAGE);
+        String mensaje1 = JOptionPane.showInputDialog(null, "Escribe la fecha del cual quieres un reporte de asistencia (MM-dd-yyyy).","Aviso",JOptionPane.INFORMATION_MESSAGE);
         String mensaje2 = JOptionPane.showInputDialog(null, "Escribe el grado del cual quieres un reporte de asistencia.","Aviso",JOptionPane.INFORMATION_MESSAGE);
         String mensaje3 = JOptionPane.showInputDialog(null, "Escribe la seccion del cual quieres un reporte de asistencia.","Aviso",JOptionPane.INFORMATION_MESSAGE);
         try {
