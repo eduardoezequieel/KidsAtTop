@@ -260,5 +260,23 @@ public class MtoSecciones {
         return resp;
     }
     
+    public boolean activarSeccion(){
+        boolean resp = false;
+        try
+        {
+            String sql = "UPDATE grado_seccion SET id_estado_gs = 1 WHERE id_grado_seccion = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setInt(1, ctrl.getIdGradoSeccion());
+            //Ejecutando consulta
+            if (!cmd.execute()) {
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+        return resp;
+    }
+    
     //</editor-fold>
 }

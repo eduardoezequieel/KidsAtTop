@@ -69,7 +69,10 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         this.mostrarResponsables();
 
         this.llenarParentesco();
-
+        
+        btnActualizar.setEnabled(false);
+        btnSuspender.setEnabled(false);
+        btnActivar.setEnabled(false);
     }
 
     /**
@@ -406,6 +409,9 @@ public class frmGestionarResponsable extends javax.swing.JInternalFrame {
         jEmail.setText("");
         jTelefono.setText("");
         jApellido.setText("");
+        btnActualizar.setEnabled(false);
+        btnSuspender.setEnabled(false);
+        btnActivar.setEnabled(false);
     }
 
     public void mostrarResponsables() {
