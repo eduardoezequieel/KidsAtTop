@@ -9,14 +9,14 @@ import modelo.RecuContra;
 import modelo.Validaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 
-public class frmRecuAdmin extends javax.swing.JFrame {
+public class FrmRecuperacionAdmin extends javax.swing.JFrame {
 
     Validaciones val = new Validaciones();
     //Llamando clases
     CtrlRecuContra recuCtrl = new CtrlRecuContra();
     RecuContra recu = new RecuContra();
     
-    public frmRecuAdmin() {
+    public FrmRecuperacionAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -233,7 +233,7 @@ public class frmRecuAdmin extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         this.setVisible(false);
-        frmMenuRecuperacion formulario = new frmMenuRecuperacion();
+        FrmRecuMenu formulario = new FrmRecuMenu();
         formulario.setVisible(true);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
@@ -317,11 +317,11 @@ public class frmRecuAdmin extends javax.swing.JFrame {
                 if (recu.cambiarContra()) {
                     JOptionPane.showMessageDialog(null, "La contraseña se ha cambiado correctamente","Contraseña actualizada.",JOptionPane.INFORMATION_MESSAGE);
                     this.setVisible(false);
-                    frmLogin formulario = null;
+                    FrmIniciarSesion formulario = null;
                     try {
-                        formulario = new frmLogin();
+                        formulario = new FrmIniciarSesion();
                     } catch (UnsupportedLookAndFeelException ex) {
-                        Logger.getLogger(frmRecuAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(FrmRecuperacionAdmin.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     formulario.setVisible(true);
                 } else {
@@ -394,21 +394,23 @@ public class frmRecuAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmRecuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmRecuperacionAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmRecuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmRecuperacionAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmRecuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmRecuperacionAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmRecuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmRecuperacionAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmRecuAdmin().setVisible(true);
+                new FrmRecuperacionAdmin().setVisible(true);
             }
         });
     }

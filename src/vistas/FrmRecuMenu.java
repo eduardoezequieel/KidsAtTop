@@ -113,20 +113,20 @@ public class FrmRecuMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        FrmRecuAdmin formulario = new FrmRecuAdmin();
+        FrmRecuperacionAdmin formulario = new FrmRecuperacionAdmin();
         formulario.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.setVisible(false);
-        FrmRecuCorreo formulario = new FrmRecuCorreo();
+        FrmRecuperacionCorreo formulario = new FrmRecuperacionCorreo();
         formulario.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         this.setVisible(false);
-        FrmRecuPreguntas formulario = new FrmRecuPreguntas();
+        FrmRecuperacionPreguntas formulario = new FrmRecuperacionPreguntas();
         formulario.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
