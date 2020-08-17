@@ -125,6 +125,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         cbEstudiante = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jFecha = new javax.swing.JTextField();
+        jCalendario = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -285,7 +286,7 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         jLabel11.setForeground(new java.awt.Color(254, 254, 254));
         jLabel11.setText("Año:");
         jLayeredPane1.add(jLabel11);
-        jLabel11.setBounds(10, 10, 32, 21);
+        jLabel11.setBounds(10, 10, 32, 19);
 
         cbAño.setBackground(new java.awt.Color(33, 37, 41));
         cbAño.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -312,13 +313,13 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
             }
         });
         jLayeredPane1.add(cbAño);
-        cbAño.setBounds(10, 40, 310, 30);
+        cbAño.setBounds(10, 40, 310, 29);
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(254, 254, 254));
         jLabel14.setText("Grado/Sección:");
         jLayeredPane1.add(jLabel14);
-        jLabel14.setBounds(10, 80, 109, 21);
+        jLabel14.setBounds(10, 80, 110, 19);
 
         cbGradoSeccion.setBackground(new java.awt.Color(33, 37, 41));
         cbGradoSeccion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -345,13 +346,13 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
             }
         });
         jLayeredPane1.add(cbGradoSeccion);
-        cbGradoSeccion.setBounds(10, 110, 310, 30);
+        cbGradoSeccion.setBounds(10, 110, 310, 29);
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));
         jLabel13.setText("Estudiante:");
         jLayeredPane1.add(jLabel13);
-        jLabel13.setBounds(10, 150, 78, 21);
+        jLabel13.setBounds(10, 150, 79, 19);
 
         cbEstudiante.setBackground(new java.awt.Color(33, 37, 41));
         cbEstudiante.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -363,13 +364,13 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
             }
         });
         jLayeredPane1.add(cbEstudiante);
-        cbEstudiante.setBounds(10, 180, 310, 30);
+        cbEstudiante.setBounds(10, 180, 310, 29);
 
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(254, 254, 254));
         jLabel10.setText("Fecha:");
         jLayeredPane1.add(jLabel10);
-        jLabel10.setBounds(10, 220, 48, 21);
+        jLabel10.setBounds(10, 220, 47, 19);
 
         jFecha.setBackground(new java.awt.Color(33, 37, 41));
         jFecha.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -388,6 +389,14 @@ public class frmGestionarConducta extends javax.swing.JInternalFrame {
         });
         jLayeredPane1.add(jFecha);
         jFecha.setBounds(10, 250, 260, 30);
+
+        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jCalendarioPropertyChange(evt);
+            }
+        });
+        jLayeredPane1.add(jCalendario);
+        jCalendario.setBounds(270, 250, 50, 30);
 
         getContentPane().add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 320, 290));
 
@@ -735,6 +744,7 @@ char c = evt.getKeyChar();
     private javax.swing.JComboBox<String> cbGradoSeccion;
     private javax.swing.JButton jActualizar;
     private javax.swing.JTextField jBuscar;
+    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JButton jEliminar;
     private javax.swing.JTextField jFecha;
     private javax.swing.JTextField jId;

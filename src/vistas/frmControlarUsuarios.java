@@ -197,6 +197,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         txtTelefono = new javax.swing.JFormattedTextField();
         txtNit = new javax.swing.JFormattedTextField();
         txtNIP = new javax.swing.JFormattedTextField();
+        jCalendario = new com.toedter.calendar.JDateChooser();
         jLayer3 = new javax.swing.JLayeredPane();
         jLabel9 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
@@ -359,13 +360,13 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
             }
         });
         jLayer1.add(cbTipoUsuario);
-        cbTipoUsuario.setBounds(20, 110, 240, 30);
+        cbTipoUsuario.setBounds(20, 110, 240, 29);
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(254, 254, 254));
         jLabel7.setText("Tipo de Usuario:");
         jLayer1.add(jLabel7);
-        jLabel7.setBounds(20, 90, 130, 21);
+        jLabel7.setBounds(20, 90, 130, 19);
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(254, 254, 254));
@@ -425,7 +426,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLabel16.setForeground(new java.awt.Color(254, 254, 254));
         jLabel16.setText("Género:");
         jLayer1.add(jLabel16);
-        jLabel16.setBounds(20, 210, 56, 20);
+        jLabel16.setBounds(20, 210, 54, 20);
 
         rbFemenino.setBackground(new java.awt.Color(33, 37, 41));
         btgBotones.add(rbFemenino);
@@ -438,7 +439,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
             }
         });
         jLayer1.add(rbFemenino);
-        rbFemenino.setBounds(40, 240, 95, 29);
+        rbFemenino.setBounds(40, 240, 102, 28);
 
         rbMasculino.setBackground(new java.awt.Color(33, 37, 41));
         btgBotones.add(rbMasculino);
@@ -451,7 +452,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
             }
         });
         jLayer1.add(rbMasculino);
-        rbMasculino.setBounds(150, 240, 95, 29);
+        rbMasculino.setBounds(150, 240, 106, 28);
 
         jPanel1.add(jLayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 270, 270));
 
@@ -473,13 +474,13 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLabel15.setForeground(new java.awt.Color(254, 254, 254));
         jLabel15.setText("Fecha de nacimiento:");
         jLayer2.add(jLabel15);
-        jLabel15.setBounds(10, 150, 150, 21);
+        jLabel15.setBounds(10, 150, 151, 19);
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));
         jLabel13.setText("NIT:");
         jLayer2.add(jLabel13);
-        jLabel13.setBounds(10, 90, 27, 21);
+        jLabel13.setBounds(10, 90, 29, 19);
 
         jLabel20.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(254, 254, 254));
@@ -491,14 +492,14 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLabel11.setForeground(new java.awt.Color(254, 254, 254));
         jLabel11.setText("DUI:");
         jLayer2.add(jLabel11);
-        jLabel11.setBounds(10, 10, 30, 30);
+        jLabel11.setBounds(10, 10, 29, 30);
 
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(254, 254, 254));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Teléfono:");
         jLayer2.add(jLabel10);
-        jLabel10.setBounds(10, 210, 64, 20);
+        jLabel10.setBounds(10, 210, 67, 20);
 
         txtDUI.setBackground(new java.awt.Color(33, 37, 41));
         txtDUI.setForeground(new java.awt.Color(255, 255, 255));
@@ -568,13 +569,21 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLayer2.add(txtNIP);
         txtNIP.setBounds(50, 50, 180, 30);
 
+        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jCalendarioPropertyChange(evt);
+            }
+        });
+        jLayer2.add(jCalendario);
+        jCalendario.setBounds(180, 170, 50, 30);
+
         jPanel1.add(jLayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 240, 270));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
         jLabel9.setText("Correo Electrónico:");
         jLayer3.add(jLabel9);
-        jLabel9.setBounds(0, 20, 170, 21);
+        jLabel9.setBounds(0, 20, 170, 19);
 
         txtEmail.setBackground(new java.awt.Color(33, 37, 41));
         txtEmail.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -598,7 +607,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
         jLabel17.setForeground(new java.awt.Color(254, 254, 254));
         jLabel17.setText("Dirección:");
         jLayer3.add(jLabel17);
-        jLabel17.setBounds(0, 80, 71, 20);
+        jLabel17.setBounds(0, 80, 70, 20);
 
         txtDireccion.setBackground(new java.awt.Color(33, 37, 41));
         txtDireccion.setColumns(20);
@@ -1229,6 +1238,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnReiniciarCuenta;
     private javax.swing.JButton btnSuspender;
     private javax.swing.JComboBox<String> cbTipoUsuario;
+    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

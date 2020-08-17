@@ -146,6 +146,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
         jAño = new javax.swing.JTextField();
         jId = new javax.swing.JTextField();
         btnRetirar = new javax.swing.JButton();
+        jCalendario = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -456,6 +457,13 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(btnRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 140, 70));
+
+        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jCalendarioPropertyChange(evt);
+            }
+        });
+        jPanel1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 50, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -857,6 +865,7 @@ public class frmGestionarEstudiantes extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jApellido;
     private javax.swing.JTextField jAño;
     private javax.swing.JTextField jBuscar;
+    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JTextArea jDireccion;
     private javax.swing.JTextField jFecha;
     private javax.swing.JTextField jId;

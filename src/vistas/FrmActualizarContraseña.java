@@ -234,8 +234,13 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
     }//GEN-LAST:event_jConfirmarContraseñaKeyPressed
 
     private void jNuevaContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNuevaContraseñaKeyTyped
-        // TODO add your handling code here:
+
         val.verificarEspeciales(evt);
+        
+        String Caracteres = jNuevaContraseña.getText();
+        if(Caracteres.length()>=16){
+            evt.consume();
+        }
     }//GEN-LAST:event_jNuevaContraseñaKeyTyped
 
     private void jConfirmarContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jConfirmarContraseñaKeyTyped

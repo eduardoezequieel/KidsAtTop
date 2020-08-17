@@ -71,6 +71,7 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         btnCargarFoto = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jAño = new javax.swing.JTextField();
+        jCalendario = new com.toedter.calendar.JDateChooser();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -258,6 +259,15 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 240, 30));
 
+        jCalendario.setMaxSelectableDate(new java.util.Date(1325401287000L));
+        jCalendario.setMinSelectableDate(new java.util.Date(1483254087000L));
+        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jCalendarioPropertyChange(evt);
+            }
+        });
+        jPanel1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 50, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 680));
 
         pack();
@@ -415,6 +425,7 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbGS;
     private javax.swing.JTextField jApellido;
     private javax.swing.JTextField jAño;
+    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JTextArea jDireccion;
     private javax.swing.JTextField jFecha;
     private javax.swing.JLabel jLabel1;

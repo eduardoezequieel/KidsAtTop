@@ -53,7 +53,6 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         tSecciones.getTableHeader().setOpaque(false);
         tSecciones.getTableHeader().setBackground(new Color(33, 37, 41));
         tSecciones.getTableHeader().setForeground(new Color(254, 254, 254));
-        calAnio.setFont(new Font("Roboto", Font.PLAIN, 16));
         modelo.addColumn("identifi");
         modelo.addColumn("Grado");
         modelo.addColumn("Sección");
@@ -99,6 +98,7 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
         txtBuscar = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         cbGrados = new javax.swing.JComboBox<>();
+        calAnio = new com.toedter.calendar.JYearChooser();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -269,6 +269,11 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(cbGrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 220, -1));
+
+        calAnio.setBackground(new java.awt.Color(255, 255, 255));
+        calAnio.setForeground(new java.awt.Color(255, 255, 255));
+        calAnio.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jPanel1.add(calAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 114, 70, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -477,6 +482,7 @@ public class frmGestionarSecciones extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnSuspender;
+    private com.toedter.calendar.JYearChooser calAnio;
     private javax.swing.JComboBox<String> cbGrados;
     private javax.swing.JComboBox<String> cbSecciones;
     private javax.swing.JComboBox<String> cbUsuario;

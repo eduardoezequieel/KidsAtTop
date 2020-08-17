@@ -77,6 +77,7 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jButton7 = new javax.swing.JButton();
+        jCalendario = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -299,6 +300,13 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jButton7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 130, 140, 70));
 
+        jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jCalendarioPropertyChange(evt);
+            }
+        });
+        jPanel1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 50, 29));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
         pack();
@@ -348,6 +356,10 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         val.verificarPegar(evt);
     }//GEN-LAST:event_jTextField2KeyPressed
 
+    private void jCalendarioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendarioPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCalendarioPropertyChange
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
@@ -355,6 +367,7 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
