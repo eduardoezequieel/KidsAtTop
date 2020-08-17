@@ -21,6 +21,7 @@ public class CtrlConducta {
     static private String fecha;
     static private String anio;
     static private int idGradoSeccion;
+    static private int idTipoAsistencia;
 
     /**
      * @return the idConducta
@@ -104,5 +105,19 @@ public class CtrlConducta {
      */
     public void setIdGradoSeccion(int aIdGradoSeccion) {
         idGradoSeccion = aIdGradoSeccion;
+    }
+
+    /**
+     * @return the idTipoAsistencia
+     */
+    public int getIdTipoAsistencia() {
+        return idTipoAsistencia;
+    }
+
+    /**
+     * @param idTipoAsistencia the idTipoAsistencia to set
+     */
+    public void setIdTipoAsistencia(int idTipoAsistencia) {
+        this.idTipoAsistencia = idTipoAsistencia;
     }
 }

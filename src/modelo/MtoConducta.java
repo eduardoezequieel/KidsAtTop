@@ -10,6 +10,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -133,6 +134,29 @@ public class MtoConducta {
         }       
       return modelo;
     }
+    
+     public DefaultComboBoxModel getAsistencia(){
+        
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        try {
+            String sql = "SELECT tipo_asistencia FROM tipo_asistencia";
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                modelo.addElement(rs.getString(1));
+            }
+            
+            rs.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        
+        return modelo;
+    }
+    
+    
+    
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="ObteniendoIds">
@@ -188,6 +212,31 @@ public class MtoConducta {
         return id;
     }
     
+    public int obtenerIdTipoAsistencia(String nombre){
+        int id = 0;
+        
+        try{
+            
+            //Preparando sentencia sql
+            String sql = "SELECT id_tipo_asistencia FROM tipo_asistencia WHERE tipo_asistencia = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            
+            cmd.setString(1, nombre);
+            
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+               id = rs.getInt(1);
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        
+        return id;
+    }
+    
     //Obteniendo id del estudiante
     public int obtenerUltimoId(){
         int id = 0;
@@ -196,6 +245,28 @@ public class MtoConducta {
             
             //Preparando sentencia sql
             String sql = "SELECT max(id_conducta) FROM conducta";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+               id = rs.getInt(1);
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        
+        return id;
+    }
+    
+    public int obtenerUltimoIdAs(){
+        int id = 0;
+        
+        try{
+            
+            //Preparando sentencia sql
+            String sql = "SELECT max(id_asistencia) FROM control_asistencia";
             PreparedStatement cmd = cn.prepareStatement(sql);
             
             ResultSet rs = cmd.executeQuery();
@@ -237,6 +308,36 @@ public class MtoConducta {
         
         return id;
     }
+    
+    
+    
+    public int obtenerIdAsistencia(String obser, String fecha, String apellido, String nombre){
+        int id = 20;
+        
+        try{
+            
+            String sql = "SELECT c.id_asistencia FROM control_asistencia c, estudiante e WHERE c.observacion = ? AND c.fecha = ? AND e.apellido = ? AND e.nombre = ? AND c.id_estudiante = e.id_estudiante";
+            //Llamando procedimiento almacenado
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            cmd.setString(1, obser);
+            cmd.setString(2, fecha);
+            cmd.setString(3, apellido);
+            cmd.setString(4, nombre);
+            
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+               id = rs.getInt(1);
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        
+        return id;
+    }
+    
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="ObteniendoItems">
@@ -433,4 +534,95 @@ public class MtoConducta {
     } 
     
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="CRUD Asistencia">
+    
+        public boolean IngresarAsistencia(){
+        
+        boolean retorno=false;
+        
+        try{
+        
+            String query="Insert into control_asistencia(id_asistencia,id_estudiante,observacion,fecha,id_tipo_asistencia) values(?,?,?,?,?)";
+            
+            PreparedStatement cmd = cn.prepareStatement(query);
+            cmd.setInt(1, conducta.getIdConducta());
+            cmd.setInt(2, conducta.getIdEstudiante());
+            cmd.setString(3,conducta.getObservacion());
+            cmd.setString(4, conducta.getFecha());
+            cmd.setInt(5, conducta.getIdTipoAsistencia());
+            if (!cmd.execute()) {
+                
+                retorno=true;
+            }
+        
+        }
+        
+        catch(Exception e){
+        
+            System.out.println(e.toString());
+        }
+        
+            return retorno;
+        }
+        
+        
+        public boolean actualizarAsistencia(){
+        
+            boolean retorno=false;
+            try{
+                
+                String query="update control_asistencia set id_estudiante=?,observacion=?,fecha=?,id_tipo_asistencia=? where id_asistencia=?";
+                PreparedStatement cmd = cn.prepareStatement(query);
+                cmd.setInt(1, conducta.getIdEstudiante());
+                cmd.setString(2, conducta.getObservacion());
+                cmd.setString(3, conducta.getFecha());
+                cmd.setInt(4, conducta.getIdTipoAsistencia());
+                cmd.setInt(5, conducta.getIdConducta());
+                
+                if (!cmd.execute()) {
+                    
+                    retorno=true;
+                }
+            
+            }
+            catch(Exception e){
+            
+                System.out.println(e.toString());
+            
+            }
+        
+            return retorno;
+        }
+        
+        public boolean eliminarAsistencia(){
+        
+            boolean retorno = false;
+        try {
+
+            String query = "delete from control_asistencia where id_asistencia=?";
+
+            PreparedStatement cmd = cn.prepareStatement(query);
+            
+            cmd.setInt(1, conducta.getIdConducta());
+
+            if (!cmd.execute()) {
+                retorno = true;
+            }
+
+            cmd.close();
+            
+        } catch (Exception e) {
+
+            System.out.println(e.toString());
+
+        }
+
+        return retorno;
+        
+        }
+    
+        //</editor-fold>
+
+
 }

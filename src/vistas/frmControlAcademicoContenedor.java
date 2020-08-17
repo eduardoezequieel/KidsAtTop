@@ -239,7 +239,7 @@ public class frmControlAcademicoContenedor extends javax.swing.JFrame {
 
     private void jGestionarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarAsistenciaActionPerformed
         //Abriendo formulario de Controlar Asistencia
-        frmControlarAsistencia asistencia = new frmControlarAsistencia();
+        frmControlarAsistencia asistencia = new frmControlarAsistencia(mod);
         jEscritorio.add(asistencia);
         asistencia.setVisible(true);
         
