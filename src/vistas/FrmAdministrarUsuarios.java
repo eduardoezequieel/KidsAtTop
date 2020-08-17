@@ -37,7 +37,7 @@ import modelo.Validaciones;
  *
  * @author katy0
  */
-public class FrmControlarUsuarios extends javax.swing.JInternalFrame {
+public class FrmAdministrarUsuarios extends javax.swing.JInternalFrame {
 
     //Variables globales
         String filename = null;
@@ -46,11 +46,11 @@ public class FrmControlarUsuarios extends javax.swing.JInternalFrame {
         CtrlLoginUsuario mod;
         Validaciones val = new Validaciones();
        
-    public FrmControlarUsuarios(){
+    public FrmAdministrarUsuarios(){
         initComponents();
     }
 
-    public FrmControlarUsuarios(CtrlLoginUsuario mod) {
+    public FrmAdministrarUsuarios(CtrlLoginUsuario mod) {
         initComponents();
         this.mod = mod;
         txtId.setVisible(false);

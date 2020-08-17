@@ -469,7 +469,7 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         this.setVisible(false);
         MtoLogin log1=new MtoLogin();
         log1.obtenerDatosUsuario(mod);
-        FrmPrincipal frm = new FrmPrincipal(mod);
+        FrmMenu frm = new FrmMenu(mod);
         frm.setVisible(true);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
@@ -539,7 +539,7 @@ public class FrmMiCuenta extends javax.swing.JFrame {
                     mod.setId_usuario(Integer.parseInt(idUsuario.getText()));
                     mod.setId_bitacora(id);
                     add.agregarBitacoraActualizar(mod);
-                    FrmPrincipal frm = new FrmPrincipal(mod);
+                    FrmMenu frm = new FrmMenu(mod);
                     frm.setVisible(true);
                 }
                 else

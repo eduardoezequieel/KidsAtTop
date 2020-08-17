@@ -21,10 +21,10 @@ import modelo.MtoBitacoras;
  *
  * @author eduardxlr
  */
-public class FrmLogin extends javax.swing.JFrame {
+public class FrmIniciarSesion extends javax.swing.JFrame {
 
     Validaciones val = new Validaciones();
-    public FrmLogin() throws UnsupportedLookAndFeelException {
+    public FrmIniciarSesion() throws UnsupportedLookAndFeelException {
         initComponents();
         this.setLocationRelativeTo(null);    
         //Cargando estilos
@@ -343,7 +343,7 @@ public class FrmLogin extends javax.swing.JFrame {
                     
                     JOptionPane.showMessageDialog(this, "Acceso concedido, bienvenido "+mod.getUsuario());
                     this.setVisible(false);
-                    FrmPrincipal formulario = new FrmPrincipal(mod);
+                    FrmMenu formulario = new FrmMenu(mod);
                     formulario.setVisible(true);
                     
                   
@@ -368,7 +368,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void btnRecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarActionPerformed
         this.setVisible(false);
-        FrmMenuRecuperacion formulario = new FrmMenuRecuperacion();
+        FrmRecuMenu formulario = new FrmRecuMenu();
         formulario.setVisible(true);
         /*ClsCorreo correo = new ClsCorreo();
         correo.enviarCorreo();*/
@@ -444,9 +444,9 @@ public class FrmLogin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new FrmLogin().setVisible(true);
+                    new FrmIniciarSesion().setVisible(true);
                 } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(FrmLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FrmIniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

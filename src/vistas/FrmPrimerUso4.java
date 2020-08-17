@@ -65,9 +65,9 @@ public class FrmPrimerUso4 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        FrmLogin frm = null;
+        FrmIniciarSesion frm = null;
         try {
-            frm = new FrmLogin();
+            frm = new FrmIniciarSesion();
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(FrmPrimerUso4.class.getName()).log(Level.SEVERE, null, ex);
         }

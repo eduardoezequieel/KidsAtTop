@@ -2,7 +2,7 @@ package kidsattop;
 
 import javax.swing.UnsupportedLookAndFeelException;
 
-import vistas.FrmLogin;
+import vistas.FrmIniciarSesion;
 
 /**
  *
@@ -12,7 +12,7 @@ public class KidsAtTop {
 
     public static void main(String[] args) throws UnsupportedLookAndFeelException {
   
-        FrmLogin formulario = new FrmLogin();
+        FrmIniciarSesion formulario = new FrmIniciarSesion();
         formulario.setVisible(true);
     }
 

@@ -14,16 +14,16 @@ import modelo.MtoLogin;
  *
  * @author katy0
  */
-public class FrmControlAcademicoContenedor extends javax.swing.JFrame {
+public class FrmAcademicoContenedor extends javax.swing.JFrame {
      CtrlLoginUsuario mod;
     /**
      * Creates new form ControlAcademicoContenedorForm
      */
-    public FrmControlAcademicoContenedor() {
+    public FrmAcademicoContenedor() {
         initComponents();
         
     }
-    public FrmControlAcademicoContenedor(CtrlLoginUsuario mod){
+    public FrmAcademicoContenedor(CtrlLoginUsuario mod){
     
         initComponents();
         this.setLocationRelativeTo(null);
@@ -176,7 +176,7 @@ public class FrmControlAcademicoContenedor extends javax.swing.JFrame {
 
     private void jGestionarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarNotasActionPerformed
         //Abriendo formulario de Gestionar Notas
-        FrmGestionarNotas notas = new FrmGestionarNotas();
+        FrmNotas notas = new FrmNotas();
         jEscritorio.add(notas);
         notas.setVisible(true);
         
@@ -197,7 +197,7 @@ public class FrmControlAcademicoContenedor extends javax.swing.JFrame {
 
     private void jGestionarConductaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarConductaActionPerformed
         //Abriendo formulario de Gestionar Conducta
-        FrmGestionarConducta conducta = new FrmGestionarConducta(mod);
+        FrmConducta conducta = new FrmConducta(mod);
         jEscritorio.add(conducta);
         conducta.setVisible(true);
         
@@ -218,7 +218,7 @@ public class FrmControlAcademicoContenedor extends javax.swing.JFrame {
 
     private void jGestionarSeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarSeccionesActionPerformed
         //Abriendo formulario de Gestionar Secciones
-        FrmGestionarSecciones secciones = new FrmGestionarSecciones(mod);
+        FrmSecciones secciones = new FrmSecciones(mod);
         jEscritorio.add(secciones);
         secciones.setVisible(true); 
         
@@ -239,7 +239,7 @@ public class FrmControlAcademicoContenedor extends javax.swing.JFrame {
 
     private void jGestionarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarAsistenciaActionPerformed
         //Abriendo formulario de Controlar Asistencia
-        FrmControlarAsistencia asistencia = new FrmControlarAsistencia(mod);
+        FrmAsistencia asistencia = new FrmAsistencia(mod);
         jEscritorio.add(asistencia);
         asistencia.setVisible(true);
         
@@ -262,7 +262,7 @@ public class FrmControlAcademicoContenedor extends javax.swing.JFrame {
         MtoLogin log=new MtoLogin();
         log.obtenerDatosUsuario(mod);
         this.setVisible(false);
-        FrmPrincipal formulario = new FrmPrincipal(mod);
+        FrmMenu formulario = new FrmMenu(mod);
         formulario.setVisible(true);
     }//GEN-LAST:event_jGestionarSecciones1ActionPerformed
 
@@ -283,14 +283,18 @@ public class FrmControlAcademicoContenedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmControlAcademicoContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAcademicoContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmControlAcademicoContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAcademicoContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmControlAcademicoContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAcademicoContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmControlAcademicoContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAcademicoContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -299,7 +303,7 @@ public class FrmControlAcademicoContenedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmControlAcademicoContenedor().setVisible(true);
+                new FrmAcademicoContenedor().setVisible(true);
             }
         });
     }

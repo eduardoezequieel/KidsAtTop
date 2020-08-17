@@ -14,16 +14,16 @@ import modelo.MtoLogin;
  *
  * @author katy0
  */
-public class FrmGestionarMatriculaContenedor extends javax.swing.JFrame {
+public class FrmMatriculaCont extends javax.swing.JFrame {
       CtrlLoginUsuario mod;
     /**
      * Creates new form GestionarMatriculaContenedorForm
      */
-    public FrmGestionarMatriculaContenedor() {
+    public FrmMatriculaCont() {
         initComponents();
         
     }
-     public FrmGestionarMatriculaContenedor(CtrlLoginUsuario mod) {
+     public FrmMatriculaCont(CtrlLoginUsuario mod) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.mod = mod;
@@ -163,7 +163,7 @@ public class FrmGestionarMatriculaContenedor extends javax.swing.JFrame {
 
     private void jGestionarResponsablesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarResponsablesActionPerformed
         //Abriendo formulario de Gestionar Conducta
-        FrmGestionarResponsable responsable = new FrmGestionarResponsable(mod);
+        FrmAdministrarResponsable responsable = new FrmAdministrarResponsable(mod);
         jDesktop.add(responsable);
         responsable.setVisible(true);
     
@@ -183,12 +183,12 @@ public class FrmGestionarMatriculaContenedor extends javax.swing.JFrame {
     private void jGestionarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarEstudiantesActionPerformed
        
         //Abriendo formulario de Gestionar Conducta
-        FrmGestionarEstudiantes estudiante = new FrmGestionarEstudiantes(mod);
+        FrmAdministrarEstudiantes estudiante = new FrmAdministrarEstudiantes(mod);
         jDesktop.add(estudiante);
         estudiante.setVisible(true);
         
         //Llamando formularios
-        FrmGestionarResponsable responsable = new FrmGestionarResponsable();
+        FrmAdministrarResponsable responsable = new FrmAdministrarResponsable();
         
         //Cambiando imagen
         Icon Imagenes;
@@ -208,7 +208,7 @@ public class FrmGestionarMatriculaContenedor extends javax.swing.JFrame {
         this.setVisible(false);
         MtoLogin log=new MtoLogin();
         log.obtenerDatosUsuario(mod);
-        FrmPrincipal formulario = new FrmPrincipal(mod);
+        FrmMenu formulario = new FrmMenu(mod);
         formulario.setVisible(true);
     }//GEN-LAST:event_jGestionarResponsables1ActionPerformed
 
@@ -247,14 +247,18 @@ public class FrmGestionarMatriculaContenedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmGestionarMatriculaContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMatriculaCont.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmGestionarMatriculaContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMatriculaCont.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmGestionarMatriculaContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMatriculaCont.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmGestionarMatriculaContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMatriculaCont.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -263,7 +267,7 @@ public class FrmGestionarMatriculaContenedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmGestionarMatriculaContenedor().setVisible(true);
+                new FrmMatriculaCont().setVisible(true);
             }
         });
     }

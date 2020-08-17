@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import vistas.FrmActualizarContraseña;
-import vistas.FrmLogin;
+import vistas.FrmIniciarSesion;
 
 /**
  *

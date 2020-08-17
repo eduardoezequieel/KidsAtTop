@@ -18,16 +18,16 @@ import modelo.MtoLogin;
  *
  * @author katy0
  */
-public class FrmHerramientasContenedor extends javax.swing.JFrame {
+public class FrmHerramientasCont extends javax.swing.JFrame {
      
     CtrlLoginUsuario mod;
   
    
-    public FrmHerramientasContenedor() {
+    public FrmHerramientasCont() {
         initComponents();
         
     }
-     public FrmHerramientasContenedor(CtrlLoginUsuario mod){
+     public FrmHerramientasCont(CtrlLoginUsuario mod){
         initComponents();
         this.setLocationRelativeTo(null);
         this.mod = mod;
@@ -153,7 +153,7 @@ public class FrmHerramientasContenedor extends javax.swing.JFrame {
         //Abriendo formulario de Controlar Usuarios
         MtoLogin log=new MtoLogin();
         log.obtenerDatosUsuario(mod);
-        FrmControlarUsuarios usuarios = new FrmControlarUsuarios(mod);
+        FrmAdministrarUsuarios usuarios = new FrmAdministrarUsuarios(mod);
         jEscritorio.add(usuarios);
         usuarios.setVisible(true);
         
@@ -170,7 +170,7 @@ public class FrmHerramientasContenedor extends javax.swing.JFrame {
         this.setVisible(false);
          MtoLogin log=new MtoLogin();
          log.obtenerDatosUsuario(mod);
-        FrmPrincipal formulario = new FrmPrincipal(mod);
+        FrmMenu formulario = new FrmMenu(mod);
         formulario.setVisible(true);
         
     }//GEN-LAST:event_btnRegresarActionPerformed
@@ -206,14 +206,22 @@ public class FrmHerramientasContenedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmHerramientasContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmHerramientasCont.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmHerramientasContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmHerramientasCont.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmHerramientasContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmHerramientasCont.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmHerramientasContenedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmHerramientasCont.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -226,7 +234,7 @@ public class FrmHerramientasContenedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmHerramientasContenedor().setVisible(true);
+                new FrmHerramientasCont().setVisible(true);
             }
         });
     }

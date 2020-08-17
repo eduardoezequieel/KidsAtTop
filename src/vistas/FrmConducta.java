@@ -29,7 +29,7 @@ import modelo.MtoBitacoras;
  *
  * @author katy0
  */
-public class FrmGestionarConducta extends javax.swing.JInternalFrame {
+public class FrmConducta extends javax.swing.JInternalFrame {
 
     //Llamando clases
     Validaciones val = new Validaciones();
@@ -48,12 +48,12 @@ public class FrmGestionarConducta extends javax.swing.JInternalFrame {
     /**
      * Creates new form GestionarConductaForm
      */
-    public FrmGestionarConducta() {
+    public FrmConducta() {
         initComponents();
 
     }
 
-    public FrmGestionarConducta(CtrlLoginUsuario mod) {
+    public FrmConducta(CtrlLoginUsuario mod) {
 
         this.mod = mod;
         initComponents();

@@ -26,7 +26,7 @@ import controlador.CtrlLoginUsuario;
  *
  * @author katy0
  */
-public class FrmGestionarSecciones extends javax.swing.JInternalFrame {
+public class FrmSecciones extends javax.swing.JInternalFrame {
 
     CtrlLoginUsuario mod;
     DefaultTableModel modelo = new DefaultTableModel();
@@ -36,12 +36,12 @@ public class FrmGestionarSecciones extends javax.swing.JInternalFrame {
     /**
      * Creates new form GestionarSeccionesForm
      */
-    public FrmGestionarSecciones() {
+    public FrmSecciones() {
         initComponents();
 
     }
 
-    public FrmGestionarSecciones(CtrlLoginUsuario mod) {
+    public FrmSecciones(CtrlLoginUsuario mod) {
 
         initComponents();
         System.out.println(mod.getId_usuario());

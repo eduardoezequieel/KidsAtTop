@@ -14,7 +14,7 @@ import modelo.MtoBitacoras;
 
 
 
-public class FrmPrincipal extends javax.swing.JFrame implements Runnable {
+public class FrmMenu extends javax.swing.JFrame implements Runnable {
 
     
     CtrlLoginUsuario mod;
@@ -26,14 +26,14 @@ public class FrmPrincipal extends javax.swing.JFrame implements Runnable {
     
     
     
-    public FrmPrincipal() {
+    public FrmMenu() {
         initComponents();
        
         
         
     }
     
-    public FrmPrincipal(CtrlLoginUsuario mod){
+    public FrmMenu(CtrlLoginUsuario mod){
         initComponents();
         this.mod = mod;
         
@@ -271,11 +271,11 @@ public class FrmPrincipal extends javax.swing.JFrame implements Runnable {
                 log.setId_bitacora(id);
                 modBD.agregarBitacoraSalida(log);
                 
-                FrmLogin formulario = null;
+                FrmIniciarSesion formulario = null;
                 try {
-                    formulario = new FrmLogin();
+                    formulario = new FrmIniciarSesion();
                 } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FrmMenu.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 formulario.setVisible(true);
             }
@@ -285,7 +285,7 @@ public class FrmPrincipal extends javax.swing.JFrame implements Runnable {
         MtoLogin log1=new MtoLogin();
         log1.obtenerDatosUsuario(mod);
         this.setVisible(false);
-        FrmGestionarMatriculaContenedor formulario = new FrmGestionarMatriculaContenedor(mod);
+        FrmMatriculaCont formulario = new FrmMatriculaCont(mod);
         formulario.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -294,7 +294,7 @@ public class FrmPrincipal extends javax.swing.JFrame implements Runnable {
         MtoLogin log1=new MtoLogin();
         log1.obtenerDatosUsuario(mod);
         this.setVisible(false);
-        FrmControlAcademicoContenedor academico = new FrmControlAcademicoContenedor(mod);
+        FrmAcademicoContenedor academico = new FrmAcademicoContenedor(mod);
         academico.setVisible(true);
         
     }//GEN-LAST:event_btnControlAcademicoActionPerformed
@@ -304,7 +304,7 @@ public class FrmPrincipal extends javax.swing.JFrame implements Runnable {
         MtoLogin log=new MtoLogin();
         log.obtenerDatosUsuario(mod);
         this.setVisible(false);
-        FrmHerramientasContenedor usuario = new FrmHerramientasContenedor(mod);
+        FrmHerramientasCont usuario = new FrmHerramientasCont(mod);
         usuario.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -342,14 +342,22 @@ public class FrmPrincipal extends javax.swing.JFrame implements Runnable {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -362,7 +370,7 @@ public class FrmPrincipal extends javax.swing.JFrame implements Runnable {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmPrincipal().setVisible(true);
+                new FrmMenu().setVisible(true);
             }
         });
     }

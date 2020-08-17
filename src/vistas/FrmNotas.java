@@ -14,7 +14,7 @@ import modelo.Validaciones;
  *
  * @author katy0
  */
-public class FrmGestionarNotas extends javax.swing.JInternalFrame {
+public class FrmNotas extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form GestionarNotasForm
@@ -22,7 +22,7 @@ public class FrmGestionarNotas extends javax.swing.JInternalFrame {
     
     Validaciones val = new Validaciones();
     
-    public FrmGestionarNotas() {
+    public FrmNotas() {
         initComponents();
          this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();

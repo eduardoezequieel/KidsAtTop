@@ -26,7 +26,7 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         FrmVerificarDUI frm = new FrmVerificarDUI();
         jDesktopMatricula.add(frm);
         frm.setVisible(true);
-        btnFinalizar.setVisible(false);
+ 
         this.setLocationRelativeTo(null);
         this.mod=mod;
         
@@ -43,7 +43,6 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnAtras = new javax.swing.JButton();
-        btnFinalizar = new javax.swing.JButton();
         lblMatricular1 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         lblMatricular = new javax.swing.JLabel();
@@ -71,19 +70,6 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 640, 170, 70));
-
-        btnFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnFinalizarDefault.png"))); // NOI18N
-        btnFinalizar.setBorder(null);
-        btnFinalizar.setBorderPainted(false);
-        btnFinalizar.setContentAreaFilled(false);
-        btnFinalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnFinalizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnFinalizarRollover.png"))); // NOI18N
-        btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFinalizarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnFinalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 640, 170, 70));
 
         lblMatricular1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fndProceso.png"))); // NOI18N
         jPanel1.add(lblMatricular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 270, 130));
@@ -147,7 +133,7 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         this.setVisible(false);
         MtoLogin log=new MtoLogin();
         log.obtenerDatosUsuario(mod);
-        FrmGestionarMatriculaContenedor frm = new FrmGestionarMatriculaContenedor(mod);
+        FrmMatriculaCont frm = new FrmMatriculaCont(mod);
         frm.setVisible(true);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
@@ -169,8 +155,7 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
             imagenes = new ImageIcon(getClass().getResource("/imagenes/icnMatricularEstudianteRollover.png"));
             lblMatricular.setIcon(imagenes);
             
-            btnFinalizar.setVisible(true);
-            
+      
         } else {
             JOptionPane.showMessageDialog(null, "No se ha verificado y/o agregado al responsable","Datos no verificados",JOptionPane.WARNING_MESSAGE);
         }
@@ -190,13 +175,6 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         imagenes = new ImageIcon(getClass().getResource("/imagenes/icnMatricularEstudianteDefault.png"));
         lblMatricular.setIcon(imagenes);*/
     }//GEN-LAST:event_btnAtrasActionPerformed
-
-    private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
-       JOptionPane.showMessageDialog(null, "Proceso finalizado.", "Exito", JOptionPane.INFORMATION_MESSAGE);
-        this.setVisible(false);
-       FrmGestionarMatriculaContenedor frm = new FrmGestionarMatriculaContenedor();
-       frm.setVisible(true);
-    }//GEN-LAST:event_btnFinalizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,7 +213,6 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JDesktopPane jDesktopMatricula;

@@ -29,7 +29,7 @@ import java.util.Date;
  *
  * @author katy0
  */
-public class FrmControlarAsistencia extends javax.swing.JInternalFrame {
+public class FrmAsistencia extends javax.swing.JInternalFrame {
 
     MtoConducta conducta = new MtoConducta();
     CtrlConducta as = new CtrlConducta();
@@ -45,12 +45,12 @@ public class FrmControlarAsistencia extends javax.swing.JInternalFrame {
      */
     Validaciones val = new Validaciones();
 
-    public FrmControlarAsistencia() {
+    public FrmAsistencia() {
         initComponents();
 
     }
 
-    public FrmControlarAsistencia(CtrlLoginUsuario mod) {
+    public FrmAsistencia(CtrlLoginUsuario mod) {
 
         this.mod = mod;
         initComponents();

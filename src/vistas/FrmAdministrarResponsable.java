@@ -26,7 +26,7 @@ import controlador.CtrlLoginUsuario;
  *
  * @author katy0
  */
-public class FrmGestionarResponsable extends javax.swing.JInternalFrame {
+public class FrmAdministrarResponsable extends javax.swing.JInternalFrame {
 
     CtrlLoginUsuario mod;
     DefaultTableModel modelo = new DefaultTableModel();
@@ -36,12 +36,12 @@ public class FrmGestionarResponsable extends javax.swing.JInternalFrame {
     /**
      * Creates new form GestionarResponsableForm
      */
-    public FrmGestionarResponsable() {
+    public FrmAdministrarResponsable() {
         initComponents();
 
     }
 
-    public FrmGestionarResponsable(CtrlLoginUsuario mod) {
+    public FrmAdministrarResponsable(CtrlLoginUsuario mod) {
         initComponents();
         this.mod = mod;
         System.out.println(mod.getId_usuario());
@@ -435,7 +435,7 @@ public class FrmGestionarResponsable extends javax.swing.JInternalFrame {
     }
 
     private void btnCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorreoActionPerformed
-        FrmCorreo formulario = new FrmCorreo();
+        FrmEnviarCorreo formulario = new FrmEnviarCorreo();
         formulario.setVisible(true);
     }//GEN-LAST:event_btnCorreoActionPerformed
 

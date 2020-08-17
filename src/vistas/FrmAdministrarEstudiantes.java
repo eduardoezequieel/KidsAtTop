@@ -35,7 +35,7 @@ import controlador.CtrlLoginUsuario;
  *
  * @author katy0
  */
-public class FrmGestionarEstudiantes extends javax.swing.JInternalFrame {
+public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
 
     CtrlLoginUsuario mod;
     Validaciones val = new Validaciones();
@@ -53,12 +53,12 @@ public class FrmGestionarEstudiantes extends javax.swing.JInternalFrame {
     /**
      * Creates new form GestionarEstudiantesForm
      */
-    public FrmGestionarEstudiantes() {
+    public FrmAdministrarEstudiantes() {
         initComponents();
        
     }
     
-    public FrmGestionarEstudiantes(CtrlLoginUsuario mod){
+    public FrmAdministrarEstudiantes(CtrlLoginUsuario mod){
        initComponents();
        this.mod=mod;
        System.out.println(mod.getId_usuario());

@@ -201,7 +201,7 @@ public class FrmCambiarContraseña extends javax.swing.JFrame {
                     this.setVisible(false);
                     MtoLogin log1=new MtoLogin();
                     log1.obtenerDatosUsuario(mod);
-                    FrmPrincipal frm = new FrmPrincipal(mod);
+                    FrmMenu frm = new FrmMenu(mod);
                     frm.setVisible(true);
                 }
                 else
