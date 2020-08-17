@@ -46,6 +46,8 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         btnGenerarBitacora = new javax.swing.JButton();
         btnGenerarGradoSeccion = new javax.swing.JButton();
         btnGenerarEstudiantesGS = new javax.swing.JButton();
+        btnLista = new javax.swing.JButton();
+        btnInasistencias = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(33, 37, 41));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -57,7 +59,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Menú de Reportes");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
 
         btnGenerarBitacora.setText("Bitacora");
         btnGenerarBitacora.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +67,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnGenerarBitacoraActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 210, 120));
+        jPanel1.add(btnGenerarBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 210, 120));
 
         btnGenerarGradoSeccion.setText("Grados su docente");
         btnGenerarGradoSeccion.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +75,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnGenerarGradoSeccionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarGradoSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 220, 130));
+        jPanel1.add(btnGenerarGradoSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 220, 130));
 
         btnGenerarEstudiantesGS.setText("Estudiante por grado y sección ");
         btnGenerarEstudiantesGS.addActionListener(new java.awt.event.ActionListener() {
@@ -81,9 +83,25 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnGenerarEstudiantesGSActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarEstudiantesGS, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 220, 130));
+        jPanel1.add(btnGenerarEstudiantesGS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 210, 130));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
+        btnLista.setText("Lista de Usuarios");
+        btnLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 220, 120));
+
+        btnInasistencias.setText("Inasistencias");
+        btnInasistencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInasistenciasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnInasistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 210, 130));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1000, 710));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -251,11 +269,68 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnGenerarEstudiantesGSActionPerformed
 
+    private void btnListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaActionPerformed
+        try {
+                    Conexion con = new Conexion();
+                   String reports = "RptListaUsuariosNoParam";
+                   String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
+                   String mensaje2 = "";
+                   archivo = URLDecoder.decode(archivo,"UTF-8");
+                   JasperReport report =
+                   JasperCompileManager.compileReport(archivo);
+                   Map<String,Object> parametros = new HashMap<String,Object>();
+                   parametros.put("",mensaje2); 
+                   JasperPrint print = JasperFillManager.fillReport(report,
+                   parametros, con.conectar());
+                   JasperViewer visor = new JasperViewer(print, false);
+                   visor.setTitle("Reporte de Usuarios");
+                   visor.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                   visor.setVisible(true);
+                   reports="";
+                } 
+                catch (JRException e) {
+                    System.out.println("AQUI1");
+                    System.out.println(e.getMessage());
+                }catch (UnsupportedEncodingException ex) { 
+                    Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
+                } 
+    }//GEN-LAST:event_btnListaActionPerformed
+
+    private void btnInasistenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInasistenciasActionPerformed
+                String mensaje2 = JOptionPane.showInputDialog(null, "Escribe el ID del estudiante cual quieres un reporte de inasistencias:.","Aviso",JOptionPane.INFORMATION_MESSAGE);
+                try {
+                    Conexion con = new Conexion();
+                   String reports = "RptInasistenciasParam";
+                   String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
+
+                   archivo = URLDecoder.decode(archivo,"UTF-8");
+                   JasperReport report =
+                   JasperCompileManager.compileReport(archivo);
+                   Map<String,Object> parametros = new HashMap<String,Object>();
+                   parametros.put("ID_ESTUDIANTE",mensaje2); 
+                   JasperPrint print = JasperFillManager.fillReport(report,
+                   parametros, con.conectar());
+                   JasperViewer visor = new JasperViewer(print, false);
+                   visor.setTitle("Reporte de Inasistencias");
+                   visor.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                   visor.setVisible(true);
+                   reports="";
+                } 
+                catch (JRException e) {
+                    System.out.println("AQUI1");
+                    System.out.println(e.getMessage());
+                }catch (UnsupportedEncodingException ex) { 
+                    Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
+                } 
+    }//GEN-LAST:event_btnInasistenciasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerarBitacora;
     private javax.swing.JButton btnGenerarEstudiantesGS;
     private javax.swing.JButton btnGenerarGradoSeccion;
+    private javax.swing.JButton btnInasistencias;
+    private javax.swing.JButton btnLista;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
