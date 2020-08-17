@@ -329,9 +329,17 @@ public class frmLogin extends javax.swing.JFrame {
                     FrmActualizarContraseña frm = new FrmActualizarContraseña(mod);
                     frm.setVisible(true);
                 }
-                else
+                else if(modBD.detectarRespuestas(mod) == false)
                 {
                     modBD.obtenerDatosUsuario(mod);
+                    JOptionPane.showMessageDialog(null, "Hemos detectado que no posees preguntas de seguridad. A continuación podras agregarlas.","Aviso",JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(false);
+                    FrmInsertarRespuestas frm = new FrmInsertarRespuestas(mod);
+                    frm.setVisible(true);
+                }
+                else
+                {
+                 modBD.obtenerDatosUsuario(mod);
                     
                     JOptionPane.showMessageDialog(this, "Acceso concedido, bienvenido "+mod.getUsuario());
                     this.setVisible(false);
@@ -342,12 +350,11 @@ public class frmLogin extends javax.swing.JFrame {
                     mod.setId_usuario(mod.getId_usuario());
                     mod.setId_bitacora(id);
                     bitacora.agregarBitacoraEntrada(mod);
-                           
-                    
-                    
                 }
+              
                 
             }
+           
            
             
         }

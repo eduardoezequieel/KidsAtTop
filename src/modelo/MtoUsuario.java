@@ -407,5 +407,22 @@ public class MtoUsuario {
         }
         return resp;
     }
+    
+    public boolean eliminarRespuestas(){
+        boolean resp = false;
+        try
+        {
+            String sql = "DELETE FROM respuestas WHERE id_usuario = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setInt(1, ctrl.getId_usuario());
+            
+            if (!cmd.execute()) {
+                resp = true;
+            }
+        }catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return resp;
+    }
      //</editor-fold>
 }

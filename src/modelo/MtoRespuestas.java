@@ -92,4 +92,21 @@ public class MtoRespuestas {
         }
         return resp;
     }
+    
+    public int capturarMaxIDRespuesta(){
+        int idmax = 0;
+        try
+        {
+            String sql = "SELECT max(id_respuesta) FROM respuestas";
+            PreparedStatement cmd = Conexion.prepareCall(sql);
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+                idmax = rs.getInt(1);
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return idmax;
+    }
 }

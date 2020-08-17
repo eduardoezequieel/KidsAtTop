@@ -54,7 +54,7 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
         jNuevaContraseña = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        btnActualizar = new javax.swing.JButton();
+        btnSiguiente = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -124,17 +124,17 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
         jLabel7.setText("Nueva Contraseña:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 370, -1, 30));
 
-        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
-        btnActualizar.setBorder(null);
-        btnActualizar.setBorderPainted(false);
-        btnActualizar.setContentAreaFilled(false);
-        btnActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSiguienteDefault.png"))); // NOI18N
+        btnSiguiente.setBorder(null);
+        btnSiguiente.setBorderPainted(false);
+        btnSiguiente.setContentAreaFilled(false);
+        btnSiguiente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSiguienteRollover.png"))); // NOI18N
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
+                btnSiguienteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 470, 150, 70));
+        jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 480, 150, 70));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fndActualizarContraseña.png"))); // NOI18N
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 1370, 180));
@@ -169,7 +169,7 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         if (jNuevaContraseña.getText().trim().equals(mod.getUsuario()) && jConfirmarContraseña.getText().trim().equals(mod.getUsuario())) 
         {
                 JOptionPane.showMessageDialog(null, "Tu contraseña no puede ser igual a tu usuario.","Advertencia",JOptionPane.WARNING_MESSAGE);
@@ -195,17 +195,24 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
         
                 if (mto.actualizarContraseña()) {
                     JOptionPane.showMessageDialog(null, "Exito");
-                    this.setVisible(false);
-                    frmLogin frm;
-                    try 
-                    {
-                        frm = new frmLogin();
+                    MtoLogin modBD = new MtoLogin();
+                    if (modBD.detectarRespuestas(mod) == false) {
+                        this.setVisible(false);
+                        FrmInsertarRespuestas frm = new FrmInsertarRespuestas(mod);
                         frm.setVisible(true);
-                    } 
-                    catch (UnsupportedLookAndFeelException ex) 
-                    {
-                        Logger.getLogger(FrmActualizarContraseña.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    else
+                    {
+                        this.setVisible(false);
+                        frmLogin frm = null;
+                        try {
+                            frm = new frmLogin();
+                        } catch (UnsupportedLookAndFeelException ex) {
+                            Logger.getLogger(FrmActualizarContraseña.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        frm.setVisible(true);
+                    }
+                    
                 }
                 else
                 {
@@ -217,7 +224,7 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_btnActualizarActionPerformed
+    }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void jNuevaContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNuevaContraseñaKeyPressed
         // TODO add your handling code here:
@@ -294,7 +301,7 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnSiguiente;
     private javax.swing.JTextField jConfirmarContraseña;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

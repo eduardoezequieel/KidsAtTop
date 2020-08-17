@@ -1,6 +1,11 @@
 package vistas;
+
+import controlador.CtrlLoginUsuario;
 import controlador.CtrlRespuestas;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 import modelo.MtoRespuestas;
 import modelo.Validaciones;
@@ -9,17 +14,28 @@ import modelo.Validaciones;
  *
  * @author EDUARDO
  */
-public class FrmPrimerUsoPreguntas extends javax.swing.JFrame {
+public class FrmInsertarRespuestas extends javax.swing.JFrame {
 
+    CtrlLoginUsuario mod;
     MtoRespuestas mto = new MtoRespuestas();
     CtrlRespuestas ctrl = new CtrlRespuestas();
     Validaciones val = new Validaciones();
     DefaultTableModel modelo = new DefaultTableModel();
     
-    public FrmPrimerUsoPreguntas() {
+    public FrmInsertarRespuestas() {
         initComponents();
+        
+    }
+
+    public FrmInsertarRespuestas(CtrlLoginUsuario mod) {
+        initComponents();
+        this.mod = mod;
         this.setLocationRelativeTo(null);
-        //Metodos a ejecuar
+        jID.setVisible(false);
+        //Cargando ID
+        jID.setText(String.valueOf(mod.getId_usuario()));
+        
+        //Metodos a ejecutar
         llenarPreguntas();
     }
     
@@ -42,11 +58,13 @@ public class FrmPrimerUsoPreguntas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnMinimizar = new javax.swing.JButton();
-        btnCerrar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JButton();
+        jID = new javax.swing.JTextField();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         cb1 = new javax.swing.JComboBox<>();
         j1 = new javax.swing.JTextField();
@@ -56,9 +74,6 @@ public class FrmPrimerUsoPreguntas extends javax.swing.JFrame {
         j3 = new javax.swing.JTextField();
         j4 = new javax.swing.JTextField();
         cb4 = new javax.swing.JComboBox<>();
-        btnSiguiente = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -67,51 +82,61 @@ public class FrmPrimerUsoPreguntas extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(33, 37, 41));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnCuadrado.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 570, 220, 270));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnPreguntas.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 450, 450));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnCuadrado.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, -110, 220, 270));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, -90, 240, 260));
 
-        btnMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMinimizarDefault.png"))); // NOI18N
-        btnMinimizar.setBorder(null);
-        btnMinimizar.setBorderPainted(false);
-        btnMinimizar.setContentAreaFilled(false);
-        btnMinimizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMinimizarRollover.png"))); // NOI18N
-        btnMinimizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMinimizarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 30, 30));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnCuadrado.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 600, 240, 260));
 
-        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarDefault.png"))); // NOI18N
-        btnCerrar.setBorder(null);
-        btnCerrar.setBorderPainted(false);
-        btnCerrar.setContentAreaFilled(false);
-        btnCerrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarRollover.png"))); // NOI18N
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 30, 30));
-
-        jLabel3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnPreguntas.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 450, 450));
-
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Preguntas de Seguridad");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 150, -1, -1));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Respuestas:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 320, 390, 40));
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Respuestas:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 320, 390, 40));
+        jLabel5.setText("Preguntas de Seguridad");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 150, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("<html><p style=overflow:auto;><center>En caso de que olvides tu contraseña, puedes recuperarla rellenando estas preguntas.</center></p>");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 600, -1));
+
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Preguntas:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 440, 40));
+
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_default.png"))); // NOI18N
+        btnAgregar.setBorder(null);
+        btnAgregar.setContentAreaFilled(false);
+        btnAgregar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 590, 170, 80));
+
+        jID.setBackground(new java.awt.Color(33, 37, 41));
+        jID.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jID.setForeground(new java.awt.Color(255, 255, 255));
+        jID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jIDKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jIDKeyTyped(evt);
+            }
+        });
+        jPanel1.add(jID, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 40));
 
         jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -195,51 +220,75 @@ public class FrmPrimerUsoPreguntas extends javax.swing.JFrame {
         cb4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jLayeredPane1.add(cb4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 440, 40));
 
-        jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 860, 210));
-
-        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSiguienteDefault.png"))); // NOI18N
-        btnSiguiente.setBorder(null);
-        btnSiguiente.setBorderPainted(false);
-        btnSiguiente.setContentAreaFilled(false);
-        btnSiguiente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSiguienteRollover.png"))); // NOI18N
-        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSiguienteActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 610, 180, 70));
-
-        jLabel6.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("<html><p style=overflow:auto;><center>En caso de que olvides tu contraseña, puedes recuperarla rellenando estas preguntas.</center></p>");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 600, -1));
-
-        jLabel7.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Preguntas:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 440, 40));
+        jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 860, 220));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
-        this.setExtendedState(ICONIFIED);
-
-    }//GEN-LAST:event_btnMinimizarActionPerformed
-
-    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        int mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas salir del sistema?","Advertencia",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-        if (mensaje == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(null, "La proxima vez que abras el sistema podras continuar con el registro.","Advertencia",JOptionPane.INFORMATION_MESSAGE);
-            System.exit(0);
+    private void j1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j1KeyPressed
+        String Caracteres = j1.getText();
+        if(Caracteres.length()>=50){
+            j1.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_btnCerrarActionPerformed
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_j1KeyPressed
 
-    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        String p1,p2,p3,p4;
+    private void j1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j1KeyTyped
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_j1KeyTyped
+
+    private void j2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j2KeyPressed
+        String Caracteres = j2.getText();
+        if(Caracteres.length()>=50){
+            j2.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_j2KeyPressed
+
+    private void j2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j2KeyTyped
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_j2KeyTyped
+
+    private void j3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j3KeyPressed
+        String Caracteres = j3.getText();
+        if(Caracteres.length()>=50){
+            j3.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_j3KeyPressed
+
+    private void j3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j3KeyTyped
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_j3KeyTyped
+
+    private void j4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j4KeyPressed
+        String Caracteres = j4.getText();
+        if(Caracteres.length()>=50){
+            j4.setText("");
+            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_j4KeyPressed
+
+    private void j4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j4KeyTyped
+        val.verificarLetras(evt);
+    }//GEN-LAST:event_j4KeyTyped
+
+    private void jIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIDKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jIDKeyPressed
+
+    private void jIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIDKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jIDKeyTyped
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+         String p1,p2,p3,p4;
         p1 = cb1.getItemAt(cb1.getSelectedIndex());
         p2 = cb2.getItemAt(cb2.getSelectedIndex());
         p3 = cb3.getItemAt(cb3.getSelectedIndex());
@@ -259,17 +308,19 @@ public class FrmPrimerUsoPreguntas extends javax.swing.JFrame {
         {
            
             //Insertando primera respuesta
-            ctrl.setIdRespuesta(1);
+            int id1 = mto.capturarMaxIDRespuesta() + 1;
+            ctrl.setIdRespuesta(id1);
             ctrl.setRespuesta(j1.getText());
             int idPregunta = mto.obtenerIDPregunta(p1);
             ctrl.setIdPregunta(idPregunta);
-            ctrl.setIdUsuario(1);
+            ctrl.setIdUsuario(Integer.parseInt(jID.getText()));
             if (mto.insertarRespuestas()) {
                
             }
             
             //Insertando segunda respuesta
-            ctrl.setIdRespuesta(2);
+            int id2 = mto.capturarMaxIDRespuesta() + 1;
+            ctrl.setIdRespuesta(id2);
             ctrl.setRespuesta(j2.getText());
             int idPregunta2 = mto.obtenerIDPregunta(p2);
             ctrl.setIdPregunta(idPregunta2);
@@ -279,7 +330,8 @@ public class FrmPrimerUsoPreguntas extends javax.swing.JFrame {
             }
             
             //Insertando tercera respuesta
-            ctrl.setIdRespuesta(3);
+            int id3 = mto.capturarMaxIDRespuesta() + 1;
+            ctrl.setIdRespuesta(id3);
             ctrl.setRespuesta(j3.getText());
             int idPregunta3 = mto.obtenerIDPregunta(p3);
             ctrl.setIdPregunta(idPregunta3);
@@ -289,7 +341,8 @@ public class FrmPrimerUsoPreguntas extends javax.swing.JFrame {
             }
             
             //Insertando cuarta respuesta
-            ctrl.setIdRespuesta(4);
+            int id4 = mto.capturarMaxIDRespuesta() + 1;
+            ctrl.setIdRespuesta(id4);
             ctrl.setRespuesta(j4.getText());
             int idPregunta4 = mto.obtenerIDPregunta(p4);
             ctrl.setIdPregunta(idPregunta4);
@@ -297,69 +350,17 @@ public class FrmPrimerUsoPreguntas extends javax.swing.JFrame {
             if (mto.insertarRespuestas()) {
                 JOptionPane.showMessageDialog(null, "Las preguntas se han guardado correctamente.","Exito",JOptionPane.INFORMATION_MESSAGE);
                 this.setVisible(false);
-                FrmPrimerUso4 frm = new FrmPrimerUso4();
+                frmLogin frm = null;
+                try {
+                    frm = new frmLogin();
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(FrmInsertarRespuestas.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 frm.setVisible(true);
-                
             }
             
         }
-    }//GEN-LAST:event_btnSiguienteActionPerformed
-
-    private void j1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j1KeyPressed
-        String Caracteres = j1.getText();
-        if(Caracteres.length()>=50){
-            j1.setText("");
-            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
-        }
-        
-        val.verificarPegar(evt);
-    }//GEN-LAST:event_j1KeyPressed
-
-    private void j1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j1KeyTyped
-        val.verificarLetras(evt);
-    }//GEN-LAST:event_j1KeyTyped
-
-    private void j2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j2KeyPressed
-        String Caracteres = j2.getText();
-        if(Caracteres.length()>=50){
-            j2.setText("");
-            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
-        }
-        
-        val.verificarPegar(evt);
-    }//GEN-LAST:event_j2KeyPressed
-
-    private void j2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j2KeyTyped
-        val.verificarLetras(evt);
-    }//GEN-LAST:event_j2KeyTyped
-
-    private void j3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j3KeyPressed
-        String Caracteres = j3.getText();
-        if(Caracteres.length()>=50){
-            j3.setText("");
-            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
-        }
-        
-        val.verificarPegar(evt);
-    }//GEN-LAST:event_j3KeyPressed
-
-    private void j3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j3KeyTyped
-        val.verificarLetras(evt);
-    }//GEN-LAST:event_j3KeyTyped
-
-    private void j4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j4KeyPressed
-        String Caracteres = j4.getText();
-        if(Caracteres.length()>=50){
-            j4.setText("");
-            JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
-        }
-        
-        val.verificarPegar(evt);
-    }//GEN-LAST:event_j4KeyPressed
-
-    private void j4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j4KeyTyped
-        val.verificarLetras(evt);
-    }//GEN-LAST:event_j4KeyTyped
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -378,28 +379,26 @@ public class FrmPrimerUsoPreguntas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPrimerUsoPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmInsertarRespuestas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPrimerUsoPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmInsertarRespuestas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPrimerUsoPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmInsertarRespuestas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPrimerUsoPreguntas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmInsertarRespuestas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmPrimerUsoPreguntas().setVisible(true);
+                new FrmInsertarRespuestas().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCerrar;
-    private javax.swing.JButton btnMinimizar;
-    private javax.swing.JButton btnSiguiente;
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JComboBox<String> cb1;
     private javax.swing.JComboBox<String> cb2;
     private javax.swing.JComboBox<String> cb3;
@@ -408,6 +407,7 @@ public class FrmPrimerUsoPreguntas extends javax.swing.JFrame {
     private javax.swing.JTextField j2;
     private javax.swing.JTextField j3;
     private javax.swing.JTextField j4;
+    private javax.swing.JTextField jID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

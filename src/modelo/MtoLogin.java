@@ -196,6 +196,25 @@ public class MtoLogin {
         return resp;
     }
     
+    public boolean detectarRespuestas(CtrlLoginUsuario usr)
+    {
+        boolean resp = false;
+        try
+        {
+            String sql = "SELECT*FROM respuestas WHERE id_usuario = ?";
+            PreparedStatement cmd = conexion.prepareCall(sql);
+            cmd.setInt(1, usr.getId_usuario());
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return resp;
+    }
+    
     //</editor-fold>
    
     

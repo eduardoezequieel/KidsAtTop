@@ -954,7 +954,7 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void btnReiniciarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarCuentaActionPerformed
-        int mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas reiniciar la contraseña de este usuario?","Advertencia",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+        int mensaje = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas reiniciar la contraseña de este usuario? Se perderan sus preguntas de seguridad.","Advertencia",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
         
         if (mensaje == JOptionPane.YES_OPTION) {
             CtrlUsuario ctrl = new CtrlUsuario();
@@ -965,18 +965,20 @@ public class frmControlarUsuarios extends javax.swing.JInternalFrame {
             ctrl.setContraseña(contraConEncriptacion);
 
             if (mto.reiniciarContraseña()) {
-                JOptionPane.showMessageDialog(null, "La contraseña de este usuario ha sido reestablecida a 123.","Contraseña reestablecida exitosamente", JOptionPane.INFORMATION_MESSAGE);
-                reiniciarBusqueda();
-                limpiarTabla();
-                mostrarUsuario();
-                limpiarCampo();
-            }else
-            {
-                JOptionPane.showMessageDialog(null, "Error");
-            }
+                if (mto.eliminarRespuestas()) {
+                    JOptionPane.showMessageDialog(null, "La contraseña de este usuario ha sido reestablecida a 123.","Contraseña reestablecida exitosamente", JOptionPane.INFORMATION_MESSAGE);
+                    reiniciarBusqueda();
+                    limpiarTabla();
+                    mostrarUsuario();
+                    limpiarCampo();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
         }
     }//GEN-LAST:event_btnReiniciarCuentaActionPerformed
-
+    }
     private void jFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFechaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFechaActionPerformed
