@@ -167,7 +167,7 @@ public class FrmPrimerUso3 extends javax.swing.JFrame {
                 if (mto.actualizarContraseña()) {
                     JOptionPane.showMessageDialog(null, "Contraseña guardada.","Exito",JOptionPane.INFORMATION_MESSAGE);
                     this.setVisible(false);
-                    FrmPrimerUso4 form = new FrmPrimerUso4();
+                    FrmPrimerUsoPreguntas form = new FrmPrimerUsoPreguntas();
                     form.setVisible(true);
                 }
             }

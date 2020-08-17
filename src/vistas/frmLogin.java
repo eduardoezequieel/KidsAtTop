@@ -35,18 +35,39 @@ public class frmLogin extends javax.swing.JFrame {
         //Validando primer uso
         MtoLogin mto = new MtoLogin();
         btnContinuar.setVisible(false);
+        btnContinuarPreguntas.setVisible(false);
+        
+        
+        //Verificando existencia del primer usuario
         if (mto.verificarPrimerUso()) {
             btnPrimerUso.setVisible(false);
             icnPrimerUso.setVisible(false);
-            if (mto.continuarPrimerUso1()) {
-                btnPrimerUso.setVisible(false);
-                icnPrimerUso.setVisible(true);
-                btnContinuar.setVisible(true);
-                pnlControlesLogin.setVisible(false);
-                for (Component component : pnlControlesLogin.getComponents()) {
-                    component.setVisible(false);  
-                }
-            }
+                    //Verificando si el usuario posee clave 
+                    if (mto.continuarPrimerUso1()) {
+                        btnPrimerUso.setVisible(false);
+                        icnPrimerUso.setVisible(true);
+                        btnContinuar.setVisible(true);
+                        pnlControlesLogin.setVisible(false);
+                        for (Component component : pnlControlesLogin.getComponents()) {
+                            component.setVisible(false);  
+                        }
+                    //Verificando si posee preguntas de seguridad    
+                    }
+                    else if(mto.continuarPrimerUso2())
+                    {
+                        //Si las posee no sucedera nada y se saldra del if
+                    }
+                    //Si el usuario no posee preguntas de seguridad entonces este dirigira a crearlas
+                    else
+                    {
+                        btnPrimerUso.setVisible(false);
+                        icnPrimerUso.setVisible(true);
+                        btnContinuarPreguntas.setVisible(true);
+                        pnlControlesLogin.setVisible(false);
+                        for (Component component : pnlControlesLogin.getComponents()) {
+                            component.setVisible(false);  
+                        }
+                    }
         }
         else
         {
@@ -56,7 +77,6 @@ public class frmLogin extends javax.swing.JFrame {
             for (Component component : pnlControlesLogin.getComponents()) {
                 component.setVisible(false);  
                 }
-            
         }
     }
     
@@ -200,7 +220,7 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user.png"))); // NOI18N
         pnlControlesLogin.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, -1));
 
-        getContentPane().add(pnlControlesLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 360, 640));
+        getContentPane().add(pnlControlesLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 360, 640));
 
         btnPrimerUso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnPrimerUsoDefault.png"))); // NOI18N
         btnPrimerUso.setBorder(null);
@@ -213,7 +233,7 @@ public class frmLogin extends javax.swing.JFrame {
                 btnPrimerUsoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnPrimerUso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 520, 300, 80));
+        getContentPane().add(btnPrimerUso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 300, 80));
 
         btnContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnContinuarDefault.png"))); // NOI18N
         btnContinuar.setBorder(null);
@@ -226,7 +246,7 @@ public class frmLogin extends javax.swing.JFrame {
                 btnContinuarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 300, 80));
+        getContentPane().add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 300, 80));
 
         icnPrimerUso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnPrimerUso.png"))); // NOI18N
         getContentPane().add(icnPrimerUso, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
@@ -265,6 +285,11 @@ public class frmLogin extends javax.swing.JFrame {
         getContentPane().add(btnContinuarPreguntas, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 300, 80));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoLogin.png"))); // NOI18N
+        fondo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fondoMouseClicked(evt);
+            }
+        });
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 728));
 
         pack();
@@ -396,9 +421,13 @@ public class frmLogin extends javax.swing.JFrame {
     private void btnContinuarPreguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarPreguntasActionPerformed
         JOptionPane.showMessageDialog(null, "Bienvenido, a continuación podras continuar con el registro de primer uso.","Información",JOptionPane.INFORMATION_MESSAGE);
         this.setVisible(false);
-        FrmPrimerUso3 frm = new FrmPrimerUso3();
+        FrmPrimerUsoPreguntas frm = new FrmPrimerUsoPreguntas();
         frm.setVisible(true);
     }//GEN-LAST:event_btnContinuarPreguntasActionPerformed
+
+    private void fondoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fondoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fondoMouseClicked
     //</editor-fold>
     
     public static void main(String args[]) {
