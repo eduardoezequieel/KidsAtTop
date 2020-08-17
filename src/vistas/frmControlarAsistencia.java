@@ -23,6 +23,7 @@ import javax.swing.table.TableRowSorter;
 import modelo.Conexion;
 import modelo.MtoBitacoras;
 import controlador.CtrlLoginUsuario;
+import java.util.Date;
 
 /**
  *
@@ -70,6 +71,8 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jCalendario.getJCalendar().setWeekOfYearVisible(false);
         jCalendario.getJCalendar().setBackground(Color.WHITE);
         jCalendario.getJCalendar().setPreferredSize(new Dimension(450, 450));
+        Date fecha = new Date();
+        jCalendario.setMaxSelectableDate(fecha);
         jTextArea2.setVisible(false);
         jScrollPane3.setVisible(false);
 
@@ -350,6 +353,11 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.setFocusable(false);
         jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnLimpiarRollover.png"))); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 370, 140, 70));
 
         btnSuspender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
@@ -465,6 +473,7 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 130, 140, 70));
 
+        jCalendario.setMinSelectableDate(new java.util.Date(1577862109000L));
         jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jCalendarioPropertyChange(evt);
@@ -749,6 +758,10 @@ public class frmControlarAsistencia extends javax.swing.JInternalFrame {
         tAsistencia.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(busqueda));
     }//GEN-LAST:event_txtBuscarKeyReleased
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        limpiar();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
