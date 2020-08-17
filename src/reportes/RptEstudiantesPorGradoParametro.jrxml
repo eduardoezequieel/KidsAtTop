@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RptEstudiantesPorGradoParametro" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f3d41428-bfc7-4f55-af4b-9fb0bd01343f">
+	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="grado" class="java.lang.String"/>
+	<parameter name="seccion" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT e.apellido, e.nombre, e.genero, CONCAT(r.nombre, '-' , r.apellido) as responsable, CONCAT(g.grado, '-' , se.seccion) as gradoSeccion, gs.id_grado_seccion, e.id_estudiante FROM estudiante e, responsable r, grado_seccion gs, grado g, seccion se WHERE  r.id_responsable = e.id_responsable AND gs.id_grado_seccion = e.id_grado_seccion AND g.id_grado = gs.id_grado AND se.id_seccion = gs.id_seccion AND g.grado = $P{grado} AND se.seccion = $P{seccion} order by gs.id_grado_seccion]]>
+	</queryString>
+	<field name="apellido" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="genero" class="java.lang.String"/>
+	<field name="responsable" class="java.lang.String"/>
+	<field name="gradoSeccion" class="java.lang.String"/>
+	<field name="id_grado_seccion" class="java.lang.Integer"/>
+	<field name="id_estudiante" class="java.lang.Integer"/>
+	<variable name="id_estudiante_1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{id_estudiante}]]></variableExpression>
+	</variable>
+	<group name="estudiantesParametro">
+		<groupExpression><![CDATA[$F{id_grado_seccion}]]></groupExpression>
+		<groupHeader>
+			<band height="59">
+				<rectangle>
+					<reportElement x="-20" y="0" width="610" height="59" forecolor="#F7F7F7" backcolor="#F7F7F7" uuid="43642601-bf56-46d2-9542-b0a8af494f7d"/>
+				</rectangle>
+				<textField>
+					<reportElement x="206" y="0" width="181" height="25" uuid="6bec779d-9420-49f5-86d8-7a83fbc873f6"/>
+					<textElement>
+						<font size="16"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{gradoSeccion}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="169" y="39" width="112" height="20" uuid="ca789348-2f5d-4c59-961d-c20ee019c88d"/>
+					<textElement>
+						<font fontName="Segoe UI Semilight" size="12"/>
+					</textElement>
+					<text><![CDATA[Nombre]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="13" y="39" width="130" height="20" uuid="4714b7d7-cc00-4c80-a1a0-69f2de51dfb2"/>
+					<textElement>
+						<font fontName="Segoe UI Semilight" size="12"/>
+					</textElement>
+					<text><![CDATA[Apellido]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="299" y="39" width="42" height="20" uuid="7981debe-3249-4b76-b571-722cbfd4b3b5"/>
+					<textElement>
+						<font fontName="Segoe UI Semilight" size="12"/>
+					</textElement>
+					<text><![CDATA[Género]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="387" y="39" width="175" height="20" uuid="0d699144-8622-4e1a-bc5e-de6ccd75a97d"/>
+					<textElement>
+						<font fontName="Segoe UI Semilight" size="12"/>
+					</textElement>
+					<text><![CDATA[Responsable]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="-3" width="610" height="90" forecolor="#F7F7F7" backcolor="#F7F7F7" uuid="b13df2a4-6e9b-49b5-afb6-2040b6ea2aec"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="13" y="10" width="156" height="51" forecolor="#666666" uuid="93052647-38a5-4c53-a7f1-5e5e637479e9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI Semilight" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Estudiantes por grado y sección]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="26" width="112" height="24" forecolor="#666666" uuid="60cf80d1-838e-4854-99e3-32a8c31eba78"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI Semilight" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KidsAtTop!]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="387" y="26" width="125" height="24" forecolor="#666666" uuid="4b73e163-a124-486e-9da3-93a1adb5b77d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Segoe UI Semilight" size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="512" y="26" width="40" height="24" forecolor="#666666" uuid="a6689ab1-cb8c-4b38-b064-c62b2728d58c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI Semilight" size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="41" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="0" width="610" height="41" forecolor="#F7F7F7" backcolor="#F7F7F7" uuid="13e74e3e-2e7b-4f0d-b1df-b77664cad587"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="-5" y="0" width="577" height="34" forecolor="#FFFFFF" uuid="a1720dd3-2b7c-4b95-91b4-67f9be5aa2cb"/>
+			</rectangle>
+			<textField>
+				<reportElement x="13" y="6" width="130" height="20" uuid="c80db898-acfb-4fc0-8143-8cbe049adfc0"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="6" width="111" height="20" uuid="969051cd-f42c-4586-854b-91ee1597111a"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="306" y="6" width="27" height="20" uuid="ea46584d-ba15-4c48-baab-11c6349b1c29"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{genero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="6" width="174" height="20" uuid="43dceb24-32fe-4508-aecf-6ce8f8bc8a24"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{responsable}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="0" width="610" height="51" forecolor="#F7F7F7" backcolor="#F7F7F7" uuid="6ac1cbe7-e003-4d14-b28b-37f774eae8db"/>
+			</rectangle>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="9" y="26" width="134" height="28" uuid="d2309d0b-ae2c-491d-843f-a397b0ad73f0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="270" y="26" width="291" height="28" uuid="5ff1009c-795a-42dc-865a-76b1e08db910"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<text><![CDATA[Todos los Derechos Reservados - KidsAtTop! © 2020]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="6" width="114" height="20" uuid="7a1cc685-5ee6-4b55-92cc-62b04a07f08e"/>
+				<textElement>
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<text><![CDATA[Total de estudiantes:]]></text>
+			</staticText>
+			<textField pattern="h.mm a">
+				<reportElement x="143" y="26" width="127" height="28" uuid="7cb10eb8-fbe5-4a90-90f4-f7ba388f03de"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="534" y="8" width="38" height="20" uuid="322df0e6-b502-4d46-97f5-1bad28eab2c5"/>
+				<textFieldExpression><![CDATA[$V{id_estudiante_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
