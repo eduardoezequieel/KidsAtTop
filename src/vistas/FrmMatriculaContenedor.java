@@ -147,7 +147,7 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         this.setVisible(false);
         MtoLogin log=new MtoLogin();
         log.obtenerDatosUsuario(mod);
-        frmGestionarMatriculaContenedor frm = new frmGestionarMatriculaContenedor(mod);
+        FrmGestionarMatriculaContenedor frm = new FrmGestionarMatriculaContenedor(mod);
         frm.setVisible(true);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
@@ -194,7 +194,7 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
        JOptionPane.showMessageDialog(null, "Proceso finalizado.", "Exito", JOptionPane.INFORMATION_MESSAGE);
         this.setVisible(false);
-       frmGestionarMatriculaContenedor frm = new frmGestionarMatriculaContenedor();
+       FrmGestionarMatriculaContenedor frm = new FrmGestionarMatriculaContenedor();
        frm.setVisible(true);
     }//GEN-LAST:event_btnFinalizarActionPerformed
 

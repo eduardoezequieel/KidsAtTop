@@ -204,9 +204,9 @@ public class FrmActualizarContraseña extends javax.swing.JFrame {
                     else
                     {
                         this.setVisible(false);
-                        frmLogin frm = null;
+                        FrmLogin frm = null;
                         try {
-                            frm = new frmLogin();
+                            frm = new FrmLogin();
                         } catch (UnsupportedLookAndFeelException ex) {
                             Logger.getLogger(FrmActualizarContraseña.class.getName()).log(Level.SEVERE, null, ex);
                         }

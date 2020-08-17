@@ -350,9 +350,9 @@ public class FrmInsertarRespuestas extends javax.swing.JFrame {
             if (mto.insertarRespuestas()) {
                 JOptionPane.showMessageDialog(null, "Las preguntas se han guardado correctamente.","Exito",JOptionPane.INFORMATION_MESSAGE);
                 this.setVisible(false);
-                frmLogin frm = null;
+                FrmLogin frm = null;
                 try {
-                    frm = new frmLogin();
+                    frm = new FrmLogin();
                 } catch (UnsupportedLookAndFeelException ex) {
                     Logger.getLogger(FrmInsertarRespuestas.class.getName()).log(Level.SEVERE, null, ex);
                 }
