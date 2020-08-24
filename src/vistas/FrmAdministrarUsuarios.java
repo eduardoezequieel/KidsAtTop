@@ -654,7 +654,15 @@ public class FrmAdministrarUsuarios extends javax.swing.JInternalFrame {
             new String [] {
                 "Nombre", "Apellido", "Tipo de Usuario", "Estado de Usuario", "Usuario", "Genero"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tUsuarios.setFocusable(false);
         tUsuarios.setGridColor(new java.awt.Color(64, 65, 65));
         tUsuarios.setIntercellSpacing(new java.awt.Dimension(0, 0));
