@@ -27,25 +27,25 @@ public class Conexion {
         }*/
     
     //Conexion Kath
-    /*public Connection conectar(){
+    public Connection conectar(){
         Connection cn = null;
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             //Pedira importar import java.sql.DriverManager
            cn = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-17NMDSR;" + "databaseName=KidsAtTop;integratedSecurity=true;");
            
-            if (cn != null) {
+            /*if (cn != null) {
                     System.out.println("Si hay conexion");
-                }
+                }*/
             }
             catch(Exception ex){
                     System.out.println(ex.getMessage());
             }
             return cn;
-    }*/
+    }
            
     
-    //Conexion Eduardo
+    /*//Conexion Eduardo
         public Connection conectar(){
         Connection cn = null;
         try{
@@ -61,7 +61,7 @@ public class Conexion {
                     System.out.println(ex.getMessage());
             }
             return cn;
-        }
+        }*/
     
     //Conexion Jacobo
     /*public Connection conectar(){

@@ -591,7 +591,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
         String apellido = parte[1];
         
         estudiante.obtenerIdResponsable(nombre, apellido);
-        
+        cbResponsable.setSelectedItem(String.valueOf(tEstudiantes.getValueAt(fila, 3)));
         cbGS.setSelectedItem(String.valueOf(tEstudiantes.getValueAt(fila, 4)));
         
         //Dividiendo el grado y la seccion

@@ -107,7 +107,7 @@ public class MtoConducta {
     }
     
     
-    //Llenando combobox de grado_Seccion
+    //Llenando combobox de estudiante
     public DefaultComboBoxModel llenarEstudiante(){
         
         //Creando instancia del modelo
@@ -126,6 +126,27 @@ public class MtoConducta {
             while(rs.next())
             {
                 //Agregando elementos al combobox
+                modelo.addElement(rs.getString(1));
+            }
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }       
+      return modelo;
+    }
+    
+    //Llenando combobox de grado_Seccion
+    public DefaultComboBoxModel llenarTipoFalta(){
+        
+        //Creando instancia del modelo
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        try
+        {
+            
+            String sql = "select tipo_falta from tipo_falta";
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
                 modelo.addElement(rs.getString(1));
             }
         }
@@ -212,6 +233,29 @@ public class MtoConducta {
         return id;
     }
     
+    public void obtenerIdTipoFalta(String nombre){
+
+        try{
+            
+            //Preparando sentencia sql
+            String sql = "SELECT id_tipo_falta FROM tipo_falta WHERE tipo_falta = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            
+            cmd.setString(1, nombre);
+            
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+               conducta.setIdTipoFalta(rs.getInt(1));
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        
+    }
+    
     public int obtenerIdTipoAsistencia(String nombre){
         int id = 0;
         
@@ -282,23 +326,22 @@ public class MtoConducta {
         return id;
     }
     
-    public int obtenerIdConducta(String obser, String fecha, String apellido, String nombre){
-        int id = 20;
-        
+    public void obtenerCamposConducta(String fecha, String apellido, String nombre, String falta){
         try{
             
-            String sql = "SELECT c.id_conducta FROM conducta c, estudiante e WHERE observacion = ? AND fecha = ? AND e.apellido = ? AND e.nombre = ? AND c.id_estudiante = e.id_estudiante";
+            String sql = "SELECT c.id_conducta, c.observacion FROM conducta c, estudiante e, tipo_falta t WHERE fecha = ? AND e.apellido = ? AND e.nombre = ? AND t.tipo_falta = ? AND c.id_estudiante = e.id_estudiante AND t.id_tipo_falta = c.id_tipo_falta";
             //Llamando procedimiento almacenado
             PreparedStatement cmd = cn.prepareStatement(sql);
             
-            cmd.setString(1, obser);
-            cmd.setString(2, fecha);
-            cmd.setString(3, apellido);
-            cmd.setString(4, nombre);
+            cmd.setString(1, fecha);
+            cmd.setString(2, apellido);
+            cmd.setString(3, nombre);
+            cmd.setString(4, falta);
             
             ResultSet rs = cmd.executeQuery();
             while(rs.next()){
-               id = rs.getInt(1);
+               conducta.setIdConducta(rs.getInt(1));
+               conducta.setObservacion(rs.getString(2));
             }
             
             
@@ -306,7 +349,6 @@ public class MtoConducta {
             System.out.println(e.toString());
         }
         
-        return id;
     }
     
     
@@ -386,7 +428,7 @@ public class MtoConducta {
         }
         return item;
     }
-
+    
     
     //</editor-fold>
     
@@ -400,13 +442,14 @@ public class MtoConducta {
         try{
             
             //Preparando sentencia sql
-            String sql = "INSERT INTO conducta(id_conducta, observacion, id_estudiante, fecha) VALUES(?, ?, ?, ?)";
+            String sql = "INSERT INTO conducta(id_conducta, observacion, id_estudiante, id_tipo_falta, fecha) VALUES(?, ?, ?, ?, ?)";
             PreparedStatement cmd = cn.prepareStatement(sql);
             
             cmd.setInt(1, conducta.getIdConducta());
             cmd.setString(2, conducta.getObservacion());
             cmd.setInt(3, conducta.getIdEstudiante());
-            cmd.setString(4, conducta.getFecha());
+            cmd.setInt(4, conducta.getIdTipoFalta());
+            cmd.setString(5, conducta.getFecha());
             
             //Ejecuntando sentencia sql
             if (!cmd.execute()) {
@@ -430,13 +473,14 @@ public class MtoConducta {
         
         try{
             //Preparando sentencia sql
-            String sql = "UPDATE conducta SET observacion = ?, id_estudiante = ?, fecha = ? WHERE id_conducta = ?";
+            String sql = "UPDATE conducta SET observacion = ?, id_estudiante = ?, id_tipo_falta = ?, fecha = ? WHERE id_conducta = ?";
             PreparedStatement cmd = cn.prepareStatement(sql);
             
             cmd.setString(1, conducta.getObservacion());
             cmd.setInt(2, conducta.getIdEstudiante());
-            cmd.setString(3, conducta.getFecha());
-            cmd.setInt(4, conducta.getIdConducta());
+            cmd.setInt(3, conducta.getIdTipoFalta());
+            cmd.setString(4, conducta.getFecha());
+            cmd.setInt(5, conducta.getIdConducta());
             
             //Ejecuntando sentencia sql
             if (!cmd.execute()) {
