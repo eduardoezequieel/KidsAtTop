@@ -38,6 +38,8 @@ public class FrmMiCuenta extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         idUsuario.setVisible(false);
         
+        jDireccion.setLineWrap(true);
+        
         //Personalizacion jCalendar
         jCalendario.getJCalendar().setForeground(new Color(254,254,254));
         jCalendario.getJCalendar().setSundayForeground(Color.WHITE);

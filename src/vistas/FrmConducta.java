@@ -54,7 +54,7 @@ public class FrmConducta extends javax.swing.JInternalFrame {
      */
     public FrmConducta() {
         initComponents();
-
+        
     }
 
     public FrmConducta(CtrlLoginUsuario mod) {
@@ -90,7 +90,7 @@ public class FrmConducta extends javax.swing.JInternalFrame {
         jActualizar.setEnabled(false);
         jEliminar.setEnabled(false);
         
-       
+       jObservacion.setLineWrap(true);
 
     }
 

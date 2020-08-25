@@ -66,6 +66,8 @@ public class FrmAdministrarUsuarios extends javax.swing.JInternalFrame {
         tUsuarios.getTableHeader().setBackground(new Color(33, 37, 41));
         tUsuarios.getTableHeader().setForeground(new Color(254,254,254));
  
+        jDireccion.setLineWrap(true);
+        
         //Cargando jTable
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");

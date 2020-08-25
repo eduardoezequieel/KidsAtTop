@@ -104,6 +104,8 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
         btnSuspender.setEnabled(false);
         btnRetirar.setEnabled(false);
         jId.setVisible(false);
+        
+        jDireccion.setLineWrap(true);
     }
 
     /**

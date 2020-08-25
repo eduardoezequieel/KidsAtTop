@@ -75,6 +75,7 @@ public class FrmAdministrarAsistencia extends javax.swing.JInternalFrame {
         jCalendario.setMaxSelectableDate(fecha);
         jTextArea2.setVisible(false);
         jScrollPane3.setVisible(false);
+        txtObservacion.setLineWrap(true);
 
         modelo.addColumn("Observacion");
         modelo.addColumn("Estudiante");

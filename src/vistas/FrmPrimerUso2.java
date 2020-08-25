@@ -31,6 +31,7 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
     public FrmPrimerUso2() {
         initComponents();
         this.setLocationRelativeTo(null);
+        jDireccion.setLineWrap(true);
         
         //jCalendar
         jCalendario.getJCalendar().setForeground(new Color(254,254,254));

@@ -92,6 +92,8 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         this.llenarAnio();
         this.llenarGradoSeccion();
         this.llenarEstudiante();
+        
+        txtObservacion.setLineWrap(true);
 
     }
 

@@ -40,6 +40,8 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         //llenando combobox
         this.llenarGS();
         
+        jDireccion.setLineWrap(true);
+        
         //Mostrando responsable
         estudiante.obteniendoResponsable();  
         jResponsable.setText(estudianteCtrl.getResponsable());
