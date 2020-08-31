@@ -807,7 +807,7 @@ public class FrmAdministrarUsuarios extends javax.swing.JInternalFrame {
                     ctrl.setGenero("M");
                 }
                 ctrl.setDireccion(jDireccion.getText());
-                String contraSinEncriptacion="txt"; 
+                String contraSinEncriptacion="123"; 
                 String contraConEncriptacion=DigestUtils.sha1Hex(contraSinEncriptacion);
                 ctrl.setContraseña(contraConEncriptacion);
                 ctrl.setFoto(person_image);
