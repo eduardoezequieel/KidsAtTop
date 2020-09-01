@@ -85,7 +85,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
         jEscritorioLayout.setHorizontalGroup(
             jEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jEscritorioLayout.createSequentialGroup()
-                .addContainerGap(271, Short.MAX_VALUE)
+                .addContainerGap(268, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(258, 258, 258))
         );
@@ -110,7 +110,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
                 jGestionarSecciones1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jGestionarSecciones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 620, 240, 70));
+        jPanel1.add(jGestionarSecciones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, 240, 70));
 
         jGestionarSecciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"))); // NOI18N
         jGestionarSecciones.setBorder(null);
@@ -123,7 +123,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
                 jGestionarSeccionesActionPerformed(evt);
             }
         });
-        jPanel1.add(jGestionarSecciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 360, 70));
+        jPanel1.add(jGestionarSecciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 350, 90));
 
         jGestionarAsistencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"))); // NOI18N
         jGestionarAsistencia.setBorder(null);
@@ -136,7 +136,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
                 jGestionarAsistenciaActionPerformed(evt);
             }
         });
-        jPanel1.add(jGestionarAsistencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 360, 70));
+        jPanel1.add(jGestionarAsistencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 350, 90));
 
         jGestionarNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"))); // NOI18N
         jGestionarNotas.setBorder(null);
@@ -149,7 +149,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
                 jGestionarNotasActionPerformed(evt);
             }
         });
-        jPanel1.add(jGestionarNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 360, 70));
+        jPanel1.add(jGestionarNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 350, 90));
 
         jGestionarConducta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"))); // NOI18N
         jGestionarConducta.setBorder(null);
@@ -162,13 +162,13 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
                 jGestionarConductaActionPerformed(evt);
             }
         });
-        jPanel1.add(jGestionarConducta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 360, 70));
+        jPanel1.add(jGestionarConducta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 350, 90));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/controlAcademico.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 210));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, 180));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dashboard.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, -1, 730));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, -1, 730));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 740));
 
