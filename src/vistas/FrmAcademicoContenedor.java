@@ -178,26 +178,48 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
     private void jGestionarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarNotasActionPerformed
         
         try{
-        //Abriendo formulario de Gestionar Notas
-        FrmNotas notas = new FrmNotas();
-        jEscritorio.add(notas);
-        notas.setVisible(true);
-        
-        //Cambiar imagenes
-        Icon Imagenes;
-         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"));
-        jGestionarConducta.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"));
-        jGestionarAsistencia.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_pressed.png"));
-        jGestionarNotas.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
-        jGestionarSecciones.setIcon(Imagenes);
+            //Abriendo formulario de Gestionar Notas
+            FrmNotas notas = new FrmNotas();
+            jEscritorio.add(notas);
+            notas.setVisible(true);
+
+            //Cambiar imagenes
+            Icon Imagenes;
+             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"));
+            jGestionarConducta.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"));
+            jGestionarAsistencia.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_pressed.png"));
+            jGestionarNotas.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
+            jGestionarSecciones.setIcon(Imagenes);
         } catch(Exception ex){
             JOptionPane.showMessageDialog(null, "No se pudo abrir el formulario porque existe algunos campos vacios.", "Revise si hay secciones existentes en el sistema", JOptionPane.INFORMATION_MESSAGE);
+            try{
+                //Abriendo formulario de Gestionar Secciones
+            FrmSecciones secciones = new FrmSecciones(mod);
+            jEscritorio.add(secciones);
+            secciones.setVisible(true); 
+
+            //Setear imagenes
+            Icon Imagenes;
+             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"));
+            jGestionarConducta.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"));
+            jGestionarAsistencia.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"));
+            jGestionarNotas.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_pressed.png"));
+            jGestionarSecciones.setIcon(Imagenes);
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(null, "No se pudo abrir el formulario porque existe algunos campos vacios.", "Revise si hay usuarios docente activos en el sistema", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jGestionarNotasActionPerformed
 
@@ -225,6 +247,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
             jGestionarSecciones.setIcon(Imagenes);
         } catch(Exception ex){
             JOptionPane.showMessageDialog(null, "No se pudo abrir el formulario porque existe algunos campos vacios.", "Revise si hay secciones y estudiantes existentes en el sistema", JOptionPane.INFORMATION_MESSAGE);
+            
         }
     }//GEN-LAST:event_jGestionarConductaActionPerformed
 
