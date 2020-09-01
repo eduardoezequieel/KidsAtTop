@@ -8,6 +8,7 @@ package vistas;
 import controlador.CtrlLoginUsuario;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import modelo.MtoLogin;
 
 /**
@@ -182,6 +183,7 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
 
     private void jGestionarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarEstudiantesActionPerformed
        
+        try{
         //Abriendo formulario de Gestionar Conducta
         FrmAdministrarEstudiantes estudiante = new FrmAdministrarEstudiantes(mod);
         jDesktop.add(estudiante);
@@ -200,6 +202,9 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
         
         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatricularEstudianteDefault.png"));
         jMatricularEstudiante.setIcon(Imagenes);
+        } catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "No se pudo abrir el formulario porque existe algunos campos vacios.", "Revise si hay secciones y/o responsables existentes en el sistema", JOptionPane.INFORMATION_MESSAGE);
+        }
      
     }//GEN-LAST:event_jGestionarEstudiantesActionPerformed
 

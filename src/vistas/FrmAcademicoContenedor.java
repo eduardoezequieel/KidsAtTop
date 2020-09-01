@@ -8,6 +8,7 @@ package vistas;
 import controlador.CtrlLoginUsuario;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import modelo.MtoLogin;
 
 /**
@@ -175,6 +176,8 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jGestionarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarNotasActionPerformed
+        
+        try{
         //Abriendo formulario de Gestionar Notas
         FrmNotas notas = new FrmNotas();
         jEscritorio.add(notas);
@@ -193,69 +196,89 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
         
         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
         jGestionarSecciones.setIcon(Imagenes);
+        } catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "No se pudo abrir el formulario porque existe algunos campos vacios.", "Revise si hay secciones existentes en el sistema", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jGestionarNotasActionPerformed
 
     private void jGestionarConductaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarConductaActionPerformed
-        //Abriendo formulario de Gestionar Conducta
-        FrmConducta conducta = new FrmConducta(mod);
-        jEscritorio.add(conducta);
-        conducta.setVisible(true);
         
-        //Cambiando imagenes
-        Icon Imagenes;
-         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_rollover.png"));
-        jGestionarConducta.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"));
-        jGestionarAsistencia.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"));
-        jGestionarNotas.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
-        jGestionarSecciones.setIcon(Imagenes);
+        try{
+
+            //Abriendo formulario de Gestionar Conducta
+            FrmConducta conducta = new FrmConducta(mod);
+            jEscritorio.add(conducta);
+            conducta.setVisible(true);
+
+            //Cambiando imagenes
+            Icon Imagenes;
+             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_rollover.png"));
+            jGestionarConducta.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"));
+            jGestionarAsistencia.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"));
+            jGestionarNotas.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
+            jGestionarSecciones.setIcon(Imagenes);
+        } catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "No se pudo abrir el formulario porque existe algunos campos vacios.", "Revise si hay secciones y estudiantes existentes en el sistema", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jGestionarConductaActionPerformed
 
     private void jGestionarSeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarSeccionesActionPerformed
-        //Abriendo formulario de Gestionar Secciones
-        FrmSecciones secciones = new FrmSecciones(mod);
-        jEscritorio.add(secciones);
-        secciones.setVisible(true); 
-        
-        //Setear imagenes
-        Icon Imagenes;
-         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"));
-        jGestionarConducta.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"));
-        jGestionarAsistencia.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"));
-        jGestionarNotas.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_rollover.png"));
-        jGestionarSecciones.setIcon(Imagenes);
+       
+         try{
+                //Abriendo formulario de Gestionar Secciones
+            FrmSecciones secciones = new FrmSecciones(mod);
+            jEscritorio.add(secciones);
+            secciones.setVisible(true); 
+
+            //Setear imagenes
+            Icon Imagenes;
+             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"));
+            jGestionarConducta.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"));
+            jGestionarAsistencia.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"));
+            jGestionarNotas.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_rollover.png"));
+            jGestionarSecciones.setIcon(Imagenes);
+        } catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "No se pudo abrir el formulario porque existe algunos campos vacios.", "Revise si hay usuarios docente activos en el sistema", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jGestionarSeccionesActionPerformed
 
     private void jGestionarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarAsistenciaActionPerformed
-        //Abriendo formulario de Controlar Asistencia
-        FrmAsistencia asistencia = new FrmAsistencia(mod);
-        jEscritorio.add(asistencia);
-        asistencia.setVisible(true);
+        try{
+            
+            //Abriendo formulario de Controlar Asistencia
+            FrmAsistencia asistencia = new FrmAsistencia(mod);
+            jEscritorio.add(asistencia);
+            asistencia.setVisible(true);
+
+            //Cambiar imagenes
+            Icon Imagenes;
+             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"));
+            jGestionarConducta.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControlarAsistencia_rollover.png"));
+            jGestionarAsistencia.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"));
+            jGestionarNotas.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
+            jGestionarSecciones.setIcon(Imagenes);
+        } catch(Exception ex){
+           JOptionPane.showMessageDialog(null, "No se pudo abrir el formulario porque existe algunos campos vacios.", "Revise si hay secciones y estudiantes existentes en el sistema", JOptionPane.INFORMATION_MESSAGE);
+        }
         
-        //Cambiar imagenes
-        Icon Imagenes;
-         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"));
-        jGestionarConducta.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControlarAsistencia_rollover.png"));
-        jGestionarAsistencia.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"));
-        jGestionarNotas.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
-        jGestionarSecciones.setIcon(Imagenes);
     }//GEN-LAST:event_jGestionarAsistenciaActionPerformed
 
     private void jGestionarSecciones1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarSecciones1ActionPerformed

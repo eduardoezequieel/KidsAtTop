@@ -67,7 +67,8 @@ public class MtoLogin {
                     }
                     else
                     {
-                        JOptionPane.showMessageDialog(null,"El perfil esta suspendido o las credenciales son erroneas.");
+                       JOptionPane.showMessageDialog(null,"El perfil esta suspendido o las credenciales son erroneas.");
+                        
                     }
                 
             }

@@ -11,6 +11,7 @@ import javax.swing.plaf.basic.BasicLookAndFeel;
 import modelo.MtoLogin;
 import controlador.CtrlLoginUsuario;
 import java.awt.Component;
+import java.awt.event.KeyEvent;
 import modelo.Conexion;
 import modelo.ClsCorreo;
 import modelo.Validaciones;
@@ -144,6 +145,9 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtUsuarioKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtUsuarioKeyTyped(evt);
             }
@@ -183,6 +187,9 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtContraKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtContraKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtContraKeyTyped(evt);
             }
@@ -200,6 +207,11 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarSesionActionPerformed(evt);
+            }
+        });
+        btnIniciarSesion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnIniciarSesionKeyReleased(evt);
             }
         });
         pnlControlesLogin.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
@@ -303,9 +315,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-       
-        
-       
+               
         
         String contra = new String(txtContra.getPassword());
         String encriptado=DigestUtils.sha1Hex(contra);
@@ -435,6 +445,18 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
     private void fondoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fondoMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_fondoMouseClicked
+
+    private void btnIniciarSesionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnIniciarSesionKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIniciarSesionKeyReleased
+
+    private void txtUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyReleased
+        
+    }//GEN-LAST:event_txtUsuarioKeyReleased
+
+    private void txtContraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraKeyReleased
     //</editor-fold>
     
     public static void main(String args[]) {

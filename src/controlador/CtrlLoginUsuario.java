@@ -252,6 +252,7 @@ public class CtrlLoginUsuario {
       private String contrasenia;
       private byte[] foto;
       private int id_bitacora;
+      private int mensaje;
 
     /**
      * @return the id_bitacora
@@ -265,5 +266,19 @@ public class CtrlLoginUsuario {
      */
     public void setId_bitacora(int id_bitacora) {
         this.id_bitacora = id_bitacora;
+    }
+
+    /**
+     * @return the mensaje
+     */
+    public int getMensaje() {
+        return mensaje;
+    }
+
+    /**
+     * @param mensaje the mensaje to set
+     */
+    public void setMensaje(int mensaje) {
+        this.mensaje = mensaje;
     }
 }
