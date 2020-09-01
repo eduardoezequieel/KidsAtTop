@@ -21,13 +21,15 @@ import modelo.MtoSecciones;
 import modelo.Validaciones;
 import modelo.MtoBitacoras;
 import controlador.CtrlLoginUsuario;
+import javax.swing.table.TableCellRenderer;
+import kidsattop.JtPropiedades;
 
 /**
  *
  * @author katy0
  */
 public class FrmSecciones extends javax.swing.JInternalFrame {
-
+    public TableCellRenderer centerAlight = new JtPropiedades();
     CtrlLoginUsuario mod;
     DefaultTableModel modelo = new DefaultTableModel();
     CtrlSecciones ctrl = new CtrlSecciones();
@@ -62,8 +64,8 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
         tSecciones.setModel(modelo);
         tSecciones.getColumnModel().getColumn(0).setMinWidth(0);
         tSecciones.getColumnModel().getColumn(0).setMaxWidth(0);
-        calAnio.setForeground(Color.white);
-        calAnio.setFont(new Font("Roboto Black", Font.PLAIN, 16));
+        
+        
 
 
         mostrarSecciones();
@@ -102,8 +104,10 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
         txtBuscar = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         cbGrados = new javax.swing.JComboBox<>();
-        calAnio = new com.toedter.calendar.JYearChooser();
         btnActivar = new javax.swing.JButton();
+        cbAño = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        btnLimpiar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -112,20 +116,24 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(33, 37, 41));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI Semilight", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel4.setText("Gestionar Secciones ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, -1));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("En este formulario puedes administrar los grados y secciones de tu organización.");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 90, 1010, -1));
 
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Digite lo que desea buscar:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
+        jLabel10.setToolTipText("");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 780, -1));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Sección:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, 270, -1));
 
         cbSecciones.setBackground(new java.awt.Color(33, 37, 41));
         cbSecciones.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -136,7 +144,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
                 cbSeccionesKeyPressed(evt);
             }
         });
-        jPanel1.add(cbSecciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 220, -1));
+        jPanel1.add(cbSecciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 270, -1));
 
         tSecciones.setBackground(new java.awt.Color(33, 37, 41));
         tSecciones.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -165,6 +173,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
         ));
         tSecciones.setFocusable(false);
         tSecciones.setGridColor(new java.awt.Color(64, 65, 65));
+        tSecciones.setIntercellSpacing(new java.awt.Dimension(0, 0));
         tSecciones.setRowHeight(30);
         tSecciones.setSelectionBackground(new java.awt.Color(45, 252, 119));
         tSecciones.setSelectionForeground(new java.awt.Color(0, 0, 0));
@@ -176,12 +185,13 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tSecciones);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 890, 380));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 1000, 290));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel12.setText("Usuario:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, -1));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Usuario del Docente:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 270, -1));
 
         cbUsuario.setBackground(new java.awt.Color(33, 37, 41));
         cbUsuario.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -192,7 +202,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
                 cbUsuarioKeyPressed(evt);
             }
         });
-        jPanel1.add(cbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 270, -1));
+        jPanel1.add(cbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 270, -1));
 
         btnAgregar.setBackground(new java.awt.Color(33, 37, 41));
         btnAgregar.setForeground(new java.awt.Color(254, 254, 254));
@@ -206,7 +216,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 70, 140, 70));
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 140, 70));
 
         btnActualizar.setBackground(new java.awt.Color(33, 37, 41));
         btnActualizar.setForeground(new java.awt.Color(254, 254, 254));
@@ -220,7 +230,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 150, 140, 70));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 140, 70));
 
         btnSuspender.setBackground(new java.awt.Color(33, 37, 41));
         btnSuspender.setForeground(new java.awt.Color(254, 254, 254));
@@ -234,12 +244,13 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
                 btnSuspenderActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSuspender, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 240, 140, 70));
+        jPanel1.add(btnSuspender, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 140, 70));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Año:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, -1));
 
         txtBuscar.setBackground(new java.awt.Color(33, 37, 41));
         txtBuscar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
@@ -257,12 +268,13 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
                 txtBuscarKeyTyped(evt);
             }
         });
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 440, 30));
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 780, 30));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Grado:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 220, -1));
 
         cbGrados.setBackground(new java.awt.Color(33, 37, 41));
         cbGrados.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -273,10 +285,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
                 cbGradosKeyPressed(evt);
             }
         });
-        jPanel1.add(cbGrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 220, -1));
-
-        calAnio.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(calAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 114, 70, 30));
+        jPanel1.add(cbGrados, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 220, -1));
 
         btnActivar.setBackground(new java.awt.Color(33, 37, 41));
         btnActivar.setForeground(new java.awt.Color(254, 254, 254));
@@ -291,7 +300,39 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
                 btnActivarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 240, 140, 70));
+        jPanel1.add(btnActivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 140, 70));
+
+        cbAño.setBackground(new java.awt.Color(33, 37, 41));
+        cbAño.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbAño.setForeground(new java.awt.Color(254, 254, 254));
+        cbAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021" }));
+        cbAño.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbAñoKeyPressed(evt);
+            }
+        });
+        jPanel1.add(cbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 220, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Gestionar Secciones ");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 40, 1000, -1));
+
+        btnLimpiar.setBackground(new java.awt.Color(33, 37, 41));
+        btnLimpiar.setForeground(new java.awt.Color(254, 254, 254));
+        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnLimpiarDefault.png"))); // NOI18N
+        btnLimpiar.setBorder(null);
+        btnLimpiar.setContentAreaFilled(false);
+        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnLimpiar.setFocusPainted(false);
+        btnLimpiar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnLimpiarRollover.png"))); // NOI18N
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 140, 70));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -299,6 +340,14 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     @SuppressWarnings("unchecked")
+    public void reiniciarCampos(){
+        btnAgregar.setEnabled(true);
+        btnActualizar.setEnabled(false);
+        btnSuspender.setEnabled(false);
+        btnActivar.setEnabled(false); 
+        txtBuscar.setText("");
+    }
+    
     public void llenarUsuarios() {
         MtoSecciones mto = new MtoSecciones();
         cbUsuario.setModel(mto.obtenerUsuarios());
@@ -337,6 +386,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
                 modelo.addRow(fila);
             }
             tSecciones.setModel(modelo);
+           
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
@@ -382,9 +432,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
         cbGrados.setSelectedItem((String) tSecciones.getValueAt(fila, 1));
         cbSecciones.setSelectedItem((String) tSecciones.getValueAt(fila, 2));
         cbUsuario.setSelectedItem((String) tSecciones.getValueAt(fila, 3));
-        calAnio.setForeground(Color.white);
-        calAnio.setFont(new Font("Roboto Black", Font.PLAIN, 16));
-        calAnio.setValue(Integer.parseInt((String) tSecciones.getValueAt(fila, 4)));
+        cbAño.setSelectedItem((String)tSecciones.getValueAt(fila, 4));
         mto.obtenerIdGrado();
         mto.obtenerIdUsuario();
         mto.obtenerIdSeccion();
@@ -397,7 +445,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
         ctrl.setGrado((String) cbGrados.getSelectedItem());
         ctrl.setSeccion((String) cbSecciones.getSelectedItem());
         ctrl.setUsuario((String) cbUsuario.getSelectedItem());
-        ctrl.setAnio(String.valueOf(calAnio.getValue()));
+        ctrl.setAnio(String.valueOf(cbAño.getSelectedItem()));
         mto.obtenerUltimoId();
         mto.obtenerIdGrado();
         mto.obtenerIdUsuario();
@@ -412,10 +460,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
                 mod.setId_usuario(mod.getId_usuario());
                 mod.setId_bitacora(id);
                 add.agregarBitacoraAgregar(mod);
-                btnActualizar.setEnabled(false);
-                btnSuspender.setEnabled(false);
-                btnActivar.setEnabled(false);
-                btnAgregar.setEnabled(true);
+                reiniciarCampos();
 
             } else {
                 JOptionPane.showMessageDialog(null, "Error");
@@ -435,7 +480,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
         ctrl.setGrado((String) cbGrados.getSelectedItem());
         ctrl.setSeccion((String) cbSecciones.getSelectedItem());
         ctrl.setUsuario((String) cbUsuario.getSelectedItem());
-        ctrl.setAnio(String.valueOf(calAnio.getValue()));
+        ctrl.setAnio(String.valueOf(cbAño.getSelectedItem()));
         mto.obtenerIdGrado();
         mto.obtenerIdUsuario();
         mto.obtenerIdSeccion();
@@ -449,11 +494,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
                 mod.setId_usuario(mod.getId_usuario());
                 mod.setId_bitacora(id);
                 add.agregarBitacoraActualizar(mod);
-
-                btnActualizar.setEnabled(false);
-                btnSuspender.setEnabled(false);
-                btnActivar.setEnabled(false);
-                btnAgregar.setEnabled(true);
+                reiniciarCampos();
             } else {
                 JOptionPane.showMessageDialog(null, "Error");
             }
@@ -476,10 +517,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
             mod.setId_usuario(mod.getId_usuario());
             mod.setId_bitacora(id);
             add.agregarBitacoraSuspender(mod);
-            btnActualizar.setEnabled(false);
-            btnSuspender.setEnabled(false);
-            btnActivar.setEnabled(false);
-            btnAgregar.setEnabled(true);
+            reiniciarCampos();
 
         } else {
             JOptionPane.showMessageDialog(null, "Error");
@@ -524,10 +562,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
             mod.setId_usuario(mod.getId_usuario());
             mod.setId_bitacora(id);
             add.agregarBitacoraActivar(mod);
-            btnActualizar.setEnabled(false);
-            btnSuspender.setEnabled(false);
-            btnActivar.setEnabled(false);
-            btnAgregar.setEnabled(true);
+            reiniciarCampos();
 
         } else {
             JOptionPane.showMessageDialog(null, "Error");
@@ -541,13 +576,22 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
         mostrarSecciones();
     }//GEN-LAST:event_btnActivarActionPerformed
 
+    private void cbAñoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbAñoKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbAñoKeyPressed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        reiniciarCampos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActivar;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnSuspender;
-    private com.toedter.calendar.JYearChooser calAnio;
+    private javax.swing.JComboBox<String> cbAño;
     private javax.swing.JComboBox<String> cbGrados;
     private javax.swing.JComboBox<String> cbSecciones;
     private javax.swing.JComboBox<String> cbUsuario;
@@ -557,6 +601,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tSecciones;
