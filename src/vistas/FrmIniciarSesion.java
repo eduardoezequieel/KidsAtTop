@@ -414,6 +414,66 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
             txtContra.setText("");
             JOptionPane.showMessageDialog(null, "Limite de carácteres alcanzado.","Aviso",JOptionPane.WARNING_MESSAGE);
         }
+        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String contra = new String(txtContra.getPassword());
+        String encriptado=DigestUtils.sha1Hex(contra);
+        
+        if(!txtUsuario.getText().equals("") && !contra.equals(""))
+        {
+            MtoLogin modBD = new MtoLogin();
+            CtrlLoginUsuario mod = new CtrlLoginUsuario();
+            MtoBitacoras bitacora=new MtoBitacoras();
+            
+            mod.setUsuario(txtUsuario.getText());
+            mod.setContrasenia(encriptado);
+            
+            int id=bitacora.capturarIdBitacora()+1;
+            
+            if (modBD.validarLogin(mod)) {
+                if (modBD.verificarContraseña(mod)) {
+                    //Abriendo formulario para cambiar contraseña generica
+                    modBD.obtenerDatosUsuario(mod);
+                    this.setVisible(false);
+                    FrmActualizarContraseña frm = new FrmActualizarContraseña(mod);
+                    frm.setVisible(true);
+                }
+                else if(modBD.detectarRespuestas(mod) == false)
+                {
+                    modBD.obtenerDatosUsuario(mod);
+                    JOptionPane.showMessageDialog(null, "Hemos detectado que no posees preguntas de seguridad. A continuación podras agregarlas.","Aviso",JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(false);
+                    FrmInsertarRespuestas frm = new FrmInsertarRespuestas(mod);
+                    frm.setVisible(true);
+                }
+                else
+                {
+                 modBD.obtenerDatosUsuario(mod);
+                    
+                    JOptionPane.showMessageDialog(this, "Acceso concedido, bienvenido "+mod.getUsuario());
+                    this.setVisible(false);
+                    FrmMenu formulario = new FrmMenu(mod);
+                    formulario.setVisible(true);
+                    
+                  
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    bitacora.agregarBitacoraEntrada(mod);
+                }
+              
+                
+            }
+           
+           
+            
+        }
+        else 
+        {
+            JOptionPane.showMessageDialog(null, "Uno o ambos campos están vacíos, por favor ingrese sus datos.");
+        }
+        
+
+        }
     }//GEN-LAST:event_txtContraKeyPressed
 
     private void btnPrimerUsoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimerUsoActionPerformed
