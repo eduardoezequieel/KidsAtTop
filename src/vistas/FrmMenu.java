@@ -89,15 +89,15 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         lblTipo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
+        lblTipo1 = new javax.swing.JLabel();
         lblHora = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         btnMinimizar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -178,11 +178,11 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         lblFoto.setForeground(new java.awt.Color(236, 236, 236));
         jPanel1.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 230, 280, 280));
 
-        lblTipo.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        lblTipo.setForeground(new java.awt.Color(236, 236, 236));
-        lblTipo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTipo.setText("TipoUsuario");
-        jPanel1.add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 640, 260, 100));
+        lblTipo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        lblTipo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTipo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTipo.setText("Administrador");
+        jPanel1.add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 630, 220, 100));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 32)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(236, 236, 236));
@@ -200,18 +200,24 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 30, 30));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 30, 30));
 
-        lblHora.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        lblHora.setForeground(new java.awt.Color(254, 254, 254));
+        lblTipo1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        lblTipo1.setForeground(new java.awt.Color(255, 255, 255));
+        lblTipo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTipo1.setIcon(new javax.swing.ImageIcon("C:\\Users\\EDUARDO\\Desktop\\check.PNG")); // NOI18N
+        jPanel1.add(lblTipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 660, 40, 40));
+
+        lblHora.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        lblHora.setForeground(new java.awt.Color(255, 255, 255));
         lblHora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHora.setText("00:00:00");
-        jPanel1.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 640, 260, 100));
+        jPanel1.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 630, 180, 100));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 30)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(236, 236, 236));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/QueHaremos.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 310, 60));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 310, 60));
 
         jLabel5.setFont(new java.awt.Font("Quicksand", 0, 32)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(236, 236, 236));
@@ -220,22 +226,6 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroMenu.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 0, -1, 730));
-
-        jLabel6.setFont(new java.awt.Font("Roboto", 0, 30)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(236, 236, 236));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroHoraFecha.png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 630, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Roboto", 0, 30)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(236, 236, 236));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroHoraFecha.png"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 630, -1, -1));
-
-        jSeparator2.setBackground(new java.awt.Color(33, 37, 41));
-        jSeparator2.setForeground(new java.awt.Color(45, 255, 120));
-        jSeparator2.setToolTipText("");
-        jSeparator2.setEnabled(false);
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 560, 20));
 
         btnMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMinimizarDefault.png"))); // NOI18N
         btnMinimizar.setBorder(null);
@@ -248,12 +238,22 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
                 btnMinimizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 30, 30));
+        jPanel1.add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 30, 30));
+
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 30)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(236, 236, 236));
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\EDUARDO\\Desktop\\fondo.png")); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 620, 550, 170));
 
         lblId.setText("jLabel3");
-        jPanel1.add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 560, -1, -1));
+        jPanel1.add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 420, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 740));
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 30)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(236, 236, 236));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/RecuadroHoraFecha.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, -90, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 728));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -390,11 +390,11 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblTipo;
+    private javax.swing.JLabel lblTipo1;
     private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables
 

@@ -390,7 +390,7 @@ public class FrmMiCuenta extends javax.swing.JFrame {
                 btnCambiarContraseñaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCambiarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 600, 140, 70));
+        jPanel1.add(btnCambiarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 650, 140, 70));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));

@@ -83,7 +83,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         jEscritorioLayout.setHorizontalGroup(
             jEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jEscritorioLayout.createSequentialGroup()
-                .addContainerGap(272, Short.MAX_VALUE)
+                .addContainerGap(266, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(253, 253, 253))
         );
@@ -111,7 +111,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, 240, 70));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fndHerramientasSistema.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 280, 280));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 280, 230));
 
         jControlarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_default.png"))); // NOI18N
         jControlarUsuarios.setBorder(null);
@@ -125,7 +125,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
                 jControlarUsuariosActionPerformed(evt);
             }
         });
-        jPanel1.add(jControlarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 360, 70));
+        jPanel1.add(jControlarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 350, 90));
 
         jReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReportesDefault.png"))); // NOI18N
         jReportes.setBorder(null);
@@ -139,10 +139,10 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
                 jReportesActionPerformed(evt);
             }
         });
-        jPanel1.add(jReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 360, 70));
+        jPanel1.add(jReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 350, 90));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dashboard.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, -1, 730));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, -1, 730));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 730));
 
@@ -159,7 +159,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         
         //Seteando iconos
         Icon Imagenes;
-         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_rollover.png"));
+         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_pressed.png"));
         jControlarUsuarios.setIcon(Imagenes);
         
         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnReportesDefault.png"));
@@ -185,7 +185,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_default.png"));
         jControlarUsuarios.setIcon(Imagenes);
         
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnReportesRollover.png"));
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnReportesPressed.png"));
         jReportes.setIcon(Imagenes);
     }//GEN-LAST:event_jReportesActionPerformed
 

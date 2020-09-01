@@ -191,7 +191,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"));
         jGestionarAsistencia.setIcon(Imagenes);
         
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_rollover.png"));
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_pressed.png"));
         jGestionarNotas.setIcon(Imagenes);
         
         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
@@ -212,7 +212,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
 
             //Cambiando imagenes
             Icon Imagenes;
-             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_rollover.png"));
+             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_pressed.png"));
             jGestionarConducta.setIcon(Imagenes);
 
             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"));
@@ -247,7 +247,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"));
             jGestionarNotas.setIcon(Imagenes);
 
-            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_rollover.png"));
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_pressed.png"));
             jGestionarSecciones.setIcon(Imagenes);
         } catch(Exception ex){
             JOptionPane.showMessageDialog(null, "No se pudo abrir el formulario porque existe algunos campos vacios.", "Revise si hay usuarios docente activos en el sistema", JOptionPane.INFORMATION_MESSAGE);
@@ -267,7 +267,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
              Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"));
             jGestionarConducta.setIcon(Imagenes);
 
-            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControlarAsistencia_rollover.png"));
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControlarAsistencia_pressed.png"));
             jGestionarAsistencia.setIcon(Imagenes);
 
             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"));

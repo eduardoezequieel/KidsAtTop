@@ -27,7 +27,7 @@ public class Conexion {
         }*/
     
     //Conexion Kath
-    public Connection conectar(){
+    /*public Connection conectar(){
         Connection cn = null;
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -42,9 +42,9 @@ public class Conexion {
                     System.out.println(ex.getMessage());
             }
             return cn;
-    }
+    }*/
            
-    /*//Conexion Eduardo
+    //Conexion Eduardo
         public Connection conectar(){
         Connection cn = null;
         try{
@@ -60,7 +60,7 @@ public class Conexion {
                     System.out.println(ex.getMessage());
             }
             return cn;
-        }*/
+        }
     
     //Conexion Jacobo
     /*public Connection conectar(){
