@@ -134,13 +134,13 @@ public class FrmRecuperacionCorreo extends javax.swing.JFrame {
         jLabel5.setText("Confirmar contraseña:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 372, 210, 30));
 
-        btnEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviar_default.png"))); // NOI18N
+        btnEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviarCorreo_default.png"))); // NOI18N
         btnEnviar.setBorder(null);
         btnEnviar.setBorderPainted(false);
         btnEnviar.setContentAreaFilled(false);
         btnEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEnviar.setFocusPainted(false);
-        btnEnviar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviar_rollover.png"))); // NOI18N
+        btnEnviar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnEnviarCorreo_rollover.png"))); // NOI18N
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnviarActionPerformed(evt);

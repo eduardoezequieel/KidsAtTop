@@ -153,8 +153,8 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         //Abriendo formulario de Controlar Usuarios
         MtoLogin log=new MtoLogin();
         log.obtenerDatosUsuario(mod);
-        FrmAdministrarUsuarios usuarios = new FrmAdministrarUsuarios(mod);
-        jEscritorio.add(usuarios);
+        FrmUsuarioContenedor usuarios = new FrmUsuarioContenedor(mod);
+        this.setVisible(false);
         usuarios.setVisible(true);
         
         //Seteando iconos

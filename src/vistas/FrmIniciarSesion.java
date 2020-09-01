@@ -178,7 +178,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 300, 10));
 
         txtContra.setBackground(new java.awt.Color(33, 37, 41));
-        txtContra.setFont(new java.awt.Font("Roboto Light", 0, 36)); // NOI18N
+        txtContra.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         txtContra.setForeground(new java.awt.Color(254, 254, 254));
         txtContra.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtContra.setToolTipText("");

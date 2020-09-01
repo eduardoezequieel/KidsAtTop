@@ -85,7 +85,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
         jEscritorioLayout.setHorizontalGroup(
             jEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jEscritorioLayout.createSequentialGroup()
-                .addContainerGap(268, Short.MAX_VALUE)
+                .addContainerGap(274, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(258, 258, 258))
         );
@@ -165,7 +165,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
         jPanel1.add(jGestionarConducta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 350, 90));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/controlAcademico.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, 180));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 180));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dashboard.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, -1, 730));

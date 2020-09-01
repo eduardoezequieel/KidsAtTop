@@ -109,7 +109,7 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatricula_default.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setFocusPainted(false);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatricula_rollover.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +122,7 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnHerramientasSistemaDefault.png"))); // NOI18N
         jButton6.setBorder(null);
         jButton6.setContentAreaFilled(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.setFocusPainted(false);
         jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnHerramientasSistemaRollover.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +135,7 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         btnControlAcademico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnControlAcademico_default.png"))); // NOI18N
         btnControlAcademico.setBorder(null);
         btnControlAcademico.setContentAreaFilled(false);
-        btnControlAcademico.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnControlAcademico.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnControlAcademico.setFocusPainted(false);
         btnControlAcademico.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnControlAcademico_rollover.png"))); // NOI18N
         btnControlAcademico.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +148,7 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         btnMiCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMiCuenta_default.png"))); // NOI18N
         btnMiCuenta.setBorder(null);
         btnMiCuenta.setContentAreaFilled(false);
-        btnMiCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMiCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMiCuenta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMiCuenta_rollover.png"))); // NOI18N
         btnMiCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,7 +160,7 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarSesion_default.png"))); // NOI18N
         btnCerrarSesion.setBorder(null);
         btnCerrarSesion.setContentAreaFilled(false);
-        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCerrarSesion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarSesion_rollover.png"))); // NOI18N
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,7 +242,7 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 30)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(236, 236, 236));
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\EDUARDO\\Desktop\\fondo.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fndInfoMenu.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 620, 550, 170));
 
         lblId.setText("jLabel3");

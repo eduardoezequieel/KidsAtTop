@@ -86,12 +86,12 @@ public class MtoUsuario {
         return id;
     }
     
-    public static String email, telefono, dui, direccion, nit, nip, fecha_nacimiento;
+    
     public static Integer maxIdUsuario;
     public boolean capturarDatosUsuario(String usuario){
         boolean resp = false;
         try{
-            String sql = "SELECT email, telefono, dui, direccion, nit, nip, fecha_nacimiento FROM usuario WHERE usuario = ?";
+            String sql = "SELECT nombre, apellido, email, telefono, dui, nit, nip, fecha_nacimiento, genero, direccion, foto FROM usuario WHERE usuario = ?";
             PreparedStatement cmd = cn.prepareCall(sql);
             cmd.setString(1, usuario);
             
@@ -99,13 +99,17 @@ public class MtoUsuario {
             ResultSet rs = cmd.executeQuery();
             while(rs.next()){
                 resp = true;
-                email = rs.getString(1);
-                telefono = rs.getString(2);
-                dui = rs.getString(3);
-                direccion = rs.getString(4);
-                nit = rs.getString(5);
-                nip = rs.getString(6);
-                fecha_nacimiento = rs.getString(7);
+                ctrl.setNombre(rs.getString(1));
+                ctrl.setApellido(rs.getString(2));
+                ctrl.setEmail(rs.getString(3));
+                ctrl.setTelefono(rs.getString(4));
+                ctrl.setDui(rs.getString(5));
+                ctrl.setNit(rs.getString(6));
+                ctrl.setNip(rs.getString(7));
+                ctrl.setFecha_nacimiento(rs.getString(8));
+                ctrl.setGenero(rs.getString(9));
+                ctrl.setDireccion(rs.getString(10));
+                ctrl.setFoto(rs.getBytes(11));
             }
         }
         catch (Exception ex) {
