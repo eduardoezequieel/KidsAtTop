@@ -92,10 +92,10 @@ public class RecuContra {
         boolean retorno=false;
         try{
             //verificar existencia
-            String sql="select usuario from usuario where usuario = ?";
+            String sql="select usuario from usuario where usuario = ? AND NOT id_tipo_usuario = 1";
             PreparedStatement cmd = cn.prepareStatement(sql);
             
-            cmd.setString(1, recuCtrl.getAdmin());
+            cmd.setString(1, recuCtrl.getUsuario());
             
             ResultSet rs1= cmd.executeQuery();
             
@@ -118,7 +118,7 @@ public class RecuContra {
             }
             else
             {
-                   JOptionPane.showMessageDialog(null,"Administrador no encontrado");
+                   JOptionPane.showMessageDialog(null,"El usuario a recuperar no puede ser admin");
             }
         }
         catch(Exception e)
@@ -154,6 +154,37 @@ public class RecuContra {
         }
         
         //Retornando valor
+        return resp;
+    }
+    
+    public boolean verificarAdminRepetido(){
+        
+        //Declarando variable de retorno
+        boolean resp = false;
+        
+        try{
+            
+            //verificando existencia
+            String sql="SELECT usuario FROM usuario WHERE usuario = ? AND usuario = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            cmd.setString(1, recuCtrl.getUsuario());
+            cmd.setString(2, recuCtrl.getAdmin());
+            
+            ResultSet rs1= cmd.executeQuery();
+            
+            if (rs1.next()) {
+                resp = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "El usuario no puede ser el mismo");
+            }
+            
+            
+            
+        } catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+        
         return resp;
     }
     

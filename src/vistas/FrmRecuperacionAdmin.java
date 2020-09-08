@@ -273,24 +273,28 @@ public class FrmRecuperacionAdmin extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null, "Rellene los campos faltantes.","Campos vacios",JOptionPane.WARNING_MESSAGE);
         } else {
             
-            //Mandando datos a la controlador
-            recuCtrl.setUsuario(jUsuario.getText());
-            recuCtrl.setAdmin(jAdmin.getText());
-            String contra = new String(jContra.getPassword());
-            String encriptado = DigestUtils.sha1Hex(contra);
-            recuCtrl.setContraseña(encriptado);
-            
-            //Verificando admin y usuario
-            if (recu.validarAdmin()) {
-                if (recu.verificarUser()) {
-                    JOptionPane.showMessageDialog(null, "Se ha confirmado las credenciales del administrador y el usuario a recuperar");
-                    btnAceptar.setEnabled(true);
-                    jNueva.setEnabled(true);
-                    jConfirmar.setEnabled(true);
-                    btnVerificar.setEnabled(false);
-                    jUsuario.setEnabled(false);
-                    jAdmin.setEnabled(false);
-                    jContra.setEnabled(false);
+            if (jUsuario.getText().equals(jAdmin.getText())) {
+                JOptionPane.showMessageDialog(null, "El usuario no puede ser el mismo.","Campos repetidos",JOptionPane.WARNING_MESSAGE);
+            } else {
+                //Mandando datos a la controlador
+                recuCtrl.setUsuario(jUsuario.getText());
+                recuCtrl.setAdmin(jAdmin.getText());
+                String contra = new String(jContra.getPassword());
+                String encriptado = DigestUtils.sha1Hex(contra);
+                recuCtrl.setContraseña(encriptado);
+
+                //Verificando admin y usuario
+                if (recu.validarAdmin()) {
+                    if (recu.verificarUser()) {
+                        JOptionPane.showMessageDialog(null, "Se ha confirmado las credenciales del administrador y el usuario a recuperar");
+                        btnAceptar.setEnabled(true);
+                        jNueva.setEnabled(true);
+                        jConfirmar.setEnabled(true);
+                        btnVerificar.setEnabled(false);
+                        jUsuario.setEnabled(false);
+                        jAdmin.setEnabled(false);
+                        jContra.setEnabled(false);
+                    }
                 }
             }
         }

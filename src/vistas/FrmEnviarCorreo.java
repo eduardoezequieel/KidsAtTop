@@ -186,7 +186,7 @@ public class FrmEnviarCorreo extends javax.swing.JFrame {
 
     private void jDestinatarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDestinatarioKeyTyped
         // TODO add your handling code here:
-        val.verificarLetras(evt);
+        //val.verificarLetras(evt);
     }//GEN-LAST:event_jDestinatarioKeyTyped
 
     private void jAsuntoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jAsuntoKeyTyped
