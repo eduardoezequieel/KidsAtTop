@@ -23,6 +23,8 @@ import modelo.MtoBitacoras;
 import modelo.MtoUsuario;
 import modelo.Validaciones;
 import org.apache.commons.codec.digest.DigestUtils;
+import modelo.MtoBitacoras;
+import controlador.CtrlBitacora;
 
 /**
  *
@@ -575,6 +577,11 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
                 if (mto.insertarUsuario()) {
                     JOptionPane.showMessageDialog(null, "Se ha ingresado el nuevo usuario. Su contraseña por defecto es: 123","Exito",JOptionPane.INFORMATION_MESSAGE);
                     limpiarCampo();
+                    MtoBitacoras add=new MtoBitacoras();
+                    int id=add.capturarIdBitacora()+1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraAgregarUsuario(mod);
                    
                 }
                 else

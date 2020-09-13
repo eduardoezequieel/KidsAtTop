@@ -726,6 +726,11 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
                     limpiarTabla();
                     mostrarUsuario();
                     limpiarCampo();
+                    MtoBitacoras add=new MtoBitacoras();
+                    int id=add.capturarIdBitacora()+1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraReiniciaCuenta(mod);
                 }
                 else
                 {
@@ -775,7 +780,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
                     int id=add.capturarIdBitacora()+1;
                     mod.setId_usuario(mod.getId_usuario());
                     mod.setId_bitacora(id);
-                    add.agregarBitacoraActualizar(mod);
+                    add.agregarBitacoraActualizarUsuario(mod);
                     reiniciarBusqueda();
                     limpiarTabla();
                     mostrarUsuario();
@@ -812,7 +817,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
                     int id=add.capturarIdBitacora()+1;
                     mod.setId_usuario(mod.getId_usuario());
                     mod.setId_bitacora(id);
-                    add.agregarBitacoraSuspender(mod);
+                    add.agregarBitacoraSuspenderUsuario(mod);
 
                     reiniciarBusqueda();
                     limpiarTabla();
@@ -847,7 +852,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
                     int id=add.capturarIdBitacora()+1;
                     mod.setId_usuario(mod.getId_usuario());
                     mod.setId_bitacora(id);
-                    add.agregarBitacoraActivar(mod);
+                    add.agregarBitacoraActivarUsuario(mod);
 
                     reiniciarBusqueda();
                     limpiarTabla();

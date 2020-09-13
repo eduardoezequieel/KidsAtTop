@@ -113,7 +113,7 @@ public class MtoBitacoras {
     
      //</editor-fold>
    
-   //<editor-fold defaultstate="collapsed" desc="Bitacoras para los mantenimientos">   
+   //<editor-fold defaultstate="collapsed" desc="Bitacoras para los mantenimientos estudiante">   
     public boolean agregarBitacoraActualizar(CtrlLoginUsuario usr){
     
      boolean retorno=false;
@@ -267,6 +267,150 @@ public class MtoBitacoras {
     
     //</editor-fold>
     
+   
+   //<editor-fold defaultstate="collapsed" desc="Bitacoras para los mantenimientos de usuarios">
+    
+    //bitacora agregar usuario
+    
+     public boolean agregarBitacoraAgregarUsuario(CtrlLoginUsuario usr){
+    
+     boolean retorno=false;
+       try{
+           
+           String query = "declare @fecha datetime\n"
+                   + "set @fecha=(select GETDATE());\n"
+                   + "\n"
+                   + "Insert into bitacora (id_bitacora,id_usuario,fecha,tipo) values ('"+usr.getId_bitacora()+"','"+usr.getId_usuario()+"',@fecha,'Agrega usuario')";
+           PreparedStatement cmd=conexion.prepareStatement(query);
+           
+           
+           if (!cmd.execute()) {
+               
+                retorno=true;
+           }
+         
+       }
+       catch(Exception e){
+       
+           System.out.println(e.toString());
+       }
+       return retorno;
+    
+    }
+     
+    //bitacora actualizar usuario
+    
+     public boolean agregarBitacoraActualizarUsuario(CtrlLoginUsuario usr){
+    
+     boolean retorno=false;
+       try{
+           
+           String query = "declare @fecha datetime\n"
+                   + "set @fecha=(select GETDATE());\n"
+                   + "\n"
+                   + "Insert into bitacora (id_bitacora,id_usuario,fecha,tipo) values ('"+usr.getId_bitacora()+"','"+usr.getId_usuario()+"',@fecha,'Actualiza registro usuario')";
+           PreparedStatement cmd=conexion.prepareStatement(query);
+           
+           
+           if (!cmd.execute()) {
+               
+                retorno=true;
+           }
+         
+       }
+       catch(Exception e){
+       
+           System.out.println(e.toString());
+       }
+       return retorno;
+    
+    } 
+     
+     
+    //bitacora suspender usuario
+    
+     public boolean agregarBitacoraSuspenderUsuario(CtrlLoginUsuario usr){
+    
+     boolean retorno=false;
+       try{
+           
+           String query = "declare @fecha datetime\n"
+                   + "set @fecha=(select GETDATE());\n"
+                   + "\n"
+                   + "Insert into bitacora (id_bitacora,id_usuario,fecha,tipo) values ('"+usr.getId_bitacora()+"','"+usr.getId_usuario()+"',@fecha,'Suspende usuario')";
+           PreparedStatement cmd=conexion.prepareStatement(query);
+           
+           
+           if (!cmd.execute()) {
+               
+                retorno=true;
+           }
+         
+       }
+       catch(Exception e){
+       
+           System.out.println(e.toString());
+       }
+       return retorno;
+    
+    } 
+     
+    //bitacora activar usuario
+    
+     public boolean agregarBitacoraActivarUsuario(CtrlLoginUsuario usr){
+    
+     boolean retorno=false;
+       try{
+           
+           String query = "declare @fecha datetime\n"
+                   + "set @fecha=(select GETDATE());\n"
+                   + "\n"
+                   + "Insert into bitacora (id_bitacora,id_usuario,fecha,tipo) values ('"+usr.getId_bitacora()+"','"+usr.getId_usuario()+"',@fecha,'Activa usuario')";
+           PreparedStatement cmd=conexion.prepareStatement(query);
+           
+           
+           if (!cmd.execute()) {
+               
+                retorno=true;
+           }
+         
+       }
+       catch(Exception e){
+       
+           System.out.println(e.toString());
+       }
+       return retorno;
+    
+    } 
+     
+    //bitacora agregar usuario
+    
+     public boolean agregarBitacoraReiniciaCuenta(CtrlLoginUsuario usr){
+    
+     boolean retorno=false;
+       try{
+           
+           String query = "declare @fecha datetime\n"
+                   + "set @fecha=(select GETDATE());\n"
+                   + "\n"
+                   + "Insert into bitacora (id_bitacora,id_usuario,fecha,tipo) values ('"+usr.getId_bitacora()+"','"+usr.getId_usuario()+"',@fecha,'Reinicia usuario')";
+           PreparedStatement cmd=conexion.prepareStatement(query);
+           
+           
+           if (!cmd.execute()) {
+               
+                retorno=true;
+           }
+         
+       }
+       catch(Exception e){
+       
+           System.out.println(e.toString());
+       }
+       return retorno;
+    
+    } 
     
     
+    //</editor-fold>
 }
