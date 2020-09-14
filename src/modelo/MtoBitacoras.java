@@ -122,7 +122,7 @@ public class MtoBitacoras {
            String query = "declare @fecha datetime\n"
                    + "set @fecha=(select GETDATE());\n"
                    + "\n"
-                   + "Insert into bitacora (id_bitacora,id_usuario,fecha,tipo) values ('"+usr.getId_bitacora()+"','"+usr.getId_usuario()+"',@fecha,'Actualiza')";
+                   + "Insert into bitacora (id_bitacora,id_usuario,fecha,tipo) values ('"+usr.getId_bitacora()+"','"+usr.getId_usuario()+"',@fecha,'Actualiza registro de estudiante')";
            PreparedStatement cmd=conexion.prepareStatement(query);
            
            
