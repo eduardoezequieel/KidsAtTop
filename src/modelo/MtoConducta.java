@@ -188,11 +188,12 @@ public class MtoConducta {
         try{
             
             //Preparando sentencia sql
-            String sql = "SELECT gs.id_grado_seccion FROM grado_seccion gs, seccion s, grado g where g.grado = ? AND s.seccion = ? AND g.id_grado = gs.id_grado AND s.id_seccion = gs.id_seccion";
+            String sql = "SELECT gs.id_grado_seccion FROM grado_seccion gs, seccion s, grado g where g.grado = ? AND s.seccion = ? AND g.id_grado = gs.id_grado AND s.id_seccion = gs.id_seccion AND gs.anio_seccion = ?";
             PreparedStatement cmd = cn.prepareStatement(sql);
             
             cmd.setString(1, grado);
             cmd.setString(2, seccion);
+            cmd.setString(3, conducta.getAnio());
             
             ResultSet rs = cmd.executeQuery();
             while(rs.next()){

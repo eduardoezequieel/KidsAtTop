@@ -8,7 +8,32 @@ import java.sql.DriverManager;
  * @author pablo
  */
 public class Conexion {
-    //Conexion Edenilson
+    //conexion remota
+    private String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    private String url = "jdbc:sqlserver://0.tcp.ngrok.io:18091;databaseName=KidsAtTop";
+    private String user = "EduardoInicio";
+    private String pwrd = "eduardo2020";
+    Connection cn = null;
+    
+    public Connection conectar(){
+            try{
+                Class.forName(driver);
+                //Pedira importar import java.sql.DriverManager
+               cn = DriverManager.getConnection(url, user, pwrd);
+
+ 
+
+                if (cn != null) {
+                        System.out.println("Si hay conexion");
+                    }
+                }
+                catch(Exception ex){
+                        System.out.println(ex.getMessage());
+                }
+                return cn;
+            } 
+    
+    /*//Conexion Edenilson
     public Connection conectar(){
         Connection cn = null;
         try{
@@ -24,7 +49,7 @@ public class Conexion {
                     System.out.println(ex.getMessage());
             }
             return cn;
-        }
+        }*/
     
     //Conexion Kath
    /* public Connection conectar(){

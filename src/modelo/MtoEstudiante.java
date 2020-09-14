@@ -71,6 +71,31 @@ public class MtoEstudiante {
     }
     
     //<editor-fold defaultstate="collapsed" desc="Llenando Combobox">
+    public DefaultComboBoxModel llenarAnio(){
+        
+        //Creando instancia del modelo
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        try
+        {
+            
+            //Llamando procedimiento almacenado
+            CallableStatement cmd = cn.prepareCall("{CALL cbAnio}");
+            
+            //Ejecutando sentencia
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next())
+            {
+                //Agregando elementos al combobox
+                modelo.addElement(rs.getString(1));
+            }
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }       
+      return modelo;
+    }
+    
+    //Llenando combobox de grado_Seccion
     public DefaultComboBoxModel llenarGS(){
         
         //Creando instancia del modelo
@@ -79,8 +104,11 @@ public class MtoEstudiante {
         {
             
             //Llamando procedimiento almacenado
-            CallableStatement cmd = cn.prepareCall("{CALL cbGS}");
+            CallableStatement cmd = cn.prepareCall("{CALL cbGradoSeccion(?)}");
             
+            cmd.setString(1,estudianteCtrl.getAnioSeccion());
+            
+            cmd.execute();
             //Ejecutando sentencia
             ResultSet rs = cmd.executeQuery();
             while(rs.next())
@@ -149,11 +177,12 @@ public class MtoEstudiante {
         try{
             
             //Preparando sentencia sql
-            String sql = "SELECT gs.id_grado_seccion FROM grado_seccion gs, seccion s, grado g where g.grado = ? AND s.seccion = ? AND g.id_grado = gs.id_grado AND s.id_seccion = gs.id_seccion";
+            String sql = "SELECT gs.id_grado_seccion FROM grado_seccion gs, seccion s, grado g where g.grado = ? AND s.seccion = ? AND g.id_grado = gs.id_grado AND s.id_seccion = gs.id_seccion AND gs.anio_seccion = ?";
             PreparedStatement cmd = cn.prepareStatement(sql);
             
             cmd.setString(1, grado);
             cmd.setString(2, seccion);
+            cmd.setString(3, estudianteCtrl.getAnioSeccion());
             
             ResultSet rs = cmd.executeQuery();
             while(rs.next()){
@@ -166,6 +195,7 @@ public class MtoEstudiante {
         }
 
     }
+    
     
     //Obteniendo id del grado_Seccion
     public void obtenerIdResponsable(String nombre, String apellido){

@@ -24,6 +24,7 @@ public class CtrlEstudiante {
     private static String Responsable;
     private static int idGradoSeccion;
     private static byte[] foto;
+    private static String anioSeccion;
 
     /**
      * @return the idEstudiante
@@ -191,6 +192,20 @@ public class CtrlEstudiante {
      */
     public void setResponsable(String aResponsable) {
         Responsable = aResponsable;
+    }
+
+    /**
+     * @return the anioSeccion
+     */
+    public String getAnioSeccion() {
+        return anioSeccion;
+    }
+
+    /**
+     * @param anioSeccion the anioSeccion to set
+     */
+    public void setAnioSeccion(String anioSeccion) {
+        this.anioSeccion = anioSeccion;
     }
     
 }
