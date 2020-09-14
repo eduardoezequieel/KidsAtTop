@@ -179,7 +179,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
         
         try{
             //Abriendo formulario de Gestionar Notas
-            FrmNotas notas = new FrmNotas();
+            FrmNotas notas = new FrmNotas(mod);
             jEscritorio.add(notas);
             notas.setVisible(true);
 
@@ -191,7 +191,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControloarAsistencia_default.png"));
             jGestionarAsistencia.setIcon(Imagenes);
 
-            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_pressed.png"));
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotasPressed.png"));
             jGestionarNotas.setIcon(Imagenes);
 
             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
