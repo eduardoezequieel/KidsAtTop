@@ -540,7 +540,7 @@ public class FrmMiCuenta extends javax.swing.JFrame {
                     int id=add.capturarIdBitacora()+1;
                     mod.setId_usuario(Integer.parseInt(idUsuario.getText()));
                     mod.setId_bitacora(id);
-                    add.agregarBitacoraActualizar(mod);
+                    add.agregarBitacoraActualizarUsuario(mod);
                     FrmMenu frm = new FrmMenu(mod);
                     frm.setVisible(true);
                 }

@@ -381,6 +381,11 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCerrar.setFocusable(false);
         btnCerrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarAsistencia_rollover.png"))); // NOI18N
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 290, 140, 70));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -615,7 +620,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 int id = add.capturarIdBitacora() + 1;
                 mod.setId_usuario(mod.getId_usuario());
                 mod.setId_bitacora(id);
-                add.agregarBitacoraAgregar(mod);
+                add.agregarBitacoraAgregarAsistencia(mod);
             } else {
 
                 JOptionPane.showMessageDialog(null, "No se han agregado los datos correctamente");
@@ -704,7 +709,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                  int id=add.capturarIdBitacora()+1;
                  mod.setId_usuario(mod.getId_usuario());
                  mod.setId_bitacora(id);
-                 add.agregarBitacoraActualizar(mod);
+                 add.agregarBitacoraActualizaAsistencia(mod);
             } else {
 
                 JOptionPane.showMessageDialog(null, "No se han actualizado los datos correctamente");
@@ -737,7 +742,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                     int id=add.capturarIdBitacora()+1;
                     mod.setId_usuario(mod.getId_usuario());
                     mod.setId_bitacora(id);
-                    add.agregarBitacoraEliminar(mod);
+                    add.agregarBitacoraEliminarAsistencia(mod);
 
                 } else {
                     JOptionPane.showMessageDialog(null, "No se han eliminado los datos correctamente");
@@ -764,6 +769,10 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         limpiar();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

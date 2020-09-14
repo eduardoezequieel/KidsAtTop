@@ -459,7 +459,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
                 int id = add.capturarIdBitacora() + 1;
                 mod.setId_usuario(mod.getId_usuario());
                 mod.setId_bitacora(id);
-                add.agregarBitacoraAgregar(mod);
+                add.agregarBitacoraAgregarSeccion(mod);
                 reiniciarCampos();
 
             } else {
@@ -493,7 +493,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
                 int id = add.capturarIdBitacora() + 1;
                 mod.setId_usuario(mod.getId_usuario());
                 mod.setId_bitacora(id);
-                add.agregarBitacoraActualizar(mod);
+                add.agregarBitacoraActualizarSeccion(mod);
                 reiniciarCampos();
             } else {
                 JOptionPane.showMessageDialog(null, "Error");
@@ -516,7 +516,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
             int id = add.capturarIdBitacora() + 1;
             mod.setId_usuario(mod.getId_usuario());
             mod.setId_bitacora(id);
-            add.agregarBitacoraSuspender(mod);
+            add.agregarBitacoraSuspenderSeccion(mod);
             reiniciarCampos();
 
         } else {
@@ -561,7 +561,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
             int id = add.capturarIdBitacora() + 1;
             mod.setId_usuario(mod.getId_usuario());
             mod.setId_bitacora(id);
-            add.agregarBitacoraActivar(mod);
+            add.agregarBitacoraActivarSeccion(mod);
             reiniciarCampos();
 
         } else {

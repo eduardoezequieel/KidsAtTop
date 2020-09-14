@@ -457,7 +457,7 @@ public class FrmAdministrarResponsable extends javax.swing.JInternalFrame {
                 int id = add.capturarIdBitacora() + 1;
                 mod.setId_usuario(mod.getId_usuario());
                 mod.setId_bitacora(id);
-                add.agregarBitacoraActualizar(mod);
+                add.agregarBitacoraActualizarResponsable(mod);
                 jBuscar.setText("");
                 String busqueda = jBuscar.getText();
                 TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
@@ -488,7 +488,7 @@ public class FrmAdministrarResponsable extends javax.swing.JInternalFrame {
             int id = add.capturarIdBitacora() + 1;
             mod.setId_usuario(mod.getId_usuario());
             mod.setId_bitacora(id);
-            add.agregarBitacoraSuspender(mod);
+            add.agregarBitacoraSuspenderResponsable(mod);
             String busqueda = jBuscar.getText();
             TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
             tResponsables.setRowSorter(tr);
@@ -555,7 +555,7 @@ public class FrmAdministrarResponsable extends javax.swing.JInternalFrame {
             int id = add.capturarIdBitacora() + 1;
             mod.setId_usuario(mod.getId_usuario());
             mod.setId_bitacora(id);
-            add.agregarBitacoraActivar(mod);
+            add.agregarBitacoraActivarResponsable(mod);
             jBuscar.setText("");
             String busqueda = jBuscar.getText();
             TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);

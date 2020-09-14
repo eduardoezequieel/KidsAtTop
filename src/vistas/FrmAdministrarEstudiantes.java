@@ -685,7 +685,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
                     int id=add.capturarIdBitacora()+1;
                     mod.setId_usuario(mod.getId_usuario());
                     mod.setId_bitacora(id);
-                    add.agregarBitacoraActualizar(mod);
+                    add.agregarBitacoraActualizarEstudiante(mod);
                     reiniciarBusqueda();
                     limpiarTabla();
                     mostrarEstudiantes();
@@ -714,7 +714,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
                     int id=add.capturarIdBitacora()+1;
                     mod.setId_usuario(mod.getId_usuario());
                     mod.setId_bitacora(id);
-                    add.agregarBitacoraSuspender(mod);
+                    add.agregarBitacoraSuspenderEstudiante(mod);
                     reiniciarBusqueda();
                     limpiarTabla();
                     mostrarEstudiantes();
@@ -743,7 +743,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
                     int id=add.capturarIdBitacora()+1;
                     mod.setId_usuario(mod.getId_usuario());
                     mod.setId_bitacora(id);
-                    add.agregarBitacoraActivar(mod);
+                    add.agregarBitacoraActivarEstudiante(mod);
                     reiniciarBusqueda();
                     limpiarTabla();
                     mostrarEstudiantes();

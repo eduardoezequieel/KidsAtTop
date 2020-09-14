@@ -503,7 +503,7 @@ char c = evt.getKeyChar();
                 int id = add.capturarIdBitacora() + 1;
                 mod.setId_usuario(mod.getId_usuario());
                 mod.setId_bitacora(id);
-                add.agregarBitacoraAgregar(mod);
+                add.agregarBitacoraAgregarConducta(mod);
                 this.limpiarTabla();
                 this.mostrarConducta();
                 this.limpiarCampos();
@@ -550,7 +550,7 @@ char c = evt.getKeyChar();
                 int id = add.capturarIdBitacora() + 1;
                 mod.setId_usuario(mod.getId_usuario());
                 mod.setId_bitacora(id);
-                add.agregarBitacoraActualizar(mod);
+               add.agregarBitacoraActualizaConducta(mod);
 
             } else {
                 JOptionPane.showMessageDialog(null, "No se han actualizado los datos correctamente");
@@ -579,7 +579,7 @@ char c = evt.getKeyChar();
                     int id = add.capturarIdBitacora() + 1;
                     mod.setId_usuario(mod.getId_usuario());
                     mod.setId_bitacora(id);
-                    add.agregarBitacoraEliminar(mod);
+                    add.agregarBitacoraEliminarConducta(mod);
 
                 } else {
                     JOptionPane.showMessageDialog(null, "No se han eliminado los datos correctamente");
