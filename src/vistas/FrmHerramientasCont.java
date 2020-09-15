@@ -61,6 +61,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jControlarUsuarios = new javax.swing.JButton();
+        jIndicadores = new javax.swing.JButton();
         jReportes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -83,7 +84,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         jEscritorioLayout.setHorizontalGroup(
             jEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jEscritorioLayout.createSequentialGroup()
-                .addContainerGap(266, Short.MAX_VALUE)
+                .addContainerGap(260, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(253, 253, 253))
         );
@@ -111,7 +112,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, 240, 70));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fndHerramientasSistema.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 280, 230));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 280, 180));
 
         jControlarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_default.png"))); // NOI18N
         jControlarUsuarios.setBorder(null);
@@ -125,7 +126,21 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
                 jControlarUsuariosActionPerformed(evt);
             }
         });
-        jPanel1.add(jControlarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 350, 90));
+        jPanel1.add(jControlarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 350, 90));
+
+        jIndicadores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnIndicadoresDefault.png"))); // NOI18N
+        jIndicadores.setBorder(null);
+        jIndicadores.setContentAreaFilled(false);
+        jIndicadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jIndicadores.setFocusPainted(false);
+        jIndicadores.setFocusable(false);
+        jIndicadores.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnIndicadoresRollover.png"))); // NOI18N
+        jIndicadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jIndicadoresActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jIndicadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 350, 90));
 
         jReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReportesDefault.png"))); // NOI18N
         jReportes.setBorder(null);
@@ -139,7 +154,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
                 jReportesActionPerformed(evt);
             }
         });
-        jPanel1.add(jReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 350, 90));
+        jPanel1.add(jReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 350, 90));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dashboard.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, -1, 730));
@@ -164,6 +179,9 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         
         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnReportesDefault.png"));
         jReportes.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnIndicadoresDefault.png"));
+        jIndicadores.setIcon(Imagenes);
     }//GEN-LAST:event_jControlarUsuariosActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -187,7 +205,27 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         
         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnReportesPressed.png"));
         jReportes.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnIndicadoresDefault.png"));
+        jIndicadores.setIcon(Imagenes);
     }//GEN-LAST:event_jReportesActionPerformed
+
+    private void jIndicadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIndicadoresActionPerformed
+        FrmIndicadores reportes = new FrmIndicadores();
+        jEscritorio.add(reportes);
+        reportes.setVisible(true);
+
+        //Seteando iconos
+        Icon Imagenes;
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_default.png"));
+        jControlarUsuarios.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnReportesDefault.png"));
+        jReportes.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnIndicadoresPressed.png"));
+        jIndicadores.setIcon(Imagenes);
+    }//GEN-LAST:event_jIndicadoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,6 +281,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton jControlarUsuarios;
     private javax.swing.JDesktopPane jEscritorio;
+    private javax.swing.JButton jIndicadores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

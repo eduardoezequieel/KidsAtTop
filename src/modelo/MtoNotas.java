@@ -209,6 +209,23 @@ public class MtoNotas {
         return id;
     }
     
+    public int getIDUltimaNota(){
+        int id = 0;
+        try
+        {
+          String sql = "SELECT max(id_nota) FROM nota";
+          PreparedStatement cmd = cn.prepareCall(sql);
+          ResultSet rs = cmd.executeQuery();
+          while(rs.next()){
+              id = rs.getInt(1);
+          }
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return id;
+    }
+    
     public boolean ActualizarNota(){
         boolean resp = false;
         try
@@ -226,4 +243,18 @@ public class MtoNotas {
         }
         return resp;
     }
+    
+    /*public boolean insertarNota(){
+        boolean resp = false;
+        try
+        {
+            String sql = "INSERT INTO nota VALUES (?,?,1,?,?)";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            cmd.setInt(1, ctrl.getIdNota());
+            cmd.setInt(2, 0);
+        }
+        catch (Exception ex) {
+            
+        }
+    }*/
 }

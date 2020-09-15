@@ -192,6 +192,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         lblAviso = new javax.swing.JLabel();
         jID = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -419,6 +420,14 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         jLabel17.setText("Trimestre:");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, 180, -1));
 
+        jButton1.setText("Ingresar Notas");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 200, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
         pack();
@@ -546,6 +555,21 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         tr.setRowFilter(RowFilter.regexFilter(busqueda));
     }//GEN-LAST:event_jBuscarKeyReleased
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int idUltimaNota = mto.getIDUltimaNota();
+        int id;
+        if (idUltimaNota == 0) {
+            id = 0;
+        }
+        else
+        {
+            id = idUltimaNota;
+        }
+        
+        ctrl.setIdNota(id);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
@@ -555,6 +579,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbNotaP;
     private javax.swing.JComboBox<String> cbTrimestre;
     private javax.swing.JTextField jBuscar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JTextField jID;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
