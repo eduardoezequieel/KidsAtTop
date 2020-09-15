@@ -55,16 +55,13 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         }
         else if(mod.getId_tipo_usuario() == 2)
         {
-            lblTipo.setText("Director");
+            lblTipo.setText("Docente");
         }
         else if(mod.getId_tipo_usuario() == 3)
         {
-            lblTipo.setText("Docente");
-        }
-        else if(mod.getId_tipo_usuario() == 4)
-        {
             lblTipo.setText("Secretaria/o");
         }
+        
         
         //Label de hora
         hl=new Thread(this);

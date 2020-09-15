@@ -34,9 +34,10 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         System.out.println(mod.getId_tipo_usuario());
         
         int user=mod.getId_tipo_usuario();
-         if (user==2||user==3||user==4) {
+         if (user==2||user==3) {
              
              jControlarUsuarios.setEnabled(false);
+             jIndicadores.setEnabled(false);
          }
          
         

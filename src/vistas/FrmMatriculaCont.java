@@ -29,10 +29,9 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.mod = mod;
          int user=mod.getId_tipo_usuario();
-         if (user==3) {
+         if (user==2) {
              
              jMatricularEstudiante.setEnabled(false);
-             jGestionarResponsables.setEnabled(false);
          }
     }
 

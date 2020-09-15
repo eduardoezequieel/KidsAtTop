@@ -30,13 +30,15 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.mod = mod;
         int user=mod.getId_tipo_usuario();
-        if (user==4) {
+        if (user==3) {
             
             jGestionarSecciones.setEnabled(false);
             jGestionarNotas.setEnabled(false);
+            jGestionarAsistencia.setEnabled(false);
         }
-        else if (user==3) {
+        else if (user==2) {
             jGestionarSecciones.setEnabled(false);
+            
         }
               
     }
