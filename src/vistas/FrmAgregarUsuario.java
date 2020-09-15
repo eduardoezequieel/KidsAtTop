@@ -158,7 +158,7 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_default.png"))); // NOI18N
         btnAgregar.setBorder(null);
         btnAgregar.setContentAreaFilled(false);
-        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAgregar.setFocusPainted(false);
         btnAgregar.setFocusable(false);
         btnAgregar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_rollover.png"))); // NOI18N
@@ -172,7 +172,7 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
         btnExaminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCargarFoto_default.png"))); // NOI18N
         btnExaminar.setBorder(null);
         btnExaminar.setContentAreaFilled(false);
-        btnExaminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExaminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExaminar.setFocusPainted(false);
         btnExaminar.setFocusable(false);
         btnExaminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCargarFoto_rollover.png"))); // NOI18N
@@ -308,6 +308,8 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
         jFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jLayeredPane2.add(jFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 180, 30));
 
+        jCalendario.setMaxSelectableDate(new java.util.Date(1041404517000L));
+        jCalendario.setMinSelectableDate(new java.util.Date(-315590283000L));
         jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jCalendarioPropertyChange(evt);

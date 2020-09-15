@@ -73,8 +73,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         jCalendario.getJCalendar().setPreferredSize(new Dimension(450, 450));
         Date fecha = new Date();
         jCalendario.setMaxSelectableDate(fecha);
-        jTextArea2.setVisible(false);
-        jScrollPane3.setVisible(false);
+       
 
         modelo.addColumn("Observacion");
         modelo.addColumn("Estudiante");
@@ -214,8 +213,6 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtObservacion = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
         btnActualizar = new javax.swing.JButton();
         jCalendario = new com.toedter.calendar.JDateChooser();
         cbAño = new javax.swing.JComboBox<>();
@@ -228,15 +225,17 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(33, 37, 41));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Controlar Asistencia ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1000, -1));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Fecha:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 330, -1));
 
         cbAsistencia.setBackground(new java.awt.Color(33, 37, 41));
         cbAsistencia.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -254,7 +253,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 cbAsistenciaKeyPressed(evt);
             }
         });
-        jPanel1.add(cbAsistencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 240, 30));
+        jPanel1.add(cbAsistencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 320, 30));
 
         tAsistencia.setBackground(new java.awt.Color(33, 37, 41));
         tAsistencia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -281,6 +280,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tAsistencia.setFocusable(false);
         tAsistencia.setGridColor(new java.awt.Color(64, 65, 65));
         tAsistencia.setIntercellSpacing(new java.awt.Dimension(0, 0));
         tAsistencia.setRowHeight(30);
@@ -298,20 +298,22 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Año:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 330, -1));
 
         txtFecha.setBackground(new java.awt.Color(33, 37, 41));
         txtFecha.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         txtFecha.setForeground(new java.awt.Color(254, 254, 254));
         txtFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtFecha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
-        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 190, 30));
+        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 280, 30));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel3.setText("Estudiante ausente:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Estudiante:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 330, -1));
 
         cbEstudiante.setBackground(new java.awt.Color(33, 37, 41));
         cbEstudiante.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -324,17 +326,19 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 cbEstudianteKeyPressed(evt);
             }
         });
-        jPanel1.add(cbEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 240, 30));
+        jPanel1.add(cbEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 330, 30));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Motivo de inasistencia:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 320, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Observación:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 320, -1));
 
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_default.png"))); // NOI18N
         btnAgregar.setBorder(null);
@@ -347,7 +351,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 50, 140, 70));
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 130, 140, 70));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnLimpiarDefault.png"))); // NOI18N
         jButton4.setBorder(null);
@@ -360,7 +364,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 370, 140, 70));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 270, 140, 70));
 
         btnSuspender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
         btnSuspender.setBorder(null);
@@ -373,7 +377,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 btnSuspenderActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSuspender, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 210, 140, 70));
+        jPanel1.add(btnSuspender, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 140, 70));
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarAsistencia_default.png"))); // NOI18N
         btnCerrar.setBorder(null);
@@ -386,12 +390,13 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 290, 140, 70));
+        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 200, 140, 70));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel7.setText("Digite lo que desea buscar:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, -1, -1));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Buscar...");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 580, -1));
 
         txtBuscar.setBackground(new java.awt.Color(33, 37, 41));
         txtBuscar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
@@ -406,7 +411,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 txtBuscarKeyReleased(evt);
             }
         });
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 580, 30));
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, 580, 30));
 
         cbGradoSeccion.setBackground(new java.awt.Color(33, 37, 41));
         cbGradoSeccion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -424,17 +429,19 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 cbGradoSeccionKeyPressed(evt);
             }
         });
-        jPanel1.add(cbGradoSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 240, 30));
+        jPanel1.add(cbGradoSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 330, 30));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Grado/Sección:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 330, -1));
 
         txtObservacion.setBackground(new java.awt.Color(33, 37, 41));
         txtObservacion.setColumns(20);
         txtObservacion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         txtObservacion.setForeground(new java.awt.Color(255, 255, 255));
+        txtObservacion.setLineWrap(true);
         txtObservacion.setRows(5);
         txtObservacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(36, 36, 36)));
         txtObservacion.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -447,25 +454,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(txtObservacion);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 320, 160));
-
-        jTextArea2.setBackground(new java.awt.Color(33, 37, 41));
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextArea2.setRows(5);
-        jTextArea2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(36, 36, 36)));
-        jTextArea2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextArea2KeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextArea2KeyTyped(evt);
-            }
-        });
-        jScrollPane3.setViewportView(jTextArea2);
-
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 130, 90));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 320, 160));
 
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
         btnActualizar.setBorder(null);
@@ -478,7 +467,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 130, 140, 70));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 130, 140, 70));
 
         jCalendario.setMinSelectableDate(new java.util.Date(1577862109000L));
         jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -486,7 +475,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 jCalendarioPropertyChange(evt);
             }
         });
-        jPanel1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 50, 29));
+        jPanel1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 50, 29));
 
         cbAño.setBackground(new java.awt.Color(33, 37, 41));
         cbAño.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -509,10 +498,8 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 cbAñoKeyPressed(evt);
             }
         });
-        jPanel1.add(cbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 240, 30));
-
-        txtId.setText("jTextField1");
-        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
+        jPanel1.add(cbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 330, 30));
+        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 50, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -567,16 +554,6 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
             System.out.println(ex.toString());
         }
     }//GEN-LAST:event_jCalendarioPropertyChange
-
-    private void jTextArea2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea2KeyTyped
-        // TODO add your handling code here:
-        val.verificarAlfanumerico(evt);
-    }//GEN-LAST:event_jTextArea2KeyTyped
-
-    private void jTextArea2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea2KeyPressed
-        // TODO add your handling code here:
-        val.verificarPegar(evt);
-    }//GEN-LAST:event_jTextArea2KeyPressed
 
     private void cbAñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAñoActionPerformed
         // TODO add your handling code here:
@@ -797,8 +774,6 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTable tAsistencia;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtFecha;

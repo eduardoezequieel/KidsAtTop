@@ -8,6 +8,8 @@ package vistas;
 import controlador.CtrlLoginUsuario;
 import controlador.CtrlUsuario;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
@@ -62,6 +64,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         btnActivar.setEnabled(false);
         btnActualizar.setEnabled(false);
         btnReiniciarCuenta.setEnabled(false);
+        btnExaminar.setEnabled(false);
         
         //Personalizacion JDateChooser
         jCalendario.getJCalendar().setForeground(new Color(254,254,254));
@@ -86,6 +89,16 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         //Metodos a cargar
         llenarTipoUsuario();
         mostrarUsuario();
+        
+        for (Component component : jLayeredPane1.getComponents()) {
+            component.setEnabled(false); 
+        }
+        
+        for (Component component : jLayeredPane2.getComponents()) {
+            component.setEnabled(false); 
+        }
+        
+        
     }
     
     public void llenarTipoUsuario(){
@@ -152,6 +165,8 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         btnActivar.setEnabled(false);
         btnReiniciarCuenta.setEnabled(false);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -225,7 +240,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         btnExaminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCargarFoto_default.png"))); // NOI18N
         btnExaminar.setBorder(null);
         btnExaminar.setContentAreaFilled(false);
-        btnExaminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExaminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExaminar.setFocusPainted(false);
         btnExaminar.setFocusable(false);
         btnExaminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCargarFoto_rollover.png"))); // NOI18N
@@ -405,6 +420,8 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         jLabel12.setText("Teléfono:");
         jLayeredPane2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 280, -1));
 
+        jCalendario.setMaxSelectableDate(new java.util.Date(1041404474000L));
+        jCalendario.setMinSelectableDate(new java.util.Date(-315590326000L));
         jCalendario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jCalendarioPropertyChange(evt);
@@ -481,7 +498,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         btnReiniciarCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReiniciarCuenta_default.png"))); // NOI18N
         btnReiniciarCuenta.setBorder(null);
         btnReiniciarCuenta.setContentAreaFilled(false);
-        btnReiniciarCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReiniciarCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnReiniciarCuenta.setFocusPainted(false);
         btnReiniciarCuenta.setFocusable(false);
         btnReiniciarCuenta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReiniciarCuenta_rollover.png"))); // NOI18N
@@ -495,7 +512,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
         btnActualizar.setBorder(null);
         btnActualizar.setContentAreaFilled(false);
-        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnActualizar.setFocusPainted(false);
         btnActualizar.setFocusable(false);
         btnActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
@@ -509,7 +526,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         btnSuspender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_default.png"))); // NOI18N
         btnSuspender.setBorder(null);
         btnSuspender.setContentAreaFilled(false);
-        btnSuspender.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSuspender.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSuspender.setFocusPainted(false);
         btnSuspender.setFocusable(false);
         btnSuspender.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnSuspender_rollover.png"))); // NOI18N
@@ -523,7 +540,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         btnActivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActivarDefault.png"))); // NOI18N
         btnActivar.setBorder(null);
         btnActivar.setContentAreaFilled(false);
-        btnActivar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActivar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnActivar.setFocusPainted(false);
         btnActivar.setFocusable(false);
         btnActivar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActivarRollover.png"))); // NOI18N
@@ -671,7 +688,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
             int mesInt = jCalendario.getCalendar().get(Calendar.MONTH) + 1;
             String mes = Integer.toString(mesInt);
             String fecha = (mes+"-"+dia+"-"+año);
-            txtId.setText(fecha);
+            jFecha.setText(fecha);
       
         }
          catch (Exception ex) {
@@ -874,6 +891,14 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         CtrlUsuario ctrl = new CtrlUsuario();
         btnActualizar.setEnabled(true);
         btnReiniciarCuenta.setEnabled(true);
+        btnExaminar.setEnabled(true);
+        for (Component component : jLayeredPane1.getComponents()) {
+            component.setEnabled(true); 
+        }
+        
+        for (Component component : jLayeredPane2.getComponents()) {
+            component.setEnabled(true); 
+        }
         
         //Capturando datos del jTable
         int fila = tUsuarios.getSelectedRow();
