@@ -93,10 +93,11 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         modelo.addColumn("Asistencia");
 
         tAsistencia.setModel(modelo);
-        tAsistencia.getColumnModel().getColumn(0).setMaxWidth(0);
         tAsistencia.getColumnModel().getColumn(0).setMinWidth(0);
+        tAsistencia.getColumnModel().getColumn(0).setMaxWidth(0);
+        tAsistencia.getColumnModel().getColumn(1).setMinWidth(0); 
         tAsistencia.getColumnModel().getColumn(1).setMaxWidth(0);
-        tAsistencia.getColumnModel().getColumn(1).setMinWidth(0);
+       
         
         
         
