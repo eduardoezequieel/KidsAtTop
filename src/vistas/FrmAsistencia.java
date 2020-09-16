@@ -39,7 +39,6 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     CtrlLoginUsuario mod;
     DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
-    
 
     int idGS;
 
@@ -155,8 +154,8 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         cbEstudiante.setModel(conducta.llenarEstudiante());
 
     }
-    
-    public void centrarColumnas(){
+
+    public void centrarColumnas() {
         centrado.setHorizontalAlignment(JLabel.CENTER);
         for (int i = 0; i < 5; i++) {
             tAsistencia.getColumnModel().getColumn(i).setCellRenderer(centrado);
@@ -623,9 +622,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         if (txtObservacion.getText().trim().isEmpty() || txtFecha.getText().trim().isEmpty()) {
 
             JOptionPane.showMessageDialog(null, "Campos vacios.", "Rellene los campos faltantes.", JOptionPane.WARNING_MESSAGE);
-        } 
-        else 
-        {
+        } else {
 
             //Dividiendo el apellido y el nombre
             String estudiante = cbEstudiante.getItemAt(cbEstudiante.getSelectedIndex());
@@ -643,7 +640,6 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
             int idConducta = conducta.obtenerUltimoIdAs() + 1;
 
-           
             int tipoAsistencia = conducta.obtenerIdTipoAsistencia(String.valueOf(cbAsistencia.getItemAt(cbAsistencia.getSelectedIndex())));
 
             as.setApellido(apellido);
@@ -651,13 +647,10 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
             as.setGrado(grado);
             as.setSeccion(seccion);
             as.setFecha(txtFecha.getText());
-  
-            
-        
 
             if (conducta.comprobarAsistencia()) {
                 JOptionPane.showMessageDialog(null, "Ya ha agregado un registro con estas credenciales");
-            }
+            } 
             else 
             {
 
@@ -687,8 +680,9 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
             }
 
-
         }
+
+        this.limpiar();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void cbAñoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAñoItemStateChanged
@@ -715,7 +709,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         String fecha = String.valueOf(tAsistencia.getValueAt(fila, 3));
         
         
-
+        
         txtFecha.setText(fecha);
         txtObservacion.setText(observacion);
 
@@ -723,7 +717,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         String[] parte = student.split("-");
         String apellido = parte[0];
         String nombre = parte[1];
-        
+
         cbEstudiante.setSelectedItem(student);
 
         //Setetando combo de grado/seccion
@@ -733,11 +727,11 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         //Seteando el combo de anio
         String itemAnio = conducta.getItemAnio(apellido, nombre);
         cbAño.setSelectedItem(itemAnio);
-        
-        
-        
-        
 
+        
+        
+        
+        
         //obteniendo id de conducta 
         int id = Integer.parseInt(tAsistencia.getValueAt(fila, 0).toString());
         txtId.setText(String.valueOf(id));
@@ -770,7 +764,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
             if (conducta.actualizarAsistencia()) {
 
                 JOptionPane.showMessageDialog(null, "Ha actualizado los datos correctamente");
-              
+
                 this.limpiarTabla();
                 this.mostrarTabla();
                 this.resetBusqueda();
@@ -785,9 +779,9 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
             }
 
-           
-
         }
+
+        this.limpiar();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnSuspenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuspenderActionPerformed
@@ -816,10 +810,10 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
             }
         }
 
-        this.mostrarTabla();
         this.limpiarTabla();
-        this.limpiar();
+        this.mostrarTabla();
         this.resetBusqueda();
+        this.limpiar();
 
     }//GEN-LAST:event_btnSuspenderActionPerformed
 
