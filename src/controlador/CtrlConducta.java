@@ -27,6 +27,7 @@ public class CtrlConducta {
     static private String apellido;
     static private String grado;
     static private String seccion;
+    static private int LongitudArray;
 
     /**
      * @return the idConducta
@@ -194,5 +195,19 @@ public class CtrlConducta {
      */
     public void setSeccion(String seccion) {
         this.seccion = seccion;
+    }
+
+    /**
+     * @return the LongitudArray
+     */
+    public int getLongitudArray() {
+        return LongitudArray;
+    }
+
+    /**
+     * @param LongitudArray the LongitudArray to set
+     */
+    public void setLongitudArray(int LongitudArray) {
+        this.LongitudArray = LongitudArray;
     }
 }

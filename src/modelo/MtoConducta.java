@@ -693,6 +693,57 @@ public class MtoConducta {
 
         }
     
+        
+        public int longitudGradoSeccion(String año, String grado, String seccion){
+            int longitud = 0;
+            try
+            {
+                String sql = "SELECT count(id_estudiante) FROM estudiante e, grado_seccion gs, grado g, seccion s WHERE e.id_grado_seccion = gs.id_grado_seccion AND gs.id_grado = g.id_grado AND gs.id_seccion = s.id_seccion AND gs.anio_seccion = ? AND g.grado = ? AND s.seccion = ?";
+                PreparedStatement cmd = cn.prepareCall(sql);
+                cmd.setString(1, año);
+                cmd.setString(2, grado);
+                cmd.setString(3, seccion);
+                ResultSet rs = cmd.executeQuery();
+                while(rs.next()){
+                    longitud = rs.getInt(1);
+                }
+            }
+            catch (Exception ex) {
+                System.out.println(ex);
+            }
+            return longitud;
+        }
+        
+        public String[] cargarEstudiantes(String año, String grado, String seccion){
+            
+            String array[];
+            int posicion=0;
+            array= new String[longitudGradoSeccion(año,grado,seccion)];
+            
+            try{
+            
+                String query="select Concat(e.apellido,'-',e.nombre) as Estudiante from estudiante e, grado g, seccion s, grado_seccion gs where e.id_grado_seccion=gs.id_grado_seccion  and gs.id_grado=g.id_grado and gs.id_seccion=s.id_seccion and gs.anio_seccion=?  and g.grado =? and s.seccion =?  ";
+                PreparedStatement cmd = cn.prepareCall(query);
+                cmd.setString(1, año);
+                cmd.setString(2, grado);
+                cmd.setString(3, seccion);
+                ResultSet rs = cmd.executeQuery();
+                while (rs.next()) {
+                    
+                    array[posicion]=rs.getString(posicion+1);
+                }
+                posicion++;
+            
+            }
+            catch(Exception e){
+            
+                System.out.println(e.toString());
+            
+            }
+            
+            return array;
+        
+        }
         //</editor-fold>
 
 

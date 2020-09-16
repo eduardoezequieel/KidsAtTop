@@ -39,6 +39,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     CtrlLoginUsuario mod;
     DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
+    
 
     int idGS;
 
@@ -113,6 +114,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         this.mostrarTabla();
         this.centrarColumnas();
         txtObservacion.setLineWrap(true);
+        
 
     }
 
@@ -220,6 +222,8 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         btnActualizar.setEnabled(false);
         btnSuspender.setEnabled(false);
         btnAgregar.setEnabled(true);
+        cbEstudiante.setEnabled(true);
+
 
     }
 
@@ -735,6 +739,8 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         //obteniendo id de conducta 
         int id = Integer.parseInt(tAsistencia.getValueAt(fila, 0).toString());
         txtId.setText(String.valueOf(id));
+        
+        cbEstudiante.setEnabled(false);
     }//GEN-LAST:event_tAsistenciaMouseClicked
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -832,6 +838,31 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
+        
+      String año = cbAño.getItemAt(cbAño.getSelectedIndex()); 
+      String gSeccion = cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
+      String[] parte2 = gSeccion.split("-");
+      String grado = parte2[0];
+      String seccion = parte2[1];
+      
+      int cantidadEstudiantes=conducta.longitudGradoSeccion(año,grado,seccion);
+      
+       System.out.println(cantidadEstudiantes);
+
+        
+      String[] est;
+      est=new String[cantidadEstudiantes];
+      
+        for (int i = 0; i < est.length; i++) {
+            
+            
+            
+            est=conducta.cargarEstudiantes(año, grado, seccion);
+        
+            System.out.println(est[i]);
+        }
+        
+                    
     }//GEN-LAST:event_btnCerrarActionPerformed
 
 
