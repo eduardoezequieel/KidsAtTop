@@ -666,6 +666,39 @@ public class MtoConducta {
         return retorno;
         
         }
+        
+        
+        public boolean comprobarAsistencia()
+        {
+
+            
+            boolean retorno=false;
+            
+            try{
+            
+                String query="SELECT*FROM control_asistencia c, estudiante e, grado_seccion gs, grado g, seccion s WHERE c.id_estudiante = e.id_estudiante AND e.id_grado_seccion = gs.id_grado_seccion AND gs.id_grado = g.id_grado AND gs.id_seccion = s.id_seccion AND e.apellido = ?  AND e.nombre = ? AND g.grado = ? AND s.seccion = ? AND c.fecha = ?";
+                PreparedStatement cmd = cn.prepareStatement(query);
+                cmd.setString(1, conducta.getApellido());
+                cmd.setString(2, conducta.getNombre());
+                cmd.setString(3, conducta.getGrado());
+                cmd.setString(4, conducta.getSeccion());
+                cmd.setString(5, conducta.getFecha());
+                
+                if (!cmd.execute()) {
+                    
+                    retorno=true;
+                }
+                
+                
+            }
+            catch(Exception e){
+            
+                System.out.println(e.toString());
+            }
+
+            return retorno;
+
+        }
     
         //</editor-fold>
 

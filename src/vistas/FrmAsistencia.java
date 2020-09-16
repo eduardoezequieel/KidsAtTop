@@ -74,18 +74,18 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         jCalendario.getJCalendar().setPreferredSize(new Dimension(450, 450));
         Date fecha = new Date();
         jCalendario.setMaxSelectableDate(fecha);
-       
+
         Calendar fechas = new GregorianCalendar();
-  
+
         //Obtenemos el valor del año, mes, día,
         //hora, minuto y segundo del sistema
         //usando el método get y el parámetro correspondiente                                                     
         String año = String.valueOf(fechas.get(Calendar.YEAR));
-        String mes = String.valueOf(fechas.get(Calendar.MONTH)+1);
+        String mes = String.valueOf(fechas.get(Calendar.MONTH) + 1);
         String dia = String.valueOf(fechas.get(Calendar.DAY_OF_MONTH));
-       
-        txtFecha.setText(mes+"-"+dia+"-"+año);
-        
+
+        txtFecha.setText(mes + "-" + dia + "-" + año);
+
         modelo.addColumn("IdAsistencia");
         modelo.addColumn("Observacion");
         modelo.addColumn("Estudiante");
@@ -96,12 +96,8 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         tAsistencia.getColumnModel().getColumn(0).setMinWidth(0);
         tAsistencia.getColumnModel().getColumn(0).setMaxWidth(0);
 
-       
         tAsistencia.getColumnModel().getColumn(1).setMinWidth(0);
         tAsistencia.getColumnModel().getColumn(1).setMaxWidth(0);
-        
-        
-        
 
         btnActualizar.setEnabled(false);
         btnSuspender.setEnabled(false);
@@ -158,11 +154,11 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     private void mostrarTabla() {
 
         limpiarTabla();
-        String gradoSeccion=cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
-        String grado = gradoSeccion.substring(0,8);
+        String gradoSeccion = cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
+        String grado = gradoSeccion.substring(0, 8);
         String seccion = gradoSeccion.substring(9);
-        String anio=cbAño.getItemAt(cbAño.getSelectedIndex());
-        String fecha=txtFecha.getText();
+        String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
+        String fecha = txtFecha.getText();
         Conexion con = new Conexion();
         Connection datos;
         try {
@@ -171,11 +167,11 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
             PreparedStatement dato = datos.prepareStatement(sql);
             dato.setString(1, grado);
             dato.setString(2, seccion);
-            dato.setString(3,anio);
+            dato.setString(3, anio);
             dato.setString(4, fecha);
             ResultSet rs = dato.executeQuery();
             while (rs.next()) {
-                Object fila[] = {String.valueOf(rs.getInt(1)), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5)};
+                Object fila[] = {String.valueOf(rs.getInt(1)), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)};
                 modelo.addRow(fila);
             }
             tAsistencia.setModel(modelo);
@@ -194,19 +190,19 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     }
 
     public void limpiar() {
-        
-         Calendar fechas = new GregorianCalendar();
-  
+
+        Calendar fechas = new GregorianCalendar();
+
         //Obtenemos el valor del año, mes, día,
         //hora, minuto y segundo del sistema
         //usando el método get y el parámetro correspondiente                                                     
         String año = String.valueOf(fechas.get(Calendar.YEAR));
-        String mes = String.valueOf(fechas.get(Calendar.MONTH)+1);
+        String mes = String.valueOf(fechas.get(Calendar.MONTH) + 1);
         String dia = String.valueOf(fechas.get(Calendar.DAY_OF_MONTH));
 
         txtObservacion.setText("");
         txtId.setText("");
-        txtFecha.setText(mes+"-"+dia+"-"+año);
+        txtFecha.setText(mes + "-" + dia + "-" + año);
         txtBuscar.setText("");
 
         //Deshabilitando botones 
@@ -592,7 +588,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
         } catch (Exception ex) {
             System.out.println(ex.toString());
-            
+
         }
     }//GEN-LAST:event_jCalendarioPropertyChange
 
@@ -618,30 +614,50 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
             String apellido = parte[0];
             String nombre = parte[1];
 
+            String gSeccion = cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
+            String[] parte2 = gSeccion.split("-");
+            String grado = parte[0];
+            String seccion = parte[1];
+
             //Obteniendo id del estudiante
             IdEstudiante = conducta.obtenerIdEstudiante(apellido, nombre);
 
             int idConducta = conducta.obtenerUltimoIdAs() + 1;
 
+            boolean retorno=conducta.comprobarAsistencia();
             int tipoAsistencia = conducta.obtenerIdTipoAsistencia(String.valueOf(cbAsistencia.getItemAt(cbAsistencia.getSelectedIndex())));
 
-            as.setIdConducta(idConducta);
-            as.setIdEstudiante(IdEstudiante);
-            as.setObservacion(txtObservacion.getText());
+            as.setApellido(apellido);
+            as.setNombre(nombre);
+            as.setGrado(grado);
+            as.setSeccion(seccion);
             as.setFecha(txtFecha.getText());
-            as.setIdTipoAsistencia(tipoAsistencia);
 
-            if (conducta.IngresarAsistencia()) {
+            if (retorno==true) {
 
-                JOptionPane.showMessageDialog(null, "Ha agregado los datos correctamente");
-                MtoBitacoras add = new MtoBitacoras();
-                int id = add.capturarIdBitacora() + 1;
-                mod.setId_usuario(mod.getId_usuario());
-                mod.setId_bitacora(id);
-                add.agregarBitacoraAgregarAsistencia(mod);
+                JOptionPane.showMessageDialog(null, "Ya ha agregado un registro con estas credenciales");
             } else {
 
-                JOptionPane.showMessageDialog(null, "No se han agregado los datos correctamente");
+                as.setIdConducta(idConducta);
+                as.setIdEstudiante(IdEstudiante);
+                as.setObservacion(txtObservacion.getText());
+                as.setFecha(txtFecha.getText());
+                as.setIdTipoAsistencia(tipoAsistencia);
+
+                if (conducta.IngresarAsistencia()) {
+
+                    JOptionPane.showMessageDialog(null, "Ha agregado los datos correctamente");
+                    MtoBitacoras add = new MtoBitacoras();
+                    int id = add.capturarIdBitacora() + 1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraAgregarAsistencia(mod);
+                   
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "No se han agregado los datos correctamente");
+
+                }
 
             }
 
@@ -675,6 +691,8 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         int fila = tAsistencia.getSelectedRow();
         String observacion = String.valueOf(tAsistencia.getValueAt(fila, 1));
         String fecha = String.valueOf(tAsistencia.getValueAt(fila, 3));
+        
+        
 
         txtFecha.setText(fecha);
         txtObservacion.setText(observacion);
@@ -683,6 +701,8 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         String[] parte = student.split("-");
         String apellido = parte[0];
         String nombre = parte[1];
+        
+        cbEstudiante.setSelectedItem(student);
 
         //Setetando combo de grado/seccion
         String itemGS = conducta.getItemConducta(apellido, nombre);
@@ -691,9 +711,13 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         //Seteando el combo de anio
         String itemAnio = conducta.getItemAnio(apellido, nombre);
         cbAño.setSelectedItem(itemAnio);
+        
+        
+        
+        
 
         //obteniendo id de conducta 
-        int id=Integer.parseInt(tAsistencia.getValueAt(fila, 0).toString());
+        int id = Integer.parseInt(tAsistencia.getValueAt(fila, 0).toString());
         txtId.setText(String.valueOf(id));
     }//GEN-LAST:event_tAsistenciaMouseClicked
 
@@ -724,12 +748,12 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
             if (conducta.actualizarAsistencia()) {
 
                 JOptionPane.showMessageDialog(null, "Ha actualizado los datos correctamente");
-                
-                 MtoBitacoras add=new MtoBitacoras();
-                 int id=add.capturarIdBitacora()+1;
-                 mod.setId_usuario(mod.getId_usuario());
-                 mod.setId_bitacora(id);
-                 add.agregarBitacoraActualizaAsistencia(mod);
+
+                MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraActualizaAsistencia(mod);
             } else {
 
                 JOptionPane.showMessageDialog(null, "No se han actualizado los datos correctamente");
@@ -757,9 +781,9 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
                 if (conducta.eliminarAsistencia()) {
                     JOptionPane.showMessageDialog(null, "Ha eliminado los datos correctamente");
-                    
-                    MtoBitacoras add=new MtoBitacoras();
-                    int id=add.capturarIdBitacora()+1;
+
+                    MtoBitacoras add = new MtoBitacoras();
+                    int id = add.capturarIdBitacora() + 1;
                     mod.setId_usuario(mod.getId_usuario());
                     mod.setId_bitacora(id);
                     add.agregarBitacoraEliminarAsistencia(mod);

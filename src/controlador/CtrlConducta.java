@@ -23,6 +23,10 @@ public class CtrlConducta {
     static private int idGradoSeccion;
     static private int idTipoAsistencia;
     static private int idTipoFalta;
+    private String nombre;
+     private String apellido;
+    private String grado;
+     private String seccion;
 
     /**
      * @return the idConducta
@@ -134,5 +138,61 @@ public class CtrlConducta {
      */
     public void setIdTipoFalta(int aIdTipoFalta) {
         idTipoFalta = aIdTipoFalta;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return the apellido
+     */
+    public String getApellido() {
+        return apellido;
+    }
+
+    /**
+     * @param apellido the apellido to set
+     */
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    /**
+     * @return the grado
+     */
+    public String getGrado() {
+        return grado;
+    }
+
+    /**
+     * @param grado the grado to set
+     */
+    public void setGrado(String grado) {
+        this.grado = grado;
+    }
+
+    /**
+     * @return the seccion
+     */
+    public String getSeccion() {
+        return seccion;
+    }
+
+    /**
+     * @param seccion the seccion to set
+     */
+    public void setSeccion(String seccion) {
+        this.seccion = seccion;
     }
 }
