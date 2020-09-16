@@ -163,6 +163,8 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
        //Abrir siguiente form
+       CtrlResponsable responsableCtrl = new CtrlResponsable();
+        responsableCtrl.setForm(0);
         FrmVerificarDUI dui = new FrmVerificarDUI();
         jDesktopMatricula.add(dui);
         dui.setVisible(true);
