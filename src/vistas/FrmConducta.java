@@ -78,8 +78,8 @@ public class FrmConducta extends javax.swing.JInternalFrame {
         this.llenarTipoFalta();
 
         //Creando modelo de la tabla
-        modelo.addColumn("Observacion");
         modelo.addColumn("Estudiante");
+        modelo.addColumn("Falta");
         modelo.addColumn("Fecha");
         tConducta.setModel(modelo);
 
@@ -608,6 +608,8 @@ char c = evt.getKeyChar();
         String[] parte = student.split("-");
         String apellido = parte[0];
         String nombre = parte[1];
+        
+        cbEstudiante.setSelectedItem(student);
 
         //Setetando combo de grado/seccion
         String itemGS = conducta.getItemConducta(apellido, nombre);
