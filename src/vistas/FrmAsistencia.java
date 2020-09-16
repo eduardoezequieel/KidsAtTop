@@ -97,8 +97,6 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         tAsistencia.getColumnModel().getColumn(0).setMinWidth(0);
         tAsistencia.getColumnModel().getColumn(1).setMaxWidth(0);
         tAsistencia.getColumnModel().getColumn(1).setMinWidth(0);
-       // this.mostrarTabla();
-       
         
         
         
@@ -194,10 +192,19 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     }
 
     public void limpiar() {
+        
+         Calendar fechas = new GregorianCalendar();
+  
+        //Obtenemos el valor del año, mes, día,
+        //hora, minuto y segundo del sistema
+        //usando el método get y el parámetro correspondiente                                                     
+        String año = String.valueOf(fechas.get(Calendar.YEAR));
+        String mes = String.valueOf(fechas.get(Calendar.MONTH)+1);
+        String dia = String.valueOf(fechas.get(Calendar.DAY_OF_MONTH));
 
         txtObservacion.setText("");
         txtId.setText("");
-        txtFecha.setText("");
+        txtFecha.setText(mes+"-"+dia+"-"+año);
         txtBuscar.setText("");
 
         //Deshabilitando botones 
