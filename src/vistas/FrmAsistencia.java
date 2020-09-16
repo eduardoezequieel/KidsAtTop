@@ -81,7 +81,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         //hora, minuto y segundo del sistema
         //usando el método get y el parámetro correspondiente                                                     
         String año = String.valueOf(fechas.get(Calendar.YEAR));
-        String mes = String.valueOf(fechas.get(Calendar.MONTH));
+        String mes = String.valueOf(fechas.get(Calendar.MONTH)+1);
         String dia = String.valueOf(fechas.get(Calendar.DAY_OF_MONTH));
        
         txtFecha.setText(mes+"-"+dia+"-"+año);
@@ -99,12 +99,9 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         tAsistencia.getColumnModel().getColumn(1).setMinWidth(0);
        // this.mostrarTabla();
        
-        String gradoSeccion=cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
-        String grado = gradoSeccion.substring(0,8);
-        String seccion = gradoSeccion.substring(9);
         
-        System.out.println(grado);
-        System.out.println(seccion);
+        
+        
 
         btnActualizar.setEnabled(false);
         btnSuspender.setEnabled(false);
@@ -114,7 +111,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         this.llenarAnio();
         this.llenarGradoSeccion();
         this.llenarEstudiante();
-        
+        this.mostrarTabla();
         txtObservacion.setLineWrap(true);
 
     }
@@ -170,7 +167,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         Connection datos;
         try {
             datos = con.conectar();
-            String sql = "SELECT c.id_asistencia, .observacion, CONCAT(e.apellido,'-',e.nombre) as Estudiante, c.fecha,t.tipo_asistencia FROM control_asistencia c, estudiante e,tipo_asistencia t, grado_seccion gs, grado g, seccion s WHERE c.id_estudiante = e.id_estudiante and c.id_tipo_asistencia=t.id_tipo_asistencia and e.id_grado_seccion = gs.id_grado_seccion and gs.id_seccion = s.id_seccion and gs.id_grado = g.id_grado and g.grado = ? and s.seccion = ? and gs.anio_seccion = ? and c.fecha = ? ORDER BY e.apellido ASC";
+            String sql = "SELECT c.id_asistencia, observacion, CONCAT(e.apellido,'-',e.nombre) as Estudiante, c.fecha,t.tipo_asistencia FROM control_asistencia c, estudiante e,tipo_asistencia t, grado_seccion gs, grado g, seccion s WHERE c.id_estudiante = e.id_estudiante and c.id_tipo_asistencia=t.id_tipo_asistencia and e.id_grado_seccion = gs.id_grado_seccion and gs.id_seccion = s.id_seccion and gs.id_grado = g.id_grado and g.grado = ? and s.seccion = ? and gs.anio_seccion = ? and c.fecha = ? ORDER BY e.apellido ASC";
             PreparedStatement dato = datos.prepareStatement(sql);
             dato.setString(1, grado);
             dato.setString(2, seccion);
