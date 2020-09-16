@@ -21,6 +21,8 @@ import modelo.MtoSecciones;
 import modelo.Validaciones;
 import modelo.MtoBitacoras;
 import controlador.CtrlLoginUsuario;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import kidsattop.JtPropiedades;
 
@@ -32,6 +34,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
     public TableCellRenderer centerAlight = new JtPropiedades();
     CtrlLoginUsuario mod;
     DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
     CtrlSecciones ctrl = new CtrlSecciones();
     Validaciones val = new Validaciones();
 
@@ -72,6 +75,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
         llenarUsuarios();
         llenarGrados();
         llenarSecciones();
+        centrarColumnas();
         btnActualizar.setEnabled(false);
         btnSuspender.setEnabled(false);
         btnActivar.setEnabled(false);
@@ -146,6 +150,11 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
         });
         jPanel1.add(cbSecciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 270, -1));
 
+        tSecciones = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tSecciones.setBackground(new java.awt.Color(33, 37, 41));
         tSecciones.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         tSecciones.setForeground(new java.awt.Color(255, 255, 255));
@@ -367,6 +376,13 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
         int filas = tSecciones.getRowCount();
         for (int i = 0; filas > i; i++) {
             modelo.removeRow(0);
+        }
+    }
+    
+    public void centrarColumnas(){
+        centrado.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < 8; i++) {
+            tSecciones.getColumnModel().getColumn(i).setCellRenderer(centrado);
         }
     }
 

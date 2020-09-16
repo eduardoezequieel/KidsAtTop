@@ -24,6 +24,10 @@ import modelo.MtoEstudiante;
 import modelo.Validaciones;
 import modelo.MtoBitacoras;
 import controlador.CtrlLoginUsuario;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -50,6 +54,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
     
     //Modelo de la tabla
     DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
     /**
      * Creates new form GestionarEstudiantesForm
      */
@@ -58,7 +63,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
        
     }
     
-    public FrmAdministrarEstudiantes(CtrlLoginUsuario mod){
+    public FrmAdministrarEstudiantes(CtrlLoginUsuario mod) throws ParseException{
        initComponents();
        this.mod=mod;
        System.out.println(mod.getId_usuario());
@@ -90,6 +95,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
         modelo.addColumn("Responsable");
         modelo.addColumn("Grado y Sección");
         tEstudiantes.setModel(modelo);
+        this.centrarColumnas();
         
         //Enseñando tabla
         this.mostrarEstudiantes();
@@ -98,6 +104,10 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
         this.llenarAnio();
         this.llenarGradoSeccion();
         this.llenarReponsable();
+        
+        String fecha = "2016/01/1";
+        java.util.Date fechaParseada= new SimpleDateFormat("yyyy/MM/dd").parse(fecha);
+        jCalendario.setDate(fechaParseada);
         
         //Deshabilitando botones 
         btnActualizar.setEnabled(false);
@@ -324,6 +334,11 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btnFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 200, 70));
 
+        tEstudiantes = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tEstudiantes.setBackground(new java.awt.Color(33, 37, 41));
         tEstudiantes.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         tEstudiantes.setForeground(new java.awt.Color(255, 255, 255));
@@ -913,6 +928,13 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
         btnSuspender.setEnabled(false);
         btnRetirar.setEnabled(false);
         
+    }
+    
+    public void centrarColumnas(){
+        centrado.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < 5; i++) {
+            tEstudiantes.getColumnModel().getColumn(i).setCellRenderer(centrado);
+        }
     }
     
     public void mostrarEstudiantes(){

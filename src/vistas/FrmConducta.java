@@ -24,6 +24,8 @@ import modelo.Validaciones;
 import controlador.CtrlLoginUsuario;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 import modelo.MtoBitacoras;
 
 /**
@@ -45,6 +47,7 @@ public class FrmConducta extends javax.swing.JInternalFrame {
 
     //Modelo de la tabla
     DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
     
      // Crear una instancia de un objeto Date invocando su constructor 
      Date objDate = new Date();
@@ -76,6 +79,7 @@ public class FrmConducta extends javax.swing.JInternalFrame {
         this.llenarGradoSeccion();
         this.llenarEstudiante();
         this.llenarTipoFalta();
+        
 
         //Creando modelo de la tabla
         modelo.addColumn("Estudiante");
@@ -85,6 +89,7 @@ public class FrmConducta extends javax.swing.JInternalFrame {
 
         //Mostrando tabla
         this.mostrarConducta();
+        this.centrarColumnas();
 
         //Deshabilitando botones 
         jActualizar.setEnabled(false);
@@ -149,6 +154,11 @@ public class FrmConducta extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 610, 140, 70));
 
+        tConducta = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tConducta.setBackground(new java.awt.Color(33, 37, 41));
         tConducta.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         tConducta.setForeground(new java.awt.Color(255, 255, 255));
@@ -760,6 +770,13 @@ char c = evt.getKeyChar();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
         tConducta.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(busqueda));
+    }
+    
+    public void centrarColumnas(){
+        centrado.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < 3; i++) {
+            tConducta.getColumnModel().getColumn(i).setCellRenderer(centrado);
+        }
     }
 
     public void mostrarConducta() {

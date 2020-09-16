@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -31,7 +33,7 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
     String filename = null;
     byte[] person_image = null;
     
-    public FrmMatricula() {
+    public FrmMatricula() throws ParseException {
         initComponents();
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
@@ -41,14 +43,15 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         this.llenarAnio();
         this.llenarGradoSeccion();
         jDireccion.setLineWrap(true);
+        String fecha = "2016/01/1";
+        java.util.Date fechaParseada= new SimpleDateFormat("yyyy/MM/dd").parse(fecha);
+        jCalendario.setDate(fechaParseada);
+        
         
         //Mostrando responsable
         estudiante.obteniendoResponsable();  
         jResponsable.setText(estudianteCtrl.getResponsable());
-        
-        ycAño.setForeground(Color.white);
-        ycAño.setFont(new Font("Roboto Black", Font.PLAIN, 16));
-        
+  
         jCalendario.getJCalendar().setForeground(new Color(254,254,254));
         jCalendario.getJCalendar().setSundayForeground(Color.WHITE);
         jCalendario.getJCalendar().setWeekdayForeground(Color.WHITE);
@@ -69,8 +72,6 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         lblFoto = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         btnCargarFoto = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        ycAño = new com.toedter.calendar.JYearChooser();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         cbGS = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
@@ -130,15 +131,6 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(btnCargarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 390, 180, 80));
-
-        jLabel9.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Año Ingreso:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, -1, -1));
-
-        ycAño.setEndYear(2021);
-        ycAño.setStartYear(2020);
-        jPanel1.add(ycAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, 90, 30));
 
         jLayeredPane2.setNextFocusableComponent(jLayeredPane1);
         jLayeredPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -328,7 +320,8 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         
         //Validando campos vacios 
         if ((jNombre.getText().trim().isEmpty()) || (jApellido.getText().trim().isEmpty()) || (jFecha.getText().trim().isEmpty())
-                || (rbM.isSelected() == false) && (rbF.isSelected() == false) || (jResponsable.getText().trim().isEmpty()) || (jDireccion.getText().trim().isEmpty())) {
+                || (rbM.isSelected() == false) && (rbF.isSelected() == false) || (jResponsable.getText().trim().isEmpty()) || (jDireccion.getText().trim().isEmpty())
+                || (lblFoto.getIcon()==null)) {
             JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
         } else {
             
@@ -337,7 +330,7 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
             estudianteCtrl.setNombre(jNombre.getText());
             estudianteCtrl.setApellido(jApellido.getText());
             estudianteCtrl.setFechaNacimiento(jFecha.getText());
-            estudianteCtrl.setAnioIngreso(String.valueOf(ycAño.getValue()));
+            estudianteCtrl.setAnioIngreso(String.valueOf(cbAño.getItemAt(cbAño.getSelectedIndex())));
             estudianteCtrl.setDireccion(jDireccion.getText());
             if (rbF.isSelected()) {
                 estudianteCtrl.setGenero("F");
@@ -507,7 +500,6 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         jNombre.setText("");
         jApellido.setText("");
         jFecha.setText("");
-        ycAño.setValue(2020);
         rbF.setSelected(false);
         rbM.setSelected(false);
         jDireccion.setText("");
@@ -533,7 +525,6 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JTextField jNombre;
@@ -545,6 +536,5 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rbF;
     private javax.swing.ButtonGroup rbGenero;
     private javax.swing.JRadioButton rbM;
-    private com.toedter.calendar.JYearChooser ycAño;
     // End of variables declaration//GEN-END:variables
 }

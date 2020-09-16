@@ -25,6 +25,8 @@ import modelo.Validaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 import modelo.MtoBitacoras;
 import controlador.CtrlBitacora;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -46,7 +48,7 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
         initComponents();
     }
 
-    public FrmAgregarUsuario(CtrlLoginUsuario mod) {
+    public FrmAgregarUsuario(CtrlLoginUsuario mod) throws ParseException {
         initComponents();
         this.mod = mod;
         this.setBorder(null);
@@ -64,6 +66,10 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
         
         //Metodos a cargar
         llenarTipoUsuario();
+        
+        String fecha = "2002/01/1";
+        java.util.Date fechaParseada= new SimpleDateFormat("yyyy/MM/dd").parse(fecha);
+        jCalendario.setDate(fechaParseada);
     }
     
     public void llenarTipoUsuario(){
@@ -541,7 +547,7 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         if (jNombre.getText().isEmpty() || jApellido.getText().isEmpty() || jTelefono.getText().isEmpty() || jUsuario.getText().isEmpty() || jDUI.getText().isEmpty() ||
-            jDireccion.getText().isEmpty() || jFecha.getText().isEmpty() || jCorreo.getText().isEmpty() || jNIP.getText().isEmpty() || jNIT.getText().isEmpty()) {
+            jDireccion.getText().isEmpty() || jFecha.getText().isEmpty() || jCorreo.getText().isEmpty() || jNIP.getText().isEmpty() || jNIT.getText().isEmpty() || lblFoto.getIcon() == null) {
             JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
         }
         else if(rbMasculino.isSelected() || rbFemenino.isSelected()){

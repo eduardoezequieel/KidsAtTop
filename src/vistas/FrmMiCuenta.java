@@ -500,7 +500,7 @@ public class FrmMiCuenta extends javax.swing.JFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         if (jNombre.getText().isEmpty() || jApellido.getText().isEmpty() || jFechaNacimiento.getText().isEmpty() || jTelefono.getText().isEmpty() || jCorreo.getText().isEmpty() ||
-             jUsuario.getText().isEmpty() || jDUI.getText().isEmpty() || jNIP.getText().isEmpty() || jNIT.getText().isEmpty() || jDireccion.getText().isEmpty()) {
+             jUsuario.getText().isEmpty() || jDUI.getText().isEmpty() || jNIP.getText().isEmpty() || jNIT.getText().isEmpty() || jDireccion.getText().isEmpty() ||  (lblFoto.getIcon() == null)) {
                 JOptionPane.showMessageDialog(null, "Campos vacios.","Error",JOptionPane.WARNING_MESSAGE);
         }
         else if(val.email(jCorreo.getText()))

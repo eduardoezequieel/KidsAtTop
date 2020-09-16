@@ -21,6 +21,8 @@ import modelo.MtoResponsable;
 import modelo.Validaciones;
 import modelo.MtoBitacoras;
 import controlador.CtrlLoginUsuario;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -30,6 +32,7 @@ public class FrmAdministrarResponsable extends javax.swing.JInternalFrame {
 
     CtrlLoginUsuario mod;
     DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
     CtrlResponsable ctrl = new CtrlResponsable();
     Validaciones val = new Validaciones();
 
@@ -69,6 +72,7 @@ public class FrmAdministrarResponsable extends javax.swing.JInternalFrame {
         this.mostrarResponsables();
 
         this.llenarParentesco();
+        this.centrarColumnas();
         
         btnActualizar.setEnabled(false);
         btnSuspender.setEnabled(false);
@@ -166,6 +170,11 @@ public class FrmAdministrarResponsable extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 140, 70));
 
+        tResponsables = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tResponsables.setBackground(new java.awt.Color(33, 37, 41));
         tResponsables.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         tResponsables.setForeground(new java.awt.Color(255, 255, 255));
@@ -292,7 +301,7 @@ public class FrmAdministrarResponsable extends javax.swing.JInternalFrame {
         jLabel7.setForeground(new java.awt.Color(254, 254, 254));
         jLabel7.setText("DUI:");
         jLayer1.add(jLabel7);
-        jLabel7.setBounds(20, 140, 29, 30);
+        jLabel7.setBounds(20, 140, 30, 30);
 
         jDUI.setBackground(new java.awt.Color(33, 37, 41));
         jDUI.setForeground(new java.awt.Color(255, 255, 255));
@@ -341,13 +350,13 @@ public class FrmAdministrarResponsable extends javax.swing.JInternalFrame {
         jLabel9.setForeground(new java.awt.Color(254, 254, 254));
         jLabel9.setText("Teléfono:");
         jLayer2.add(jLabel9);
-        jLabel9.setBounds(10, 10, 67, 30);
+        jLabel9.setBounds(10, 10, 64, 30);
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(254, 254, 254));
         jLabel8.setText("Parentesco:");
         jLayer2.add(jLabel8);
-        jLabel8.setBounds(10, 150, 83, 30);
+        jLabel8.setBounds(10, 150, 84, 30);
 
         cbParentesco.setBackground(new java.awt.Color(33, 37, 41));
         cbParentesco.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -412,6 +421,13 @@ public class FrmAdministrarResponsable extends javax.swing.JInternalFrame {
         btnActualizar.setEnabled(false);
         btnSuspender.setEnabled(false);
         btnActivar.setEnabled(false);
+    }
+    
+    public void centrarColumnas(){
+        centrado.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < 8; i++) {
+            tResponsables.getColumnModel().getColumn(i).setCellRenderer(centrado);
+        }
     }
 
     public void mostrarResponsables() {

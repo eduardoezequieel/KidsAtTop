@@ -25,6 +25,8 @@ import modelo.MtoBitacoras;
 import controlador.CtrlLoginUsuario;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -36,6 +38,8 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     CtrlConducta as = new CtrlConducta();
     DefaultTableModel modelo = new DefaultTableModel();
     CtrlLoginUsuario mod;
+    DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
+    
 
     int idGS;
 
@@ -108,6 +112,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         this.llenarGradoSeccion();
         this.llenarEstudiante();
         this.mostrarTabla();
+        this.centrarColumnas();
         txtObservacion.setLineWrap(true);
 
     }
@@ -149,6 +154,13 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         //Llenando el combobox
         cbEstudiante.setModel(conducta.llenarEstudiante());
 
+    }
+    
+    public void centrarColumnas(){
+        centrado.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < 5; i++) {
+            tAsistencia.getColumnModel().getColumn(i).setCellRenderer(centrado);
+        }
     }
 
     private void mostrarTabla() {

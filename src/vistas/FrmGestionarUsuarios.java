@@ -19,12 +19,16 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.Conexion;
@@ -46,6 +50,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         String filename = null;
         byte[] person_image = null;
         DefaultTableModel modelo = new DefaultTableModel();
+        DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
         CtrlLoginUsuario mod;
         Validaciones val = new Validaciones();
         
@@ -53,7 +58,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         initComponents();
     }
 
-    public FrmGestionarUsuarios(CtrlLoginUsuario mod) {
+    public FrmGestionarUsuarios(CtrlLoginUsuario mod) throws ParseException {
         initComponents();
         this.mod = mod;
         this.setBorder(null);
@@ -89,6 +94,11 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         //Metodos a cargar
         llenarTipoUsuario();
         mostrarUsuario();
+        centrarColumnas();
+        
+        String fecha = "2002/01/1";
+        java.util.Date fechaParseada= new SimpleDateFormat("yyyy/MM/dd").parse(fecha);
+        jCalendario.setDate(fechaParseada);
         
         for (Component component : jLayeredPane1.getComponents()) {
             component.setEnabled(false); 
@@ -104,6 +114,13 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
     public void llenarTipoUsuario(){
         MtoUsuario a = new MtoUsuario();
         cbTipoUsuario.setModel(a.llenarTipoUsuario());
+    }
+    
+    public void centrarColumnas(){
+        centrado.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < 3; i++) {
+            tUsuarios.getColumnModel().getColumn(i).setCellRenderer(centrado);
+        }
     }
     
     public void limpiarTabla(){
@@ -551,6 +568,11 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btnActivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 500, -1, 70));
 
+        tUsuarios = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tUsuarios.setBackground(new java.awt.Color(33, 37, 41));
         tUsuarios.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         tUsuarios.setForeground(new java.awt.Color(255, 255, 255));
@@ -759,7 +781,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
          if (jNombre.getText().isEmpty() || jApellido.getText().isEmpty() || jTelefono.getText().isEmpty() || jUsuario.getText().isEmpty() || jDUI.getText().isEmpty() ||
-            jDireccion.getText().isEmpty() || jFecha.getText().isEmpty() || jCorreo.getText().isEmpty() || jNIP.getText().isEmpty() || jNIT.getText().isEmpty()) {
+            jDireccion.getText().isEmpty() || jFecha.getText().isEmpty() || jCorreo.getText().isEmpty() || jNIP.getText().isEmpty() || jNIT.getText().isEmpty() || (lblFoto.getIcon() == null)) {
             JOptionPane.showMessageDialog(null, "Error", "Existen campos vacios", JOptionPane.WARNING_MESSAGE);
         }
         else if(val.email(jCorreo.getText()))

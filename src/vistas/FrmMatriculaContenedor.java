@@ -2,6 +2,9 @@ package vistas;
 
 import controlador.CtrlLoginUsuario;
 import controlador.CtrlResponsable;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -29,7 +32,7 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
  
         this.setLocationRelativeTo(null);
         this.mod=mod;
-        
+        btnAtras.setEnabled(false);
     }
 
     /**
@@ -143,9 +146,15 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
         int form = responsableCtrl.getForm();
         if (form == 1) {
             //Abrir siguiente form
-            FrmMatricula frm = new FrmMatricula();
-            jDesktopMatricula.add(frm);
-            frm.setVisible(true);
+            FrmMatricula frm;
+            try {
+                frm = new FrmMatricula();
+                jDesktopMatricula.add(frm);
+                frm.setVisible(true);
+            } catch (ParseException ex) {
+                Logger.getLogger(FrmMatriculaContenedor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
 
             //Cambiando imagen
             Icon imagenes;
@@ -154,7 +163,8 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
 
             imagenes = new ImageIcon(getClass().getResource("/imagenes/icnMatricularEstudianteRollover.png"));
             lblMatricular.setIcon(imagenes);
-            
+            btnSiguiente.setEnabled(false);
+            btnAtras.setEnabled(true);
       
         } else {
             JOptionPane.showMessageDialog(null, "No se ha verificado y/o agregado al responsable","Datos no verificados",JOptionPane.WARNING_MESSAGE);
@@ -162,12 +172,14 @@ public class FrmMatriculaContenedor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-       //Abrir siguiente form
-       CtrlResponsable responsableCtrl = new CtrlResponsable();
+        //Abrir siguiente form
+        CtrlResponsable responsableCtrl = new CtrlResponsable();
         responsableCtrl.setForm(0);
         FrmVerificarDUI dui = new FrmVerificarDUI();
         jDesktopMatricula.add(dui);
         dui.setVisible(true);
+        btnSiguiente.setEnabled(true);
+        btnAtras.setEnabled(false);
         /*
         //Cambiando imagen
         Icon imagenes;
