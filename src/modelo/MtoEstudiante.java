@@ -222,6 +222,108 @@ public class MtoEstudiante {
     }
     // </editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Agregando notas predeterminada">
+    
+    public void obtenerUltimoIdNota(){
+
+        try{
+            
+            //Preparando sentencia sql
+            String sql = "SELECT max(id_nota) FROM nota";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+               estudianteCtrl.setIdNota(rs.getInt(1));
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        
+    }
+    
+     public void obtenerCountIdIndicador(){
+
+        try{
+            
+            //Preparando sentencia sql
+            String sql = "SELECT count(id_indicador) FROM indicador_logro WHERE nivel_academico = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            cmd.setInt(1, estudianteCtrl.getNivelAcademico());
+            
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+               estudianteCtrl.setIdIndicadorCount(rs.getInt(1));
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        
+    }
+     
+    public int[] obtenerIndicador(){
+        int[] indicador = new int[1]; 
+        try{
+            
+            //Preparando sentencia sql
+            String sql = "SELECT id_indicador FROM indicador_logro WHERE nivel_academico = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            cmd.setInt(1, estudianteCtrl.getNivelAcademico());
+            
+            ResultSet rs = cmd.executeQuery();
+            indicador = new int[estudianteCtrl.getIdIndicadorCount()];
+            int j = 0;
+            while(rs.next()){
+                 indicador[j] = rs.getInt(j + 1);
+                 //System.out.println(String.valueOf(indicador[j]));
+                 int nota = estudianteCtrl.getIdNota() + 1;
+                 estudianteCtrl.setIdNota(nota);
+                 this.insertarNota(indicador[j], nota);
+            }
+            j++;
+            
+            
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+         
+        return indicador;
+    }
+     
+    public void insertarNota(int indicador, int idNota){
+        try{
+            
+            //Preparando sentencia
+            String sql = "INSERT INTO nota(id_nota, id_indicador, id_n_predeterminada, id_estudiante, id_trimestre) VALUES(?, ?, ?, ?, ?)";
+            
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            cmd.setInt(1, idNota);
+            cmd.setInt(2, indicador);
+            cmd.setInt(3, estudianteCtrl.getNotaPredeterminada());
+            cmd.setInt(4, estudianteCtrl.getIdEstudiante());
+            cmd.setInt(5, estudianteCtrl.getIdtrimestre());
+            
+            if (!cmd.execute()) {
+                // JOptionPane.showMessageDialog(null, "Se ha agregado notas correctamente");
+            } else {
+                //JOptionPane.showMessageDialog(null, "No se ha agregado el estudiante correctamente");
+            }
+            
+        
+        } catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);
+        }
+
+    }
+    //</editor-fold>
+    
     //Obteniendo id del grado_Seccion
     public void obtenerCampos(String apellido, String nombre, String genero, int idResponsable, int gs){
 

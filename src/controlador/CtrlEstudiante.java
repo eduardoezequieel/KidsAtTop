@@ -25,6 +25,11 @@ public class CtrlEstudiante {
     private static int idGradoSeccion;
     private static byte[] foto;
     private static String anioSeccion;
+    private static int idNota;
+    private static int idIndicadorCount;
+    private static int notaPredeterminada = 4;
+    private static int idtrimestre = 1;
+    private static int nivelAcademico;
 
     /**
      * @return the idEstudiante
@@ -206,6 +211,77 @@ public class CtrlEstudiante {
      */
     public void setAnioSeccion(String anioSeccion) {
         this.anioSeccion = anioSeccion;
+    }
+
+    /**
+     * @return the idNota
+     */
+    public int getIdNota() {
+        return idNota;
+    }
+
+    /**
+     * @param idNota the idNota to set
+     */
+    public void setIdNota(int idNota) {
+        this.idNota = idNota;
+    }
+
+
+    /**
+     * @return the idIndicadorCount
+     */
+    public int getIdIndicadorCount() {
+        return idIndicadorCount;
+    }
+
+    /**
+     * @param idIndicadorCount the idIndicadorCount to set
+     */
+    public void setIdIndicadorCount(int idIndicadorCount) {
+        this.idIndicadorCount = idIndicadorCount;
+    }
+
+    /**
+     * @return the notaPredeterminada
+     */
+    public int getNotaPredeterminada() {
+        return notaPredeterminada;
+    }
+
+    /**
+     * @param notaPredeterminada the notaPredeterminada to set
+     */
+    public void setNotaPredeterminada(int notaPredeterminada) {
+        this.notaPredeterminada = notaPredeterminada;
+    }
+
+    /**
+     * @return the idtrimestre
+     */
+    public int getIdtrimestre() {
+        return idtrimestre;
+    }
+
+    /**
+     * @param idtrimestre the idtrimestre to set
+     */
+    public void setIdtrimestre(int idtrimestre) {
+        this.idtrimestre = idtrimestre;
+    }
+
+    /**
+     * @return the nivelAcademico
+     */
+    public int getNivelAcademico() {
+        return nivelAcademico;
+    }
+
+    /**
+     * @param nivelAcademico the nivelAcademico to set
+     */
+    public void setNivelAcademico(int nivelAcademico) {
+        this.nivelAcademico = nivelAcademico;
     }
     
 }

@@ -37,9 +37,9 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
         
-        //llenando combobox
-        this.llenarGS();
-        
+        //llenando combobox 
+        this.llenarAnio();
+        this.llenarGradoSeccion();
         jDireccion.setLineWrap(true);
         
         //Mostrando responsable
@@ -88,6 +88,8 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         jCalendario = new com.toedter.calendar.JDateChooser();
         ycAño = new com.toedter.calendar.JYearChooser();
+        cbAño = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -97,7 +99,7 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Dirección:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -132,7 +134,7 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Grado/Sección:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, -1, -1));
 
         jResponsable.setEditable(false);
         jResponsable.setBackground(new java.awt.Color(33, 37, 41));
@@ -208,7 +210,7 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         cbGS.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         cbGS.setForeground(new java.awt.Color(255, 255, 255));
         cbGS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cbGS, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 240, -1));
+        jPanel1.add(cbGS, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 130, -1));
 
         jDireccion.setBackground(new java.awt.Color(33, 37, 41));
         jDireccion.setColumns(20);
@@ -226,7 +228,7 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jDireccion);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 240, 120));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 350, 240, 90));
 
         jPanel2.setBackground(new java.awt.Color(61, 66, 72));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -274,6 +276,37 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         ycAño.setStartYear(2020);
         jPanel1.add(ycAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 90, 30));
 
+        cbAño.setBackground(new java.awt.Color(33, 37, 41));
+        cbAño.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbAño.setForeground(new java.awt.Color(254, 254, 254));
+        cbAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbAño.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbAñoItemStateChanged(evt);
+            }
+        });
+        cbAño.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbAñoMouseClicked(evt);
+            }
+        });
+        cbAño.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cbAñoPropertyChange(evt);
+            }
+        });
+        cbAño.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbAñoKeyPressed(evt);
+            }
+        });
+        jPanel1.add(cbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 130, -1));
+
+        jLabel11.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel11.setText("Año:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 680));
 
         pack();
@@ -315,7 +348,16 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "No se ha agregado el estudiante correctamente");
             }
+            
+            estudiante.obtenerUltimoIdNota();
+            String nivelSubstring = gradoSeccion.substring(7,8);
+            int nivel = Integer.parseInt(nivelSubstring);
+            estudianteCtrl.setNivelAcademico(nivel);
+            estudiante.obtenerCountIdIndicador();
+            estudiante.obtenerIndicador();
+            
         }
+
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnCargarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarFotoActionPerformed
@@ -410,10 +452,41 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         val.verificarLetras(evt);
     }//GEN-LAST:event_jResponsableKeyTyped
 
-    public void llenarGS(){
-        
-        //Llenando combobox
+    private void cbAñoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAñoItemStateChanged
+        this.llenarGradoSeccion();
+    }//GEN-LAST:event_cbAñoItemStateChanged
+
+    private void cbAñoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbAñoMouseClicked
+
+    }//GEN-LAST:event_cbAñoMouseClicked
+
+    private void cbAñoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cbAñoPropertyChange
+
+    }//GEN-LAST:event_cbAñoPropertyChange
+
+    private void cbAñoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbAñoKeyPressed
+        // TODO add your handling code here:
+        val.verificarPegar(evt);
+    }//GEN-LAST:event_cbAñoKeyPressed
+
+    //Método para combobox del año
+    public void llenarAnio() {
+
+        //Seteando modelo del combo
+        cbAño.setModel(estudiante.llenarAnio());
+    }
+    
+
+    //Método para combobox de grado/seccion
+    public void llenarGradoSeccion() {
+
+        //Obteniendo parametro del año
+        String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
+        estudianteCtrl.setAnioSeccion(anio);
+
+        //Seteando modelo del combo
         cbGS.setModel(estudiante.llenarGS());
+        
     }
     
     public void limpiarCampos(){
@@ -426,19 +499,21 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
         rbF.setSelected(false);
         rbM.setSelected(false);
         jDireccion.setText("");
-        lblFoto.setText("");
+        lblFoto.setIcon(null);
         
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCargarFoto;
+    private javax.swing.JComboBox<String> cbAño;
     private javax.swing.JComboBox<String> cbGS;
     private javax.swing.JTextField jApellido;
     private com.toedter.calendar.JDateChooser jCalendario;
     private javax.swing.JTextArea jDireccion;
     private javax.swing.JTextField jFecha;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
