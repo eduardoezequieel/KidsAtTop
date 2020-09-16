@@ -729,18 +729,18 @@ public class MtoConducta {
                 cmd.setString(3, seccion);
                 ResultSet rs = cmd.executeQuery();
                 while (rs.next()) {
-                    
-                    array[posicion]=rs.getString(posicion+1);
+                    array[posicion]=rs.getString(1);
+                    posicion++;
                 }
-                posicion++;
+                
             
             }
             catch(Exception e){
             
-                System.out.println(e.toString());
+                JOptionPane.showMessageDialog(null, e);
             
             }
-            
+      
             return array;
         
         }

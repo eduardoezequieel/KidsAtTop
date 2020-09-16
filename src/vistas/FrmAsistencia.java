@@ -848,19 +848,16 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
       int cantidadEstudiantes=conducta.longitudGradoSeccion(año,grado,seccion);
       
        System.out.println(cantidadEstudiantes);
+       
+       conducta.cargarEstudiantes(año, grado, seccion);
 
         
       String[] est;
       est=new String[cantidadEstudiantes];
-      
-        for (int i = 0; i < est.length; i++) {
-            
-            
-            
-            est=conducta.cargarEstudiantes(año, grado, seccion);
-        
-            System.out.println(est[i]);
-        }
+      est=conducta.cargarEstudiantes(año, grado, seccion);
+              for (int i = 0; i < est.length; i++) {
+                System.out.println(est[i]);
+            }
         
                     
     }//GEN-LAST:event_btnCerrarActionPerformed
