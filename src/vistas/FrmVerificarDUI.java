@@ -42,19 +42,21 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         pnlResponsable = new javax.swing.JPanel();
-        jNombre = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jApellido = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jCorreo = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        cbParentesco = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        jNombre = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jApellido = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jTel = new javax.swing.JFormattedTextField();
+        jLayeredPane2 = new javax.swing.JLayeredPane();
+        cbParentesco = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jCorreo = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         pnlVerificar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btnVerificar = new javax.swing.JButton();
@@ -71,75 +73,6 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
 
         pnlResponsable.setBackground(new java.awt.Color(33, 37, 41));
         pnlResponsable.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jNombre.setBackground(new java.awt.Color(33, 37, 41));
-        jNombre.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jNombre.setForeground(new java.awt.Color(255, 255, 255));
-        jNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        jNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jNombreKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jNombreKeyTyped(evt);
-            }
-        });
-        pnlResponsable.add(jNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 230, 30));
-
-        jLabel1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Parentesco:");
-        pnlResponsable.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 110, 30));
-
-        jApellido.setBackground(new java.awt.Color(33, 37, 41));
-        jApellido.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jApellido.setForeground(new java.awt.Color(255, 255, 255));
-        jApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jApellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        jApellido.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jApellidoKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jApellidoKeyTyped(evt);
-            }
-        });
-        pnlResponsable.add(jApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 230, 30));
-
-        jLabel4.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Apellido:");
-        pnlResponsable.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 80, 30));
-
-        jLabel5.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Teléfono:");
-        pnlResponsable.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 80, 30));
-
-        jCorreo.setBackground(new java.awt.Color(33, 37, 41));
-        jCorreo.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jCorreo.setForeground(new java.awt.Color(255, 255, 255));
-        jCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jCorreo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        jCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jCorreoKeyPressed(evt);
-            }
-        });
-        pnlResponsable.add(jCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 230, 30));
-
-        jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Correo Electrónico:");
-        pnlResponsable.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 160, 30));
-
-        cbParentesco.setBackground(new java.awt.Color(33, 37, 41));
-        cbParentesco.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        cbParentesco.setForeground(new java.awt.Color(255, 255, 255));
-        cbParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbParentesco.setBorder(null);
-        pnlResponsable.add(cbParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 230, -1));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -172,10 +105,53 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         });
         pnlResponsable.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, 180, 90));
 
+        jLayeredPane1.setNextFocusableComponent(jLayeredPane2);
+        jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jNombre.setBackground(new java.awt.Color(33, 37, 41));
+        jNombre.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jNombre.setForeground(new java.awt.Color(255, 255, 255));
+        jNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jNombreKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jNombreKeyTyped(evt);
+            }
+        });
+        jLayeredPane1.add(jNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 230, 30));
+
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Nombre:");
-        pnlResponsable.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 80, 30));
+        jLayeredPane1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 80, 30));
+
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Apellido:");
+        jLayeredPane1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 80, 30));
+
+        jApellido.setBackground(new java.awt.Color(33, 37, 41));
+        jApellido.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jApellido.setForeground(new java.awt.Color(255, 255, 255));
+        jApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jApellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jApellidoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jApellidoKeyTyped(evt);
+            }
+        });
+        jLayeredPane1.add(jApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 230, 30));
+
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Teléfono:");
+        jLayeredPane1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 80, 30));
 
         jTel.setBackground(new java.awt.Color(33, 37, 41));
         jTel.setForeground(new java.awt.Color(255, 255, 255));
@@ -186,9 +162,45 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         }
         jTel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTel.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        pnlResponsable.add(jTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 230, 30));
+        jLayeredPane1.add(jTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 230, 30));
 
-        jPanel1.add(pnlResponsable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 1060, 320));
+        pnlResponsable.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 270, 230));
+
+        jLayeredPane2.setNextFocusableComponent(jLayeredPane1);
+        jLayeredPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cbParentesco.setBackground(new java.awt.Color(33, 37, 41));
+        cbParentesco.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbParentesco.setForeground(new java.awt.Color(255, 255, 255));
+        cbParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbParentesco.setBorder(null);
+        jLayeredPane2.add(cbParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 230, -1));
+
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Parentesco:");
+        jLayeredPane2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 110, 30));
+
+        jCorreo.setBackground(new java.awt.Color(33, 37, 41));
+        jCorreo.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jCorreo.setForeground(new java.awt.Color(255, 255, 255));
+        jCorreo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jCorreo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jCorreoKeyPressed(evt);
+            }
+        });
+        jLayeredPane2.add(jCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 230, 30));
+
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Correo Electrónico:");
+        jLayeredPane2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 30));
+
+        pnlResponsable.add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 250, 280));
+
+        jPanel1.add(pnlResponsable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 1060, 350));
 
         pnlVerificar.setBackground(new java.awt.Color(33, 37, 41));
         pnlVerificar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -396,6 +408,8 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JTextField jNombre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;

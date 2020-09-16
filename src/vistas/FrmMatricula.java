@@ -64,177 +64,50 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
 
         rbGenero = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jResponsable = new javax.swing.JTextField();
-        jNombre = new javax.swing.JTextField();
-        jFecha = new javax.swing.JTextField();
-        jApellido = new javax.swing.JTextField();
-        rbF = new javax.swing.JRadioButton();
-        rbM = new javax.swing.JRadioButton();
-        cbGS = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jDireccion = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         lblFoto = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         btnCargarFoto = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jCalendario = new com.toedter.calendar.JDateChooser();
         ycAño = new com.toedter.calendar.JYearChooser();
-        cbAño = new javax.swing.JComboBox<>();
+        jLayeredPane2 = new javax.swing.JLayeredPane();
+        cbGS = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        jResponsable = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jDireccion = new javax.swing.JTextArea();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        jLabel3 = new javax.swing.JLabel();
+        jNombre = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jApellido = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jFecha = new javax.swing.JTextField();
+        jCalendario = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
+        cbAño = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        rbM = new javax.swing.JRadioButton();
+        rbF = new javax.swing.JRadioButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(33, 37, 41));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Dirección:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, -1, -1));
-
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Una vez ingresados los datos del responsable, se procedera a la matricula del nuevo estudiante.");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nombre:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, 20));
-
-        jLabel4.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Apellido:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Fecha de nacimiento:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Género:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Responsable:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Grado/Sección:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, -1, -1));
-
-        jResponsable.setEditable(false);
-        jResponsable.setBackground(new java.awt.Color(33, 37, 41));
-        jResponsable.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jResponsable.setForeground(new java.awt.Color(255, 255, 255));
-        jResponsable.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jResponsable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        jResponsable.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        jResponsable.setEnabled(false);
-        jResponsable.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jResponsableKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jResponsableKeyTyped(evt);
-            }
-        });
-        jPanel1.add(jResponsable, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, 240, 30));
-
-        jNombre.setBackground(new java.awt.Color(33, 37, 41));
-        jNombre.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jNombre.setForeground(new java.awt.Color(255, 255, 255));
-        jNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        jNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jNombreKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jNombreKeyTyped(evt);
-            }
-        });
-        jPanel1.add(jNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 240, 30));
-
-        jFecha.setEditable(false);
-        jFecha.setBackground(new java.awt.Color(33, 37, 41));
-        jFecha.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jFecha.setForeground(new java.awt.Color(255, 255, 255));
-        jFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jFecha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        jPanel1.add(jFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 190, 30));
-
-        jApellido.setBackground(new java.awt.Color(33, 37, 41));
-        jApellido.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jApellido.setForeground(new java.awt.Color(255, 255, 255));
-        jApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jApellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        jApellido.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jApellidoKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jApellidoKeyTyped(evt);
-            }
-        });
-        jPanel1.add(jApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 240, 30));
-
-        rbF.setBackground(new java.awt.Color(33, 37, 41));
-        rbGenero.add(rbF);
-        rbF.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        rbF.setForeground(new java.awt.Color(255, 255, 255));
-        rbF.setText("Femenino");
-        jPanel1.add(rbF, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, -1, -1));
-
-        rbM.setBackground(new java.awt.Color(33, 37, 41));
-        rbGenero.add(rbM);
-        rbM.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        rbM.setForeground(new java.awt.Color(255, 255, 255));
-        rbM.setText("Masculino");
-        jPanel1.add(rbM, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, -1, -1));
-
-        cbGS.setBackground(new java.awt.Color(33, 37, 41));
-        cbGS.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        cbGS.setForeground(new java.awt.Color(255, 255, 255));
-        cbGS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cbGS, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 130, -1));
-
-        jDireccion.setBackground(new java.awt.Color(33, 37, 41));
-        jDireccion.setColumns(20);
-        jDireccion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        jDireccion.setForeground(new java.awt.Color(255, 255, 255));
-        jDireccion.setRows(5);
-        jDireccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
-        jDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jDireccionKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jDireccionKeyTyped(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jDireccion);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 350, 240, 90));
-
         jPanel2.setBackground(new java.awt.Color(61, 66, 72));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel2.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 200));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 180, 180, 220));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 160, 180, 220));
 
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAgregar_default.png"))); // NOI18N
         btnAgregar.setBorder(null);
@@ -256,12 +129,134 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
                 btnCargarFotoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCargarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 410, 180, 80));
+        jPanel1.add(btnCargarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 390, 180, 80));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Año Ingreso:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, -1, -1));
+
+        ycAño.setEndYear(2021);
+        ycAño.setStartYear(2020);
+        jPanel1.add(ycAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, 90, 30));
+
+        jLayeredPane2.setNextFocusableComponent(jLayeredPane1);
+        jLayeredPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cbGS.setBackground(new java.awt.Color(33, 37, 41));
+        cbGS.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbGS.setForeground(new java.awt.Color(255, 255, 255));
+        cbGS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLayeredPane2.add(cbGS, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 240, -1));
+
+        jLabel8.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Grado/Sección:");
+        jLayeredPane2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 30));
+
+        jResponsable.setEditable(false);
+        jResponsable.setBackground(new java.awt.Color(33, 37, 41));
+        jResponsable.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jResponsable.setForeground(new java.awt.Color(255, 255, 255));
+        jResponsable.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jResponsable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jResponsable.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        jResponsable.setEnabled(false);
+        jResponsable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jResponsableKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jResponsableKeyTyped(evt);
+            }
+        });
+        jLayeredPane2.add(jResponsable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 240, 30));
+
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Responsable:");
+        jLayeredPane2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Dirección:");
+        jLayeredPane2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+
+        jDireccion.setBackground(new java.awt.Color(33, 37, 41));
+        jDireccion.setColumns(20);
+        jDireccion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jDireccion.setForeground(new java.awt.Color(255, 255, 255));
+        jDireccion.setRows(5);
+        jDireccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jDireccionKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jDireccionKeyTyped(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jDireccion);
+
+        jLayeredPane2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 240, 160));
+
+        jPanel1.add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 260, 360));
+
+        jLayeredPane1.setNextFocusableComponent(jLayeredPane2);
+        jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Nombre:");
+        jLayeredPane1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 20));
+
+        jNombre.setBackground(new java.awt.Color(33, 37, 41));
+        jNombre.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jNombre.setForeground(new java.awt.Color(255, 255, 255));
+        jNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jNombreKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jNombreKeyTyped(evt);
+            }
+        });
+        jLayeredPane1.add(jNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 240, 30));
+
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Apellido:");
+        jLayeredPane1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
+        jApellido.setBackground(new java.awt.Color(33, 37, 41));
+        jApellido.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jApellido.setForeground(new java.awt.Color(255, 255, 255));
+        jApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jApellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jApellidoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jApellidoKeyTyped(evt);
+            }
+        });
+        jLayeredPane1.add(jApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 240, 30));
+
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Fecha de nacimiento:");
+        jLayeredPane1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        jFecha.setEditable(false);
+        jFecha.setBackground(new java.awt.Color(33, 37, 41));
+        jFecha.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        jFecha.setForeground(new java.awt.Color(255, 255, 255));
+        jFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jFecha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        jLayeredPane1.add(jFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 190, 30));
 
         jCalendario.setMaxSelectableDate(new java.util.Date(1483254087000L));
         jCalendario.setMinSelectableDate(new java.util.Date(1325401287000L));
@@ -270,11 +265,12 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
                 jCalendarioPropertyChange(evt);
             }
         });
-        jPanel1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 50, -1));
+        jLayeredPane1.add(jCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 50, -1));
 
-        ycAño.setEndYear(2021);
-        ycAño.setStartYear(2020);
-        jPanel1.add(ycAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 90, 30));
+        jLabel11.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel11.setText("Año:");
+        jLayeredPane1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         cbAño.setBackground(new java.awt.Color(33, 37, 41));
         cbAño.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -300,12 +296,28 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
                 cbAñoKeyPressed(evt);
             }
         });
-        jPanel1.add(cbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 130, -1));
+        jLayeredPane1.add(cbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 240, -1));
 
-        jLabel11.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel11.setText("Año:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Género:");
+        jLayeredPane1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+
+        rbM.setBackground(new java.awt.Color(33, 37, 41));
+        rbGenero.add(rbM);
+        rbM.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        rbM.setForeground(new java.awt.Color(255, 255, 255));
+        rbM.setText("Masculino");
+        jLayeredPane1.add(rbM, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+
+        rbF.setBackground(new java.awt.Color(33, 37, 41));
+        rbGenero.add(rbF);
+        rbF.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        rbF.setForeground(new java.awt.Color(255, 255, 255));
+        rbF.setText("Femenino");
+        jLayeredPane1.add(rbF, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, -1, -1));
+
+        jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 270, 360));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 680));
 
@@ -522,6 +534,8 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JTextField jNombre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

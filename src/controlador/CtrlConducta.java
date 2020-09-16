@@ -23,10 +23,10 @@ public class CtrlConducta {
     static private int idGradoSeccion;
     static private int idTipoAsistencia;
     static private int idTipoFalta;
-    private String nombre;
-     private String apellido;
-    private String grado;
-     private String seccion;
+    static private String nombre;
+    static private String apellido;
+    static private String grado;
+    static private String seccion;
 
     /**
      * @return the idConducta

@@ -290,6 +290,11 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         });
         jPanel1.add(cbAsistencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 320, 30));
 
+        tAsistencia = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tAsistencia.setBackground(new java.awt.Color(33, 37, 41));
         tAsistencia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         tAsistencia.setForeground(new java.awt.Color(255, 255, 255));
@@ -606,7 +611,9 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         if (txtObservacion.getText().trim().isEmpty() || txtFecha.getText().trim().isEmpty()) {
 
             JOptionPane.showMessageDialog(null, "Campos vacios.", "Rellene los campos faltantes.", JOptionPane.WARNING_MESSAGE);
-        } else {
+        } 
+        else 
+        {
 
             //Dividiendo el apellido y el nombre
             String estudiante = cbEstudiante.getItemAt(cbEstudiante.getSelectedIndex());
@@ -616,15 +623,15 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
             String gSeccion = cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
             String[] parte2 = gSeccion.split("-");
-            String grado = parte[0];
-            String seccion = parte[1];
+            String grado = parte2[0];
+            String seccion = parte2[1];
 
             //Obteniendo id del estudiante
             IdEstudiante = conducta.obtenerIdEstudiante(apellido, nombre);
 
             int idConducta = conducta.obtenerUltimoIdAs() + 1;
 
-            boolean retorno=conducta.comprobarAsistencia();
+           
             int tipoAsistencia = conducta.obtenerIdTipoAsistencia(String.valueOf(cbAsistencia.getItemAt(cbAsistencia.getSelectedIndex())));
 
             as.setApellido(apellido);
@@ -632,11 +639,15 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
             as.setGrado(grado);
             as.setSeccion(seccion);
             as.setFecha(txtFecha.getText());
+  
+            
+        
 
-            if (retorno==true) {
-
+            if (conducta.comprobarAsistencia()) {
                 JOptionPane.showMessageDialog(null, "Ya ha agregado un registro con estas credenciales");
-            } else {
+            }
+            else 
+            {
 
                 as.setIdConducta(idConducta);
                 as.setIdEstudiante(IdEstudiante);
@@ -652,7 +663,10 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                     mod.setId_usuario(mod.getId_usuario());
                     mod.setId_bitacora(id);
                     add.agregarBitacoraAgregarAsistencia(mod);
-                   
+                    this.limpiarTabla();
+                    this.mostrarTabla();
+                    this.resetBusqueda();
+
                 } else {
 
                     JOptionPane.showMessageDialog(null, "No se han agregado los datos correctamente");
@@ -661,10 +675,6 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
             }
 
-            this.mostrarTabla();
-            this.limpiarTabla();
-            this.limpiar();
-            this.resetBusqueda();
 
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -748,7 +758,10 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
             if (conducta.actualizarAsistencia()) {
 
                 JOptionPane.showMessageDialog(null, "Ha actualizado los datos correctamente");
-
+              
+                this.limpiarTabla();
+                this.mostrarTabla();
+                this.resetBusqueda();
                 MtoBitacoras add = new MtoBitacoras();
                 int id = add.capturarIdBitacora() + 1;
                 mod.setId_usuario(mod.getId_usuario());
@@ -760,10 +773,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
             }
 
-            this.mostrarTabla();
-            this.limpiarTabla();
-            this.limpiar();
-            this.resetBusqueda();
+           
 
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
