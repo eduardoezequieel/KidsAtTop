@@ -24,6 +24,7 @@ import modelo.Conexion;
 import modelo.MtoBitacoras;
 import controlador.CtrlLoginUsuario;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -74,14 +75,36 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         Date fecha = new Date();
         jCalendario.setMaxSelectableDate(fecha);
        
-
+        Calendar fechas = new GregorianCalendar();
+  
+        //Obtenemos el valor del año, mes, día,
+        //hora, minuto y segundo del sistema
+        //usando el método get y el parámetro correspondiente                                                     
+        String año = String.valueOf(fechas.get(Calendar.YEAR));
+        String mes = String.valueOf(fechas.get(Calendar.MONTH));
+        String dia = String.valueOf(fechas.get(Calendar.DAY_OF_MONTH));
+       
+        txtFecha.setText(mes+"-"+dia+"-"+año);
+        
+        modelo.addColumn("IdAsistencia");
         modelo.addColumn("Observacion");
         modelo.addColumn("Estudiante");
         modelo.addColumn("Fecha");
         modelo.addColumn("Asistencia");
 
         tAsistencia.setModel(modelo);
-        this.mostrarTabla();
+        tAsistencia.getColumnModel().getColumn(0).setMaxWidth(0);
+        tAsistencia.getColumnModel().getColumn(0).setMinWidth(0);
+        tAsistencia.getColumnModel().getColumn(1).setMaxWidth(0);
+        tAsistencia.getColumnModel().getColumn(1).setMinWidth(0);
+       // this.mostrarTabla();
+       
+        String gradoSeccion=cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
+        String grado = gradoSeccion.substring(0,8);
+        String seccion = gradoSeccion.substring(9);
+        
+        System.out.println(grado);
+        System.out.println(seccion);
 
         btnActualizar.setEnabled(false);
         btnSuspender.setEnabled(false);
@@ -137,15 +160,25 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
     private void mostrarTabla() {
 
+        limpiarTabla();
+        String gradoSeccion=cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
+        String grado = gradoSeccion.substring(0,8);
+        String seccion = gradoSeccion.substring(9);
+        String anio=cbAño.getItemAt(cbAño.getSelectedIndex());
+        String fecha=txtFecha.getText();
         Conexion con = new Conexion();
         Connection datos;
         try {
             datos = con.conectar();
-            String sql = "SELECT c.observacion, CONCAT(e.apellido,'-',e.nombre) as Estudiante, c.fecha,t.tipo_asistencia FROM control_asistencia c, estudiante e,tipo_asistencia t WHERE c.id_estudiante = e.id_estudiante and c.id_tipo_asistencia=t.id_tipo_asistencia";
+            String sql = "SELECT c.id_asistencia, .observacion, CONCAT(e.apellido,'-',e.nombre) as Estudiante, c.fecha,t.tipo_asistencia FROM control_asistencia c, estudiante e,tipo_asistencia t, grado_seccion gs, grado g, seccion s WHERE c.id_estudiante = e.id_estudiante and c.id_tipo_asistencia=t.id_tipo_asistencia and e.id_grado_seccion = gs.id_grado_seccion and gs.id_seccion = s.id_seccion and gs.id_grado = g.id_grado and g.grado = ? and s.seccion = ? and gs.anio_seccion = ? and c.fecha = ? ORDER BY e.apellido ASC";
             PreparedStatement dato = datos.prepareStatement(sql);
+            dato.setString(1, grado);
+            dato.setString(2, seccion);
+            dato.setString(3,anio);
+            dato.setString(4, fecha);
             ResultSet rs = dato.executeQuery();
             while (rs.next()) {
-                Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)};
+                Object fila[] = {String.valueOf(rs.getInt(1)), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5)};
                 modelo.addRow(fila);
             }
             tAsistencia.setModel(modelo);
@@ -549,9 +582,11 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
             String mes = Integer.toString(mesInt);
             String fecha = (mes + "-" + dia + "-" + año);
             txtFecha.setText(fecha);
+            mostrarTabla();
 
         } catch (Exception ex) {
             System.out.println(ex.toString());
+            
         }
     }//GEN-LAST:event_jCalendarioPropertyChange
 
@@ -615,11 +650,13 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     private void cbAñoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAñoItemStateChanged
         // TODO add your handling code here:
         this.llenarGradoSeccion();
+        mostrarTabla();
     }//GEN-LAST:event_cbAñoItemStateChanged
 
     private void cbGradoSeccionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbGradoSeccionItemStateChanged
         // TODO add your handling code here:
         this.llenarEstudiante();
+        mostrarTabla();
     }//GEN-LAST:event_cbGradoSeccionItemStateChanged
 
     private void tAsistenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tAsistenciaMouseClicked
@@ -630,13 +667,13 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         btnSuspender.setEnabled(true);
         btnCerrar.setEnabled(false);
         int fila = tAsistencia.getSelectedRow();
-        String observacion = String.valueOf(tAsistencia.getValueAt(fila, 0));
-        String fecha = String.valueOf(tAsistencia.getValueAt(fila, 2));
+        String observacion = String.valueOf(tAsistencia.getValueAt(fila, 1));
+        String fecha = String.valueOf(tAsistencia.getValueAt(fila, 3));
 
         txtFecha.setText(fecha);
         txtObservacion.setText(observacion);
 
-        String student = String.valueOf(tAsistencia.getValueAt(fila, 1));
+        String student = String.valueOf(tAsistencia.getValueAt(fila, 2));
         String[] parte = student.split("-");
         String apellido = parte[0];
         String nombre = parte[1];
@@ -650,8 +687,8 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         cbAño.setSelectedItem(itemAnio);
 
         //obteniendo id de conducta 
-        int idConducta = conducta.obtenerIdAsistencia(observacion, fecha, apellido, nombre);
-        txtId.setText(String.valueOf(idConducta));
+        int id=Integer.parseInt(tAsistencia.getValueAt(fila, 0).toString());
+        txtId.setText(String.valueOf(id));
     }//GEN-LAST:event_tAsistenciaMouseClicked
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed

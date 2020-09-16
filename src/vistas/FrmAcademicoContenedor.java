@@ -280,7 +280,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jGestionarSeccionesActionPerformed
 
     private void jGestionarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarAsistenciaActionPerformed
-        try{
+        
             
             //Abriendo formulario de Controlar Asistencia
             FrmAsistencia asistencia = new FrmAsistencia(mod);
@@ -300,9 +300,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
 
             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
             jGestionarSecciones.setIcon(Imagenes);
-        } catch(Exception ex){
-           JOptionPane.showMessageDialog(null, "No se pudo abrir el formulario porque existe algunos campos vacios.", "Revise si hay secciones y estudiantes existentes en el sistema", JOptionPane.INFORMATION_MESSAGE);
-        }
+       
         
     }//GEN-LAST:event_jGestionarAsistenciaActionPerformed
 
