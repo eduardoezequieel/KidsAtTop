@@ -6,6 +6,9 @@
 package vistas;
 
 import controlador.CtrlLoginUsuario;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -136,6 +139,7 @@ public class FrmUsuarioContenedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgregarUsuarioActionPerformed
+        try {
             FrmAgregarUsuario usr = new FrmAgregarUsuario(mod);
             jDesktop.add(usr);
             usr.setVisible(true);
@@ -146,9 +150,13 @@ public class FrmUsuarioContenedor extends javax.swing.JFrame {
             
             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarUsuariosDefault.png"));
             jAdministrarUsuarios.setIcon(Imagenes);
+        } catch (ParseException ex) {
+            Logger.getLogger(FrmUsuarioContenedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jAgregarUsuarioActionPerformed
 
     private void jAdministrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdministrarUsuariosActionPerformed
+        try {
             FrmGestionarUsuarios usr = new FrmGestionarUsuarios(mod);
             jDesktop.add(usr);
             usr.setVisible(true);
@@ -159,6 +167,9 @@ public class FrmUsuarioContenedor extends javax.swing.JFrame {
             
             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarUsuariosPressed.png"));
             jAdministrarUsuarios.setIcon(Imagenes);
+        } catch (ParseException ex) {
+            Logger.getLogger(FrmUsuarioContenedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jAdministrarUsuariosActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
