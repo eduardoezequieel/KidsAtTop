@@ -275,11 +275,22 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         
             
             //se crea la conexion
-            Connection cn = new Conexion().conectar();
-            JasperReport jr = JasperCompileManager.compileReport("src/reportes/RptEstudiantesPorGradoSinParametro.jrxml");
-            JasperPrint jp = JasperFillManager.fillReport(jr, null, cn);
-            JasperViewer jv = new JasperViewer(jp);
-            jv.setVisible(true);
+            Conexion con = new Conexion();
+                String reports = "RptEstudiantesPorGradoSinParametro";
+                String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
+                String mensaje2 = "";
+                archivo = URLDecoder.decode(archivo,"UTF-8");
+                JasperReport report =
+                JasperCompileManager.compileReport(archivo);
+                Map<String,Object> parametros = new HashMap<String,Object>();
+                parametros.put("",mensaje2); 
+                JasperPrint print = JasperFillManager.fillReport(report,
+                parametros, con.conectar());
+                JasperViewer visor = new JasperViewer(print, false);
+                visor.setTitle("Reporte de Alumnos por grado");
+                visor.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                visor.setVisible(true);
+                reports="";
             
             } catch(Exception e){
                 System.out.println(e.getMessage());
