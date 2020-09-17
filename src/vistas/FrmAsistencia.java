@@ -39,7 +39,6 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     CtrlLoginUsuario mod;
     DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
-    
 
     int idGS;
 
@@ -114,7 +113,6 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         this.mostrarTabla();
         this.centrarColumnas();
         txtObservacion.setLineWrap(true);
-        
 
     }
 
@@ -223,7 +221,6 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         btnSuspender.setEnabled(false);
         btnAgregar.setEnabled(true);
         cbEstudiante.setEnabled(true);
-
 
     }
 
@@ -654,9 +651,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
             if (conducta.comprobarAsistencia()) {
                 JOptionPane.showMessageDialog(null, "Ya ha agregado un registro con estas credenciales");
-            } 
-            else 
-            {
+            } else {
 
                 as.setIdConducta(idConducta);
                 as.setIdEstudiante(IdEstudiante);
@@ -711,9 +706,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         int fila = tAsistencia.getSelectedRow();
         String observacion = String.valueOf(tAsistencia.getValueAt(fila, 1));
         String fecha = String.valueOf(tAsistencia.getValueAt(fila, 3));
-        
-        
-        
+
         txtFecha.setText(fecha);
         txtObservacion.setText(observacion);
 
@@ -732,14 +725,10 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         String itemAnio = conducta.getItemAnio(apellido, nombre);
         cbAño.setSelectedItem(itemAnio);
 
-        
-        
-        
-        
         //obteniendo id de conducta 
         int id = Integer.parseInt(tAsistencia.getValueAt(fila, 0).toString());
         txtId.setText(String.valueOf(id));
-        
+
         cbEstudiante.setEnabled(false);
     }//GEN-LAST:event_tAsistenciaMouseClicked
 
@@ -838,28 +827,67 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
-        
-      String año = cbAño.getItemAt(cbAño.getSelectedIndex()); 
-      String gSeccion = cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
-      String[] parte2 = gSeccion.split("-");
-      String grado = parte2[0];
-      String seccion = parte2[1];
-      
-      int cantidadEstudiantes=conducta.longitudGradoSeccion(año,grado,seccion);
-      
-       System.out.println(cantidadEstudiantes);
-       
-       conducta.cargarEstudiantes(año, grado, seccion);
 
-        
-      String[] est;
-      est=new String[cantidadEstudiantes];
-      est=conducta.cargarEstudiantes(año, grado, seccion);
-              for (int i = 0; i < est.length; i++) {
-                System.out.println(est[i]);
+        String año = cbAño.getItemAt(cbAño.getSelectedIndex());
+        String gSeccion = cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
+        String[] parte2 = gSeccion.split("-");
+        String grado = parte2[0];
+        String seccion = parte2[1];
+
+        int cantidadEstudiantes = conducta.longitudGradoSeccion(año, grado, seccion);
+
+        System.out.println(cantidadEstudiantes);
+
+        conducta.cargarEstudiantes(año, grado, seccion);
+
+        String[] est;
+        est = new String[cantidadEstudiantes];
+        est = conducta.cargarEstudiantes(año, grado, seccion);
+
+            as.setGrado(grado);
+            as.setSeccion(seccion);
+            as.setFecha(txtFecha.getText());
+
+            
+        for (int i = 0; i < est.length; i++) {
+            
+             int id=conducta.obtenerUltimoIdAs()+1;
+
+            String estudiante = est[i];
+            String[] parte = estudiante.split("-");
+            String apellido = parte[0];
+            String nombre = parte[1];
+
+            as.setApellido(apellido);
+            as.setNombre(nombre);
+            IdEstudiante = conducta.obtenerIdEstudiante(apellido, nombre);
+
+            if (conducta.comprobarAsistencia()) {
+                
             }
+            else{
+                
+                as.setIdConducta(id);
+                as.setIdEstudiante(IdEstudiante);
+                as.setObservacion("El alumno ha asistido");
+                as.setFecha(txtFecha.getText());
+                as.setIdTipoAsistencia(2);
+                
+                if (conducta.IngresarAsistencia()) {
+                    
+                    
+                }
+            
+            
+            }
+        }
         
                     
+                    this.limpiarTabla();
+                    this.mostrarTabla();
+                    this.resetBusqueda();
+
+
     }//GEN-LAST:event_btnCerrarActionPerformed
 
 
