@@ -221,7 +221,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         btnSuspender.setEnabled(false);
         btnAgregar.setEnabled(true);
         cbEstudiante.setEnabled(true);
-
+        btnCerrar.setEnabled(true);
     }
 
     public void resetBusqueda() {
@@ -706,6 +706,8 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         int fila = tAsistencia.getSelectedRow();
         String observacion = String.valueOf(tAsistencia.getValueAt(fila, 1));
         String fecha = String.valueOf(tAsistencia.getValueAt(fila, 3));
+        String tipoAsistencia = String.valueOf(tAsistencia.getValueAt(fila, 4));
+        cbAsistencia.setSelectedItem(tipoAsistencia);
 
         txtFecha.setText(fecha);
         txtObservacion.setText(observacion);
