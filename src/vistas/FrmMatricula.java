@@ -359,7 +359,11 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
             int nivel = Integer.parseInt(nivelSubstring);
             estudianteCtrl.setNivelAcademico(nivel);
             estudiante.obtenerCountIdIndicador();
-            estudiante.obtenerIndicador();
+            for (int i = 0; i <3; i++) {
+                estudianteCtrl.setIdtrimestre(i + 1);
+                estudiante.obtenerIndicador();
+            }
+           
             
         }
 
