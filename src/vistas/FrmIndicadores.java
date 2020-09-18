@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import controlador.CtrlIndicadores;
 import controlador.CtrlLoginUsuario;
 import controlador.CtrlNotas;
 import java.awt.Color;
@@ -23,6 +24,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.Conexion;
+import modelo.MtoBitacoras;
+import modelo.MtoIndicadores;
 import modelo.MtoNotas;
 import modelo.Validaciones;
 
@@ -31,9 +34,21 @@ import modelo.Validaciones;
  * @author katy0
  */
 public class FrmIndicadores extends javax.swing.JInternalFrame {
-
+    
+    Validaciones val = new Validaciones();
+    CtrlIndicadores indicCtrl = new CtrlIndicadores();
+    MtoIndicadores indicadores = new MtoIndicadores();
+    CtrlLoginUsuario mod;
+    DefaultTableModel modelo = new DefaultTableModel();
+    
+    int idIndicador;
     
     public FrmIndicadores() {
+        initComponents();
+    }
+    
+    public FrmIndicadores(CtrlLoginUsuario mod){
+        this.mod = mod;
         initComponents();
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
@@ -42,6 +57,10 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
         tNotas.getTableHeader().setOpaque(false);
         tNotas.getTableHeader().setBackground(new Color(33, 37, 41));
         tNotas.getTableHeader().setForeground(new Color(254,254,254));
+        
+        this.llenarNivelAcad();
+        modelo.addColumn("Nivel");
+        tNotas.setModel(modelo);
     }
 
     
@@ -227,11 +246,11 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbNivelAcademicoKeyPressed
 
     private void jBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyPressed
- 
+        val.verificarPegar(evt);
     }//GEN-LAST:event_jBuscarKeyPressed
 
     private void jBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyTyped
-     
+        val.verificarAlfanumerico(evt);
     }//GEN-LAST:event_jBuscarKeyTyped
 
     private void cbNivelAcademicoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbNivelAcademicoItemStateChanged
@@ -251,10 +270,38 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
+        
+        if (jIndicador.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos vacíos.", "Rellene los campos faltantes.", JOptionPane.WARNING_MESSAGE);
+        } else {
+          
+            indicCtrl.setIndicador(jIndicador.getText());
+            indicCtrl.setId_indicador(idIndicador);
+            
+            indicadores.obtenerIdIndicador(cbNivelAcademico.getItemAt(cbNivelAcademico.getSelectedIndex()));
+          
+            if (indicadores.actualizarIndicador()) {
+                JOptionPane.showMessageDialog(null, "Ha actualizado los datos correctamente.");
+                MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraActualizaIndicador(mod);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se han actualizado los datos correctamente.");
+            }
+            
+            this.limpiarTabla();
+            this.limpiarCampos();
+            this.reiniciarBusqueda();
+            this.mostrarIndicadores();
+        }
+        
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void jIndicadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIndicadorKeyPressed
         // TODO add your handling code here:
+        val.verificarPegar(evt);
     }//GEN-LAST:event_jIndicadorKeyPressed
 
     private void jIndicadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIndicadorKeyReleased
@@ -263,8 +310,72 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
 
     private void jIndicadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIndicadorKeyTyped
         // TODO add your handling code here:
+        val.verificarAlfanumerico(evt);
     }//GEN-LAST:event_jIndicadorKeyTyped
 
+    
+       public void limpiarCampos() {
+
+        //limpiando campos
+        jIndicador.setText("");
+        jBuscar.setText("");
+        
+    }
+    
+    public void limpiarTabla() {
+        //Limpiar tabla
+        int filas = tNotas.getRowCount();
+        for (int i = 0; filas > i; i++) {
+            modelo.removeRow(0);
+        }
+    }
+    
+    public void reiniciarBusqueda(){
+        jBuscar.setText("");
+        String busqueda = jBuscar.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
+        tNotas.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(busqueda));
+    }
+    
+    
+    
+    public void mostrarIndicadores(){
+        Conexion con = new Conexion();
+        Connection datos;
+        String nivAcad = (String) cbNivelAcademico.getSelectedItem();
+        try{
+            datos = con.conectar();
+            switch (nivAcad) {
+                case "4":
+                    String sql = "SELECT indicador, nivel_academico FROM indicador_logro WHERE nivel_academico = 4";
+                    PreparedStatement dato = datos.prepareStatement(sql);
+                    ResultSet rs = dato.executeQuery();
+                    break;
+                case "5":
+                    String sql1 = "SELECT indicador, nivel_academico FROM indicador_logro WHERE nivel_academico = 5";
+                    PreparedStatement dato1 = datos.prepareStatement(sql1);
+                    ResultSet rs1 = dato1.executeQuery();
+                    break;
+                case "6":
+                    String sql2 = "SELECT indicador, nivel_academico FROM indicador_logro WHERE nivel_academico = 6";
+                    PreparedStatement dato2 = datos.prepareStatement(sql2);
+                    ResultSet rs2 = dato2.executeQuery();
+                    break;
+                default:
+                    break;
+            }
+            tNotas.setModel(modelo);
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+    
+    public void llenarNivelAcad(){
+        cbNivelAcademico.setModel(indicadores.llenarNivelAcad());
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
