@@ -426,7 +426,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 200, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 200, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -556,18 +556,26 @@ public class FrmNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBuscarKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int idUltimaNota = mto.getIDUltimaNota();
-        int id;
-        if (idUltimaNota == 0) {
-            id = 0;
+       String año = cbAño.getItemAt(cbAño.getSelectedIndex());
+       String gradoSeccion = cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
+        String grado = gradoSeccion.substring(0,8);
+        String seccion = gradoSeccion.substring(9);
+       
+       ctrl.setAñoSeccion(año);
+       ctrl.setGrado(grado);
+       ctrl.setSeccion(seccion);
+       
+        if (mto.insertarNotas()) {
+            reiniciarBusqueda();
+            mostrarEstudiantes();
+            JOptionPane.showMessageDialog(null, "Todas las notas han sido ingresadas.");
+            
         }
         else
         {
-            id = idUltimaNota;
+            System.out.println("Error");;
         }
-        
-        ctrl.setIdNota(id);
-        
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

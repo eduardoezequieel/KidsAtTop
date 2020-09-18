@@ -6,6 +6,34 @@ package controlador;
 public class CtrlNotas {
 
     /**
+     * @return the grado
+     */
+    public String getGrado() {
+        return grado;
+    }
+
+    /**
+     * @param grado the grado to set
+     */
+    public void setGrado(String grado) {
+        this.grado = grado;
+    }
+
+    /**
+     * @return the seccion
+     */
+    public String getSeccion() {
+        return seccion;
+    }
+
+    /**
+     * @param seccion the seccion to set
+     */
+    public void setSeccion(String seccion) {
+        this.seccion = seccion;
+    }
+
+    /**
      * @return the nivelAcademico
      */
     public int getNivelAcademico() {
@@ -109,4 +137,6 @@ public class CtrlNotas {
     static private int idTrimestre;
     static private String añoSeccion;
     static private int nivelAcademico;
+    static private String grado;
+    static private String seccion;
 }
