@@ -381,7 +381,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
     
     public void centrarColumnas(){
         centrado.setHorizontalAlignment(JLabel.CENTER);
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 6; i++) {
             tSecciones.getColumnModel().getColumn(i).setCellRenderer(centrado);
         }
     }

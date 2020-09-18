@@ -47,11 +47,11 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jGestionarResponsables = new javax.swing.JButton();
         jMatricularEstudiante = new javax.swing.JButton();
+        jTrasladoAlumnos = new javax.swing.JButton();
         jGestionarEstudiantes = new javax.swing.JButton();
         jDesktop = new javax.swing.JDesktopPane();
         jLabel5 = new javax.swing.JLabel();
         jGestionarResponsables1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblRelleno = new javax.swing.JLabel();
@@ -76,7 +76,7 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
                 jGestionarResponsablesActionPerformed(evt);
             }
         });
-        jPanel1.add(jGestionarResponsables, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 350, 90));
+        jPanel1.add(jGestionarResponsables, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 350, 90));
 
         jMatricularEstudiante.setForeground(new java.awt.Color(254, 254, 254));
         jMatricularEstudiante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatricularEstudianteDefault.png"))); // NOI18N
@@ -90,7 +90,21 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
                 jMatricularEstudianteActionPerformed(evt);
             }
         });
-        jPanel1.add(jMatricularEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 350, 90));
+        jPanel1.add(jMatricularEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 350, 90));
+
+        jTrasladoAlumnos.setForeground(new java.awt.Color(254, 254, 254));
+        jTrasladoAlumnos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatriculaProxDefault.png"))); // NOI18N
+        jTrasladoAlumnos.setBorder(null);
+        jTrasladoAlumnos.setContentAreaFilled(false);
+        jTrasladoAlumnos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTrasladoAlumnos.setFocusPainted(false);
+        jTrasladoAlumnos.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatriculaProxRollover.png"))); // NOI18N
+        jTrasladoAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTrasladoAlumnosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTrasladoAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 350, 90));
 
         jGestionarEstudiantes.setForeground(new java.awt.Color(254, 254, 254));
         jGestionarEstudiantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGestionarEstudiantes_default.png"))); // NOI18N
@@ -104,7 +118,7 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
                 jGestionarEstudiantesActionPerformed(evt);
             }
         });
-        jPanel1.add(jGestionarEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 350, 90));
+        jPanel1.add(jGestionarEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 350, 90));
 
         jDesktop.setBackground(new java.awt.Color(33, 37, 41));
 
@@ -117,7 +131,7 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
         jDesktopLayout.setHorizontalGroup(
             jDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopLayout.createSequentialGroup()
-                .addContainerGap(249, Short.MAX_VALUE)
+                .addContainerGap(264, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(262, 262, 262))
         );
@@ -142,13 +156,10 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
                 jGestionarResponsables1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jGestionarResponsables1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 240, 70));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/gestionMatricula.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 210));
+        jPanel1.add(jGestionarResponsables1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 620, 240, 70));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/gestionMatricula.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 210));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, 180));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dashboard.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, -1, 730));
@@ -178,6 +189,9 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatricularEstudianteDefault.png"));
         jMatricularEstudiante.setIcon(Imagenes);
         
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatriculaProxDefault.png"));
+        jTrasladoAlumnos.setIcon(Imagenes);
+        
     }//GEN-LAST:event_jGestionarResponsablesActionPerformed
 
     private void jGestionarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarEstudiantesActionPerformed
@@ -201,6 +215,9 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
         
         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatricularEstudianteDefault.png"));
         jMatricularEstudiante.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatriculaProxDefault.png"));
+        jTrasladoAlumnos.setIcon(Imagenes);
         } catch(Exception ex){
             JOptionPane.showMessageDialog(null, "No se pudo abrir el formulario porque existe algunos campos vacios.", "Revise si hay secciones y/o responsables existentes en el sistema", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -232,7 +249,30 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
         Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarEstudiantes_default.png"));
         jGestionarEstudiantes.setIcon(Imagenes);
         
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatriculaProxDefault.png"));
+        jTrasladoAlumnos.setIcon(Imagenes);
+        
     }//GEN-LAST:event_jMatricularEstudianteActionPerformed
+
+    private void jTrasladoAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTrasladoAlumnosActionPerformed
+        
+        FrmTrasladoAlumnos alumnos = new FrmTrasladoAlumnos();
+        jDesktop.add(alumnos);
+        alumnos.setVisible(true);
+        
+        Icon Imagenes;
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarResponsable_default.png"));
+        jGestionarResponsables.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarEstudiantes_default.png"));
+        jGestionarEstudiantes.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatricularEstudianteDefault.png"));
+        jMatricularEstudiante.setIcon(Imagenes);
+        
+        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatriculaProxPressed.png"));
+        jTrasladoAlumnos.setIcon(Imagenes);
+    }//GEN-LAST:event_jTrasladoAlumnosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,10 +323,10 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
     private javax.swing.JButton jGestionarResponsables1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton jMatricularEstudiante;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jTrasladoAlumnos;
     private javax.swing.JLabel lblRelleno;
     // End of variables declaration//GEN-END:variables
 }

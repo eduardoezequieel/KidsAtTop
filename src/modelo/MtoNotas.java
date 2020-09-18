@@ -244,17 +244,25 @@ public class MtoNotas {
         return resp;
     }
     
-    /*public boolean insertarNota(){
+    public boolean insertarNotas(){
         boolean resp = false;
         try
         {
-            String sql = "INSERT INTO nota VALUES (?,?,1,?,?)";
-            PreparedStatement cmd = cn.prepareStatement(sql);
-            cmd.setInt(1, ctrl.getIdNota());
-            cmd.setInt(2, 0);
+            String sql = "UPDATE nota  SET id_n_predeterminada = 1  FROM nota n, estudiante e, grado_seccion gs, grado g, seccion s "
+                    + "WHERE n.id_estudiante = e.id_estudiante AND e.id_grado_seccion = gs.id_grado_seccion AND gs.id_grado = g.id_grado AND gs.id_seccion = s.id_seccion "
+                    + "AND gs.anio_seccion = ? AND g.grado = ? AND s.seccion = ? and id_n_predeterminada = 4";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setString(1, ctrl.getAñoSeccion());
+            cmd.setString(2, ctrl.getGrado());
+            cmd.setString(3, ctrl.getSeccion());
+            
+            if (!cmd.execute()) {
+                resp = true;
+            }
         }
         catch (Exception ex) {
-            
+            System.out.println(ex);
         }
-    }*/
+        return resp;
+    }
 }

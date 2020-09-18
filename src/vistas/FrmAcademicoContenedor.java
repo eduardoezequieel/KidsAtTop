@@ -254,9 +254,10 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jGestionarConductaActionPerformed
 
     private void jGestionarSeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarSeccionesActionPerformed
-       
+           
          try{
-                //Abriendo formulario de Gestionar Secciones
+             
+             //Abriendo formulario de Gestionar Secciones
             FrmSecciones secciones = new FrmSecciones(mod);
             jEscritorio.add(secciones);
             secciones.setVisible(true); 
@@ -274,6 +275,7 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
 
             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_pressed.png"));
             jGestionarSecciones.setIcon(Imagenes);
+            
         } catch(Exception ex){
             JOptionPane.showMessageDialog(null, "No se pudo abrir el formulario porque existe algunos campos vacios.", "Revise si hay usuarios docente activos en el sistema", JOptionPane.INFORMATION_MESSAGE);
         }

@@ -28,7 +28,7 @@ public class CtrlEstudiante {
     private static int idNota;
     private static int idIndicadorCount;
     private static int notaPredeterminada = 4;
-    private static int idtrimestre = 1;
+    private static int idtrimestre;
     private static int nivelAcademico;
 
     /**
