@@ -217,7 +217,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         jLabel12.setForeground(new java.awt.Color(254, 254, 254));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Nota:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 370, 130, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 370, 130, -1));
 
         cbNotaP.setBackground(new java.awt.Color(33, 37, 41));
         cbNotaP.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -227,7 +227,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
                 cbNotaPKeyPressed(evt);
             }
         });
-        jPanel1.add(cbNotaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 400, 130, -1));
+        jPanel1.add(cbNotaP, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 400, 130, -1));
 
         cbIndicadores.setBackground(new java.awt.Color(33, 37, 41));
         cbIndicadores.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -295,7 +295,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tNotas);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 810, 410));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 840, 430));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));
@@ -355,7 +355,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 440, 150, 70));
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 440, 150, 70));
 
         jLabel15.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(254, 254, 254));

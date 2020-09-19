@@ -38,7 +38,12 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
-
+        
+        
+        tNotasPendientes.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 18));
+        tNotasPendientes.getTableHeader().setOpaque(false);
+        tNotasPendientes.getTableHeader().setBackground(new Color(33, 37, 41));
+        tNotasPendientes.getTableHeader().setForeground(new Color(254,254,254));
     }
 
     
@@ -57,18 +62,19 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         btnActualizar = new javax.swing.JButton();
         cbNivelAcademico = new javax.swing.JComboBox<>();
-        jLabel14 = new javax.swing.JLabel();
         cbNivelAcademico2 = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         cbNivelAcademico4 = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         cbNivelAcademico5 = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
         btnActualizar3 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         btnActualizar2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tNotasPendientes = new javax.swing.JTable();
+        jLabel14 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -117,12 +123,6 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         });
         jPanel2.add(cbNivelAcademico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 250, -1));
 
-        jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Grado que va a trasladar:");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 250, -1));
-
         cbNivelAcademico2.setBackground(new java.awt.Color(33, 37, 41));
         cbNivelAcademico2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         cbNivelAcademico2.setForeground(new java.awt.Color(254, 254, 254));
@@ -144,7 +144,13 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         jLabel16.setText("Año:");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 250, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 330, 270));
+        jLabel15.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("Grado que va a trasladar:");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 250, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 330, 270));
 
         jPanel3.setBackground(new java.awt.Color(33, 37, 41));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(119, 119, 119), 1, true), "Paso 2: Traslado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -207,19 +213,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         });
         jPanel3.add(btnActualizar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 130, 60));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 330, 270));
-
-        jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(33, 37, 41));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(119, 119, 119), 1, true), "Notas Pendientes de Ingresar:", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 820, 260));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 330, 270));
 
         btnActualizar2.setBackground(new java.awt.Color(33, 37, 41));
         btnActualizar2.setForeground(new java.awt.Color(254, 254, 254));
@@ -234,7 +228,41 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
                 btnActualizar2ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 630, 130, 60));
+        jPanel1.add(btnActualizar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 130, 60));
+
+        tNotasPendientes.setBackground(new java.awt.Color(33, 37, 41));
+        tNotasPendientes.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        tNotasPendientes.setForeground(new java.awt.Color(255, 255, 255));
+        tNotasPendientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tNotasPendientes.setFocusable(false);
+        tNotasPendientes.setGridColor(new java.awt.Color(51, 51, 51));
+        tNotasPendientes.setRequestFocusEnabled(false);
+        tNotasPendientes.setRowHeight(30);
+        tNotasPendientes.setRowMargin(0);
+        tNotasPendientes.setRowSelectionAllowed(true);
+        tNotasPendientes.setSelectionBackground(new java.awt.Color(45, 252, 119));
+        tNotasPendientes.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        tNotasPendientes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tNotasPendientes.setShowVerticalLines(false);
+        jScrollPane2.setViewportView(tNotasPendientes);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 1000, 330));
+
+        jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Notas pendientes de ingresar:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 1000, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -298,6 +326,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbNivelAcademico4;
     private javax.swing.JComboBox<String> cbNivelAcademico5;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -305,7 +334,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tNotasPendientes;
     // End of variables declaration//GEN-END:variables
 }
