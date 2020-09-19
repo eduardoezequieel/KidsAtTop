@@ -40,26 +40,6 @@ public class MtoIndicadores {
         cn = con.conectar();
     }
     
-    public DefaultComboBoxModel llenarNivelAcad(){
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        
-        try
-        {
-          CallableStatement cmd = cn.prepareCall("{CALL cbNivelAcademico}");
-          
-          ResultSet rs = cmd.executeQuery();
-          while(rs.next())
-          {
-              modelo.addElement(rs.getString(1));
-          }
-        }
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        return modelo;
-    }
-    
     public void obtenerIdIndicador(String indicador){
         
         try

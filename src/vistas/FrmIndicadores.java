@@ -45,6 +45,9 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
     
     public FrmIndicadores() {
         initComponents();
+        cbNivelAcademico.addItem("4");
+        cbNivelAcademico.addItem("5");
+        cbNivelAcademico.addItem("6");
     }
     
     public FrmIndicadores(CtrlLoginUsuario mod){
@@ -58,9 +61,11 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
         tNotas.getTableHeader().setBackground(new Color(33, 37, 41));
         tNotas.getTableHeader().setForeground(new Color(254,254,254));
         
-        this.llenarNivelAcad();
-        modelo.addColumn("Nivel");
+        modelo.addColumn("Id");
+        modelo.addColumn("Indicador");
         tNotas.setModel(modelo);
+        
+        this.mostrarIndicadores();
     }
 
     
@@ -166,6 +171,11 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
                 cbNivelAcademicoItemStateChanged(evt);
             }
         });
+        cbNivelAcademico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbNivelAcademicoActionPerformed(evt);
+            }
+        });
         cbNivelAcademico.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cbNivelAcademicoKeyPressed(evt);
@@ -254,7 +264,7 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBuscarKeyTyped
 
     private void cbNivelAcademicoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbNivelAcademicoItemStateChanged
-
+        this.mostrarIndicadores();
     }//GEN-LAST:event_cbNivelAcademicoItemStateChanged
     
     
@@ -286,7 +296,7 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
                 int id = add.capturarIdBitacora() + 1;
                 mod.setId_usuario(mod.getId_usuario());
                 mod.setId_bitacora(id);
-                add.agregarBitacoraActualizaIndicador(mod);
+//                add.agregarBitacoraActualizaIndicador(mod);
             } else {
                 JOptionPane.showMessageDialog(null, "No se han actualizado los datos correctamente.");
             }
@@ -312,6 +322,11 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         val.verificarAlfanumerico(evt);
     }//GEN-LAST:event_jIndicadorKeyTyped
+
+    private void cbNivelAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNivelAcademicoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cbNivelAcademicoActionPerformed
 
     
        public void limpiarCampos() {
@@ -341,40 +356,30 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
     
     
     public void mostrarIndicadores(){
+        this.limpiarTabla();
         Conexion con = new Conexion();
         Connection datos;
-        String nivAcad = (String) cbNivelAcademico.getSelectedItem();
+        int nivAcad = Integer.parseInt(cbNivelAcademico.getItemAt(cbNivelAcademico.getSelectedIndex()));
+        
         try{
-            datos = con.conectar();
-            switch (nivAcad) {
-                case "4":
-                    String sql = "SELECT indicador, nivel_academico FROM indicador_logro WHERE nivel_academico = 4";
-                    PreparedStatement dato = datos.prepareStatement(sql);
-                    ResultSet rs = dato.executeQuery();
-                    break;
-                case "5":
-                    String sql1 = "SELECT indicador, nivel_academico FROM indicador_logro WHERE nivel_academico = 5";
-                    PreparedStatement dato1 = datos.prepareStatement(sql1);
-                    ResultSet rs1 = dato1.executeQuery();
-                    break;
-                case "6":
-                    String sql2 = "SELECT indicador, nivel_academico FROM indicador_logro WHERE nivel_academico = 6";
-                    PreparedStatement dato2 = datos.prepareStatement(sql2);
-                    ResultSet rs2 = dato2.executeQuery();
-                    break;
-                default:
-                    break;
+        datos = con.conectar();
+        String sql = "SELECT id_indicador, indicador FROM indicador_logro WHERE nivel_academico = ?";
+        PreparedStatement cmd = datos.prepareCall(sql);
+        
+        cmd.setInt(1, nivAcad);
+        
+        ResultSet rs = cmd.executeQuery();
+            while (rs.next()){
+                Object Fila[] = {rs.getInt(1), rs.getString(2)};
+                modelo.addRow(Fila);
             }
-            tNotas.setModel(modelo);
+        tNotas.setModel(modelo);
         }
         catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
+            System.out.println(ex);
         }
     }
     
-    public void llenarNivelAcad(){
-        cbNivelAcademico.setModel(indicadores.llenarNivelAcad());
-    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
