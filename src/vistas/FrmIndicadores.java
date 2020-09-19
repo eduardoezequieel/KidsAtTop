@@ -88,8 +88,8 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
         jBuscar = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
-        jIndicador = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
+        jIndicador = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -166,6 +166,7 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
         cbNivelAcademico.setBackground(new java.awt.Color(33, 37, 41));
         cbNivelAcademico.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         cbNivelAcademico.setForeground(new java.awt.Color(254, 254, 254));
+        cbNivelAcademico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "4", "5", "6" }));
         cbNivelAcademico.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbNivelAcademicoItemStateChanged(evt);
@@ -222,6 +223,12 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 130, 60));
 
+        jLabel15.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("Indicador de Logro");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 950, 20));
+
         jIndicador.setBackground(new java.awt.Color(33, 37, 41));
         jIndicador.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jIndicador.setForeground(new java.awt.Color(254, 254, 254));
@@ -239,12 +246,6 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jIndicador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 960, 30));
-
-        jLabel15.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Indicador de Logro");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 950, 20));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -271,11 +272,20 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
     
     
     private void tNotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tNotasMouseClicked
-    
+        int fila = tNotas.getSelectedRow();
+        String indicador = String.valueOf(tNotas.getValueAt(fila, 1));
+        String idIndicador = String.valueOf(tNotas.getValueAt(fila, 0));
+        int id = Integer.parseInt(idIndicador);
+        
+        jIndicador.setText(indicador);
+        indicCtrl.setId_indicador(id);
     }//GEN-LAST:event_tNotasMouseClicked
 
     private void jBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyReleased
-  
+        String busqueda = jBuscar.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
+        tNotas.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(busqueda));
     }//GEN-LAST:event_jBuscarKeyReleased
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -285,33 +295,40 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Campos vacíos.", "Rellene los campos faltantes.", JOptionPane.WARNING_MESSAGE);
         } else {
           
-            indicCtrl.setIndicador(jIndicador.getText());
-            indicCtrl.setId_indicador(idIndicador);
+            boolean resp = indicadores.validarIndicador();
             
-            indicadores.obtenerIdIndicador(cbNivelAcademico.getItemAt(cbNivelAcademico.getSelectedIndex()));
-          
-            if (indicadores.actualizarIndicador()) {
-                JOptionPane.showMessageDialog(null, "Ha actualizado los datos correctamente.");
-                MtoBitacoras add = new MtoBitacoras();
-                int id = add.capturarIdBitacora() + 1;
-                mod.setId_usuario(mod.getId_usuario());
-                mod.setId_bitacora(id);
-//                add.agregarBitacoraActualizaIndicador(mod);
+            if (resp == true) {
+                JOptionPane.showMessageDialog(null, "Redundancia.", "El dato que intenta ingresar ya existe.", JOptionPane.WARNING_MESSAGE);
+            } else if (resp == false) {
+              indicCtrl.setIndicador(jIndicador.getText());
+              
+                if (indicadores.actualizarIndicador()) {
+                    JOptionPane.showMessageDialog(null, "Ha actualizado los datos correctamente.");
+                    this.limpiarCampos();
+                    this.reiniciarBusqueda();
+                    this.mostrarIndicadores();
+                    MtoBitacoras add = new MtoBitacoras();
+                    int id = add.capturarIdBitacora() + 1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+    //                add.agregarBitacoraActualizaIndicador(mod);
             } else {
                 JOptionPane.showMessageDialog(null, "No se han actualizado los datos correctamente.");
             }
+                
+            }
             
-            this.limpiarTabla();
-            this.limpiarCampos();
-            this.reiniciarBusqueda();
-            this.mostrarIndicadores();
         }
         
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    private void cbNivelAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNivelAcademicoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cbNivelAcademicoActionPerformed
+
     private void jIndicadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIndicadorKeyPressed
         // TODO add your handling code here:
-        val.verificarPegar(evt);
     }//GEN-LAST:event_jIndicadorKeyPressed
 
     private void jIndicadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIndicadorKeyReleased
@@ -320,13 +337,7 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
 
     private void jIndicadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIndicadorKeyTyped
         // TODO add your handling code here:
-        val.verificarAlfanumerico(evt);
     }//GEN-LAST:event_jIndicadorKeyTyped
-
-    private void cbNivelAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNivelAcademicoActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_cbNivelAcademicoActionPerformed
 
     
        public void limpiarCampos() {

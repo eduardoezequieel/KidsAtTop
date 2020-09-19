@@ -11,9 +11,9 @@ package controlador;
  */
 public class CtrlIndicadores {
  
-    private int id_indicador;
-    private String indicador;
-    private int nivel_academico;
+    static private int id_indicador;
+    static private String indicador;
+    static private int nivel_academico;
     private int id_bitacora;
     private int mensaje;
 

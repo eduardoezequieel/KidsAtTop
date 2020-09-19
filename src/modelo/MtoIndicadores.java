@@ -39,28 +39,7 @@ public class MtoIndicadores {
         Conexion con = new Conexion();
         cn = con.conectar();
     }
-    
-    public void obtenerIdIndicador(String indicador){
-        
-        try
-        {
-            String sql = "SELECT id_indicador FROM indicador_logro WHERE indicador = ? AND nivel_academico = ?";
-            PreparedStatement cmd = cn.prepareStatement(sql);
-            
-            cmd.setString(1, indicador);
-            
-            ResultSet rs = cmd.executeQuery();
-            while(rs.next()){
-            indicadores.setId_indicador(rs.getInt(1));
-            }
-        }
-        catch (Exception e){
-            System.out.println(e.toString());
-        }
-        
-    }
-    
-    
+       
     public boolean actualizarIndicador(){
         boolean indic = false;
         
@@ -79,6 +58,31 @@ public class MtoIndicadores {
             System.out.println(ex);
         }
         return indic;
+    }
+    
+    public boolean validarIndicador(){
+        boolean resp = false;
+        
+        try{
+        String sql = "SELECT indicador from indicador_logro WHERE indicador = ?";
+        PreparedStatement cmd = cn.prepareCall(sql);
+        
+        cmd.setString(1, indicadores.getIndicador());
+        
+        ResultSet rs = cmd.executeQuery();
+        
+            while (rs.next()) {
+                resp = true;
+            }
+        
+        }
+        
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        
+        return resp;
+        
     }
     
 }
