@@ -325,79 +325,7 @@ public class MtoEstudiante {
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="translado de alumnos">
-    public void obtenerCountIdEstudiante(){
-
-        try{
-            
-            //Preparando sentencia sql
-            String sql = "SELECT count(id_estudiante) as totalEstudiantes FROM estudiante WHERE id_grado_seccion = ?";
-            PreparedStatement cmd = cn.prepareStatement(sql);
-            
-            cmd.setInt(1, estudianteCtrl.getIdGradoSeccion());
-            
-            ResultSet rs = cmd.executeQuery();
-            while(rs.next()){
-               estudianteCtrl.setIdEstudianteCount(rs.getInt(1));
-            }
-            
-            
-        } catch(Exception e){
-            System.out.println(e.toString());
-        }
-        
-    }
     
-    public void obtenerIdNP(){
-
-        try{
-            
-            //Preparando sentencia sql
-            String sql = "SELECT n.id_n_predeterminada FROM nota n, grado_seccion gs WHERE gs.id_grado_seccion = ?";
-            PreparedStatement cmd = cn.prepareStatement(sql);
-            
-            cmd.setInt(1, estudianteCtrl.getIdGradoSeccion());
-            
-            ResultSet rs = cmd.executeQuery();
-            while(rs.next()){
-               estudianteCtrl.setIdNotaPredeterminada(rs.getInt(1));
-            }
-            
-            
-        } catch(Exception e){
-            System.out.println(e.toString());
-        }
-        
-    }
-     
-     public int[] obtenerNotasNoIngresadas(){
-        int[] estudiante = new int[1]; 
-        try{
-            
-            //Preparando sentencia sql
-            String sql = "SELECT CONCAT(e.apellido,'-',e.nombre)as estudiante, i.indicador, t.trimestre FROM estudiante e, indicador_logro i, nota n, nota_predeterminada nop, trimestre t, grado_seccion gs WHERE i.id_indicador = n.id_indicador AND n.id_estudiante = e.id_estudiante AND n.id_trimestre = t.id_trimestre AND gs.id_grado_seccion = e.id_grado_seccion AND NOT n.id_n_predeterminada = ?";
-            PreparedStatement cmd = cn.prepareStatement(sql);
-            
-            cmd.setInt(1, estudianteCtrl.getIdNotaPredeterminada());
-            
-            ResultSet rs = cmd.executeQuery();
-            estudiante = new int[estudianteCtrl.getIdEstudianteCount()];
-            int j = 0;
-            while(rs.next()){
-                 estudiante[j] = rs.getInt(j + 1);
-                 //System.out.println(String.valueOf(indicador[j]));
-                 int nota = estudianteCtrl.getIdNota() + 1;
-                 estudianteCtrl.setIdNota(nota);
-                 this.insertarNota(estudiante[j], nota);
-            }
-            j++;
-            
-            
-        } catch(Exception e){
-            System.out.println(e.toString());
-        }
-         
-        return estudiante;
-    }
     
 
     //</editor-fold>

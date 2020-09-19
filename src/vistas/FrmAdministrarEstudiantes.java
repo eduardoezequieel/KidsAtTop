@@ -701,6 +701,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
                 estudianteCtrl.setApellido(jApellido.getText());
                 estudianteCtrl.setFechaNacimiento(jFecha.getText());
                 estudianteCtrl.setAnioIngreso(String.valueOf(ycAño.getValue()));
+                estudianteCtrl.setAnioSeccion(cbAño.getItemAt(cbAño.getSelectedIndex()));
                 if (rbM.isSelected()) {
                    estudianteCtrl.setGenero("M");
                 }

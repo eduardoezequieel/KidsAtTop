@@ -256,22 +256,27 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
 
     private void jTrasladoAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTrasladoAlumnosActionPerformed
         
-        FrmTrasladoAlumnos alumnos = new FrmTrasladoAlumnos();
-        jDesktop.add(alumnos);
-        alumnos.setVisible(true);
         
-        Icon Imagenes;
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarResponsable_default.png"));
-        jGestionarResponsables.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarEstudiantes_default.png"));
-        jGestionarEstudiantes.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatricularEstudianteDefault.png"));
-        jMatricularEstudiante.setIcon(Imagenes);
-        
-        Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatriculaProxPressed.png"));
-        jTrasladoAlumnos.setIcon(Imagenes);
+        try{
+            FrmTrasladoAlumnos alumnos = new FrmTrasladoAlumnos();
+            jDesktop.add(alumnos);
+            alumnos.setVisible(true);
+
+            Icon Imagenes;
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarResponsable_default.png"));
+            jGestionarResponsables.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarEstudiantes_default.png"));
+            jGestionarEstudiantes.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatricularEstudianteDefault.png"));
+            jMatricularEstudiante.setIcon(Imagenes);
+
+            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnMatriculaProxPressed.png"));
+            jTrasladoAlumnos.setIcon(Imagenes);
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "No se pudo abrir el formulario porque existe algunos campos vacios.", "Revise si hay secciones y/o responsables existentes en el sistema", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jTrasladoAlumnosActionPerformed
 
     /**

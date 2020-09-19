@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import controlador.CtrlEstudiante;
 import controlador.CtrlLoginUsuario;
 import controlador.CtrlNotas;
 import java.awt.Color;
@@ -23,6 +24,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.Conexion;
+import modelo.MtoEstudiante;
 import modelo.MtoNotas;
 import modelo.Validaciones;
 
@@ -32,6 +34,13 @@ import modelo.Validaciones;
  */
 public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
 
+    //Llamando clases
+    MtoEstudiante estudiante = new MtoEstudiante();
+    CtrlEstudiante estudianteCtrl = new CtrlEstudiante();
+    
+    //Modelo de la tabla
+    DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
     
     public FrmTrasladoAlumnos() {
         initComponents();
@@ -44,6 +53,17 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         tNotasPendientes.getTableHeader().setOpaque(false);
         tNotasPendientes.getTableHeader().setBackground(new Color(33, 37, 41));
         tNotasPendientes.getTableHeader().setForeground(new Color(254,254,254));
+        
+        modelo.addColumn("Estudiante");
+        modelo.addColumn("Indicador");
+        modelo.addColumn("Trimestre");
+        tNotasPendientes.setModel(modelo);
+        this.centrarColumnas();
+        
+        
+        //Llenando combobox
+        this.llenarAnio();
+        this.llenarGradoSeccion();
     }
 
     
@@ -61,14 +81,14 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnActualizar = new javax.swing.JButton();
-        cbNivelAcademico = new javax.swing.JComboBox<>();
-        cbNivelAcademico2 = new javax.swing.JComboBox<>();
+        cbGS = new javax.swing.JComboBox<>();
+        cbAño = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        cbNivelAcademico4 = new javax.swing.JComboBox<>();
+        cbGS2 = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
-        cbNivelAcademico5 = new javax.swing.JComboBox<>();
+        cbAño2 = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
         btnActualizar3 = new javax.swing.JButton();
         btnActualizar2 = new javax.swing.JButton();
@@ -108,35 +128,35 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         });
         jPanel2.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 130, 60));
 
-        cbNivelAcademico.setBackground(new java.awt.Color(33, 37, 41));
-        cbNivelAcademico.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        cbNivelAcademico.setForeground(new java.awt.Color(254, 254, 254));
-        cbNivelAcademico.addItemListener(new java.awt.event.ItemListener() {
+        cbGS.setBackground(new java.awt.Color(33, 37, 41));
+        cbGS.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbGS.setForeground(new java.awt.Color(254, 254, 254));
+        cbGS.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbNivelAcademicoItemStateChanged(evt);
+                cbGSItemStateChanged(evt);
             }
         });
-        cbNivelAcademico.addKeyListener(new java.awt.event.KeyAdapter() {
+        cbGS.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                cbNivelAcademicoKeyPressed(evt);
+                cbGSKeyPressed(evt);
             }
         });
-        jPanel2.add(cbNivelAcademico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 250, -1));
+        jPanel2.add(cbGS, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 250, -1));
 
-        cbNivelAcademico2.setBackground(new java.awt.Color(33, 37, 41));
-        cbNivelAcademico2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        cbNivelAcademico2.setForeground(new java.awt.Color(254, 254, 254));
-        cbNivelAcademico2.addItemListener(new java.awt.event.ItemListener() {
+        cbAño.setBackground(new java.awt.Color(33, 37, 41));
+        cbAño.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbAño.setForeground(new java.awt.Color(254, 254, 254));
+        cbAño.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbNivelAcademico2ItemStateChanged(evt);
+                cbAñoItemStateChanged(evt);
             }
         });
-        cbNivelAcademico2.addKeyListener(new java.awt.event.KeyAdapter() {
+        cbAño.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                cbNivelAcademico2KeyPressed(evt);
+                cbAñoKeyPressed(evt);
             }
         });
-        jPanel2.add(cbNivelAcademico2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 250, -1));
+        jPanel2.add(cbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 250, -1));
 
         jLabel16.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(254, 254, 254));
@@ -156,20 +176,20 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(119, 119, 119), 1, true), "Paso 2: Traslado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cbNivelAcademico4.setBackground(new java.awt.Color(33, 37, 41));
-        cbNivelAcademico4.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        cbNivelAcademico4.setForeground(new java.awt.Color(254, 254, 254));
-        cbNivelAcademico4.addItemListener(new java.awt.event.ItemListener() {
+        cbGS2.setBackground(new java.awt.Color(33, 37, 41));
+        cbGS2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbGS2.setForeground(new java.awt.Color(254, 254, 254));
+        cbGS2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbNivelAcademico4ItemStateChanged(evt);
+                cbGS2ItemStateChanged(evt);
             }
         });
-        cbNivelAcademico4.addKeyListener(new java.awt.event.KeyAdapter() {
+        cbGS2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                cbNivelAcademico4KeyPressed(evt);
+                cbGS2KeyPressed(evt);
             }
         });
-        jPanel3.add(cbNivelAcademico4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 250, -1));
+        jPanel3.add(cbGS2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 250, -1));
 
         jLabel18.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(254, 254, 254));
@@ -177,20 +197,20 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         jLabel18.setText("Destino:");
         jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 250, -1));
 
-        cbNivelAcademico5.setBackground(new java.awt.Color(33, 37, 41));
-        cbNivelAcademico5.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
-        cbNivelAcademico5.setForeground(new java.awt.Color(254, 254, 254));
-        cbNivelAcademico5.addItemListener(new java.awt.event.ItemListener() {
+        cbAño2.setBackground(new java.awt.Color(33, 37, 41));
+        cbAño2.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        cbAño2.setForeground(new java.awt.Color(254, 254, 254));
+        cbAño2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbNivelAcademico5ItemStateChanged(evt);
+                cbAño2ItemStateChanged(evt);
             }
         });
-        cbNivelAcademico5.addKeyListener(new java.awt.event.KeyAdapter() {
+        cbAño2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                cbNivelAcademico5KeyPressed(evt);
+                cbAño2KeyPressed(evt);
             }
         });
-        jPanel3.add(cbNivelAcademico5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 250, -1));
+        jPanel3.add(cbAño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 250, -1));
 
         jLabel19.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(254, 254, 254));
@@ -230,6 +250,11 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btnActualizar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 130, 60));
 
+        tNotasPendientes = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tNotasPendientes.setBackground(new java.awt.Color(33, 37, 41));
         tNotasPendientes.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         tNotasPendientes.setForeground(new java.awt.Color(255, 255, 255));
@@ -249,7 +274,6 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         tNotasPendientes.setRequestFocusEnabled(false);
         tNotasPendientes.setRowHeight(30);
         tNotasPendientes.setRowMargin(0);
-        tNotasPendientes.setRowSelectionAllowed(true);
         tNotasPendientes.setSelectionBackground(new java.awt.Color(45, 252, 119));
         tNotasPendientes.setSelectionForeground(new java.awt.Color(0, 0, 0));
         tNotasPendientes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -269,62 +293,131 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbNivelAcademicoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbNivelAcademicoKeyPressed
+    private void cbGSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbGSKeyPressed
      
-    }//GEN-LAST:event_cbNivelAcademicoKeyPressed
+    }//GEN-LAST:event_cbGSKeyPressed
 
-    private void cbNivelAcademicoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbNivelAcademicoItemStateChanged
-
-    }//GEN-LAST:event_cbNivelAcademicoItemStateChanged
+    private void cbGSItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbGSItemStateChanged
+        
+    }//GEN-LAST:event_cbGSItemStateChanged
     
     
     
     
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
+        
+        estudianteCtrl.setAnioSeccion(cbAño.getItemAt(cbAño.getSelectedIndex()));
+        
+        //Dividiendo el grado y la seccion
+        String gradoSeccion = cbGS.getItemAt(cbGS.getSelectedIndex());
+        String[] parte = gradoSeccion.split("-");
+        String grado = parte[0];
+        String seccion = parte[1];
+        estudiante.obtenerIdGS(grado, seccion);
+        
+        this.limpiarTabla();
+        this.mostrarNotasPendientes();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void cbNivelAcademico2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbNivelAcademico2ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbNivelAcademico2ItemStateChanged
+    private void cbAñoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAñoItemStateChanged
+       this.llenarGradoSeccion();
+    }//GEN-LAST:event_cbAñoItemStateChanged
 
-    private void cbNivelAcademico2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbNivelAcademico2KeyPressed
+    private void cbAñoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbAñoKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbNivelAcademico2KeyPressed
+    }//GEN-LAST:event_cbAñoKeyPressed
 
     private void btnActualizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizar2ActionPerformed
 
-    private void cbNivelAcademico4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbNivelAcademico4ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbNivelAcademico4ItemStateChanged
+    private void cbGS2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbGS2ItemStateChanged
+        this.llenarGradoSeccion();
+    }//GEN-LAST:event_cbGS2ItemStateChanged
 
-    private void cbNivelAcademico4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbNivelAcademico4KeyPressed
+    private void cbGS2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbGS2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbNivelAcademico4KeyPressed
+    }//GEN-LAST:event_cbGS2KeyPressed
 
-    private void cbNivelAcademico5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbNivelAcademico5ItemStateChanged
+    private void cbAño2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAño2ItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbNivelAcademico5ItemStateChanged
+    }//GEN-LAST:event_cbAño2ItemStateChanged
 
-    private void cbNivelAcademico5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbNivelAcademico5KeyPressed
+    private void cbAño2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbAño2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbNivelAcademico5KeyPressed
+    }//GEN-LAST:event_cbAño2KeyPressed
 
     private void btnActualizar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizar3ActionPerformed
 
+    
+    //Método para combobox del año
+    public void llenarAnio() {
+
+        //Seteando modelo del combo
+        cbAño.setModel(estudiante.llenarAnio());
+        cbAño2.setModel(estudiante.llenarAnio());
+    }
+    
+
+    //Método para combobox de grado/seccion
+    public void llenarGradoSeccion() {
+
+        //Obteniendo parametro del año
+        String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
+        estudianteCtrl.setAnioSeccion(anio);
+
+        //Seteando modelo del combo
+        cbGS.setModel(estudiante.llenarGS());
+        cbGS2.setModel(estudiante.llenarGS());
+        
+    }
+    
+    public void centrarColumnas(){
+        centrado.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < 3; i++) {
+            tNotasPendientes.getColumnModel().getColumn(i).setCellRenderer(centrado);
+        }
+    }
+    
+    public void mostrarNotasPendientes(){
+        Conexion con = new Conexion();
+        Connection datos;
+        try
+        {
+            datos = con.conectar();
+            String sql = "SELECT CONCAT(e.apellido,'-',e.nombre)as estudiante, i.indicador, t.trimestre FROM estudiante e, indicador_logro i, nota n, trimestre t, grado_seccion gs WHERE i.id_indicador = n.id_indicador AND n.id_estudiante = e.id_estudiante AND n.id_trimestre = t.id_trimestre AND gs.id_grado_seccion = e.id_grado_seccion AND n.id_n_predeterminada = 4 AND e.id_grado_seccion = ?";
+            PreparedStatement dato = datos.prepareStatement(sql);
+            dato.setInt(1, estudianteCtrl.getIdGradoSeccion());
+            ResultSet rs = dato.executeQuery();
+            while(rs.next()){
+                Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3)};
+                modelo.addRow(fila);
+            }
+            tNotasPendientes.setModel(modelo);
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+    
+    public void limpiarTabla(){
+        //Limpiar tabla
+        int filas = tNotasPendientes.getRowCount();
+        for (int i = 0;filas>i; i++) {
+            modelo.removeRow(0);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnActualizar2;
     private javax.swing.JButton btnActualizar3;
-    private javax.swing.JComboBox<String> cbNivelAcademico;
-    private javax.swing.JComboBox<String> cbNivelAcademico2;
-    private javax.swing.JComboBox<String> cbNivelAcademico4;
-    private javax.swing.JComboBox<String> cbNivelAcademico5;
+    private javax.swing.JComboBox<String> cbAño;
+    private javax.swing.JComboBox<String> cbAño2;
+    private javax.swing.JComboBox<String> cbGS;
+    private javax.swing.JComboBox<String> cbGS2;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
