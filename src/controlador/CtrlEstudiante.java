@@ -30,6 +30,8 @@ public class CtrlEstudiante {
     private static int notaPredeterminada = 4;
     private static int idtrimestre;
     private static int nivelAcademico;
+    private static int idEstudianteCount;
+    private static int idNotaPredeterminada;
 
     /**
      * @return the idEstudiante
@@ -282,6 +284,34 @@ public class CtrlEstudiante {
      */
     public void setNivelAcademico(int nivelAcademico) {
         this.nivelAcademico = nivelAcademico;
+    }
+
+    /**
+     * @return the idEstudianteCount
+     */
+    public int getIdEstudianteCount() {
+        return idEstudianteCount;
+    }
+
+    /**
+     * @param idEstudianteCount the idEstudianteCount to set
+     */
+    public void setIdEstudianteCount(int idEstudianteCount) {
+        this.idEstudianteCount = idEstudianteCount;
+    }
+
+    /**
+     * @return the idNotaPredeterminada
+     */
+    public int getIdNotaPredeterminada() {
+        return idNotaPredeterminada;
+    }
+
+    /**
+     * @param idNotaPredeterminada the idNotaPredeterminada to set
+     */
+    public void setIdNotaPredeterminada(int idNotaPredeterminada) {
+        this.idNotaPredeterminada = idNotaPredeterminada;
     }
     
 }
