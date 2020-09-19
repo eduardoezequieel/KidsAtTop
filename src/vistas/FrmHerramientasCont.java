@@ -212,7 +212,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
     }//GEN-LAST:event_jReportesActionPerformed
 
     private void jIndicadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIndicadoresActionPerformed
-        FrmIndicadores reportes = new FrmIndicadores();
+        FrmIndicadores reportes = new FrmIndicadores(mod);
         jEscritorio.add(reportes);
         reportes.setVisible(true);
 

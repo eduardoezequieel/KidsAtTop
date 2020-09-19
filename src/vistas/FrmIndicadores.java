@@ -114,28 +114,28 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
         tNotas.setForeground(new java.awt.Color(254, 254, 254));
         tNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Indicador de Logro"
+                "Indicador de Logro", "ID"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -154,6 +154,9 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane1.setViewportView(tNotas);
+        if (tNotas.getColumnModel().getColumnCount() > 0) {
+            tNotas.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 1000, 410));
 
@@ -295,11 +298,12 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Campos vacíos.", "Rellene los campos faltantes.", JOptionPane.WARNING_MESSAGE);
         } else {
           
-            boolean resp = indicadores.validarIndicador();
-            
-            if (resp == true) {
+            indicCtrl.setIndicador(jIndicador.getText());
+            if (indicadores.validarIndicador()) {
                 JOptionPane.showMessageDialog(null, "Redundancia.", "El dato que intenta ingresar ya existe.", JOptionPane.WARNING_MESSAGE);
-            } else if (resp == false) {
+            }
+            else
+            {
               indicCtrl.setIndicador(jIndicador.getText());
               
                 if (indicadores.actualizarIndicador()) {
