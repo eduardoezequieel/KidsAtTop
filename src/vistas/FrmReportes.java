@@ -1,4 +1,5 @@
 package vistas;
+import controlador.CtrlLoginUsuario;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -25,8 +26,11 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class FrmReportes extends javax.swing.JInternalFrame {
 
-    public FrmReportes() {
+    CtrlLoginUsuario mod;
+    
+    public FrmReportes(CtrlLoginUsuario mod) {
         initComponents();
+        this.mod = mod;
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
@@ -131,6 +135,11 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 220, 130));
 
         jButton1.setText("Reporte de notas por indicador");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, 220, 130));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1000, 710));
@@ -152,6 +161,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                    JasperCompileManager.compileReport(archivo);
                    Map<String,Object> parametros = new HashMap<String,Object>();
                    parametros.put("FILTRAR_USUARIO",mensaje2); 
+                   parametros.put("USUARIO",mod.getUsuario()); 
                    JasperPrint print = JasperFillManager.fillReport(report,
                    parametros, con.conectar());
                    JasperViewer visor = new JasperViewer(print, false);
@@ -179,6 +189,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                    JasperCompileManager.compileReport(archivo);
                    Map<String,Object> parametros = new HashMap<String,Object>();
                    parametros.put("",mensaje2); 
+                   parametros.put("USUARIO",mod.getUsuario());
                    JasperPrint print = JasperFillManager.fillReport(report,
                    parametros, con.conectar());
                    JasperViewer visor = new JasperViewer(print, false);
@@ -210,6 +221,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                    JasperCompileManager.compileReport(archivo);
                    Map<String,Object> parametros = new HashMap<String,Object>();
                    parametros.put("ANIO_SECCION",mensaje2); 
+                   parametros.put("USUARIO",mod.getUsuario());
                    JasperPrint print = JasperFillManager.fillReport(report,
                    parametros, con.conectar());
                    JasperViewer visor = new JasperViewer(print, false);
@@ -237,6 +249,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                    JasperCompileManager.compileReport(archivo);
                    Map<String,Object> parametros = new HashMap<String,Object>();
                    parametros.put("",mensaje2); 
+                   parametros.put("USUARIO",mod.getUsuario());
                    JasperPrint print = JasperFillManager.fillReport(report,
                    parametros, con.conectar());
                    JasperViewer visor = new JasperViewer(print, false);
@@ -270,6 +283,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                    Map<String,Object> parametros = new HashMap<String,Object>();
                    parametros.put("grado",mensaje2); 
                    parametros.put("seccion",mensaje3); 
+                   parametros.put("USUARIO",mod.getUsuario());
                    JasperPrint print = JasperFillManager.fillReport(report,
                    parametros, con.conectar());
                    JasperViewer visor = new JasperViewer(print, false);
@@ -298,6 +312,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 JasperCompileManager.compileReport(archivo);
                 Map<String,Object> parametros = new HashMap<String,Object>();
                 parametros.put("",mensaje2); 
+                parametros.put("USUARIO",mod.getUsuario());
                 JasperPrint print = JasperFillManager.fillReport(report,
                 parametros, con.conectar());
                 JasperViewer visor = new JasperViewer(print, false);
@@ -323,6 +338,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                    JasperCompileManager.compileReport(archivo);
                    Map<String,Object> parametros = new HashMap<String,Object>();
                    parametros.put("",mensaje2); 
+                   parametros.put("USUARIO",mod.getUsuario());
                    JasperPrint print = JasperFillManager.fillReport(report,
                    parametros, con.conectar());
                    JasperViewer visor = new JasperViewer(print, false);
@@ -351,6 +367,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                    JasperCompileManager.compileReport(archivo);
                    Map<String,Object> parametros = new HashMap<String,Object>();
                    parametros.put("ID_ESTUDIANTE",mensaje2); 
+                   parametros.put("USUARIO",mod.getUsuario());
                    JasperPrint print = JasperFillManager.fillReport(report,
                    parametros, con.conectar());
                    JasperViewer visor = new JasperViewer(print, false);
@@ -383,6 +400,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
             parametros.put("FECHA",mensaje1); 
             parametros.put("GRADO",mensaje2); 
             parametros.put("SECCION",mensaje3); 
+            parametros.put("USUARIO",mod.getUsuario());
             JasperPrint print = JasperFillManager.fillReport(report,
             parametros, con.conectar());
             JasperViewer visor = new JasperViewer(print, false);
@@ -415,6 +433,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                    Map<String,Object> parametros = new HashMap<String,Object>();
                    parametros.put("Filtrar",mensaje1); 
                    parametros.put("FiltrarNombre",mensaje2); 
+                   parametros.put("USUARIO",mod.getUsuario());
                    JasperPrint print = JasperFillManager.fillReport(report,
                    parametros, con.conectar());
                    JasperViewer visor = new JasperViewer(print, false);
@@ -452,6 +471,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                    parametros.put("APELLIDO",mensaje1); 
                    parametros.put("NOMBRE",mensaje2); 
                    parametros.put("TRIMESTRE",mensaje3); 
+                   parametros.put("USUARIO",mod.getUsuario());
                    JasperPrint print = JasperFillManager.fillReport(report,
                    parametros, con.conectar());
                    JasperViewer visor = new JasperViewer(print, false);
@@ -470,6 +490,46 @@ public class FrmReportes extends javax.swing.JInternalFrame {
             Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnNotasActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String mensaje1=JOptionPane.showInputDialog(null,"Escribe el año del curso",JOptionPane.INFORMATION_MESSAGE);
+        String mensaje2=JOptionPane.showInputDialog(null,"Escribe el grado",JOptionPane.INFORMATION_MESSAGE);
+        String mensaje3=JOptionPane.showInputDialog(null,"Escribe la seccion",JOptionPane.INFORMATION_MESSAGE);
+        String mensaje4=JOptionPane.showInputDialog(null,"Escribe el número del indicador a revisar",JOptionPane.INFORMATION_MESSAGE);
+        
+        try{
+           Conexion con = new Conexion();
+
+        
+            String reports = "RptNotasIndicador";
+            String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
+            archivo = URLDecoder.decode(archivo,"UTF-8");
+                   JasperReport report =
+                   JasperCompileManager.compileReport(archivo);
+                   Map<String,Object> parametros = new HashMap<String,Object>();
+                   parametros.put("ANIO",mensaje1); 
+                   parametros.put("GRADO",mensaje2); 
+                   parametros.put("SECCION",mensaje3); 
+                   parametros.put("INDICADOR",mensaje4);
+                   parametros.put("USUARIO",mod.getUsuario());
+                   JasperPrint print = JasperFillManager.fillReport(report,
+                   parametros, con.conectar());
+                   JasperViewer visor = new JasperViewer(print, false);
+                   visor.setTitle("Resultados de Indicador");
+                   visor.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                   visor.setVisible(true);
+                   reports="";
+        
+        }
+        catch(JRException e){
+        
+            System.out.println("AQUI1");
+            System.out.println(e.getMessage());
+        
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

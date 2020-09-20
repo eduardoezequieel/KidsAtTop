@@ -4,6 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="ANIO_SECCION" class="java.lang.String"/>
+	<parameter name="USUARIO" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT (g.grado + ' '+ s.seccion) AS 'Grados', u.usuario, gs.anio_seccion FROM grado_seccion gs, grado g, seccion s, usuario u WHERE gs.id_grado = g.id_grado AND gs.id_seccion = s.id_seccion AND gs.id_usuario = u.id_usuario AND gs.anio_seccion = $P{ANIO_SECCION} ORDER BY 'Grados']]>
 	</queryString>
@@ -119,4 +120,36 @@
 			</textField>
 		</band>
 	</pageFooter>
+	<lastPageFooter>
+		<band height="50">
+			<textField evaluationTime="Report">
+				<reportElement x="103" y="10" width="40" height="28" forecolor="#000000" uuid="0656a68e-a22d-4e58-913a-67097c2c99fa"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI Semilight" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="10" width="93" height="28" forecolor="#000000" uuid="98fd0c53-b2bf-421e-9ed8-f39a0245cfd5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Segoe UI Semilight" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="295" y="29" width="230" height="16" uuid="b2322562-ae3c-4698-be27-a083a5845409"/>
+				<textElement textAlignment="Right">
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Generado por: " +$P{USUARIO}.toString()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="254" y="5" width="291" height="16" uuid="bf3904d9-d626-4730-9483-d8be922bef78"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<text><![CDATA[Todos los Derechos Reservados - KidsAtTop! © 2020]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
 </jasperReport>

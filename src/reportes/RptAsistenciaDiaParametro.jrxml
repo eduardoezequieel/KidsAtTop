@@ -6,6 +6,7 @@
 	<parameter name="GRADO" class="java.lang.String"/>
 	<parameter name="SECCION" class="java.lang.String"/>
 	<parameter name="FECHA" class="java.lang.String"/>
+	<parameter name="USUARIO" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[Select (e.nombre + ' ' + e.apellido) AS 'nombre', t.tipo_asistencia, a.observacion, (g.grado + ' ' + s.seccion) grado, a.fecha from estudiante e, control_asistencia a, grado_seccion gs, grado g, seccion s, tipo_asistencia t where a.id_estudiante = e.id_estudiante and e.id_grado_seccion = gs.id_grado_seccion and a.id_tipo_asistencia = t.id_tipo_asistencia and gs.id_grado = g.id_grado and gs.id_seccion = s.id_seccion  and g.grado = $P{GRADO}  and s.seccion = $P{SECCION} and a.fecha = $P{FECHA} order by(apellido)]]>
 	</queryString>
@@ -137,4 +138,36 @@
 			</textField>
 		</band>
 	</pageFooter>
+	<lastPageFooter>
+		<band height="50">
+			<textField evaluationTime="Report">
+				<reportElement x="103" y="11" width="40" height="28" forecolor="#000000" uuid="4edaadc1-1874-42a4-815f-cba7994b3cf3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI Semilight" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="29" width="230" height="16" uuid="360a77a6-624c-4482-bdab-348502763b38"/>
+				<textElement textAlignment="Right">
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Generado por: " +$P{USUARIO}.toString()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="302" y="5" width="291" height="16" uuid="fbe00137-6e21-4446-a5a8-b1c13970bfa9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<text><![CDATA[Todos los Derechos Reservados - KidsAtTop! © 2020]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="11" width="93" height="28" forecolor="#000000" uuid="f25d3ce7-183f-4e4a-9ce0-bf4098f0f3b3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Segoe UI Semilight" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
 </jasperReport>

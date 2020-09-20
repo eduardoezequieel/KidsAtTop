@@ -2,7 +2,8 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RptEstudiantesPorGradoSinParametro" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="77ede196-2e99-4acc-a783-af9f9961dca5">
 	<property name="ireport.zoom" value="1.9965000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="117"/>
+	<parameter name="USUARIO" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT e.apellido, e.nombre,
 CASE e."genero"
@@ -173,6 +174,38 @@ CONCAT(r.nombre, ' ' , r.apellido) as responsable, CONCAT(g.grado, '-' , se.secc
 			</textField>
 		</band>
 	</pageFooter>
+	<lastPageFooter>
+		<band height="50">
+			<textField>
+				<reportElement x="338" y="29" width="230" height="16" uuid="8da305a7-bcf4-42cb-977d-19324a169f60"/>
+				<textElement textAlignment="Right">
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Generado por: " +$P{USUARIO}.toString()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="293" y="5" width="291" height="16" uuid="1bce1f99-e33c-423e-99fd-241f4b9f885f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<text><![CDATA[Todos los Derechos Reservados - KidsAtTop! © 2020]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="103" y="13" width="40" height="28" forecolor="#000000" uuid="c072b8d6-0c86-4760-b7fc-873760303d20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI Semilight" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="13" width="93" height="28" forecolor="#000000" uuid="8322d16b-254d-4e60-9b8b-f45e833b3a53"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Segoe UI Semilight" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
 	<summary>
 		<band height="44" splitType="Stretch">
 			<staticText>

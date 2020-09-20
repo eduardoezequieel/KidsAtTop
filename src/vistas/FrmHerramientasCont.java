@@ -195,7 +195,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void jReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jReportesActionPerformed
-        FrmReportes reportes = new FrmReportes();
+        FrmReportes reportes = new FrmReportes(mod);
         jEscritorio.add(reportes);
         reportes.setVisible(true);
         
