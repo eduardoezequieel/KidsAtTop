@@ -51,6 +51,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         btnConducta = new javax.swing.JButton();
         btnGenerarAsistenciaDia = new javax.swing.JButton();
         btnNotas = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(33, 37, 41));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -59,10 +60,11 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         jPanel1.setForeground(new java.awt.Color(33, 37, 41));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Menú de Reportes");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1000, -1));
 
         btnGenerarBitacora.setText("Bitacora");
         btnGenerarBitacora.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +72,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnGenerarBitacoraActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 210, 120));
+        jPanel1.add(btnGenerarBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 210, 120));
 
         btnGenerarGradoSeccion.setText("Grados y su docente");
         btnGenerarGradoSeccion.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +80,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnGenerarGradoSeccionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarGradoSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 220, 130));
+        jPanel1.add(btnGenerarGradoSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 220, 130));
 
         btnGenerarEstudiantesGS.setText("Estudiante por grado y sección ");
         btnGenerarEstudiantesGS.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +88,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnGenerarEstudiantesGSActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarEstudiantesGS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 210, 130));
+        jPanel1.add(btnGenerarEstudiantesGS, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 210, 130));
 
         btnLista.setText("Lista de Usuarios");
         btnLista.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +96,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnListaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 220, 120));
+        jPanel1.add(btnLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 220, 120));
 
         btnInasistencias.setText("Inasistencias");
         btnInasistencias.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +104,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnInasistenciasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInasistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 210, 130));
+        jPanel1.add(btnInasistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 210, 130));
 
         btnConducta.setText("Conducta");
         btnConducta.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +112,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnConductaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnConducta, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 220, 130));
+        jPanel1.add(btnConducta, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 160, 220, 120));
 
         btnGenerarAsistenciaDia.setText("Asistencia por día");
         btnGenerarAsistenciaDia.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +120,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnGenerarAsistenciaDiaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarAsistenciaDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 432, 220, 130));
+        jPanel1.add(btnGenerarAsistenciaDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 450, 220, 130));
 
         btnNotas.setText("Reporte de notas");
         btnNotas.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +128,10 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnNotasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 220, 130));
+        jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 220, 130));
+
+        jButton1.setText("Reporte de notas por indicador");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, 220, 130));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1000, 710));
 
@@ -476,6 +481,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnInasistencias;
     private javax.swing.JButton btnLista;
     private javax.swing.JButton btnNotas;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
