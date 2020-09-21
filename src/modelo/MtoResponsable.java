@@ -197,6 +197,23 @@ public class MtoResponsable {
         return resp;
     }
     
+    public boolean verificarDuiExistente(){
+        //Verificando DUI
+        boolean duiUnico = true;
+        try{
+            String dui = "SELECT id_responsable FROM responsable WHERE dui = ?";
+            PreparedStatement cmdDui = cn.prepareStatement(dui);
+            cmdDui.setString(1, responsableCtrl.getDui());
+            ResultSet rsDui = cmdDui.executeQuery();
+            while(rsDui.next()){
+                duiUnico = false;
+            }
+        }catch(Exception ex){
+            ex.getMessage();
+        }
+        return duiUnico;
+    }
+    
     public boolean actualizarResponsable(String parentesco){
         boolean resp = false;
         try{
@@ -208,7 +225,7 @@ public class MtoResponsable {
             while(rs.next()){
                 responsableCtrl.setIdParentesco(rs.getInt(1));
             }
-            
+
             //Se actualiza el responsable seleccionado
             String sql = "UPDATE responsable set nombre = ?, apellido = ?, dui = ?, telefono = ?, email = ?, id_parentesco = ? WHERE id_responsable = ?";
             PreparedStatement cmd = cn.prepareStatement(sql);
@@ -219,10 +236,10 @@ public class MtoResponsable {
             cmd.setString(5, responsableCtrl.getEmail());
             cmd.setInt(6, responsableCtrl.getIdParentesco());
             cmd.setInt(7, responsableCtrl.getIdResponsable());
-            
+
             if (!cmd.execute()) {
                 resp = true;
-            }
+            }      
         }catch(Exception ex){
             System.out.println(ex.toString());
         }

@@ -68,6 +68,12 @@ public class FrmAdministrarResponsable extends javax.swing.JInternalFrame {
         tResponsables.setModel(modelo);
         tResponsables.getColumnModel().getColumn(0).setMinWidth(0);
         tResponsables.getColumnModel().getColumn(0).setMaxWidth(0);
+        tResponsables.getColumnModel().getColumn(5).setMinWidth(0);
+        tResponsables.getColumnModel().getColumn(5).setMaxWidth(0);
+        tResponsables.getColumnModel().getColumn(6).setMinWidth(0);
+        tResponsables.getColumnModel().getColumn(6).setMaxWidth(0);
+        tResponsables.getColumnModel().getColumn(7).setMinWidth(0);
+        tResponsables.getColumnModel().getColumn(7).setMaxWidth(0);
         this.vaciarTabla();
         this.mostrarResponsables();
 
@@ -467,23 +473,29 @@ public class FrmAdministrarResponsable extends javax.swing.JInternalFrame {
             ctrl.setDui(jDUI.getText());
             ctrl.setEmail(jEmail.getText());
             ctrl.setTelefono(jTelefono.getText());
-            if (mto.actualizarResponsable(String.valueOf(cbParentesco.getSelectedItem()))) {
-                JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
-                MtoBitacoras add = new MtoBitacoras();
-                int id = add.capturarIdBitacora() + 1;
-                mod.setId_usuario(mod.getId_usuario());
-                mod.setId_bitacora(id);
-                add.agregarBitacoraActualizarResponsable(mod);
-                jBuscar.setText("");
-                String busqueda = jBuscar.getText();
-                TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
-                tResponsables.setRowSorter(tr);
-                tr.setRowFilter(RowFilter.regexFilter(busqueda));
-            } 
-            else 
-            {
-                JOptionPane.showMessageDialog(null, "Error");
+            if (!mto.verificarDuiExistente()) {
+                JOptionPane.showMessageDialog(null, "El número de DUI que intenta ingresar ya está en uso", "DUI ya existente", JOptionPane.INFORMATION_MESSAGE);
             }
+            else{
+                if (mto.actualizarResponsable(String.valueOf(cbParentesco.getSelectedItem()))) {
+                    JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                    MtoBitacoras add = new MtoBitacoras();
+                    int id = add.capturarIdBitacora() + 1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraActualizarResponsable(mod);
+                    jBuscar.setText("");
+                    String busqueda = jBuscar.getText();
+                    TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);
+                    tResponsables.setRowSorter(tr);
+                    tr.setRowFilter(RowFilter.regexFilter(busqueda));
+                } 
+                else 
+                {
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
+            }
+            
             vaciarCampos();
             vaciarTabla();
             mostrarResponsables();
