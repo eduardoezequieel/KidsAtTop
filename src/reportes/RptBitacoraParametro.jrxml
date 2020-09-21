@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteBitacora" language="groovy" pageWidth="572" pageHeight="752" columnWidth="532" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b1353d03-8108-4aec-8fde-0562ed1fd0c9">
 	<property name="ireport.zoom" value="1.610510000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="17"/>
 	<parameter name="FILTRAR_USUARIO" class="java.lang.String"/>
 	<parameter name="USUARIO" class="java.lang.String"/>
 	<queryString>
@@ -79,19 +79,19 @@
 		</band>
 	</title>
 	<detail>
-		<band height="42" splitType="Stretch">
+		<band height="45" splitType="Stretch">
 			<rectangle radius="10">
-				<reportElement x="49" y="3" width="434" height="34" forecolor="#D4F9DD" uuid="64fe632f-e14a-4778-9c88-3bfd4b9e672a"/>
+				<reportElement x="49" y="3" width="434" height="40" forecolor="#D4F9DD" uuid="64fe632f-e14a-4778-9c88-3bfd4b9e672a"/>
 			</rectangle>
 			<textField>
-				<reportElement x="59" y="10" width="100" height="20" uuid="cd77d06f-026b-41b0-83c6-ad5dfdffcfb8"/>
+				<reportElement x="59" y="12" width="100" height="20" uuid="cd77d06f-026b-41b0-83c6-ad5dfdffcfb8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Segoe UI Semilight" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="179" y="10" width="294" height="20" uuid="9f1e11f3-70cb-4a31-af08-2dee371aea54"/>
+				<reportElement x="179" y="7" width="294" height="32" uuid="9f1e11f3-70cb-4a31-af08-2dee371aea54"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Segoe UI Semilight" size="12"/>
 				</textElement>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteBitacora" language="groovy" pageWidth="572" pageHeight="752" columnWidth="532" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b1353d03-8108-4aec-8fde-0562ed1fd0c9">
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="2.1961500000000007"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="142"/>
 	<parameter name="USUARIO" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT id_bitacora,u.usuario, fecha, tipo FROM bitacora b, usuario u WHERE b.id_usuario = u.id_usuario order by u.id_usuario]]>
@@ -11,7 +11,7 @@
 	<field name="usuario" class="java.lang.String"/>
 	<field name="fecha" class="java.sql.Timestamp"/>
 	<field name="tipo" class="java.lang.String"/>
-	<group name="usuario" minHeightToStartNewPage="114">
+	<group name="usuario" minHeightToStartNewPage="117">
 		<groupExpression><![CDATA[$F{usuario}]]></groupExpression>
 		<groupHeader>
 			<band height="72">
@@ -78,23 +78,23 @@
 		</band>
 	</title>
 	<detail>
-		<band height="42" splitType="Stretch">
+		<band height="45" splitType="Stretch">
 			<rectangle radius="10">
-				<reportElement x="49" y="4" width="434" height="34" forecolor="#D4F9DD" uuid="edc17c8f-6f59-4787-8b88-c39990c96658"/>
+				<reportElement x="49" y="4" width="434" height="40" forecolor="#D4F9DD" uuid="edc17c8f-6f59-4787-8b88-c39990c96658"/>
 			</rectangle>
 			<textField>
-				<reportElement x="58" y="11" width="100" height="20" forecolor="#333333" uuid="cd77d06f-026b-41b0-83c6-ad5dfdffcfb8"/>
+				<reportElement x="58" y="14" width="100" height="20" forecolor="#333333" uuid="cd77d06f-026b-41b0-83c6-ad5dfdffcfb8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Segoe UI Semilight" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="178" y="10" width="294" height="20" forecolor="#333333" uuid="9f1e11f3-70cb-4a31-af08-2dee371aea54"/>
+				<reportElement x="178" y="8" width="294" height="32" forecolor="#333333" uuid="9f1e11f3-70cb-4a31-af08-2dee371aea54"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Segoe UI Semilight" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo} ]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
