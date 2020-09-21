@@ -283,25 +283,34 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
 
     private void jGestionarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGestionarAsistenciaActionPerformed
         
+            try{
             
-            //Abriendo formulario de Controlar Asistencia
-            FrmAsistencia asistencia = new FrmAsistencia(mod);
-            jEscritorio.add(asistencia);
-            asistencia.setVisible(true);
+                   //Abriendo formulario de Controlar Asistencia
+                   FrmAsistencia asistencia = new FrmAsistencia(mod);
+                   jEscritorio.add(asistencia);
+                   asistencia.setVisible(true);
 
-            //Cambiar imagenes
-            Icon Imagenes;
-             Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"));
-            jGestionarConducta.setIcon(Imagenes);
+                   //Cambiar imagenes
+                   Icon Imagenes;
+                    Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarConducta_default.png"));
+                   jGestionarConducta.setIcon(Imagenes);
 
-            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControlarAsistencia_pressed.png"));
-            jGestionarAsistencia.setIcon(Imagenes);
+                   Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnControlarAsistencia_pressed.png"));
+                   jGestionarAsistencia.setIcon(Imagenes);
 
-            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"));
-            jGestionarNotas.setIcon(Imagenes);
+                   Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarNotas_defaultpng.png"));
+                   jGestionarNotas.setIcon(Imagenes);
 
-            Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
-            jGestionarSecciones.setIcon(Imagenes);
+                   Imagenes = new ImageIcon(getClass().getResource("/imagenes/btnGestionarSecciones_default.png"));
+                   jGestionarSecciones.setIcon(Imagenes);
+            
+            }
+            
+            catch(Exception e){
+            
+                System.out.println(e.toString());
+            }
+           
        
         
     }//GEN-LAST:event_jGestionarAsistenciaActionPerformed
