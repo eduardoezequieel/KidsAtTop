@@ -324,6 +324,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
     private void btnGenerarEstudiantesGSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarEstudiantesGSActionPerformed
         int mensaje = JOptionPane.showConfirmDialog(null, "¿Deseas generar este reporte con filtros?","Información",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
         if (mensaje == JOptionPane.YES_OPTION){
+            String mensaje1 = JOptionPane.showInputDialog(null, "Escribe el año de la información a solicitar.","Aviso",JOptionPane.INFORMATION_MESSAGE);
              String mensaje2 = JOptionPane.showInputDialog(null, "Escribe el grado por el que quieres el reporte. Por ejemplo Kinder 5","Aviso",JOptionPane.INFORMATION_MESSAGE);
              String mensaje3 = JOptionPane.showInputDialog(null, "Escribe la sección por el que quieres el reporte. Por ejemplo A","Aviso",JOptionPane.INFORMATION_MESSAGE);
                 try {
@@ -338,6 +339,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                    parametros.put("grado",mensaje2); 
                    parametros.put("seccion",mensaje3); 
                    parametros.put("USUARIO",mod.getUsuario());
+                   parametros.put("ANIO",mensaje1);
                    JasperPrint print = JasperFillManager.fillReport(report,
                    parametros, con.conectar());
                    JasperViewer visor = new JasperViewer(print, false);
@@ -353,6 +355,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                     Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
                 } 
         } else if (mensaje == JOptionPane.NO_OPTION) {
+            String mensaje1 = JOptionPane.showInputDialog(null, "Escribe el año de la información a solicitar.","Aviso",JOptionPane.INFORMATION_MESSAGE);
             try{
         
             
@@ -365,7 +368,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 JasperReport report =
                 JasperCompileManager.compileReport(archivo);
                 Map<String,Object> parametros = new HashMap<String,Object>();
-                parametros.put("",mensaje2); 
+                parametros.put("ANIO",mensaje1); 
                 parametros.put("USUARIO",mod.getUsuario());
                 JasperPrint print = JasperFillManager.fillReport(report,
                 parametros, con.conectar());

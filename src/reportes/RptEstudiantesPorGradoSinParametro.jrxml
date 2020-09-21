@@ -4,13 +4,14 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="117"/>
 	<parameter name="USUARIO" class="java.lang.String"/>
+	<parameter name="ANIO" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT e.apellido, e.nombre,
 CASE e."genero"
      	When 'F' Then 'Femenino'
      	When 'M' Then 'Masculino'
      END as genero,
-CONCAT(r.nombre, ' ' , r.apellido) as responsable, CONCAT(g.grado, '-' , se.seccion) as gradoSeccion, gs.id_grado_seccion, e.id_estudiante FROM estudiante e, responsable r, grado_seccion gs, grado g, seccion se WHERE  r.id_responsable = e.id_responsable AND gs.id_grado_seccion = e.id_grado_seccion AND g.id_grado = gs.id_grado AND se.id_seccion = gs.id_seccion order by gs.id_grado_seccion, e.apellido]]>
+CONCAT(r.nombre, ' ' , r.apellido) as responsable, CONCAT(g.grado, '-' , se.seccion) as gradoSeccion, gs.id_grado_seccion, e.id_estudiante FROM estudiante e, responsable r, grado_seccion gs, grado g, seccion se WHERE  r.id_responsable = e.id_responsable AND gs.id_grado_seccion = e.id_grado_seccion AND g.id_grado = gs.id_grado AND se.id_seccion = gs.id_seccion AND gs.anio_seccion = $P{ANIO} order by gs.id_grado_seccion, e.apellido]]>
 	</queryString>
 	<field name="apellido" class="java.lang.String"/>
 	<field name="nombre" class="java.lang.String"/>
