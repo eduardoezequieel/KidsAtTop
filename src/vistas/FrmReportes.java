@@ -83,7 +83,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnGenerarBitacoraActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 210, 180));
+        jPanel1.add(btnGenerarBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 210, 180));
 
         btnGenerarGradoSeccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptDocentesDefault.png"))); // NOI18N
         btnGenerarGradoSeccion.setBorder(null);
@@ -109,7 +109,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnGenerarEstudiantesGSActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarEstudiantesGS, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 210, 180));
+        jPanel1.add(btnGenerarEstudiantesGS, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 210, 180));
 
         btnLista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptUsuarioDefault.png"))); // NOI18N
         btnLista.setBorder(null);
@@ -122,7 +122,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnListaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 210, 180));
+        jPanel1.add(btnLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 210, 180));
 
         btnInasistencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptInasistenciasDefault.png"))); // NOI18N
         btnInasistencias.setBorder(null);
@@ -135,7 +135,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnInasistenciasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInasistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 210, 180));
+        jPanel1.add(btnInasistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 490, 210, 180));
 
         btnConducta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptConductaDefault.png"))); // NOI18N
         btnConducta.setBorder(null);
@@ -148,7 +148,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnConductaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnConducta, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, 210, 180));
+        jPanel1.add(btnConducta, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, 210, 180));
 
         btnGenerarAsistenciaDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptAsistenciasDefault.png"))); // NOI18N
         btnGenerarAsistenciaDia.setBorder(null);
@@ -161,7 +161,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnGenerarAsistenciaDiaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarAsistenciaDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 210, 180));
+        jPanel1.add(btnGenerarAsistenciaDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 490, 210, 180));
 
         btnNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptNotasEstudianteDefault.png"))); // NOI18N
         btnNotas.setBorder(null);
@@ -174,7 +174,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 btnNotasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, 210, 180));
+        jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, 210, 180));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptIndicadores.png"))); // NOI18N
         jButton1.setBorder(null);
@@ -182,14 +182,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusable(false);
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptIndicadoresRollover.png"))); // NOI18N
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 210, 180));
-        jButton1.setText("Reporte de notas por indicador");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, 220, 130));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 290, 210, 180));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
