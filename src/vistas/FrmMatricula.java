@@ -325,45 +325,65 @@ public class FrmMatricula extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
         } else {
             
-            //Mandando datos a la clase
-            estudiante.obtenerUltimoId();
-            estudianteCtrl.setNombre(jNombre.getText());
-            estudianteCtrl.setApellido(jApellido.getText());
-            estudianteCtrl.setFechaNacimiento(jFecha.getText());
-            estudianteCtrl.setAnioIngreso(String.valueOf(cbAño.getItemAt(cbAño.getSelectedIndex())));
-            estudianteCtrl.setDireccion(jDireccion.getText());
-            if (rbF.isSelected()) {
-                estudianteCtrl.setGenero("F");
-            } else if (rbM.isSelected()) {
-                estudianteCtrl.setGenero("M");
-            }     
-            estudianteCtrl.setIdEstado(1);
+            //Verificando cupos disponibles
+            estudianteCtrl.setAnioSeccion(String.valueOf(cbAño.getItemAt(cbAño.getSelectedIndex())));
+
             //Dividiendo el grado y la seccion
-            String gradoSeccion = cbGS.getItemAt(cbGS.getSelectedIndex());
-            String[] parte = gradoSeccion.split("-");
-            String grado = parte[0];
-            String seccion = parte[1];
-            
-            estudiante.obtenerIdGS(grado, seccion);
-            estudianteCtrl.setFoto(person_image);
-        
-            if (estudiante.insertarEstudiante()) {
-                JOptionPane.showMessageDialog(null, "Se ha agregado el estudiante correctamente");
-                this.limpiarCampos();
+            String gradoSeccion2 = cbGS.getItemAt(cbGS.getSelectedIndex());
+            String[] parte2 = gradoSeccion2.split("-");
+            String grado2 = parte2[0];
+            String seccion2 = parte2[1];
+
+            //Dividiendo el grado y la seccion
+            estudianteCtrl.setGrado(grado2);
+            estudianteCtrl.setSeccion(seccion2);
+
+            estudiante.verificarCupos();
+            if (estudianteCtrl.getIdEstudianteCount() >= 45) {
+                JOptionPane.showMessageDialog(null, "Esta sección ya no tiene cupos disponibles");
             } else {
-                JOptionPane.showMessageDialog(null, "No se ha agregado el estudiante correctamente");
-            }
-            
-            estudiante.obtenerUltimoIdNota();
-            String nivelSubstring = gradoSeccion.substring(7,8);
-            int nivel = Integer.parseInt(nivelSubstring);
-            estudianteCtrl.setNivelAcademico(nivel);
-            estudiante.obtenerCountIdIndicador();
-            for (int i = 0; i <3; i++) {
-                estudianteCtrl.setIdtrimestre(i + 1);
-                estudiante.obtenerIndicador();
-            }
+                //Mandando datos a la clase
+                estudiante.obtenerUltimoId();
+                estudianteCtrl.setNombre(jNombre.getText());
+                estudianteCtrl.setApellido(jApellido.getText());
+                estudianteCtrl.setFechaNacimiento(jFecha.getText());
+                estudianteCtrl.setAnioIngreso(String.valueOf(cbAño.getItemAt(cbAño.getSelectedIndex())));
+                estudianteCtrl.setDireccion(jDireccion.getText());
+                if (rbF.isSelected()) {
+                    estudianteCtrl.setGenero("F");
+                } else if (rbM.isSelected()) {
+                    estudianteCtrl.setGenero("M");
+                }     
+                estudianteCtrl.setIdEstado(1);
+                //Dividiendo el grado y la seccion
+                String gradoSeccion = cbGS.getItemAt(cbGS.getSelectedIndex());
+                String[] parte = gradoSeccion.split("-");
+                String grado = parte[0];
+                String seccion = parte[1];
+
+                estudiante.obtenerIdGS(grado, seccion);
+                estudianteCtrl.setFoto(person_image);
+
+                if (estudiante.insertarEstudiante()) {
+                    JOptionPane.showMessageDialog(null, "Se ha agregado el estudiante correctamente");
+                    this.limpiarCampos();
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se ha agregado el estudiante correctamente");
+                }
+
+                estudiante.obtenerUltimoIdNota();
+                String nivelSubstring = gradoSeccion.substring(7,8);
+                int nivel = Integer.parseInt(nivelSubstring);
+                estudianteCtrl.setNivelAcademico(nivel);
+                estudiante.obtenerCountIdIndicador();
+                for (int i = 0; i <3; i++) {
+                    estudianteCtrl.setIdtrimestre(i + 1);
+                    estudiante.obtenerIndicador();
+                }
            
+            }   
+        
+            
             
         }
 

@@ -41,6 +41,8 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     //Modelo de la tabla
     DefaultTableModel modelo = new DefaultTableModel();
     DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
+    //Modelo de la tabla
+    DefaultTableModel modelo2 = new DefaultTableModel();
     
     public FrmTrasladoAlumnos() {
         initComponents();
@@ -54,16 +56,37 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         tNotasPendientes.getTableHeader().setBackground(new Color(33, 37, 41));
         tNotasPendientes.getTableHeader().setForeground(new Color(254,254,254));
         
+        //Modelo de tabla
         modelo.addColumn("Estudiante");
         modelo.addColumn("Indicador");
         modelo.addColumn("Trimestre");
         tNotasPendientes.setModel(modelo);
         this.centrarColumnas();
         
+        //Modelo de la tabla de estudiantes
+        modelo2.addColumn("0");
+        modelo2.addColumn("1");
+        modelo2.addColumn("2");
+        modelo2.addColumn("3");
+        modelo2.addColumn("4");
+         modelo2.addColumn("5");
+        modelo2.addColumn("6");
+        modelo2.addColumn("7");
+        modelo2.addColumn("8");
+        modelo2.addColumn("9");
+         modelo2.addColumn("10");
+        jEstudiantes.setModel(modelo2);
+        
         
         //Llenando combobox
         this.llenarAnio();
         this.llenarGradoSeccion();
+        this.reset();
+        
+        j1.setVisible(false);
+        j2.setVisible(false);
+        j3.setVisible(false);
+        
     }
 
     
@@ -91,10 +114,16 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         cbAño2 = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
         btnActualizar3 = new javax.swing.JButton();
+        btnGraduarse = new javax.swing.JButton();
         btnActualizar2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tNotasPendientes = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
+        j1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEstudiantes = new javax.swing.JTable();
+        j2 = new javax.swing.JTextField();
+        j3 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -233,6 +262,14 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         });
         jPanel3.add(btnActualizar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 130, 60));
 
+        btnGraduarse.setText("Graduar");
+        btnGraduarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGraduarseActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnGraduarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 150, 60));
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 330, 270));
 
         btnActualizar2.setBackground(new java.awt.Color(33, 37, 41));
@@ -287,6 +324,24 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Notas pendientes de ingresar:");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 1000, -1));
+        jPanel1.add(j1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 60, -1));
+
+        jEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jEstudiantes);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 0, 0));
+        jPanel1.add(j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 40, -1));
+        jPanel1.add(j3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 40, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -306,17 +361,125 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         
-        estudianteCtrl.setAnioSeccion(cbAño.getItemAt(cbAño.getSelectedIndex()));
+        try{
+            
+            //Comprobando si todas las notas están ingresadas
+            estudianteCtrl.setAnioSeccion(cbAño.getItemAt(cbAño.getSelectedIndex()));
+
+            //Dividiendo el grado y la seccion
+            String gradoSeccion = cbGS.getItemAt(cbGS.getSelectedIndex());
+            String[] parte = gradoSeccion.split("-");
+            String grado = parte[0];
+            String seccion = parte[1];
+            estudiante.obtenerIdGS(grado, seccion);
+
+            this.limpiarTabla();
+            this.mostrarNotasPendientes();
+
+            String tabla = String.valueOf(tNotasPendientes.getValueAt(0, 0));
+
+            if (tabla != null) {
+                JOptionPane.showMessageDialog(null, "No puede existir ninguna nota pendiente. Completar antes de hacer el traslado");
+            } else {
+
+            }
+        } catch(Exception e){
+            
+            //Habilitando el otro formulario 
+            //Dividiendo el grado y la seccion
+            String gradoSeccion = cbGS.getItemAt(cbGS.getSelectedIndex());
+
+            //Llenando combobox de año
+            int año = Integer.parseInt(estudianteCtrl.getAnioSeccion());
+            año = año + 1;
+            estudianteCtrl.setAnioSeccion(String.valueOf(año));
+            this.llenarAnio2();
+            
+            //Declarando variable de año
+            int anioGrado = 0; 
+
+            String nivelSubstring = gradoSeccion.substring(7,8);
+            int nivel = Integer.parseInt(nivelSubstring);
+            
+            switch(nivel){
+                case 4:
+                    estudianteCtrl.setGrado("Kinder 5");
+                    break;
+                case 5:
+                    estudianteCtrl.setGrado("Kinder 6");
+                    break;
+                case 6:
+                    anioGrado = 6;
+                    break;
+            }
+            
+            //Verificando si es translado o graduación
+            if (anioGrado == 6) {
+                btnGraduarse.setVisible(true);
+                jLabel19.setVisible(false);
+                jLabel18.setVisible(false);
+                cbAño2.setVisible(false);
+                cbGS2.setVisible(false);
+                btnActualizar3.setVisible(false);
+                btnActualizar.setEnabled(false);
+                
+                String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
+
+                //Dividiendo el grado y la seccion
+                String gradoSeccion3 = cbGS.getItemAt(cbGS.getSelectedIndex());
+                String[] parte3 = gradoSeccion3.split("-");
+                String grado3 = parte3[0];
+                String seccion3 = parte3[1];
+                estudiante.obtenerIdGS(grado3, seccion3);
+                this.limpiarTabla2();
+                this.mostrarEstudiantes(anio, grado3, seccion3);
+            } else {
+                //Llenando combobox de seccion
+                this.llenarGradoSeccion2();
+                String gs = String.valueOf(cbGS2.getItemAt(cbGS2.getSelectedIndex()));
+                String combo = String.valueOf(cbAño.getItemAt(cbAño2.getSelectedIndex()));
+                j2.setText(gs);
+                j3.setText(combo);
+
+                if (j2.getText().equals("null") || j3.getText().equals("null")) {
+                    JOptionPane.showMessageDialog(null, "No existen secciones o año para el traslado. Por favor agregar una antes de trasladar");
+                } else {
+                    btnActualizar.setEnabled(false);
+                    btnActualizar3.setEnabled(true);
+                    estudianteCtrl.setAnioSeccion(String.valueOf(cbAño.getItemAt(cbAño.getSelectedIndex())));
+
+                    //Dividiendo el grado y la seccion
+                    String gradoSeccion2 = cbGS.getItemAt(cbGS.getSelectedIndex());
+                    String[] parte2 = gradoSeccion2.split("-");
+                    String grado2 = parte2[0];
+                    String seccion2 = parte2[1];
+
+                    //Dividiendo el grado y la seccion
+                    estudianteCtrl.setGrado(grado2);
+                    estudianteCtrl.setSeccion(seccion2);
+
+                    estudiante.verificarCupos();
+                    if (estudianteCtrl.getIdEstudianteCount()> 45) {
+                        JOptionPane.showMessageDialog(null, "Esta sección ya no tiene cupos");
+                    } else{
+
+                        String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
+
+                        //Dividiendo el grado y la seccion
+                        String gradoSeccion3 = cbGS.getItemAt(cbGS.getSelectedIndex());
+                        String[] parte3 = gradoSeccion3.split("-");
+                        String grado3 = parte3[0];
+                        String seccion3 = parte3[1];
+                        estudiante.obtenerIdGS(grado3, seccion3);
+                        this.limpiarTabla2();
+                        this.mostrarEstudiantes(anio, grado3, seccion3);
+                    }
+
+                }
+            }
+        }
         
-        //Dividiendo el grado y la seccion
-        String gradoSeccion = cbGS.getItemAt(cbGS.getSelectedIndex());
-        String[] parte = gradoSeccion.split("-");
-        String grado = parte[0];
-        String seccion = parte[1];
-        estudiante.obtenerIdGS(grado, seccion);
         
-        this.limpiarTabla();
-        this.mostrarNotasPendientes();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void cbAñoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAñoItemStateChanged
@@ -328,7 +491,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbAñoKeyPressed
 
     private void btnActualizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar2ActionPerformed
-        // TODO add your handling code here:
+       this.reset();
     }//GEN-LAST:event_btnActualizar2ActionPerformed
 
     private void cbGS2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbGS2ItemStateChanged
@@ -340,7 +503,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbGS2KeyPressed
 
     private void cbAño2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAño2ItemStateChanged
-        // TODO add your handling code here:
+        this.llenarGradoSeccion2();
     }//GEN-LAST:event_cbAño2ItemStateChanged
 
     private void cbAño2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbAño2KeyPressed
@@ -348,8 +511,130 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbAño2KeyPressed
 
     private void btnActualizar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar3ActionPerformed
-        // TODO add your handling code here:
+        boolean resp = false;
+        //Verificando cupos disponibles
+        estudianteCtrl.setAnioSeccion(String.valueOf(cbAño.getItemAt(cbAño.getSelectedIndex())));
+                
+        //Dividiendo el grado y la seccion
+        String gradoSeccion2 = cbGS.getItemAt(cbGS.getSelectedIndex());
+        String[] parte2 = gradoSeccion2.split("-");
+        String grado2 = parte2[0];
+        String seccion2 = parte2[1];
+                
+        //Dividiendo el grado y la seccion
+        estudianteCtrl.setGrado(grado2);
+        estudianteCtrl.setSeccion(seccion2);
+            
+        estudiante.verificarCupos();
+        int longitud = estudianteCtrl.getIdEstudianteCount();
+  
+        for (int i = 0; i < longitud; i++) {
+            estudiante.obtenerUltimoId();
+            
+            //Llenando los datos de cada estudiante
+            int id = estudianteCtrl.getIdEstudiante();
+            estudianteCtrl.setNombre(String.valueOf(jEstudiantes.getValueAt(i, 1)));
+            estudianteCtrl.setApellido(String.valueOf(jEstudiantes.getValueAt(i, 2)));
+            estudianteCtrl.setAnioIngreso(String.valueOf(cbAño2.getItemAt(cbAño2.getSelectedIndex())));
+            estudianteCtrl.setFechaNacimiento(String.valueOf(jEstudiantes.getValueAt(i, 4)));
+            estudianteCtrl.setDireccion(String.valueOf(jEstudiantes.getValueAt(i, 5)));
+            estudianteCtrl.setGenero(String.valueOf(jEstudiantes.getValueAt(i, 6)));
+            estudianteCtrl.setIdEstado(Integer.parseInt(String.valueOf(jEstudiantes.getValueAt(i, 7))));
+            estudianteCtrl.setIdResponsable(Integer.parseInt(String.valueOf(jEstudiantes.getValueAt(i, 8))));
+            
+            //Dividiendo el grado y la seccion
+            estudianteCtrl.setAnioSeccion(String.valueOf(cbAño2.getItemAt(cbAño2.getSelectedIndex())));
+            String gradoSeccion5 = cbGS2.getItemAt(cbGS2.getSelectedIndex());
+            String[] parte5 = gradoSeccion5.split("-");
+            String grado5 = parte5[0];
+            String seccion5 = parte5[1];
+            estudiante.obtenerIdGS(grado5, seccion5);
+            j1.setText(String.valueOf(estudianteCtrl.getIdGradoSeccion()));
+            estudianteCtrl.setIdEstudiante(Integer.parseInt(String.valueOf(jEstudiantes.getValueAt(i, 0))));
+            byte[] foto = estudiante.capturarFoto(estudianteCtrl.getIdEstudiante());
+            estudianteCtrl.setFoto(foto);
+            
+            if (estudiante.insertarEstudiante2(id)) {
+               
+               resp = true;
+               estudiante.obtenerUltimoIdNota();
+                String nivelSubstring2 = gradoSeccion2.substring(7,8);
+                int nivel = Integer.parseInt(nivelSubstring2);
+                estudianteCtrl.setNivelAcademico(nivel);
+                estudiante.obtenerCountIdIndicador();
+                for (int j = 0; j <3; j++) {
+                    estudianteCtrl.setIdtrimestre(j + 1);
+                    estudiante.obtenerIndicador2(id);
+                }
+            } else {
+                resp = false;
+            }
+            
+        }
+        
+        
+            //Verificando cambios correctamente
+            if (resp) {
+                JOptionPane.showMessageDialog(null, "Ha traslado a la sección correctamente");
+                //Verificando cupos disponibles
+                estudianteCtrl.setAnioSeccion(String.valueOf(cbAño.getItemAt(cbAño.getSelectedIndex())));
+
+                //Dividiendo el grado y la seccion
+                String gradoSeccion0 = cbGS.getItemAt(cbGS.getSelectedIndex());
+                String[] parte0 = gradoSeccion0.split("-");
+                String grado0 = parte0[0];
+                String seccion0 = parte0[1];
+                estudiante.obtenerIdGS(grado0, seccion0);
+                estudiante.graduarSeccion(estudianteCtrl.getIdGradoSeccion());
+                this.reset();
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "No ha agredado a los estudiantes correctamente");
+            }
+        
     }//GEN-LAST:event_btnActualizar3ActionPerformed
+
+    private void btnGraduarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraduarseActionPerformed
+         
+        boolean resp = false;
+        //Verificando cupos disponibles
+        estudianteCtrl.setAnioSeccion(String.valueOf(cbAño.getItemAt(cbAño.getSelectedIndex())));
+                
+        //Dividiendo el grado y la seccion
+        String gradoSeccion2 = cbGS.getItemAt(cbGS.getSelectedIndex());
+        String[] parte2 = gradoSeccion2.split("-");
+        String grado2 = parte2[0];
+        String seccion2 = parte2[1];
+                
+        //Dividiendo el grado y la seccion
+        estudianteCtrl.setGrado(grado2);
+        estudianteCtrl.setSeccion(seccion2);
+            
+        estudiante.verificarCupos();
+        int longitud = estudianteCtrl.getIdEstudianteCount();
+  
+        for (int i = 0; i < longitud; i++) {
+            
+            int id = Integer.parseInt(String.valueOf(jEstudiantes.getValueAt(i, 0)));
+            
+            if (estudiante.graduarEstudiante(id)) {
+               resp = true;
+               
+            } else {
+                resp = false;
+            }
+        }
+        
+        //Verificando si los cambios fueron correctos
+        if (resp) {
+            JOptionPane.showMessageDialog(null, "Ha graduado a la sección correctamente");
+            estudiante.obtenerIdGS(grado2, seccion2);
+            estudiante.graduarSeccion(estudianteCtrl.getIdGradoSeccion());
+            this.reset();
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha graduado a la sección correctamente");
+        }    
+    }//GEN-LAST:event_btnGraduarseActionPerformed
 
     
     //Método para combobox del año
@@ -357,7 +642,13 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
 
         //Seteando modelo del combo
         cbAño.setModel(estudiante.llenarAnio());
-        cbAño2.setModel(estudiante.llenarAnio());
+    }
+    
+    //Método para combobox del año
+    public void llenarAnio2() {
+
+        //Seteando modelo del combo
+        cbAño2.setModel(estudiante.llenarAño2());
     }
     
 
@@ -369,8 +660,19 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         estudianteCtrl.setAnioSeccion(anio);
 
         //Seteando modelo del combo
-        cbGS.setModel(estudiante.llenarGS());
-        cbGS2.setModel(estudiante.llenarGS());
+        cbGS.setModel(estudiante.llenarGS3());
+        
+    }
+    
+    //Método para combobox de grado/seccion
+    public void llenarGradoSeccion2() {
+
+        //Obteniendo parametro del año
+        String anio = cbAño2.getItemAt(cbAño.getSelectedIndex());
+        estudianteCtrl.setAnioSeccion(anio);
+
+        //Seteando modelo del combo
+        cbGS2.setModel(estudiante.llenarGS2());
         
     }
     
@@ -381,13 +683,30 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         }
     }
     
+    public void reset(){
+        //Habilitando o no botones
+        btnActualizar.setEnabled(true);
+        btnActualizar3.setEnabled(false);
+        cbAño2.setEnabled(false);
+        btnGraduarse.setVisible(false);
+        jLabel19.setVisible(true);
+        jLabel18.setVisible(true);
+        cbAño2.setVisible(true);
+        cbGS2.setVisible(true);
+        btnActualizar3.setVisible(true);
+        this.limpiarTabla();
+        this.limpiarTabla2();
+        this.llenarAnio();
+        this.llenarGradoSeccion();
+    }
+    
     public void mostrarNotasPendientes(){
         Conexion con = new Conexion();
         Connection datos;
         try
         {
             datos = con.conectar();
-            String sql = "SELECT CONCAT(e.apellido,'-',e.nombre)as estudiante, i.indicador, t.trimestre FROM estudiante e, indicador_logro i, nota n, trimestre t, grado_seccion gs WHERE i.id_indicador = n.id_indicador AND n.id_estudiante = e.id_estudiante AND n.id_trimestre = t.id_trimestre AND gs.id_grado_seccion = e.id_grado_seccion AND n.id_n_predeterminada = 4 AND e.id_grado_seccion = ?";
+            String sql = "SELECT CONCAT(e.apellido,'-',e.nombre)as estudiante, i.indicador, t.trimestre FROM estudiante e, indicador_logro i, nota n, trimestre t, grado_seccion gs WHERE i.id_indicador = n.id_indicador AND n.id_estudiante = e.id_estudiante AND n.id_trimestre = t.id_trimestre AND gs.id_grado_seccion = e.id_grado_seccion AND n.id_n_predeterminada = 4 AND e.id_grado_seccion = ? AND e.id_estado_estudiante = 1";
             PreparedStatement dato = datos.prepareStatement(sql);
             dato.setInt(1, estudianteCtrl.getIdGradoSeccion());
             ResultSet rs = dato.executeQuery();
@@ -402,9 +721,41 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         }
     }
     
+    public void mostrarEstudiantes(String año, String grado, String seccion){
+        Conexion con = new Conexion();
+        Connection datos;
+        try
+        {
+            datos = con.conectar();
+            String sql = "SELECT * FROM estudiante e, responsable r, grado_seccion gs, grado g, seccion se WHERE  r.id_responsable = e.id_responsable AND gs.id_grado_seccion = e.id_grado_seccion AND g.id_grado = gs.id_grado AND se.id_seccion = gs.id_seccion AND gs.anio_seccion = ? AND g.grado = ? AND se.seccion = ?";
+            PreparedStatement dato = datos.prepareStatement(sql);
+            
+            dato.setString(1, año);
+            dato.setString(2, grado);
+            dato.setString(3, seccion);
+            ResultSet rs = dato.executeQuery();
+            while(rs.next()){
+                Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11)};
+                modelo2.addRow(fila);
+            }
+            jEstudiantes.setModel(modelo2);
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+    
     public void limpiarTabla(){
         //Limpiar tabla
         int filas = tNotasPendientes.getRowCount();
+        for (int i = 0;filas>i; i++) {
+            modelo.removeRow(0);
+        }
+    }
+    
+    public void limpiarTabla2(){
+        //Limpiar tabla
+        int filas = jEstudiantes.getRowCount();
         for (int i = 0;filas>i; i++) {
             modelo.removeRow(0);
         }
@@ -414,10 +765,15 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnActualizar2;
     private javax.swing.JButton btnActualizar3;
+    private javax.swing.JButton btnGraduarse;
     private javax.swing.JComboBox<String> cbAño;
     private javax.swing.JComboBox<String> cbAño2;
     private javax.swing.JComboBox<String> cbGS;
     private javax.swing.JComboBox<String> cbGS2;
+    private javax.swing.JTextField j1;
+    private javax.swing.JTextField j2;
+    private javax.swing.JTextField j3;
+    private javax.swing.JTable jEstudiantes;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -427,6 +783,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tNotasPendientes;
     // End of variables declaration//GEN-END:variables

@@ -32,6 +32,8 @@ public class CtrlEstudiante {
     private static int nivelAcademico;
     private static int idEstudianteCount;
     private static int idNotaPredeterminada;
+    private static String seccion;
+    private static String grado;
 
     /**
      * @return the idEstudiante
@@ -313,5 +315,34 @@ public class CtrlEstudiante {
     public void setIdNotaPredeterminada(int idNotaPredeterminada) {
         this.idNotaPredeterminada = idNotaPredeterminada;
     }
+
+    /**
+     * @return the seccion
+     */
+    public String getSeccion() {
+        return seccion;
+    }
+
+    /**
+     * @param seccion the seccion to set
+     */
+    public void setSeccion(String seccion) {
+        this.seccion = seccion;
+    }
+
+    /**
+     * @return the grado
+     */
+    public String getGrado() {
+        return grado;
+    }
+
+    /**
+     * @param grado the grado to set
+     */
+    public void setGrado(String grado) {
+        this.grado = grado;
+    }
+
     
 }
