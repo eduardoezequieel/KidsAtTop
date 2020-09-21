@@ -258,7 +258,7 @@ public class FrmMatriculaCont extends javax.swing.JFrame {
         
         
         try{
-            FrmTrasladoAlumnos alumnos = new FrmTrasladoAlumnos();
+            FrmTrasladoAlumnos alumnos = new FrmTrasladoAlumnos(mod);
             jDesktop.add(alumnos);
             alumnos.setVisible(true);
 

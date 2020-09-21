@@ -315,7 +315,7 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
                     int id = add.capturarIdBitacora() + 1;
                     mod.setId_usuario(mod.getId_usuario());
                     mod.setId_bitacora(id);
-    //                add.agregarBitacoraActualizaIndicador(mod);
+                    add.agregarBitacoraIndicadores(mod);
             } else {
                 JOptionPane.showMessageDialog(null, "No se han actualizado los datos correctamente.");
             }

@@ -27,6 +27,10 @@ import modelo.Conexion;
 import modelo.MtoEstudiante;
 import modelo.MtoNotas;
 import modelo.Validaciones;
+import modelo.MtoLogin;
+import controlador.CtrlLoginUsuario;
+import modelo.MtoBitacoras;
+import controlador.CtrlBitacora;
 
 /**
  *
@@ -37,59 +41,63 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     //Llamando clases
     MtoEstudiante estudiante = new MtoEstudiante();
     CtrlEstudiante estudianteCtrl = new CtrlEstudiante();
-    
+    CtrlLoginUsuario mod;
+
     //Modelo de la tabla
     DefaultTableModel modelo = new DefaultTableModel();
     DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
     //Modelo de la tabla
     DefaultTableModel modelo2 = new DefaultTableModel();
-    
+
     public FrmTrasladoAlumnos() {
+        initComponents();
+        
+
+    }
+
+    public FrmTrasladoAlumnos(CtrlLoginUsuario mod) {
+
         initComponents();
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
-        
-        
+
         tNotasPendientes.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 18));
         tNotasPendientes.getTableHeader().setOpaque(false);
         tNotasPendientes.getTableHeader().setBackground(new Color(33, 37, 41));
-        tNotasPendientes.getTableHeader().setForeground(new Color(254,254,254));
-        
+        tNotasPendientes.getTableHeader().setForeground(new Color(254, 254, 254));
+
         //Modelo de tabla
         modelo.addColumn("Estudiante");
         modelo.addColumn("Indicador");
         modelo.addColumn("Trimestre");
         tNotasPendientes.setModel(modelo);
         this.centrarColumnas();
-        
+
         //Modelo de la tabla de estudiantes
         modelo2.addColumn("0");
         modelo2.addColumn("1");
         modelo2.addColumn("2");
         modelo2.addColumn("3");
         modelo2.addColumn("4");
-         modelo2.addColumn("5");
+        modelo2.addColumn("5");
         modelo2.addColumn("6");
         modelo2.addColumn("7");
         modelo2.addColumn("8");
         modelo2.addColumn("9");
-         modelo2.addColumn("10");
+        modelo2.addColumn("10");
         jEstudiantes.setModel(modelo2);
-        
-        
+
         //Llenando combobox
         this.llenarAnio();
         this.llenarGradoSeccion();
         this.reset();
-        
+
         j1.setVisible(false);
         j2.setVisible(false);
         j3.setVisible(false);
-        
-    }
 
-    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -349,20 +357,18 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbGSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbGSKeyPressed
-     
+
     }//GEN-LAST:event_cbGSKeyPressed
 
     private void cbGSItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbGSItemStateChanged
-        
+
     }//GEN-LAST:event_cbGSItemStateChanged
-    
-    
-    
-    
+
+
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        
-        try{
-            
+
+        try {
+
             //Comprobando si todas las notas están ingresadas
             estudianteCtrl.setAnioSeccion(cbAño.getItemAt(cbAño.getSelectedIndex()));
 
@@ -383,8 +389,8 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
             } else {
 
             }
-        } catch(Exception e){
-            
+        } catch (Exception e) {
+
             //Habilitando el otro formulario 
             //Dividiendo el grado y la seccion
             String gradoSeccion = cbGS.getItemAt(cbGS.getSelectedIndex());
@@ -394,14 +400,14 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
             año = año + 1;
             estudianteCtrl.setAnioSeccion(String.valueOf(año));
             this.llenarAnio2();
-            
-            //Declarando variable de año
-            int anioGrado = 0; 
 
-            String nivelSubstring = gradoSeccion.substring(7,8);
+            //Declarando variable de año
+            int anioGrado = 0;
+
+            String nivelSubstring = gradoSeccion.substring(7, 8);
             int nivel = Integer.parseInt(nivelSubstring);
-            
-            switch(nivel){
+
+            switch (nivel) {
                 case 4:
                     estudianteCtrl.setGrado("Kinder 5");
                     break;
@@ -412,7 +418,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
                     anioGrado = 6;
                     break;
             }
-            
+
             //Verificando si es translado o graduación
             if (anioGrado == 6) {
                 btnGraduarse.setVisible(true);
@@ -422,7 +428,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
                 cbGS2.setVisible(false);
                 btnActualizar3.setVisible(false);
                 btnActualizar.setEnabled(false);
-                
+
                 String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
 
                 //Dividiendo el grado y la seccion
@@ -459,9 +465,9 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
                     estudianteCtrl.setSeccion(seccion2);
 
                     estudiante.verificarCupos();
-                    if (estudianteCtrl.getIdEstudianteCount()> 45) {
+                    if (estudianteCtrl.getIdEstudianteCount() > 45) {
                         JOptionPane.showMessageDialog(null, "Esta sección ya no tiene cupos");
-                    } else{
+                    } else {
 
                         String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
 
@@ -478,12 +484,12 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
                 }
             }
         }
-        
-        
+
+
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void cbAñoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAñoItemStateChanged
-       this.llenarGradoSeccion();
+        this.llenarGradoSeccion();
     }//GEN-LAST:event_cbAñoItemStateChanged
 
     private void cbAñoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbAñoKeyPressed
@@ -491,7 +497,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbAñoKeyPressed
 
     private void btnActualizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar2ActionPerformed
-       this.reset();
+        this.reset();
     }//GEN-LAST:event_btnActualizar2ActionPerformed
 
     private void cbGS2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbGS2ItemStateChanged
@@ -514,23 +520,23 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         boolean resp = false;
         //Verificando cupos disponibles
         estudianteCtrl.setAnioSeccion(String.valueOf(cbAño.getItemAt(cbAño.getSelectedIndex())));
-                
+
         //Dividiendo el grado y la seccion
         String gradoSeccion2 = cbGS.getItemAt(cbGS.getSelectedIndex());
         String[] parte2 = gradoSeccion2.split("-");
         String grado2 = parte2[0];
         String seccion2 = parte2[1];
-                
+
         //Dividiendo el grado y la seccion
         estudianteCtrl.setGrado(grado2);
         estudianteCtrl.setSeccion(seccion2);
-            
+
         estudiante.verificarCupos();
         int longitud = estudianteCtrl.getIdEstudianteCount();
-  
+
         for (int i = 0; i < longitud; i++) {
             estudiante.obtenerUltimoId();
-            
+
             //Llenando los datos de cada estudiante
             int id = estudianteCtrl.getIdEstudiante();
             estudianteCtrl.setNombre(String.valueOf(jEstudiantes.getValueAt(i, 1)));
@@ -541,7 +547,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
             estudianteCtrl.setGenero(String.valueOf(jEstudiantes.getValueAt(i, 6)));
             estudianteCtrl.setIdEstado(Integer.parseInt(String.valueOf(jEstudiantes.getValueAt(i, 7))));
             estudianteCtrl.setIdResponsable(Integer.parseInt(String.valueOf(jEstudiantes.getValueAt(i, 8))));
-            
+
             //Dividiendo el grado y la seccion
             estudianteCtrl.setAnioSeccion(String.valueOf(cbAño2.getItemAt(cbAño2.getSelectedIndex())));
             String gradoSeccion5 = cbGS2.getItemAt(cbGS2.getSelectedIndex());
@@ -553,104 +559,111 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
             estudianteCtrl.setIdEstudiante(Integer.parseInt(String.valueOf(jEstudiantes.getValueAt(i, 0))));
             byte[] foto = estudiante.capturarFoto(estudianteCtrl.getIdEstudiante());
             estudianteCtrl.setFoto(foto);
-            
+
             if (estudiante.insertarEstudiante2(id)) {
-               
-               resp = true;
-               estudiante.obtenerUltimoIdNota();
-                String nivelSubstring2 = gradoSeccion2.substring(7,8);
+
+                resp = true;
+                estudiante.obtenerUltimoIdNota();
+                String nivelSubstring2 = gradoSeccion2.substring(7, 8);
                 int nivel = Integer.parseInt(nivelSubstring2);
                 estudianteCtrl.setNivelAcademico(nivel);
                 estudiante.obtenerCountIdIndicador();
-                for (int j = 0; j <3; j++) {
+                for (int j = 0; j < 3; j++) {
                     estudianteCtrl.setIdtrimestre(j + 1);
                     estudiante.obtenerIndicador2(id);
                 }
             } else {
                 resp = false;
             }
-            
-        }
-        
-        
-            //Verificando cambios correctamente
-            if (resp) {
-                JOptionPane.showMessageDialog(null, "Ha traslado a la sección correctamente");
-                //Verificando cupos disponibles
-                estudianteCtrl.setAnioSeccion(String.valueOf(cbAño.getItemAt(cbAño.getSelectedIndex())));
 
-                //Dividiendo el grado y la seccion
-                String gradoSeccion0 = cbGS.getItemAt(cbGS.getSelectedIndex());
-                String[] parte0 = gradoSeccion0.split("-");
-                String grado0 = parte0[0];
-                String seccion0 = parte0[1];
-                estudiante.obtenerIdGS(grado0, seccion0);
-                estudiante.graduarSeccion(estudianteCtrl.getIdGradoSeccion());
-                this.reset();
-                
-            } else {
-                JOptionPane.showMessageDialog(null, "No ha agredado a los estudiantes correctamente");
-            }
-        
+        }
+
+        //Verificando cambios correctamente
+        if (resp) {
+            JOptionPane.showMessageDialog(null, "Ha traslado a la sección correctamente");
+            //Verificando cupos disponibles
+            estudianteCtrl.setAnioSeccion(String.valueOf(cbAño.getItemAt(cbAño.getSelectedIndex())));
+
+            MtoBitacoras add = new MtoBitacoras();
+            int id = add.capturarIdBitacora() + 1;
+            mod.setId_usuario(mod.getId_usuario());
+            mod.setId_bitacora(id);
+            add.agregarBitacoraTrasladoAlumnos(mod);
+            //Dividiendo el grado y la seccion
+            String gradoSeccion0 = cbGS.getItemAt(cbGS.getSelectedIndex());
+            String[] parte0 = gradoSeccion0.split("-");
+            String grado0 = parte0[0];
+            String seccion0 = parte0[1];
+            estudiante.obtenerIdGS(grado0, seccion0);
+            estudiante.graduarSeccion(estudianteCtrl.getIdGradoSeccion());
+            this.reset();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha agredado a los estudiantes correctamente");
+        }
+
     }//GEN-LAST:event_btnActualizar3ActionPerformed
 
     private void btnGraduarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraduarseActionPerformed
-         
+
         boolean resp = false;
         //Verificando cupos disponibles
         estudianteCtrl.setAnioSeccion(String.valueOf(cbAño.getItemAt(cbAño.getSelectedIndex())));
-                
+
         //Dividiendo el grado y la seccion
         String gradoSeccion2 = cbGS.getItemAt(cbGS.getSelectedIndex());
         String[] parte2 = gradoSeccion2.split("-");
         String grado2 = parte2[0];
         String seccion2 = parte2[1];
-                
+
         //Dividiendo el grado y la seccion
         estudianteCtrl.setGrado(grado2);
         estudianteCtrl.setSeccion(seccion2);
-            
+
         estudiante.verificarCupos();
         int longitud = estudianteCtrl.getIdEstudianteCount();
-  
+
         for (int i = 0; i < longitud; i++) {
-            
+
             int id = Integer.parseInt(String.valueOf(jEstudiantes.getValueAt(i, 0)));
-            
+
             if (estudiante.graduarEstudiante(id)) {
-               resp = true;
-               
+                resp = true;
+
             } else {
                 resp = false;
             }
         }
-        
+
         //Verificando si los cambios fueron correctos
         if (resp) {
             JOptionPane.showMessageDialog(null, "Ha graduado a la sección correctamente");
             estudiante.obtenerIdGS(grado2, seccion2);
             estudiante.graduarSeccion(estudianteCtrl.getIdGradoSeccion());
+            MtoBitacoras add = new MtoBitacoras();
+            int id = add.capturarIdBitacora() + 1;
+            mod.setId_usuario(mod.getId_usuario());
+            mod.setId_bitacora(id);
+            add.agregarBitacoraGraduacionAlumnos(mod);
             this.reset();
         } else {
             JOptionPane.showMessageDialog(null, "No ha graduado a la sección correctamente");
-        }    
+        }
     }//GEN-LAST:event_btnGraduarseActionPerformed
 
-    
     //Método para combobox del año
     public void llenarAnio() {
 
         //Seteando modelo del combo
         cbAño.setModel(estudiante.llenarAnio());
     }
-    
+
     //Método para combobox del año
     public void llenarAnio2() {
 
         //Seteando modelo del combo
         cbAño2.setModel(estudiante.llenarAño2());
     }
-    
 
     //Método para combobox de grado/seccion
     public void llenarGradoSeccion() {
@@ -661,9 +674,9 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
 
         //Seteando modelo del combo
         cbGS.setModel(estudiante.llenarGS3());
-        
+
     }
-    
+
     //Método para combobox de grado/seccion
     public void llenarGradoSeccion2() {
 
@@ -673,17 +686,17 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
 
         //Seteando modelo del combo
         cbGS2.setModel(estudiante.llenarGS2());
-        
+
     }
-    
-    public void centrarColumnas(){
+
+    public void centrarColumnas() {
         centrado.setHorizontalAlignment(JLabel.CENTER);
         for (int i = 0; i < 3; i++) {
             tNotasPendientes.getColumnModel().getColumn(i).setCellRenderer(centrado);
         }
     }
-    
-    public void reset(){
+
+    public void reset() {
         //Habilitando o no botones
         btnActualizar.setEnabled(true);
         btnActualizar3.setEnabled(false);
@@ -702,64 +715,60 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         j2.setText("");
         j3.setText("");
     }
-    
-    public void mostrarNotasPendientes(){
+
+    public void mostrarNotasPendientes() {
         Conexion con = new Conexion();
         Connection datos;
-        try
-        {
+        try {
             datos = con.conectar();
             String sql = "SELECT CONCAT(e.apellido,'-',e.nombre)as estudiante, i.indicador, t.trimestre FROM estudiante e, indicador_logro i, nota n, trimestre t, grado_seccion gs WHERE i.id_indicador = n.id_indicador AND n.id_estudiante = e.id_estudiante AND n.id_trimestre = t.id_trimestre AND gs.id_grado_seccion = e.id_grado_seccion AND n.id_n_predeterminada = 4 AND e.id_grado_seccion = ? AND e.id_estado_estudiante = 1";
             PreparedStatement dato = datos.prepareStatement(sql);
             dato.setInt(1, estudianteCtrl.getIdGradoSeccion());
             ResultSet rs = dato.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3)};
                 modelo.addRow(fila);
             }
             tNotasPendientes.setModel(modelo);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
-    
-    public void mostrarEstudiantes(String año, String grado, String seccion){
+
+    public void mostrarEstudiantes(String año, String grado, String seccion) {
         Conexion con = new Conexion();
         Connection datos;
-        try
-        {
+        try {
             datos = con.conectar();
             String sql = "SELECT * FROM estudiante e, responsable r, grado_seccion gs, grado g, seccion se WHERE  r.id_responsable = e.id_responsable AND gs.id_grado_seccion = e.id_grado_seccion AND g.id_grado = gs.id_grado AND se.id_seccion = gs.id_seccion AND gs.anio_seccion = ? AND g.grado = ? AND se.seccion = ?";
             PreparedStatement dato = datos.prepareStatement(sql);
-            
+
             dato.setString(1, año);
             dato.setString(2, grado);
             dato.setString(3, seccion);
             ResultSet rs = dato.executeQuery();
-            while(rs.next()){
-                Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11)};
+            while (rs.next()) {
+                Object fila[] = {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11)};
                 modelo2.addRow(fila);
             }
             jEstudiantes.setModel(modelo2);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
-    
-    public void limpiarTabla(){
+
+    public void limpiarTabla() {
         //Limpiar tabla
         int filas = tNotasPendientes.getRowCount();
-        for (int i = 0;filas>i; i++) {
+        for (int i = 0; filas > i; i++) {
             modelo.removeRow(0);
         }
     }
-    
-    public void limpiarTabla2(){
+
+    public void limpiarTabla2() {
         //Limpiar tabla
         int filas = jEstudiantes.getRowCount();
-        for (int i = 0;filas>i; i++) {
+        for (int i = 0; filas > i; i++) {
             modelo.removeRow(0);
         }
     }
