@@ -568,6 +568,31 @@ public class MtoEstudiante {
         
     }
     
+     public void obtenerCamposPrev(String apellido, String nombre, String genero, int idResponsable){
+
+        try{
+            
+            //Preparando sentencia sql
+            String sql = "SELECT gs.anio_seccion FROM grado_seccion gs, estudiante e WHERE e.apellido = ? AND e.nombre = ? AND e.genero = ? AND e.id_responsable = ? AND e.id_grado_seccion = gs.id_grado_seccion";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            cmd.setString(1, apellido);
+            cmd.setString(2, nombre);
+            cmd.setString(3, genero);
+            cmd.setInt(4, idResponsable);
+            
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+               estudianteCtrl.setAnioSeccion(rs.getString(1));
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        
+    }
+    
     public byte[] capturarFoto(int id){
         byte[] foto = null;
         try{

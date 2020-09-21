@@ -535,7 +535,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
             int id = estudianteCtrl.getIdEstudiante();
             estudianteCtrl.setNombre(String.valueOf(jEstudiantes.getValueAt(i, 1)));
             estudianteCtrl.setApellido(String.valueOf(jEstudiantes.getValueAt(i, 2)));
-            estudianteCtrl.setAnioIngreso(String.valueOf(cbAño2.getItemAt(cbAño2.getSelectedIndex())));
+            estudianteCtrl.setAnioIngreso(String.valueOf(jEstudiantes.getValueAt(i, 3)));
             estudianteCtrl.setFechaNacimiento(String.valueOf(jEstudiantes.getValueAt(i, 4)));
             estudianteCtrl.setDireccion(String.valueOf(jEstudiantes.getValueAt(i, 5)));
             estudianteCtrl.setGenero(String.valueOf(jEstudiantes.getValueAt(i, 6)));
@@ -698,6 +698,9 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         this.limpiarTabla2();
         this.llenarAnio();
         this.llenarGradoSeccion();
+        j1.setText("");
+        j2.setText("");
+        j3.setText("");
     }
     
     public void mostrarNotasPendientes(){

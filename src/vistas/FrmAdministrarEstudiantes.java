@@ -115,6 +115,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
         btnSuspender.setEnabled(false);
         btnRetirar.setEnabled(false);
         jId.setVisible(false);
+        j2.setVisible(false);
         
         jDireccion.setLineWrap(true);
     }
@@ -164,6 +165,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
         cbGS = new javax.swing.JComboBox<>();
         cbAño = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
+        j2 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -513,6 +515,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
         jLabel11.setForeground(new java.awt.Color(254, 254, 254));
         jLabel11.setText("Año:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, -1, -1));
+        jPanel1.add(j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 90, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -650,14 +653,18 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
         String[] parte2 = gradoSeccion.split("-");
         String grado = parte2[0];
         String seccion = parte2[1];
-
-        estudiante.obtenerIdGS(grado, seccion);
+        estudianteCtrl.setAnioSeccion(cbAño.getItemAt(cbAño.getSelectedIndex()));
         
         //Capturando datos que no estan en la tabla
-        estudiante.obtenerCampos(jApellido.getText(), jNombre.getText(), genero,estudianteCtrl.getIdResponsable(), estudianteCtrl.getIdGradoSeccion());
         
+        estudiante.obtenerCamposPrev(jApellido.getText(), jNombre.getText(), genero,estudianteCtrl.getIdResponsable());
+        estudiante.obtenerIdGS(grado, seccion);
+        cbAño.setSelectedItem(estudianteCtrl.getAnioSeccion());
         jId.setText(String.valueOf(estudianteCtrl.getIdEstudiante()));
+        j2.setText(String.valueOf(estudianteCtrl.getIdGradoSeccion()));
+        estudiante.obtenerCampos(jApellido.getText(), jNombre.getText(), genero,estudianteCtrl.getIdResponsable(), estudianteCtrl.getIdGradoSeccion());
         ycAño.setValue(Integer.parseInt(estudianteCtrl.getAnioIngreso()));
+        //j2.setText(estudianteCtrl.getAnioIngreso());
         jFecha.setText(estudianteCtrl.getFechaNacimiento());
         jDireccion.setText(estudianteCtrl.getDireccion());
         
@@ -922,6 +929,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
         jDireccion.setText("");
         lblFoto.setIcon(null);
         jId.setText("");
+        j2.setText("");
         
         //Deshabilitando botones 
         btnActualizar.setEnabled(false);
@@ -976,6 +984,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbGS;
     private javax.swing.JComboBox<String> cbResponsable;
     private javax.swing.ButtonGroup grupoBotones;
+    private javax.swing.JTextField j2;
     private javax.swing.JTextField jApellido;
     private javax.swing.JTextField jBuscar;
     private com.toedter.calendar.JDateChooser jCalendario;
