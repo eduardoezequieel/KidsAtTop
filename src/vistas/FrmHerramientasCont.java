@@ -85,7 +85,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         jEscritorioLayout.setHorizontalGroup(
             jEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jEscritorioLayout.createSequentialGroup()
-                .addContainerGap(260, Short.MAX_VALUE)
+                .addContainerGap(273, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(253, 253, 253))
         );
@@ -97,12 +97,12 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
                 .addContainerGap(165, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 1000, 730));
+        jPanel1.add(jEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 1010, 730));
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backpng.png"))); // NOI18N
         btnRegresar.setBorder(null);
         btnRegresar.setContentAreaFilled(false);
-        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRegresar.setFocusPainted(false);
         btnRegresar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back_rollover.png"))); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +118,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         jControlarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_default.png"))); // NOI18N
         jControlarUsuarios.setBorder(null);
         jControlarUsuarios.setContentAreaFilled(false);
-        jControlarUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jControlarUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jControlarUsuarios.setFocusPainted(false);
         jControlarUsuarios.setFocusable(false);
         jControlarUsuarios.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnAdministrarUsuarios_rollover.png"))); // NOI18N
@@ -132,7 +132,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         jIndicadores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnIndicadoresDefault.png"))); // NOI18N
         jIndicadores.setBorder(null);
         jIndicadores.setContentAreaFilled(false);
-        jIndicadores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jIndicadores.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jIndicadores.setFocusPainted(false);
         jIndicadores.setFocusable(false);
         jIndicadores.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnIndicadoresRollover.png"))); // NOI18N
@@ -146,7 +146,7 @@ public class FrmHerramientasCont extends javax.swing.JFrame {
         jReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReportesDefault.png"))); // NOI18N
         jReportes.setBorder(null);
         jReportes.setContentAreaFilled(false);
-        jReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jReportes.setFocusPainted(false);
         jReportes.setFocusable(false);
         jReportes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReportesRollover.png"))); // NOI18N

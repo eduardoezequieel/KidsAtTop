@@ -56,6 +56,8 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         btnGenerarAsistenciaDia = new javax.swing.JButton();
         btnNotas = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(33, 37, 41));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -67,73 +69,120 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Menú de Reportes");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1000, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnCuadrado.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 200, 260));
 
-        btnGenerarBitacora.setText("Bitacora");
+        btnGenerarBitacora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptBitacora.png"))); // NOI18N
+        btnGenerarBitacora.setBorder(null);
+        btnGenerarBitacora.setContentAreaFilled(false);
+        btnGenerarBitacora.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenerarBitacora.setFocusable(false);
+        btnGenerarBitacora.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptBitacoraRollover.png"))); // NOI18N
         btnGenerarBitacora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarBitacoraActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 210, 120));
+        jPanel1.add(btnGenerarBitacora, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 210, 180));
 
-        btnGenerarGradoSeccion.setText("Grados y su docente");
+        btnGenerarGradoSeccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptDocentesDefault.png"))); // NOI18N
+        btnGenerarGradoSeccion.setBorder(null);
+        btnGenerarGradoSeccion.setContentAreaFilled(false);
+        btnGenerarGradoSeccion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenerarGradoSeccion.setFocusable(false);
+        btnGenerarGradoSeccion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptDocentesRollover.png"))); // NOI18N
         btnGenerarGradoSeccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarGradoSeccionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarGradoSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 220, 130));
+        jPanel1.add(btnGenerarGradoSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 210, 180));
 
-        btnGenerarEstudiantesGS.setText("Estudiante por grado y sección ");
+        btnGenerarEstudiantesGS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptListaDefault.png"))); // NOI18N
+        btnGenerarEstudiantesGS.setBorder(null);
+        btnGenerarEstudiantesGS.setContentAreaFilled(false);
+        btnGenerarEstudiantesGS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenerarEstudiantesGS.setFocusable(false);
+        btnGenerarEstudiantesGS.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptListaRollover.png"))); // NOI18N
         btnGenerarEstudiantesGS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarEstudiantesGSActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarEstudiantesGS, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 210, 130));
+        jPanel1.add(btnGenerarEstudiantesGS, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 210, 180));
 
-        btnLista.setText("Lista de Usuarios");
+        btnLista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptUsuarioDefault.png"))); // NOI18N
+        btnLista.setBorder(null);
+        btnLista.setContentAreaFilled(false);
+        btnLista.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLista.setFocusable(false);
+        btnLista.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptUsuarioRollover.png"))); // NOI18N
         btnLista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 220, 120));
+        jPanel1.add(btnLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 210, 180));
 
-        btnInasistencias.setText("Inasistencias");
+        btnInasistencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptInasistenciasDefault.png"))); // NOI18N
+        btnInasistencias.setBorder(null);
+        btnInasistencias.setContentAreaFilled(false);
+        btnInasistencias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInasistencias.setFocusable(false);
+        btnInasistencias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptInasistenciasRollover.png"))); // NOI18N
         btnInasistencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInasistenciasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInasistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 210, 130));
+        jPanel1.add(btnInasistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 210, 180));
 
-        btnConducta.setText("Conducta");
+        btnConducta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptConductaDefault.png"))); // NOI18N
+        btnConducta.setBorder(null);
+        btnConducta.setContentAreaFilled(false);
+        btnConducta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnConducta.setFocusable(false);
+        btnConducta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptConductaRollover.png"))); // NOI18N
         btnConducta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConductaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnConducta, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 160, 220, 120));
+        jPanel1.add(btnConducta, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, 210, 180));
 
-        btnGenerarAsistenciaDia.setText("Asistencia por día");
+        btnGenerarAsistenciaDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptAsistenciasDefault.png"))); // NOI18N
+        btnGenerarAsistenciaDia.setBorder(null);
+        btnGenerarAsistenciaDia.setContentAreaFilled(false);
+        btnGenerarAsistenciaDia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenerarAsistenciaDia.setFocusable(false);
+        btnGenerarAsistenciaDia.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptAsistenciasRollover.png"))); // NOI18N
         btnGenerarAsistenciaDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarAsistenciaDiaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGenerarAsistenciaDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 450, 220, 130));
+        jPanel1.add(btnGenerarAsistenciaDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 210, 180));
 
-        btnNotas.setText("Reporte de notas");
+        btnNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptNotasEstudianteDefault.png"))); // NOI18N
+        btnNotas.setBorder(null);
+        btnNotas.setContentAreaFilled(false);
+        btnNotas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNotas.setFocusable(false);
+        btnNotas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptNotasEstudianteRollover.png"))); // NOI18N
         btnNotas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNotasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 220, 130));
+        jPanel1.add(btnNotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, 210, 180));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptIndicadores.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setFocusable(false);
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptIndicadoresRollover.png"))); // NOI18N
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, 210, 180));
         jButton1.setText("Reporte de notas por indicador");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +191,19 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, 220, 130));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1000, 710));
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Menú de Reportes");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1000, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icnCuadrado.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, -190, 200, 260));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1010, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -543,6 +604,8 @@ public class FrmReportes extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnNotas;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
