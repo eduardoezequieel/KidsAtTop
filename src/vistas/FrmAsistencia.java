@@ -630,7 +630,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
             String[] parte = estudiante.split("-");
             String apellido = parte[0];
             String nombre = parte[1];
-
+            //dividiendo grado y seccion
             String gSeccion = cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
             String[] parte2 = gSeccion.split("-");
             String grado = parte2[0];

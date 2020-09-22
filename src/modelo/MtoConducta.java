@@ -642,7 +642,7 @@ public class MtoConducta {
         
         public boolean eliminarAsistencia(){
         
-            boolean retorno = false;
+        boolean retorno = false;
         try {
 
             String query = "delete from control_asistencia where id_asistencia=?";
