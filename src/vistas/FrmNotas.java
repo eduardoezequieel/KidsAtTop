@@ -109,25 +109,27 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         limpiarTabla();
         int idIndicador = mto.getIDIndicador(cbIndicadores.getItemAt(cbIndicadores.getSelectedIndex()));
         String gradoSeccion = cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
-        String grado = gradoSeccion.substring(0,8);
-        String seccion = gradoSeccion.substring(9);
-        int idTrimestre = mto.getIDTrimestre(cbTrimestre.getItemAt(cbTrimestre.getSelectedIndex()));
+        String[] parte = gradoSeccion.split("-");
+        String grado = parte[0];
+        String seccion = parte[1];
         String año = cbAño.getItemAt(cbAño.getSelectedIndex());
+        int idGradoSeccion = mto.capturarIDGS(grado, seccion, año);
+        int idTrimestre = mto.getIDTrimestre(cbTrimestre.getItemAt(cbTrimestre.getSelectedIndex()));
         ClsConexion con = new ClsConexion();
         Connection datos;
         try
         {
             datos = con.conectar();
-            String sql = "SELECT CONCAT(e.apellido,'  ',e.nombre)as Estudiante, n.n_predeterminada FROM nota ne, indicador_logro i, nota_predeterminada n, estudiante e, trimestre t,"
-                    + " grado_seccion gs, grado g, seccion s WHERE ne.id_indicador = i.id_indicador AND ne.id_n_predeterminada = n.id_n_predeterminada "
+            String sql = "SELECT CONCAT(e.apellido,'  ',e.nombre)as Estudiante, n.n_predeterminada FROM nota ne, indicador_logro i, nota_predeterminada n, estudiante e, "
+                    + "trimestre t, grado_seccion gs, grado g, seccion s WHERE ne.id_indicador = i.id_indicador AND ne.id_n_predeterminada = n.id_n_predeterminada "
                     + "AND ne.id_estudiante = e.id_estudiante AND e.id_grado_seccion = gs.id_grado_seccion AND gs.id_grado = g.id_grado AND gs.id_seccion = s.id_seccion "
-                    + "AND  ne.id_trimestre = t.id_trimestre AND i.id_indicador = ? AND g.grado = ? AND s.seccion = ? AND t.id_trimestre = ? AND gs.anio_seccion = ? ORDER BY e.apellido ASC";
+                    + "AND  ne.id_trimestre = t.id_trimestre AND gs.id_grado_seccion = ? AND i.id_indicador = ? AND t.id_trimestre = ? ORDER BY e.apellido ASC";
             PreparedStatement cmd = datos.prepareCall(sql);
-            cmd.setInt(1, idIndicador);
-            cmd.setString(2, grado);
-            cmd.setString(3, seccion);
-            cmd.setInt(4, idTrimestre);
-            cmd.setString(5, año);
+            
+            cmd.setInt(1, idGradoSeccion);
+            cmd.setInt(2, idIndicador);
+            cmd.setInt(3, idTrimestre);
+            
             ResultSet rs = cmd.executeQuery();
             while(rs.next()){
                 Object fila[] = {rs.getString(1), rs.getString(2)};

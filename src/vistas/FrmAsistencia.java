@@ -675,7 +675,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                     mod.setId_usuario(mod.getId_usuario());
                     mod.setId_bitacora(id);
                     add.agregarBitacoraAgregarAsistencia(mod);
-                    this.limpiarTabla();
+               
                     this.mostrarTabla();
                     this.resetBusqueda();
 

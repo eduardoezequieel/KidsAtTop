@@ -226,6 +226,28 @@ public class MtoNotas {
         return id;
     }
     
+    public int capturarIDGS(String grado, String seccion, String año){
+        int id = 0;
+        try
+        {
+            String sql = "SELECT id_grado_seccion FROM grado_seccion gs, grado g, seccion s WHERE gs.id_grado = g.id_grado AND gs.id_seccion = s.id_seccion AND g.grado = ? AND s.seccion = ? AND gs.anio_seccion = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setString(1, grado);
+            cmd.setString(2, seccion);
+            cmd.setString(3, año);
+            
+            ResultSet rs = cmd.executeQuery();
+            
+            while(rs.next()){
+                id = rs.getInt(1);
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return id;
+    }
+    
     public boolean ActualizarNota(){
         boolean resp = false;
         try
