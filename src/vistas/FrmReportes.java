@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import modelo.MtoBitacoras;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -34,6 +35,28 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
+        
+        int user=mod.getId_tipo_usuario();
+        if (user==3) {
+            
+            btnGenerarAsistenciaDia.setEnabled(false);
+            btnInasistencias.setEnabled(false);
+            jButton1.setEnabled(false);
+            btnNotas.setEnabled(false);
+            btnConducta.setEnabled(false);
+            btnLista.setEnabled(false);
+            btnGenerarGradoSeccion.setEnabled(false);
+        }
+        if (user==2) {
+            
+            btnLista.setEnabled(false);
+            btnGenerarBitacora.setEnabled(false);
+            jButton1.setEnabled(false);
+
+
+            
+            
+        }
     }
 
     /**
@@ -259,6 +282,12 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                     Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
                 } 
         }
+        
+                MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraReporteBitacora(mod);
     }//GEN-LAST:event_btnGenerarBitacoraActionPerformed
 
     private void btnGenerarGradoSeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarGradoSeccionActionPerformed
@@ -319,6 +348,12 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                     Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
                 } 
         }
+        
+                 MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraReporteGradoSeccion(mod);
     }//GEN-LAST:event_btnGenerarGradoSeccionActionPerformed
 
     private void btnGenerarEstudiantesGSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarEstudiantesGSActionPerformed
@@ -382,6 +417,12 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 System.out.println(e.getMessage());
             }
         }
+        
+                 MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraReporteEstudiantes(mod);
     }//GEN-LAST:event_btnGenerarEstudiantesGSActionPerformed
 
     private void btnListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaActionPerformed
@@ -410,6 +451,12 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 }catch (UnsupportedEncodingException ex) { 
                     Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
                 } 
+        
+                MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraReporteUsuarios(mod);
     }//GEN-LAST:event_btnListaActionPerformed
 
     private void btnInasistenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInasistenciasActionPerformed
@@ -439,6 +486,13 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                 }catch (UnsupportedEncodingException ex) { 
                     Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
                 } 
+                
+                
+                MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraReporteInasistencia(mod);
     }//GEN-LAST:event_btnInasistenciasActionPerformed
 
     private void btnGenerarAsistenciaDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarAsistenciaDiaActionPerformed
@@ -472,6 +526,12 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         }catch (UnsupportedEncodingException ex) { 
             Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+                MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraReporteAsistencia(mod);
     }//GEN-LAST:event_btnGenerarAsistenciaDiaActionPerformed
 
     private void btnConductaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConductaActionPerformed
@@ -508,6 +568,12 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+                MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraReporteConducta(mod);
     }//GEN-LAST:event_btnConductaActionPerformed
 
     private void btnNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNotasActionPerformed
@@ -546,6 +612,12 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
+                
+                MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraReporteNotasEstudiante(mod);
     }//GEN-LAST:event_btnNotasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -586,6 +658,12 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(FrmReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+                 MtoBitacoras add = new MtoBitacoras();
+                int id = add.capturarIdBitacora() + 1;
+                mod.setId_usuario(mod.getId_usuario());
+                mod.setId_bitacora(id);
+                add.agregarBitacoraReporteNotasIndicador(mod);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
