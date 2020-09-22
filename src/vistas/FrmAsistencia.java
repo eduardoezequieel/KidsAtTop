@@ -165,6 +165,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     private void mostrarTabla() {
 
         limpiarTabla();
+        //obteniendo datos para los parametros
         String gradoSeccion = cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
         String grado = gradoSeccion.substring(0, 8);
         String seccion = gradoSeccion.substring(9);
@@ -174,14 +175,18 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         Connection datos;
         try {
             datos = con.conectar();
+            //creando consulta
             String sql = "SELECT c.id_asistencia, observacion, CONCAT(e.apellido,'-',e.nombre) as Estudiante, c.fecha,t.tipo_asistencia FROM control_asistencia c, estudiante e,tipo_asistencia t, grado_seccion gs, grado g, seccion s WHERE c.id_estudiante = e.id_estudiante and c.id_tipo_asistencia=t.id_tipo_asistencia and e.id_grado_seccion = gs.id_grado_seccion and gs.id_seccion = s.id_seccion and gs.id_grado = g.id_grado and g.grado = ? and s.seccion = ? and gs.anio_seccion = ? and c.fecha = ? ORDER BY e.apellido ASC";
             PreparedStatement dato = datos.prepareStatement(sql);
+            //seteando parametros
             dato.setString(1, grado);
             dato.setString(2, seccion);
             dato.setString(3, anio);
             dato.setString(4, fecha);
             ResultSet rs = dato.executeQuery();
+            //ejecutando consulta
             while (rs.next()) {
+                //colocando datos en la tabla
                 Object fila[] = {String.valueOf(rs.getInt(1)), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)};
                 modelo.addRow(fila);
             }
@@ -211,6 +216,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         String mes = String.valueOf(fechas.get(Calendar.MONTH) + 1);
         String dia = String.valueOf(fechas.get(Calendar.DAY_OF_MONTH));
 
+        //limpiando textFields
         txtObservacion.setText("");
         txtId.setText("");
         txtFecha.setText(mes + "-" + dia + "-" + año);
@@ -643,12 +649,13 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
             int tipoAsistencia = conducta.obtenerIdTipoAsistencia(String.valueOf(cbAsistencia.getItemAt(cbAsistencia.getSelectedIndex())));
 
+            //seteando parametros 
             as.setApellido(apellido);
             as.setNombre(nombre);
             as.setGrado(grado);
             as.setSeccion(seccion);
             as.setFecha(txtFecha.getText());
-
+            //validando existencia de datos con iguales credenciales
             if (conducta.comprobarAsistencia()) {
                 JOptionPane.showMessageDialog(null, "Ya ha agregado un registro con estas credenciales");
             } else {
@@ -659,6 +666,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 as.setFecha(txtFecha.getText());
                 as.setIdTipoAsistencia(tipoAsistencia);
 
+                //ingresando registro de asistencia
                 if (conducta.IngresarAsistencia()) {
 
                     JOptionPane.showMessageDialog(null, "Ha agregado los datos correctamente");
@@ -699,19 +707,23 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     private void tAsistenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tAsistenciaMouseClicked
         // TODO add your handling code here:
 
+        //desahabilitando botones
         btnAgregar.setEnabled(false);
         btnActualizar.setEnabled(true);
         btnSuspender.setEnabled(true);
         btnCerrar.setEnabled(false);
         int fila = tAsistencia.getSelectedRow();
+        //obteniendo valores desde la tabla
         String observacion = String.valueOf(tAsistencia.getValueAt(fila, 1));
         String fecha = String.valueOf(tAsistencia.getValueAt(fila, 3));
         String tipoAsistencia = String.valueOf(tAsistencia.getValueAt(fila, 4));
         cbAsistencia.setSelectedItem(tipoAsistencia);
 
+        //seteando datos
         txtFecha.setText(fecha);
         txtObservacion.setText(observacion);
 
+        //dividiendo apellido y nombre
         String student = String.valueOf(tAsistencia.getValueAt(fila, 2));
         String[] parte = student.split("-");
         String apellido = parte[0];
@@ -752,12 +764,14 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
             int tipoAsistencia = conducta.obtenerIdTipoAsistencia(String.valueOf(cbAsistencia.getItemAt(cbAsistencia.getSelectedIndex())));
 
+            //seteando datos
             as.setIdConducta(Integer.parseInt(txtId.getText()));
             as.setIdEstudiante(IdEstudiante);
             as.setObservacion(txtObservacion.getText());
             as.setFecha(txtFecha.getText());
             as.setIdTipoAsistencia(tipoAsistencia);
 
+            //actualizando registro
             if (conducta.actualizarAsistencia()) {
 
                 JOptionPane.showMessageDialog(null, "Ha actualizado los datos correctamente");
@@ -783,6 +797,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
     private void btnSuspenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuspenderActionPerformed
         // TODO add your handling code here:
+        //validando campos vacios
         if (txtId.getText().trim().isEmpty() || txtObservacion.getText().trim().isEmpty() || txtFecha.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos vacios.", "Rellene los campos faltantes.", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -792,6 +807,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                     "Atención", JOptionPane.YES_NO_OPTION);
             if (eliminar == 0) {
 
+                //ejecutando consulta
                 if (conducta.eliminarAsistencia()) {
                     JOptionPane.showMessageDialog(null, "Ha eliminado los datos correctamente");
 
@@ -830,6 +846,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         // TODO add your handling code here:
 
+        //obteniendo datos
         String año = cbAño.getItemAt(cbAño.getSelectedIndex());
         String gSeccion = cbGradoSeccion.getItemAt(cbGradoSeccion.getSelectedIndex());
         String[] parte2 = gSeccion.split("-");
@@ -842,6 +859,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
         conducta.cargarEstudiantes(año, grado, seccion);
 
+        //estableciendo longitud de array en base a la consulta cantidadEstudiante
         String[] est;
         est = new String[cantidadEstudiantes];
         est = conducta.cargarEstudiantes(año, grado, seccion);
@@ -850,11 +868,12 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
             as.setSeccion(seccion);
             as.setFecha(txtFecha.getText());
 
-            
+        
+        //usando for para recorrer array
         for (int i = 0; i < est.length; i++) {
             
              int id=conducta.obtenerUltimoIdAs()+1;
-
+             //partiendo apellido y nombre
             String estudiante = est[i];
             String[] parte = estudiante.split("-");
             String apellido = parte[0];
@@ -864,6 +883,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
             as.setNombre(nombre);
             IdEstudiante = conducta.obtenerIdEstudiante(apellido, nombre);
 
+            //validando existencia de datos ya existentes
             if (conducta.comprobarAsistencia()) {
                 
             }
@@ -875,6 +895,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
                 as.setFecha(txtFecha.getText());
                 as.setIdTipoAsistencia(2);
                 
+                //cerrando asistencia
                 if (conducta.IngresarAsistencia()) {
                     
                     
