@@ -33,7 +33,6 @@ public class FrmAcademicoContenedor extends javax.swing.JFrame {
         if (user==3) {
             
             jGestionarNotas.setEnabled(false);
-            jGestionarAsistencia.setEnabled(false);
         }
         else if (user==2) {
             jGestionarSecciones.setEnabled(false);
