@@ -8,7 +8,11 @@ import java.awt.Image;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -29,19 +33,27 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
     
         
     public FrmPrimerUso2() {
-        initComponents();
-        this.setLocationRelativeTo(null);
-        jDireccion.setLineWrap(true);
-        
-        //jCalendar
-        jCalendario.getJCalendar().setForeground(new Color(254,254,254));
-        jCalendario.getJCalendar().setSundayForeground(Color.WHITE);
-        jCalendario.getJCalendar().setWeekdayForeground(Color.WHITE);
-        jCalendario.getJCalendar().setDecorationBackgroundVisible(false);
-        jCalendario.getJCalendar().setWeekOfYearVisible(false);
-        jCalendario.getJCalendar().setBackground(Color.WHITE);
-        jCalendario.getJCalendar().setPreferredSize(new Dimension(450, 450));
-        
+        try {
+            initComponents();
+            this.setLocationRelativeTo(null);
+            jDireccion.setLineWrap(true);
+            
+            //jCalendar
+            jCalendario.getJCalendar().setForeground(new Color(254,254,254));
+            jCalendario.getJCalendar().setSundayForeground(Color.WHITE);
+            jCalendario.getJCalendar().setWeekdayForeground(Color.WHITE);
+            jCalendario.getJCalendar().setDecorationBackgroundVisible(false);
+            jCalendario.getJCalendar().setWeekOfYearVisible(false);
+            jCalendario.getJCalendar().setBackground(Color.WHITE);
+            jCalendario.getJCalendar().setPreferredSize(new Dimension(450, 450));
+            
+            
+            String fecha = "2002/01/1";
+            java.util.Date fechaParseada= new SimpleDateFormat("yyyy/MM/dd").parse(fecha);
+            jCalendario.setDate(fechaParseada);
+        } catch (ParseException ex) {
+            Logger.getLogger(FrmPrimerUso2.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     
