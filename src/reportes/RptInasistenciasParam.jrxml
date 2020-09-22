@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="612" pageHeight="752" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="991db8d7-a8ec-4ed1-a779-ca1c8e9980ea">
 	<property name="ireport.zoom" value="1.4641000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="74"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="NOMBRE" class="java.lang.String"/>
 	<parameter name="USUARIO" class="java.lang.String"/>
 	<parameter name="APELLIDO" class="java.lang.String"/>
@@ -25,25 +25,25 @@ WHERE c.id_estudiante = e.id_estudiante AND c.id_tipo_asistencia = t.id_tipo_asi
 	<title>
 		<band height="189" splitType="Stretch">
 			<textField pattern="dd MMMMM yyyy">
-				<reportElement x="425" y="8" width="153" height="28" uuid="a489d67a-ac23-47a4-8e7f-ef4aa43bb8bf"/>
+				<reportElement x="427" y="8" width="153" height="28" uuid="a489d67a-ac23-47a4-8e7f-ef4aa43bb8bf"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Segoe UI Semilight" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="163" y="20" width="246" height="32" forecolor="#003300" uuid="a8b72833-db7a-48fc-987f-9dbb6a6aa49a"/>
+				<reportElement x="156" y="20" width="261" height="32" forecolor="#003300" uuid="a8b72833-db7a-48fc-987f-9dbb6a6aa49a"/>
 				<textElement textAlignment="Center">
 					<font fontName="Segoe UI Semilight" size="22" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Reporte de conducta]]></text>
+				<text><![CDATA[Reporte de inasistencia]]></text>
 			</staticText>
 			<image>
 				<reportElement x="6" y="8" width="108" height="52" uuid="790e869d-e6a6-4cb8-8974-3126dc4033cd"/>
 				<imageExpression><![CDATA["\\imagenes\\logoTransparente.png"]]></imageExpression>
 			</image>
 			<textField pattern="h.mm a">
-				<reportElement x="439" y="25" width="127" height="28" uuid="76f1c99e-8a1e-48ab-b347-9285be8c66fd"/>
+				<reportElement x="441" y="25" width="127" height="28" uuid="76f1c99e-8a1e-48ab-b347-9285be8c66fd"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Segoe UI Semilight" size="12"/>
 				</textElement>
