@@ -96,6 +96,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
 
         j1.setVisible(false);
         j3.setVisible(false);
+        j2.setVisible(false);
         txtiduser.setVisible(false);
         
         txtiduser.setText(String.valueOf(mod.getId_usuario()));
@@ -150,6 +151,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         jEstudiantes = new javax.swing.JTable();
         j3 = new javax.swing.JTextField();
         txtiduser = new javax.swing.JTextField();
+        j2 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -368,6 +370,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 0, 0));
         jPanel1.add(j3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 40, -1));
         jPanel1.add(txtiduser, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
+        jPanel1.add(j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -808,6 +811,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbGS;
     private javax.swing.JComboBox<String> cbGS2;
     private javax.swing.JTextField j1;
+    private javax.swing.JTextField j2;
     private javax.swing.JTextField j3;
     private javax.swing.JTable jEstudiantes;
     private javax.swing.JLabel jLabel14;
