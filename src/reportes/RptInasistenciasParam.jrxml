@@ -3,11 +3,13 @@
 	<property name="ireport.zoom" value="1.4641000000000006"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="74"/>
-	<parameter name="ID_ESTUDIANTE" class="java.lang.String"/>
+	<parameter name="NOMBRE" class="java.lang.String"/>
 	<parameter name="USUARIO" class="java.lang.String"/>
+	<parameter name="APELLIDO" class="java.lang.String"/>
+	<parameter name="ANIO" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT id_asistencia, CONCAT(e.nombre,' ',e.apellido) as Estudiante, e.id_estudiante, g.grado, s.seccion, observacion, fecha, t.tipo_asistencia FROM control_asistencia c, estudiante e, tipo_asistencia t, grado g, seccion s, grado_seccion gs
-WHERE c.id_estudiante = e.id_estudiante AND c.id_tipo_asistencia = t.id_tipo_asistencia AND e.id_grado_seccion = gs.id_grado_seccion AND gs.id_seccion = s.id_seccion AND gs.id_grado = g.id_grado AND tipo_asistencia = 'Inasistencia' AND e.id_estudiante = $P{ID_ESTUDIANTE} order by fecha]]>
+WHERE c.id_estudiante = e.id_estudiante AND c.id_tipo_asistencia = t.id_tipo_asistencia AND e.id_grado_seccion = gs.id_grado_seccion AND gs.id_seccion = s.id_seccion AND gs.id_grado = g.id_grado AND tipo_asistencia = 'Inasistencia' AND e.nombre = $P{NOMBRE} AND e.apellido = $P{APELLIDO} AND gs.anio_seccion = $P{ANIO} order by fecha]]>
 	</queryString>
 	<field name="id_asistencia" class="java.lang.Integer"/>
 	<field name="Estudiante" class="java.lang.String"/>

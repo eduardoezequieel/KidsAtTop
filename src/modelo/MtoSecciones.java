@@ -111,7 +111,7 @@ public class MtoSecciones {
         {
             
             //Llamando procedimiento almacenado
-            CallableStatement cmd = cn.prepareCall("SELECT usuario from usuario where id_estado_usuario = 1 AND id_tipo_usuario = 2;");
+            CallableStatement cmd = cn.prepareCall("SELECT usuario from usuario where id_estado_usuario = 1 AND id_tipo_usuario = 3;");
             
             //Ejecutando sentencia
             ResultSet rs = cmd.executeQuery();

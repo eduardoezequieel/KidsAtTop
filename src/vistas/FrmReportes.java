@@ -462,7 +462,9 @@ public class FrmReportes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnListaActionPerformed
 
     private void btnInasistenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInasistenciasActionPerformed
-                String mensaje2 = JOptionPane.showInputDialog(null, "Escribe el ID del estudiante cual quieres un reporte de inasistencias:.","Aviso",JOptionPane.INFORMATION_MESSAGE);
+                String mensaje2 = JOptionPane.showInputDialog(null, "Escribe el nombre del estudiante cual quieres un reporte de inasistencias:.","Aviso",JOptionPane.INFORMATION_MESSAGE);
+                String mensaje3 = JOptionPane.showInputDialog(null, "Escribe el apellido del estudiante cual quieres un reporte de inasistencias:.","Aviso",JOptionPane.INFORMATION_MESSAGE);
+                String mensaje1 = JOptionPane.showInputDialog(null, "Escribe el año del reporte de inasistencias:.","Aviso",JOptionPane.INFORMATION_MESSAGE);
                 try {
                     ClsConexion con = new ClsConexion();
                    String reports = "RptInasistenciasParam";
@@ -472,7 +474,9 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                    JasperReport report =
                    JasperCompileManager.compileReport(archivo);
                    Map<String,Object> parametros = new HashMap<String,Object>();
-                   parametros.put("ID_ESTUDIANTE",mensaje2); 
+                   parametros.put("NOMBRE",mensaje2);
+                   parametros.put("APELLIDO",mensaje3);
+                   parametros.put("ANIO",mensaje1);
                    parametros.put("USUARIO",mod.getUsuario());
                    JasperPrint print = JasperFillManager.fillReport(report,
                    parametros, con.conectar());
@@ -539,6 +543,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
     private void btnConductaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConductaActionPerformed
         String mensaje1=JOptionPane.showInputDialog(null,"Escribe los apellidos del Estudiante",JOptionPane.INFORMATION_MESSAGE);
         String mensaje2=JOptionPane.showInputDialog(null,"Escribe los nombres del Estudiante",JOptionPane.INFORMATION_MESSAGE);
+        String mensaje3=JOptionPane.showInputDialog(null,"Escribe el año del reporte a generar",JOptionPane.INFORMATION_MESSAGE);
         
         try{
            ClsConexion con = new ClsConexion();
@@ -552,6 +557,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                    Map<String,Object> parametros = new HashMap<String,Object>();
                    parametros.put("Filtrar",mensaje1); 
                    parametros.put("FiltrarNombre",mensaje2); 
+                   parametros.put("ANIO",mensaje3); 
                    parametros.put("USUARIO",mod.getUsuario());
                    JasperPrint print = JasperFillManager.fillReport(report,
                    parametros, con.conectar());
@@ -581,7 +587,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
     private void btnNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNotasActionPerformed
         String mensaje1=JOptionPane.showInputDialog(null,"Escribe los apellidos del Estudiante",JOptionPane.INFORMATION_MESSAGE);
         String mensaje2=JOptionPane.showInputDialog(null,"Escribe los nombres del Estudiante",JOptionPane.INFORMATION_MESSAGE);
-        String mensaje3=JOptionPane.showInputDialog(null,"Escribe el trimestre del reporte a generar",JOptionPane.INFORMATION_MESSAGE);
+        String mensaje3=JOptionPane.showInputDialog(null,"Escribe el año del reporte a generar",JOptionPane.INFORMATION_MESSAGE);
         
         try{
            ClsConexion con = new ClsConexion();
@@ -595,7 +601,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
                    Map<String,Object> parametros = new HashMap<String,Object>();
                    parametros.put("APELLIDO",mensaje1); 
                    parametros.put("NOMBRE",mensaje2); 
-                   parametros.put("TRIMESTRE",mensaje3); 
+                   parametros.put("ANIO",mensaje3); 
                    parametros.put("USUARIO",mod.getUsuario());
                    JasperPrint print = JasperFillManager.fillReport(report,
                    parametros, con.conectar());

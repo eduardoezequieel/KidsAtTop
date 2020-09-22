@@ -22,7 +22,7 @@
      us."fecha_nacimiento"
 FROM
      "usuario" us INNER JOIN "tipo_usuario" tu ON us."id_tipo_usuario" = tu."id_tipo_usuario"
-     INNER JOIN "estado_usuario" eu ON us."id_estado_usuario" = eu."id_estado_usuario"]]>
+     INNER JOIN "estado_usuario" eu ON us."id_estado_usuario" = eu."id_estado_usuario" order by tu.tipo_usuario]]>
 	</queryString>
 	<field name="nombre" class="java.lang.String"/>
 	<field name="apellido" class="java.lang.String"/>
@@ -34,6 +34,68 @@ FROM
 	<field name="tipo_usuario" class="java.lang.String"/>
 	<field name="estado_usuario" class="java.lang.String"/>
 	<field name="fecha_nacimiento" class="java.lang.String"/>
+	<group name="tipoUsuario" minHeightToStartNewPage="129">
+		<groupExpression><![CDATA[$F{tipo_usuario}]]></groupExpression>
+		<groupHeader>
+			<band height="90">
+				<rectangle radius="5">
+					<reportElement x="44" y="57" width="675" height="30" forecolor="#999999" backcolor="#FFFFFF" uuid="2f6d55da-5649-4823-9156-c7a34edc21a0"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="183" y="59" width="126" height="27" uuid="f71b0123-b30c-4263-83dd-33260785f6d6"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI Semilight" size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Apellido]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="56" y="59" width="126" height="27" uuid="464c77d9-2c05-40dd-bdbb-d3ab04c477f4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI Semilight" size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Nombre]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="547" y="59" width="70" height="27" uuid="1bb50740-46dc-428c-94d1-19d6ec3be399"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI Semilight" size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Teléfono]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="630" y="59" width="61" height="27" uuid="d0ec6592-6c5e-442d-9d97-1f96a0dd7171"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI Semilight" size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Género]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="472" y="59" width="62" height="27" uuid="cc9a9572-b418-4bee-bb17-1656245c205e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI Semilight" size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[DUI]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="310" y="59" width="149" height="27" uuid="e860c997-51ca-4ddb-8f31-c7c4a26450a6"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI Semilight" size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Email]]></text>
+				</staticText>
+				<rectangle radius="5">
+					<reportElement x="44" y="25" width="675" height="30" forecolor="#999999" backcolor="#D4F9DD" uuid="f7ff3395-a2cf-4850-8311-d4530f816dc7"/>
+				</rectangle>
+				<textField>
+					<reportElement x="316" y="26" width="130" height="30" forecolor="#333333" uuid="bba7fb73-0d87-4136-b1a3-04c4e3cc8f1f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Segoe UI Semilight" size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipo_usuario}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -66,111 +128,48 @@ FROM
 			</textField>
 		</band>
 	</title>
-	<columnHeader>
-		<band height="38" splitType="Stretch">
-			<rectangle radius="5">
-				<reportElement x="44" y="7" width="675" height="30" forecolor="#999999" backcolor="#D4F9DD" uuid="f7ff3395-a2cf-4850-8311-d4530f816dc7"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="171" y="9" width="114" height="27" uuid="ca7413e1-5d30-4447-9511-2594eac6afd6"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Segoe UI Semilight" size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Apellido]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="286" y="9" width="149" height="27" uuid="1585045d-c5a7-4d47-8845-ef758dcbe3bf"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Segoe UI Semilight" size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Email]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="436" y="9" width="62" height="27" uuid="8863bdf8-f4a9-4942-983b-ab09787e6526"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Segoe UI Semilight" size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[DUI]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="499" y="9" width="70" height="27" uuid="a00df24f-1286-461e-8da5-14e8111a7089"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Segoe UI Semilight" size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Teléfono]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="56" y="9" width="114" height="27" uuid="06ad42ed-2850-4286-9b4d-7ffa926e4829"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Segoe UI Semilight" size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nombre]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="570" y="9" width="61" height="27" uuid="92cf665c-cfc4-4d4c-a35a-4b47d04cd2fc"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Segoe UI Semilight" size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Género]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="633" y="9" width="72" height="27" uuid="c97336db-488e-4902-9d77-08c94abfc641"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Segoe UI Semilight" size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Tipo]]></text>
-			</staticText>
-		</band>
-	</columnHeader>
 	<detail>
 		<band height="39" splitType="Stretch">
 			<rectangle radius="10">
 				<reportElement x="44" y="4" width="675" height="34" forecolor="#D4F9DD" uuid="f04a0e7c-e2b9-45e0-9f50-149529bd1a60"/>
 			</rectangle>
 			<textField>
-				<reportElement x="633" y="3" width="72" height="36" forecolor="#666666" uuid="bba7fb73-0d87-4136-b1a3-04c4e3cc8f1f"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Segoe UI Semilight" size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo_usuario}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="569" y="3" width="61" height="36" forecolor="#666666" uuid="125d46a2-1634-43a8-a8cd-0e1e41d9b5d5"/>
+				<reportElement x="630" y="2" width="61" height="36" forecolor="#666666" uuid="125d46a2-1634-43a8-a8cd-0e1e41d9b5d5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Segoe UI Semilight" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{genero}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="499" y="3" width="69" height="36" forecolor="#666666" uuid="f6845c34-97dc-402b-a9d8-9eb9669cb79f"/>
+				<reportElement x="547" y="3" width="69" height="36" forecolor="#666666" uuid="f6845c34-97dc-402b-a9d8-9eb9669cb79f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Segoe UI Semilight" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="436" y="3" width="62" height="36" forecolor="#666666" uuid="1517e60e-72f3-40e9-8647-99eca9ab19b2"/>
+				<reportElement x="472" y="3" width="62" height="36" forecolor="#666666" uuid="1517e60e-72f3-40e9-8647-99eca9ab19b2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Segoe UI Semilight" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dui}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="286" y="3" width="149" height="36" forecolor="#666666" uuid="e47c35ff-c7e6-454e-97c4-c94d889423aa"/>
+				<reportElement x="310" y="3" width="149" height="36" forecolor="#666666" uuid="e47c35ff-c7e6-454e-97c4-c94d889423aa"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Segoe UI Semilight" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="171" y="3" width="114" height="36" forecolor="#666666" uuid="59cd52ea-ae67-4840-a9b0-0abbb069f80b"/>
+				<reportElement x="183" y="3" width="126" height="36" forecolor="#666666" uuid="59cd52ea-ae67-4840-a9b0-0abbb069f80b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Segoe UI Semilight" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="56" y="3" width="114" height="36" forecolor="#666666" uuid="7331ed26-793f-4c5a-a8da-8f975f133a77"/>
+				<reportElement x="56" y="3" width="126" height="36" forecolor="#666666" uuid="7331ed26-793f-4c5a-a8da-8f975f133a77"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Segoe UI Semilight" size="10"/>
 				</textElement>
@@ -178,9 +177,6 @@ FROM
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
 		<band height="50" splitType="Stretch">
 			<textField>

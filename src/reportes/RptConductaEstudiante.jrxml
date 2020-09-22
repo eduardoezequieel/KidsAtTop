@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteConductaEstudiante" language="groovy" pageWidth="612" pageHeight="842" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0cb3b31-089e-432b-a136-c10a9e11503b">
 	<property name="ireport.zoom" value="1.610510000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="98"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="Filtrar" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -10,9 +10,10 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="USUARIO" class="java.lang.String"/>
+	<parameter name="ANIO" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select id_conducta, CONCAT(e.nombre,' ',e.apellido) as Estudiante,fecha,observacion, t.tipo_falta, g.grado, s.seccion from conducta c, estudiante e, tipo_falta t, grado_seccion gs, grado g, seccion s where c.id_estudiante=e.id_estudiante and t.id_tipo_falta = c.id_tipo_falta and gs.id_grado_seccion = e.id_grado_seccion and gs.id_grado = g.id_grado and gs.id_seccion = s.id_seccion and e.apellido=$P{Filtrar}
-and e.nombre=$P{FiltrarNombre} order by e.id_estudiante]]>
+and e.nombre=$P{FiltrarNombre} and gs.anio_seccion = $P{ANIO} order by e.id_estudiante]]>
 	</queryString>
 	<field name="id_conducta" class="java.lang.Integer"/>
 	<field name="Estudiante" class="java.lang.String"/>
