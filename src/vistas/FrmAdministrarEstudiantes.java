@@ -120,6 +120,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
         cbAño.setVisible(false);
         j10.setVisible(false);
         ycAño.setVisible(false);
+        cbGS.setEnabled(false);
         
         jDireccion.setLineWrap(true);
     }
