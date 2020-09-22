@@ -90,12 +90,23 @@ public class FrmConducta extends javax.swing.JInternalFrame {
         //Mostrando tabla
         this.mostrarConducta();
         this.centrarColumnas();
+        
 
         //Deshabilitando botones 
         jActualizar.setEnabled(false);
         jEliminar.setEnabled(false);
         
        jObservacion.setLineWrap(true);
+       
+       j1.setText(cbEstudiante.getItemAt(cbEstudiante.getSelectedIndex()));
+       
+        if (j1.getText().equals("null")) {
+            JOptionPane.showMessageDialog(null, "No existen estudiantes en el sistema, por favor ingresar antes de gestionar la conducta");
+            btnAgregar.setEnabled(false);
+            jActualizar.setEnabled(false);
+            jEliminar.setEnabled(false);
+            btnLimpiar.setEnabled(false);
+        }
 
     }
 
@@ -130,6 +141,7 @@ public class FrmConducta extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         cbFalta = new javax.swing.JComboBox<>();
+        j1 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -275,7 +287,7 @@ public class FrmConducta extends javax.swing.JInternalFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Año:");
         jLayeredPane1.add(jLabel11);
-        jLabel11.setBounds(10, 10, 300, 19);
+        jLabel11.setBounds(10, 10, 300, 21);
 
         cbAño.setBackground(new java.awt.Color(33, 37, 41));
         cbAño.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -302,14 +314,14 @@ public class FrmConducta extends javax.swing.JInternalFrame {
             }
         });
         jLayeredPane1.add(cbAño);
-        cbAño.setBounds(10, 40, 300, 29);
+        cbAño.setBounds(10, 40, 300, 31);
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(254, 254, 254));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Tipo de falta:");
         jLayeredPane1.add(jLabel14);
-        jLabel14.setBounds(10, 220, 300, 19);
+        jLabel14.setBounds(10, 220, 300, 21);
 
         cbEstudiante.setBackground(new java.awt.Color(33, 37, 41));
         cbEstudiante.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -341,7 +353,7 @@ public class FrmConducta extends javax.swing.JInternalFrame {
             }
         });
         jLayeredPane1.add(cbEstudiante);
-        cbEstudiante.setBounds(10, 180, 300, 29);
+        cbEstudiante.setBounds(10, 180, 300, 31);
 
         cbGradoSeccion.setBackground(new java.awt.Color(33, 37, 41));
         cbGradoSeccion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -368,7 +380,7 @@ public class FrmConducta extends javax.swing.JInternalFrame {
             }
         });
         jLayeredPane1.add(cbGradoSeccion);
-        cbGradoSeccion.setBounds(10, 110, 300, 29);
+        cbGradoSeccion.setBounds(10, 110, 300, 31);
 
         jObservacion.setBackground(new java.awt.Color(33, 37, 41));
         jObservacion.setColumns(20);
@@ -394,21 +406,21 @@ public class FrmConducta extends javax.swing.JInternalFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Observación:");
         jLayeredPane1.add(jLabel8);
-        jLabel8.setBounds(10, 290, 310, 19);
+        jLabel8.setBounds(10, 290, 310, 21);
 
         jLabel15.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(254, 254, 254));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Grado/Sección:");
         jLayeredPane1.add(jLabel15);
-        jLabel15.setBounds(10, 80, 300, 19);
+        jLabel15.setBounds(10, 80, 300, 21);
 
         jLabel16.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(254, 254, 254));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Estudiante:");
         jLayeredPane1.add(jLabel16);
-        jLabel16.setBounds(10, 150, 300, 19);
+        jLabel16.setBounds(10, 150, 300, 21);
 
         cbFalta.setBackground(new java.awt.Color(33, 37, 41));
         cbFalta.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -440,9 +452,10 @@ public class FrmConducta extends javax.swing.JInternalFrame {
             }
         });
         jLayeredPane1.add(cbFalta);
-        cbFalta.setBounds(10, 250, 300, 29);
+        cbFalta.setBounds(10, 250, 300, 31);
 
         getContentPane().add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 350, 510));
+        getContentPane().add(j1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 80, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -635,7 +648,7 @@ char c = evt.getKeyChar();
         //Seteando el combo de anio
         String itemAnio = conducta.getItemAnio(apellido, nombre);
         cbAño.setSelectedItem(itemAnio);
-       
+
         //Obteniendo valores de la fila
         String falta = String.valueOf(tConducta.getValueAt(fila, 1));
         cbFalta.setSelectedItem(falta);
@@ -832,6 +845,7 @@ char c = evt.getKeyChar();
     private javax.swing.JComboBox<String> cbEstudiante;
     private javax.swing.JComboBox<String> cbFalta;
     private javax.swing.JComboBox<String> cbGradoSeccion;
+    private javax.swing.JTextField j1;
     private javax.swing.JButton jActualizar;
     private javax.swing.JTextField jBuscar;
     private javax.swing.JButton jEliminar;

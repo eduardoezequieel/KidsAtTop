@@ -234,6 +234,31 @@ public class MtoConducta {
         return id;
     }
     
+    //Obteniendo id del estudiante
+    public int obtenerAnio(){
+        int id = 0;
+        
+        try{
+            
+            //Preparando sentencia sql
+            String sql = "SELECT gs.anio_seccion FROM grado_seccion gs, estudiante e WHERE gs.id_grado_seccion = e.id_grado_seccion AND e.id_estudiante = ?";
+            PreparedStatement cmd = cn.prepareStatement(sql);
+            
+            cmd.setInt(1, conducta.getIdEstudiante());
+   
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+               conducta.setAnioSeccion(rs.getString(1));
+            }
+            
+            
+        } catch(Exception e){
+            System.out.println(e.toString());
+        }
+        
+        return id;
+    }
+    
     public void obtenerIdTipoFalta(String nombre){
 
         try{

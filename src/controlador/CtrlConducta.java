@@ -28,6 +28,7 @@ public class CtrlConducta {
     static private String grado;
     static private String seccion;
     static private int LongitudArray;
+    static private String anioSeccion;
 
     /**
      * @return the idConducta
@@ -209,5 +210,19 @@ public class CtrlConducta {
      */
     public void setLongitudArray(int LongitudArray) {
         this.LongitudArray = LongitudArray;
+    }
+
+    /**
+     * @return the anioSeccion
+     */
+    public String getAnioSeccion() {
+        return anioSeccion;
+    }
+
+    /**
+     * @param anioSeccion the anioSeccion to set
+     */
+    public void setAnioSeccion(String anioSeccion) {
+        this.anioSeccion = anioSeccion;
     }
 }
