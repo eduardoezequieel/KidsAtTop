@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import modelo.MtoUsuario;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 
 /**
@@ -24,7 +24,7 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
    
     
     String filename = null;
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     byte[] person_image = null;
     
         

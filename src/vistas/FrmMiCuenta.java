@@ -14,7 +14,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import modelo.MtoLogin;
 import modelo.MtoUsuario;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 import modelo.MtoBitacoras;
 /**
  *
@@ -23,7 +23,7 @@ import modelo.MtoBitacoras;
 public class FrmMiCuenta extends javax.swing.JFrame {
 
     CtrlLoginUsuario mod;
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     byte[] person_image = null;
     String filename = null;
     

@@ -14,11 +14,11 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import modelo.Conexion;
+import modelo.ClsConexion;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.MtoResponsable;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 import modelo.MtoBitacoras;
 import controlador.CtrlLoginUsuario;
 import javax.swing.JLabel;
@@ -34,7 +34,7 @@ public class FrmAdministrarResponsable extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
     CtrlResponsable ctrl = new CtrlResponsable();
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
 
     /**
      * Creates new form GestionarResponsableForm
@@ -438,7 +438,7 @@ public class FrmAdministrarResponsable extends javax.swing.JInternalFrame {
 
     public void mostrarResponsables() {
 
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         Connection datos;
         try {
             datos = con.conectar();

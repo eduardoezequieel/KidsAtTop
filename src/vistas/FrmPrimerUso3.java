@@ -3,7 +3,7 @@ import controlador.CtrlLoginUsuario;
 import controlador.CtrlUsuario;
 import javax.swing.JOptionPane;
 import modelo.MtoUsuario;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 /**
  *
@@ -12,7 +12,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 public class FrmPrimerUso3 extends javax.swing.JFrame {
     
     FrmPrimerUso2 frm = new FrmPrimerUso2();
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     
     public FrmPrimerUso3() {
         initComponents();

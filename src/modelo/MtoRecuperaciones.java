@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author katy0
  */
-public class RecuContra {
+public class MtoRecuperaciones {
     
     //Llamando clase constructor
     CtrlRecuContra recuCtrl = new CtrlRecuContra();
@@ -41,8 +41,8 @@ public class RecuContra {
         this.cn = cn;
     }
     
-    public RecuContra(){
-        Conexion conectar = new Conexion();
+    public MtoRecuperaciones(){
+        ClsConexion conectar = new ClsConexion();
         cn = conectar.conectar();
     }
     

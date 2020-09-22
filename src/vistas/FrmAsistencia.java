@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 import modelo.MtoConducta;
 import controlador.CtrlConducta;
 import java.sql.Connection;
@@ -20,7 +20,7 @@ import java.util.Calendar;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import modelo.Conexion;
+import modelo.ClsConexion;
 import modelo.MtoBitacoras;
 import controlador.CtrlLoginUsuario;
 import java.util.Date;
@@ -47,7 +47,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     /**
      * Creates new form ControlarAsistenciaForm
      */
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
 
     public FrmAsistencia() {
         initComponents();
@@ -170,7 +170,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         String seccion = gradoSeccion.substring(9);
         String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
         String fecha = txtFecha.getText();
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         Connection datos;
         try {
             datos = con.conectar();

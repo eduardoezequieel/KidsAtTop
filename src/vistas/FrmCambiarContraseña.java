@@ -4,7 +4,7 @@ import controlador.CtrlUsuario;
 import javax.swing.JOptionPane;
 import modelo.MtoLogin;
 import modelo.MtoUsuario;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 /**
  *
@@ -13,7 +13,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 public class FrmCambiarContraseña extends javax.swing.JFrame {
 
     CtrlLoginUsuario mod;
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     
     public FrmCambiarContraseña() {
         initComponents();

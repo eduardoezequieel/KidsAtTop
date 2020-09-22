@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UnsupportedLookAndFeelException;
 import modelo.MtoLogin;
 import modelo.MtoUsuario;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 
 /**
@@ -18,7 +18,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 public class FrmActualizarContraseña extends javax.swing.JFrame {
     
     CtrlLoginUsuario mod;
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     
     public FrmActualizarContraseña() {
         initComponents();

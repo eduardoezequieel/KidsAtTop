@@ -36,7 +36,7 @@ public class MtoBitacoras {
 
     public MtoBitacoras() {
 
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         conexion = con.conectar();
     }
     //<editor-fold defaultstate="collapsed" desc="Capturador de id_bitacora">     

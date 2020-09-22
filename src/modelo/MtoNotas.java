@@ -16,7 +16,7 @@ public class MtoNotas {
     //Conexión
     private Connection cn;
     public MtoNotas(){
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         cn = con.conectar();
     }
     
@@ -95,7 +95,7 @@ public class MtoNotas {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         try
         {
-            String sql = "SELECT n_predeterminada FROM nota_predeterminada";
+            String sql = "SELECT n_predeterminada FROM nota_predeterminada WHERE NOT n_predeterminada = 'NP'";
             PreparedStatement cmd = cn.prepareCall(sql);
             ResultSet rs = cmd.executeQuery();
             while(rs.next()){

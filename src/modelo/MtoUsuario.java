@@ -18,7 +18,7 @@ public class MtoUsuario {
     //Conexión
     private Connection cn;
     public MtoUsuario(){
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         cn = con.conectar();
     }
     

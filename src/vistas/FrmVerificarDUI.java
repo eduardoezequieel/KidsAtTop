@@ -5,7 +5,7 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import modelo.MtoResponsable;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 
 /**
  *
@@ -16,7 +16,7 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
     //Llamando clases
     CtrlResponsable responsableCtrl = new CtrlResponsable();
     MtoResponsable responsable = new MtoResponsable();
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     
     public FrmVerificarDUI() {
         initComponents();

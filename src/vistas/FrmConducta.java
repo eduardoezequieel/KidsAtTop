@@ -18,9 +18,9 @@ import javax.swing.RowFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import modelo.Conexion;
+import modelo.ClsConexion;
 import modelo.MtoConducta;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 import controlador.CtrlLoginUsuario;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,7 +35,7 @@ import modelo.MtoBitacoras;
 public class FrmConducta extends javax.swing.JInternalFrame {
 
     //Llamando clases
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     CtrlConducta conductaCtrl = new CtrlConducta();
     MtoConducta conducta = new MtoConducta();
     CtrlLoginUsuario mod;
@@ -440,7 +440,7 @@ public class FrmConducta extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //<editor-fold defaultstate="collapsed" desc="Validaciones">
+    //<editor-fold defaultstate="collapsed" desc="ClsValidaciones">
     private void jBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarKeyTyped
 char c = evt.getKeyChar();
         if (!Character.isWhitespace(c) && c != '@' && c != '.' && c != '_') {
@@ -780,7 +780,7 @@ char c = evt.getKeyChar();
     }
 
     public void mostrarConducta() {
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         Connection datos;
         try {
             datos = con.conectar();

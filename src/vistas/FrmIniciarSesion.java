@@ -12,9 +12,9 @@ import modelo.MtoLogin;
 import controlador.CtrlLoginUsuario;
 import java.awt.Component;
 import java.awt.event.KeyEvent;
-import modelo.Conexion;
+import modelo.ClsConexion;
 import modelo.ClsCorreo;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 import modelo.MtoBitacoras;
 
@@ -24,7 +24,7 @@ import modelo.MtoBitacoras;
  */
 public class FrmIniciarSesion extends javax.swing.JFrame {
 
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     public FrmIniciarSesion() throws UnsupportedLookAndFeelException {
         initComponents();
         this.setLocationRelativeTo(null);    
@@ -382,12 +382,12 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         formulario.setVisible(true);
         /*ClsCorreo correo = new ClsCorreo();
         correo.enviarCorreo();*/
-        //Conexion conectar = new Conexion();
+        //Conexion conectar = new ClsConexion();
         //conectar.conectar();
         
     }//GEN-LAST:event_btnRecuperarActionPerformed
 
-    //<editor-fold defaultstate="collapsed" desc="Validaciones">
+    //<editor-fold defaultstate="collapsed" desc="ClsValidaciones">
     private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
         val.verificarEspeciales(evt);
     }//GEN-LAST:event_txtUsuarioKeyTyped

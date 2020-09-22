@@ -22,9 +22,9 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import modelo.Conexion;
+import modelo.ClsConexion;
 import modelo.MtoNotas;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 
 /**
  *
@@ -36,7 +36,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
      * Creates new form GestionarNotasForm
      */
     
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     MtoNotas mto = new MtoNotas();
     CtrlNotas ctrl = new CtrlNotas();
     CtrlLoginUsuario mod;
@@ -74,7 +74,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         mostrarEstudiantes();
         centrarColumnas();
      
-        
+        jID.setVisible(false);
     }
     
     public void llenarAnio(){
@@ -113,7 +113,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         String seccion = gradoSeccion.substring(9);
         int idTrimestre = mto.getIDTrimestre(cbTrimestre.getItemAt(cbTrimestre.getSelectedIndex()));
         String año = cbAño.getItemAt(cbAño.getSelectedIndex());
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         Connection datos;
         try
         {
@@ -426,7 +426,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 200, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 630, 140, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 

@@ -16,27 +16,27 @@ import javax.swing.RowFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import modelo.Conexion;
+import modelo.ClsConexion;
 import modelo.MtoSecciones;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 import modelo.MtoBitacoras;
 import controlador.CtrlLoginUsuario;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
-import kidsattop.JtPropiedades;
+
 
 /**
  *
  * @author katy0
  */
 public class FrmSecciones extends javax.swing.JInternalFrame {
-    public TableCellRenderer centerAlight = new JtPropiedades();
+  
     CtrlLoginUsuario mod;
     DefaultTableModel modelo = new DefaultTableModel();
     DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
     CtrlSecciones ctrl = new CtrlSecciones();
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
 
     /**
      * Creates new form GestionarSeccionesForm
@@ -388,7 +388,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
 
     public void mostrarSecciones() {
 
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         Connection datos;
         try {
             datos = con.conectar();
@@ -408,7 +408,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
         }
     }
 
-    //<editor-fold defaultstate="collapsed" desc="Validaciones">
+    //<editor-fold defaultstate="collapsed" desc="ClsValidaciones">
     private void txtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyTyped
         char c = evt.getKeyChar();
         if (!Character.isWhitespace(c) && c != '@' && c != '.' && c != '_') {

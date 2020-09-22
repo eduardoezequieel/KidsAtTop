@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  *
  * @author polon
  */
-public class Validaciones {
+public class ClsValidaciones {
     
       //Limpiar jTable
       

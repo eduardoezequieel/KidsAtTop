@@ -7,7 +7,7 @@ package vistas;
 
 import javax.swing.JOptionPane;
 import modelo.ClsCorreo;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 
 /**
  *
@@ -18,7 +18,7 @@ public class FrmEnviarCorreo extends javax.swing.JFrame {
     /**
      * Creates new form CorreoForm
      */
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     public FrmEnviarCorreo() {
         initComponents();
         this.setLocationRelativeTo(null);

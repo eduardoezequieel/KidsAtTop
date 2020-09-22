@@ -47,7 +47,7 @@ public class MtoConducta {
     
     //Llamando a la conexión
     public MtoConducta(){
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         cn = con.conectar();
     }
     

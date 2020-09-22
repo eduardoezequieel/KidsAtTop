@@ -3,7 +3,7 @@ import controlador.CtrlRespuestas;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.MtoRespuestas;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 
 /**
  *
@@ -13,7 +13,7 @@ public class FrmPrimerUsoPreguntas extends javax.swing.JFrame {
 
     MtoRespuestas mto = new MtoRespuestas();
     CtrlRespuestas ctrl = new CtrlRespuestas();
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     DefaultTableModel modelo = new DefaultTableModel();
     
     public FrmPrimerUsoPreguntas() {

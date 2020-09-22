@@ -36,7 +36,7 @@ public class MtoIndicadores {
     }
     
     public MtoIndicadores(){
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         cn = con.conectar();
     }
        

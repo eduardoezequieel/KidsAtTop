@@ -23,11 +23,11 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import modelo.Conexion;
+import modelo.ClsConexion;
 import modelo.MtoBitacoras;
 import modelo.MtoIndicadores;
 import modelo.MtoNotas;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 
 /**
  *
@@ -35,7 +35,7 @@ import modelo.Validaciones;
  */
 public class FrmIndicadores extends javax.swing.JInternalFrame {
     
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     CtrlIndicadores indicCtrl = new CtrlIndicadores();
     MtoIndicadores indicadores = new MtoIndicadores();
     CtrlLoginUsuario mod;
@@ -229,7 +229,7 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
         btnActualizar.setBorder(null);
         btnActualizar.setContentAreaFilled(false);
-        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnActualizar.setFocusable(false);
         btnActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -246,7 +246,7 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 950, 20));
 
         jIndicador.setBackground(new java.awt.Color(33, 37, 41));
-        jIndicador.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jIndicador.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         jIndicador.setForeground(new java.awt.Color(254, 254, 254));
         jIndicador.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jIndicador.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(73, 73, 73), 1, true));
@@ -385,7 +385,7 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
     
     public void mostrarIndicadores(){
         this.limpiarTabla();
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         Connection datos;
         int nivAcad = Integer.parseInt(cbNivelAcademico.getItemAt(cbNivelAcademico.getSelectedIndex()));
         

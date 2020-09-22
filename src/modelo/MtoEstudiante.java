@@ -43,7 +43,7 @@ public class MtoEstudiante {
     public MtoEstudiante(){
         
         //Llamando conexion
-        Conexion conectar = new Conexion();
+        ClsConexion conectar = new ClsConexion();
         cn = conectar.conectar();
     }
     

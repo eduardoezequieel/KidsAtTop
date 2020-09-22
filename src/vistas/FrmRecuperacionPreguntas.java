@@ -10,8 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UnsupportedLookAndFeelException;
-import modelo.RecuContra;
-import modelo.Validaciones;
+import modelo.MtoRecuperaciones;
+import modelo.ClsValidaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 
 /**
@@ -20,10 +20,10 @@ import org.apache.commons.codec.digest.DigestUtils;
  */
 public class FrmRecuperacionPreguntas extends javax.swing.JFrame {
 
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     //Llamando clases
     CtrlRecuContra recuCtrl = new CtrlRecuContra();
-    RecuContra recu = new RecuContra();
+    MtoRecuperaciones recu = new MtoRecuperaciones();
     
     
     /**
@@ -495,7 +495,7 @@ public class FrmRecuperacionPreguntas extends javax.swing.JFrame {
         return resp;
     }
     
-    //<editor-fold defaultstate="collapsed" desc="Validaciones">
+    //<editor-fold defaultstate="collapsed" desc="ClsValidaciones">
     private void jUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jUsuarioKeyTyped
         val.verificarEspeciales(evt);
     }//GEN-LAST:event_jUsuarioKeyTyped

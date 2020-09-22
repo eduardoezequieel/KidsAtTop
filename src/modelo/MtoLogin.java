@@ -39,7 +39,7 @@ public class MtoLogin {
     
     public MtoLogin(){
         
-        Conexion con=new Conexion();
+        ClsConexion con=new ClsConexion();
         conexion=con.conectar();
     
     }

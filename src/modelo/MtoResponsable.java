@@ -40,7 +40,7 @@ public class MtoResponsable {
     }
     
     public MtoResponsable(){
-        Conexion conectar = new Conexion();
+        ClsConexion conectar = new ClsConexion();
         cn = conectar.conectar();
     }
     

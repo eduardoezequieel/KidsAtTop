@@ -7,7 +7,7 @@ import java.sql.DriverManager;
  *
  * @author pablo
  */
-public class Conexion {
+public class ClsConexion {
     ///Conexion Edenilson
     public Connection conectar(){
         Connection cn = null;

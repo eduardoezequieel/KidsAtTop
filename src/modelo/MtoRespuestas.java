@@ -13,14 +13,14 @@ import javax.swing.JOptionPane;
 public class MtoRespuestas {
 
     /**
-     * @return the Conexion
+     * @return the ClsConexion
      */
     public Connection getConexion() {
         return Conexion;
     }
 
     /**
-     * @param Conexion the Conexion to set
+     * @param Conexion the ClsConexion to set
      */
     public void setConexion(Connection Conexion) {
         this.Conexion = Conexion;
@@ -29,7 +29,7 @@ public class MtoRespuestas {
     
     public MtoRespuestas(){
         
-        Conexion con=new Conexion();
+        ClsConexion con=new ClsConexion();
         Conexion=con.conectar();
     
     }

@@ -31,10 +31,10 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import modelo.Conexion;
+import modelo.ClsConexion;
 import modelo.MtoBitacoras;
 import modelo.MtoUsuario;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 
 /**
@@ -52,7 +52,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
         CtrlLoginUsuario mod;
-        Validaciones val = new Validaciones();
+        ClsValidaciones val = new ClsValidaciones();
         
     public FrmGestionarUsuarios() {
         initComponents();
@@ -141,7 +141,7 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
     }
     
     public void mostrarUsuario(){
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         Connection datos;
         try
         {
@@ -813,60 +813,22 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
                 ctrl.setDireccion(jDireccion.getText());
                 ctrl.setFoto(person_image);
                 
-                if (mto.validarDUI(ctrl.getDui())) {
-                    JOptionPane.showMessageDialog(null, "El DUI que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                if (mto.actualizarUsuario()) {
+                    JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                    MtoBitacoras add=new MtoBitacoras();
+                    int id=add.capturarIdBitacora()+1;
+                    mod.setId_usuario(mod.getId_usuario());
+                    mod.setId_bitacora(id);
+                    add.agregarBitacoraActualizarUsuario(mod);
+                    reiniciarBusqueda();
+                    limpiarTabla();
+                    mostrarUsuario();
+                    limpiarCampo();
                 }
                 else
                 {
-                    if (mto.validarNIT(ctrl.getNit())) {
-                         JOptionPane.showMessageDialog(null, "El NIT que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
-                    }
-                    else
-                    {
-                        if (mto.validarNIP(ctrl.getNip())) {
-                            JOptionPane.showMessageDialog(null, "El NIP que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
-                        }
-                        else
-                        {
-                            if (mto.validarUsuario(ctrl.getUsuario())) {
-                                JOptionPane.showMessageDialog(null, "El usuario que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
-                            }
-                            else
-                            {
-                                if (mto.validarCorreo(ctrl.getEmail())) {
-                                    JOptionPane.showMessageDialog(null, "El correo electronico que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
-                                }
-                                else
-                                {
-                                    if (mto.validarTelefono(ctrl.getTelefono())) {
-                                        JOptionPane.showMessageDialog(null, "El telefono que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
-                                    }
-                                    else
-                                    {
-                                        if (mto.actualizarUsuario()) {
-                                            JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
-                                            MtoBitacoras add=new MtoBitacoras();
-                                            int id=add.capturarIdBitacora()+1;
-                                            mod.setId_usuario(mod.getId_usuario());
-                                            mod.setId_bitacora(id);
-                                            add.agregarBitacoraActualizarUsuario(mod);
-                                            reiniciarBusqueda();
-                                            limpiarTabla();
-                                            mostrarUsuario();
-                                            limpiarCampo();
-                                        }
-                                        else
-                                        {
-                                            JOptionPane.showMessageDialog(null, "Error");
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    JOptionPane.showMessageDialog(null, "Error");
                 }
-
-                
             }
         }
         else

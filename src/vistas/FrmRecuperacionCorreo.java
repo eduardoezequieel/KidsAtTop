@@ -11,8 +11,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UnsupportedLookAndFeelException;
 import modelo.ClsCorreo;
-import modelo.RecuContra;
-import modelo.Validaciones;
+import modelo.MtoRecuperaciones;
+import modelo.ClsValidaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 
 /**
@@ -23,8 +23,8 @@ public class FrmRecuperacionCorreo extends javax.swing.JFrame {
 
     //Llamando clases
     CtrlRecuContra recuCtrl = new CtrlRecuContra();
-    Validaciones val = new Validaciones();
-    RecuContra recu = new RecuContra();
+    ClsValidaciones val = new ClsValidaciones();
+    MtoRecuperaciones recu = new MtoRecuperaciones();
     ClsCorreo clsCorreo = new ClsCorreo();
     
     /**

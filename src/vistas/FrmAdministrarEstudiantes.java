@@ -19,9 +19,9 @@ import javax.swing.RowFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import modelo.Conexion;
+import modelo.ClsConexion;
 import modelo.MtoEstudiante;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 import modelo.MtoBitacoras;
 import controlador.CtrlLoginUsuario;
 import java.text.ParseException;
@@ -42,7 +42,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
 
     CtrlLoginUsuario mod;
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     
     //Llamando clases 
     CtrlEstudiante estudianteCtrl = new CtrlEstudiante();
@@ -530,7 +530,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbMActionPerformed
 
-    //<editor-fold defaultstate="collapsed" desc="Validaciones">
+    //<editor-fold defaultstate="collapsed" desc="ClsValidaciones">
     private void jNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNombreKeyTyped
         val.verificarLetras(evt);
     }//GEN-LAST:event_jNombreKeyTyped
@@ -947,7 +947,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
     }
     
     public void mostrarEstudiantes(){
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         Connection datos;
         try
         {

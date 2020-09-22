@@ -16,7 +16,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import modelo.MtoEstudiante;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 
 /**
  *
@@ -25,7 +25,7 @@ import modelo.Validaciones;
 public class FrmMatricula extends javax.swing.JInternalFrame {
 
     //Llamando clases 
-    Validaciones val = new Validaciones();
+    ClsValidaciones val = new ClsValidaciones();
     CtrlEstudiante estudianteCtrl = new CtrlEstudiante();
     MtoEstudiante estudiante = new MtoEstudiante();
     

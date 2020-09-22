@@ -24,7 +24,7 @@ public class MtoSecciones {
     private Connection cn;
     
     public MtoSecciones(){
-        Conexion conectar = new Conexion();
+        ClsConexion conectar = new ClsConexion();
         cn = conectar.conectar();
     }
     

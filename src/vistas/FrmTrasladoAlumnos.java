@@ -23,10 +23,10 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import modelo.Conexion;
+import modelo.ClsConexion;
 import modelo.MtoEstudiante;
 import modelo.MtoNotas;
-import modelo.Validaciones;
+
 import modelo.MtoLogin;
 import controlador.CtrlLoginUsuario;
 import modelo.MtoBitacoras;
@@ -725,7 +725,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     }
 
     public void mostrarNotasPendientes() {
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         Connection datos;
         try {
             datos = con.conectar();
@@ -744,7 +744,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     }
 
     public void mostrarEstudiantes(String año, String grado, String seccion) {
-        Conexion con = new Conexion();
+        ClsConexion con = new ClsConexion();
         Connection datos;
         try {
             datos = con.conectar();

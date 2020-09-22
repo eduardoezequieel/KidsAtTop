@@ -21,7 +21,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import modelo.MtoBitacoras;
 import modelo.MtoUsuario;
-import modelo.Validaciones;
+import modelo.ClsValidaciones;
 import org.apache.commons.codec.digest.DigestUtils;
 import modelo.MtoBitacoras;
 import controlador.CtrlBitacora;
@@ -42,7 +42,7 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
         byte[] person_image = null;
         DefaultTableModel modelo = new DefaultTableModel();
         CtrlLoginUsuario mod;
-        Validaciones val = new Validaciones();
+        ClsValidaciones val = new ClsValidaciones();
         
     public FrmAgregarUsuario() {
         initComponents();

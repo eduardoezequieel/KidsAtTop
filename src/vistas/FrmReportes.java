@@ -7,7 +7,7 @@ import java.net.URLDecoder;
 import java.sql.Connection;
 import java.util.HashMap;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import modelo.Conexion;
+import modelo.ClsConexion;
 import net.sf.jasperreports.engine.JasperReport;
 import java.util.Map;
 import java.util.logging.Level;
@@ -229,7 +229,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         if (mensaje == JOptionPane.YES_OPTION) {
                 String mensaje2 = JOptionPane.showInputDialog(null, "Escribe el usuario del cual quieres un reporte de bitacoras.","Aviso",JOptionPane.INFORMATION_MESSAGE);
                 try {
-                    Conexion con = new Conexion();
+                    ClsConexion con = new ClsConexion();
                    String reports = "RptBitacoraParametro";
                    String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
 
@@ -257,7 +257,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         else if(mensaje == JOptionPane.NO_OPTION)
         {
                 try {
-                    Conexion con = new Conexion();
+                    ClsConexion con = new ClsConexion();
                    String reports = "RptBitacoraSinParametro";
                    String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
                    String mensaje2 = "";
@@ -295,7 +295,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         if (mensaje == JOptionPane.YES_OPTION) {
                 String mensaje2 = JOptionPane.showInputDialog(null, "Escribe el año del cual quieres un reporte de grados.","Aviso",JOptionPane.INFORMATION_MESSAGE);
                 try {
-                    Conexion con = new Conexion();
+                    ClsConexion con = new ClsConexion();
                    String reports = "RptGradosMaestrosParametro";
                    String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
 
@@ -323,7 +323,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         else if(mensaje == JOptionPane.NO_OPTION)
         {
                 try {
-                    Conexion con = new Conexion();
+                    ClsConexion con = new ClsConexion();
                    String reports = "RptGradosSinParametro";
                    String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
                    String mensaje2 = "";
@@ -363,7 +363,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
              String mensaje2 = JOptionPane.showInputDialog(null, "Escribe el grado por el que quieres el reporte. Por ejemplo Kinder 5","Aviso",JOptionPane.INFORMATION_MESSAGE);
              String mensaje3 = JOptionPane.showInputDialog(null, "Escribe la sección por el que quieres el reporte. Por ejemplo A","Aviso",JOptionPane.INFORMATION_MESSAGE);
                 try {
-                    Conexion con = new Conexion();
+                    ClsConexion con = new ClsConexion();
                    String reports = "RptEstudiantesPorGradoParametro";
                    String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
 
@@ -395,7 +395,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         
             
             //se crea la conexion
-            Conexion con = new Conexion();
+            ClsConexion con = new ClsConexion();
                 String reports = "RptEstudiantesPorGradoSinParametro";
                 String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
                 String mensaje2 = "";
@@ -427,7 +427,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
 
     private void btnListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaActionPerformed
         try {
-                    Conexion con = new Conexion();
+                    ClsConexion con = new ClsConexion();
                    String reports = "RptListaUsuariosNoParam";
                    String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
                    String mensaje2 = "";
@@ -462,7 +462,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
     private void btnInasistenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInasistenciasActionPerformed
                 String mensaje2 = JOptionPane.showInputDialog(null, "Escribe el ID del estudiante cual quieres un reporte de inasistencias:.","Aviso",JOptionPane.INFORMATION_MESSAGE);
                 try {
-                    Conexion con = new Conexion();
+                    ClsConexion con = new ClsConexion();
                    String reports = "RptInasistenciasParam";
                    String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
 
@@ -500,7 +500,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         String mensaje2 = JOptionPane.showInputDialog(null, "Escribe el grado del cual quieres un reporte de asistencia.","Aviso",JOptionPane.INFORMATION_MESSAGE);
         String mensaje3 = JOptionPane.showInputDialog(null, "Escribe la seccion del cual quieres un reporte de asistencia.","Aviso",JOptionPane.INFORMATION_MESSAGE);
         try {
-            Conexion con = new Conexion();
+            ClsConexion con = new ClsConexion();
             String reports = "RptAsistenciaDiaParametro";
             String archivo = getClass().getResource("/reportes/"+reports+".jrxml").getPath();
 
@@ -539,7 +539,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         String mensaje2=JOptionPane.showInputDialog(null,"Escribe los nombres del Estudiante",JOptionPane.INFORMATION_MESSAGE);
         
         try{
-           Conexion con = new Conexion();
+           ClsConexion con = new ClsConexion();
 
         
             String reports = "reporteConductaEstudiante";
@@ -582,7 +582,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         String mensaje3=JOptionPane.showInputDialog(null,"Escribe el trimestre del reporte a generar",JOptionPane.INFORMATION_MESSAGE);
         
         try{
-           Conexion con = new Conexion();
+           ClsConexion con = new ClsConexion();
 
         
             String reports = "RptNotasEstudiante";
@@ -627,7 +627,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         String mensaje4=JOptionPane.showInputDialog(null,"Escribe el número del indicador a revisar",JOptionPane.INFORMATION_MESSAGE);
         
         try{
-           Conexion con = new Conexion();
+           ClsConexion con = new ClsConexion();
 
         
             String reports = "RptNotasIndicador";

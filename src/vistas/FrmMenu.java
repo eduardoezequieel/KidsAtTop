@@ -106,7 +106,7 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatricula_default.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.setFocusPainted(false);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMatricula_rollover.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +119,7 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnHerramientasSistemaDefault.png"))); // NOI18N
         jButton6.setBorder(null);
         jButton6.setContentAreaFilled(false);
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton6.setFocusPainted(false);
         jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnHerramientasSistemaRollover.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +132,7 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         btnControlAcademico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnControlAcademico_default.png"))); // NOI18N
         btnControlAcademico.setBorder(null);
         btnControlAcademico.setContentAreaFilled(false);
-        btnControlAcademico.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnControlAcademico.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnControlAcademico.setFocusPainted(false);
         btnControlAcademico.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnControlAcademico_rollover.png"))); // NOI18N
         btnControlAcademico.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +145,7 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         btnMiCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMiCuenta_default.png"))); // NOI18N
         btnMiCuenta.setBorder(null);
         btnMiCuenta.setContentAreaFilled(false);
-        btnMiCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMiCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMiCuenta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnMiCuenta_rollover.png"))); // NOI18N
         btnMiCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +157,7 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarSesion_default.png"))); // NOI18N
         btnCerrarSesion.setBorder(null);
         btnCerrarSesion.setContentAreaFilled(false);
-        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCerrarSesion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnCerrarSesion_rollover.png"))); // NOI18N
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,8 +175,8 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         lblFoto.setForeground(new java.awt.Color(236, 236, 236));
         jPanel1.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 230, 280, 280));
 
-        lblTipo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        lblTipo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTipo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
+        lblTipo.setForeground(new java.awt.Color(166, 166, 166));
         lblTipo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblTipo.setText("Administrador");
         jPanel1.add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 630, 220, 100));
@@ -202,11 +202,10 @@ public class FrmMenu extends javax.swing.JFrame implements Runnable {
         lblTipo1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         lblTipo1.setForeground(new java.awt.Color(255, 255, 255));
         lblTipo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTipo1.setIcon(new javax.swing.ImageIcon("C:\\Users\\EDUARDO\\Desktop\\check.PNG")); // NOI18N
         jPanel1.add(lblTipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 660, 40, 40));
 
-        lblHora.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        lblHora.setForeground(new java.awt.Color(255, 255, 255));
+        lblHora.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
+        lblHora.setForeground(new java.awt.Color(166, 166, 166));
         lblHora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHora.setText("00:00:00");
         jPanel1.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 630, 180, 100));
