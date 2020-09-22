@@ -141,6 +141,7 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
         jCorreo = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
 
+        setNextFocusableComponent(jLayeredPane1);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(33, 37, 41));
@@ -581,20 +582,54 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
                 String contraConEncriptacion=DigestUtils.sha1Hex(contraSinEncriptacion);
                 ctrl.setContraseña(contraConEncriptacion);
                 ctrl.setFoto(person_image);
-
-                if (mto.insertarUsuario()) {
-                    JOptionPane.showMessageDialog(null, "Se ha ingresado el nuevo usuario. Su contraseña por defecto es: 123","Exito",JOptionPane.INFORMATION_MESSAGE);
-                    limpiarCampo();
-                    MtoBitacoras add=new MtoBitacoras();
-                    int id=add.capturarIdBitacora()+1;
-                    mod.setId_usuario(mod.getId_usuario());
-                    mod.setId_bitacora(id);
-                    add.agregarBitacoraAgregarUsuario(mod);
-                   
+                if (mto.validarDUI(ctrl.getDui())) {
+                    JOptionPane.showMessageDialog(null, "El DUI que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(null, "Error");
+                    if (mto.validarNIT(ctrl.getNit())) {
+                         JOptionPane.showMessageDialog(null, "El NIT que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                    }
+                    else
+                    {
+                        if (mto.validarNIP(ctrl.getNip())) {
+                            JOptionPane.showMessageDialog(null, "El NIP que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                        }
+                        else
+                        {
+                            if (mto.validarUsuario(ctrl.getUsuario())) {
+                                JOptionPane.showMessageDialog(null, "El usuario que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                            }
+                            else
+                            {
+                                if (mto.validarCorreo(ctrl.getEmail())) {
+                                    JOptionPane.showMessageDialog(null, "El correo electronico que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                                }
+                                else
+                                {
+                                    if (mto.validarTelefono(ctrl.getTelefono())) {
+                                        JOptionPane.showMessageDialog(null, "El telefono que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                                    }
+                                    else
+                                    {
+                                        if (mto.insertarUsuario()) {
+                                            JOptionPane.showMessageDialog(null, "Se ha ingresado el nuevo usuario. Su contraseña por defecto es: 123","Exito",JOptionPane.INFORMATION_MESSAGE);
+                                            limpiarCampo();
+                                            MtoBitacoras add=new MtoBitacoras();
+                                            int id=add.capturarIdBitacora()+1;
+                                            mod.setId_usuario(mod.getId_usuario());
+                                            mod.setId_bitacora(id);
+                                            add.agregarBitacoraAgregarUsuario(mod);
+                                        }
+                                        else
+                                        {
+                                            JOptionPane.showMessageDialog(null, "Error");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
             else

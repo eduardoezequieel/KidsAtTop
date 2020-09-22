@@ -429,4 +429,114 @@ public class MtoUsuario {
         return resp;
     }
      //</editor-fold>
+    
+    //Validaciones
+    
+    public boolean validarDUI(String dui){
+        boolean resp = false;
+        try
+        {
+            String sql = "SELECT dui FROM usuario WHERE dui = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setString(1, dui);
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return resp;
+    } 
+    
+    public boolean validarNIT(String nit){
+        boolean resp = false;
+        try
+        {
+            String sql = "SELECT nit FROM usuario WHERE nit = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setString(1, nit);
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return resp;
+    } 
+    
+    public boolean validarNIP(String nip){
+        boolean resp = false;
+        try
+        {
+            String sql = "SELECT nip FROM usuario WHERE nip = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setString(1, nip);
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return resp;
+    } 
+    
+    public boolean validarUsuario(String user){
+        boolean resp = false;
+        try
+        {
+            String sql = "SELECT usuario FROM usuario WHERE usuario = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setString(1, user);
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return resp;
+    } 
+    
+    public boolean validarCorreo(String correo){
+        boolean resp = false;
+        try
+        {
+            String sql = "SELECT email FROM usuario WHERE email = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setString(1, correo);
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return resp;
+    } 
+    
+    public boolean validarTelefono(String telefono){
+        boolean resp = false;
+        try
+        {
+            String sql = "SELECT telefono FROM usuario WHERE telefono = ?";
+            PreparedStatement cmd = cn.prepareCall(sql);
+            cmd.setString(1, telefono);
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next()){
+                resp = true;
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return resp;
+    } 
 }

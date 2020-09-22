@@ -40,6 +40,7 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
     MtoIndicadores indicadores = new MtoIndicadores();
     CtrlLoginUsuario mod;
     DefaultTableModel modelo = new DefaultTableModel();
+     DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
     
     int idIndicador;
     
@@ -66,6 +67,18 @@ public class FrmIndicadores extends javax.swing.JInternalFrame {
         tNotas.setModel(modelo);
         
         this.mostrarIndicadores();
+        
+        tNotas.getColumnModel().getColumn(0).setMinWidth(0);
+        tNotas.getColumnModel().getColumn(0).setMaxWidth(500);
+        
+        this.centrarColumnas();
+    }
+    
+    public void centrarColumnas(){
+        centrado.setHorizontalAlignment(JLabel.CENTER);
+        
+            tNotas.getColumnModel().getColumn(0).setCellRenderer(centrado);
+        
     }
 
     

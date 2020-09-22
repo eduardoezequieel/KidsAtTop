@@ -812,23 +812,61 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
                 }
                 ctrl.setDireccion(jDireccion.getText());
                 ctrl.setFoto(person_image);
-
-                if (mto.actualizarUsuario()) {
-                    JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
-                    MtoBitacoras add=new MtoBitacoras();
-                    int id=add.capturarIdBitacora()+1;
-                    mod.setId_usuario(mod.getId_usuario());
-                    mod.setId_bitacora(id);
-                    add.agregarBitacoraActualizarUsuario(mod);
-                    reiniciarBusqueda();
-                    limpiarTabla();
-                    mostrarUsuario();
-                    limpiarCampo();
+                
+                if (mto.validarDUI(ctrl.getDui())) {
+                    JOptionPane.showMessageDialog(null, "El DUI que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(null, "Error");
+                    if (mto.validarNIT(ctrl.getNit())) {
+                         JOptionPane.showMessageDialog(null, "El NIT que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                    }
+                    else
+                    {
+                        if (mto.validarNIP(ctrl.getNip())) {
+                            JOptionPane.showMessageDialog(null, "El NIP que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                        }
+                        else
+                        {
+                            if (mto.validarUsuario(ctrl.getUsuario())) {
+                                JOptionPane.showMessageDialog(null, "El usuario que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                            }
+                            else
+                            {
+                                if (mto.validarCorreo(ctrl.getEmail())) {
+                                    JOptionPane.showMessageDialog(null, "El correo electronico que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                                }
+                                else
+                                {
+                                    if (mto.validarTelefono(ctrl.getTelefono())) {
+                                        JOptionPane.showMessageDialog(null, "El telefono que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                                    }
+                                    else
+                                    {
+                                        if (mto.actualizarUsuario()) {
+                                            JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                                            MtoBitacoras add=new MtoBitacoras();
+                                            int id=add.capturarIdBitacora()+1;
+                                            mod.setId_usuario(mod.getId_usuario());
+                                            mod.setId_bitacora(id);
+                                            add.agregarBitacoraActualizarUsuario(mod);
+                                            reiniciarBusqueda();
+                                            limpiarTabla();
+                                            mostrarUsuario();
+                                            limpiarCampo();
+                                        }
+                                        else
+                                        {
+                                            JOptionPane.showMessageDialog(null, "Error");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
+
+                
             }
         }
         else
