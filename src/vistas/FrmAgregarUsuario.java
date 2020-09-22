@@ -48,9 +48,12 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    //Metodo main con parametros del usuario
     public FrmAgregarUsuario(CtrlLoginUsuario mod) throws ParseException {
         initComponents();
         this.mod = mod;
+        
+        //Quitando bordes del formulario
         this.setBorder(null);
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
@@ -72,11 +75,13 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
         jCalendario.setDate(fechaParseada);
     }
     
+    //Metodo para combobox
     public void llenarTipoUsuario(){
         MtoUsuario a = new MtoUsuario();
         cbTipoUsuario.setModel(a.llenarTipoUsuario());
     }
     
+    //Metodo para limpiar campos
     public void limpiarCampo(){
         jNombre.setText("");
         jApellido.setText("");
@@ -509,7 +514,8 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jDireccionKeyPressed
 
     private void jCalendarioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendarioPropertyChange
-         try{
+        //Se manda el textbox encargado de obtener la fecha 
+        try{
              String dia = Integer.toString(jCalendario.getCalendar().get(Calendar.DATE));
             String año = Integer.toString(jCalendario.getCalendar().get(Calendar.YEAR));
             int mesInt = jCalendario.getCalendar().get(Calendar.MONTH) + 1;
@@ -524,14 +530,21 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCalendarioPropertyChange
 
     private void btnExaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExaminarActionPerformed
+        
+        //Creando jFileChooser
         JFileChooser buscar = new JFileChooser();
         buscar.showOpenDialog(null);
+        
+        //Obteniendo imagen
         File f = buscar.getSelectedFile();
         filename = f.getAbsolutePath();
         ImageIcon imagen = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
+        
+        //Colocando como icono la imagen seleccionada
         lblFoto.setIcon(imagen);
         try
         {
+            //Asignando imagen a la variable global para posteriormente ser enviada a la base de datos (Conversion)
             File image = new File(filename);
             FileInputStream fis = new FileInputStream(image);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -547,10 +560,13 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExaminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        
+        //Validando campos vacios
         if (jNombre.getText().isEmpty() || jApellido.getText().isEmpty() || jTelefono.getText().isEmpty() || jUsuario.getText().isEmpty() || jDUI.getText().isEmpty() ||
             jDireccion.getText().isEmpty() || jFecha.getText().isEmpty() || jCorreo.getText().isEmpty() || jNIP.getText().isEmpty() || jNIT.getText().isEmpty() || lblFoto.getIcon() == null) {
             JOptionPane.showMessageDialog(null, "Campos vacios.","Rellene los campos faltantes.",JOptionPane.WARNING_MESSAGE);
         }
+        //Almacenando datos en el constructor
         else if(rbMasculino.isSelected() || rbFemenino.isSelected()){
             if (val.email(jCorreo.getText())) {
                  CtrlUsuario ctrl = new CtrlUsuario();
@@ -582,6 +598,8 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
                 String contraConEncriptacion=DigestUtils.sha1Hex(contraSinEncriptacion);
                 ctrl.setContraseña(contraConEncriptacion);
                 ctrl.setFoto(person_image);
+                
+                //Validaciones para evitar la redundancia de datos
                 if (mto.validarDUI(ctrl.getDui())) {
                     JOptionPane.showMessageDialog(null, "El DUI que intenta ingresar ya existe.","Advertencia",JOptionPane.WARNING_MESSAGE);
                 }
@@ -612,6 +630,7 @@ public class FrmAgregarUsuario extends javax.swing.JInternalFrame {
                                     }
                                     else
                                     {
+                                        //Procediendo con el metodo y ejecutando los metodos que accionan al formulario
                                         if (mto.insertarUsuario()) {
                                             JOptionPane.showMessageDialog(null, "Se ha ingresado el nuevo usuario. Su contraseña por defecto es: 123","Exito",JOptionPane.INFORMATION_MESSAGE);
                                             limpiarCampo();

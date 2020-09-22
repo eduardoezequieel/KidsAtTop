@@ -100,6 +100,8 @@ public class FrmGestionarUsuarios extends javax.swing.JInternalFrame {
         java.util.Date fechaParseada= new SimpleDateFormat("yyyy/MM/dd").parse(fecha);
         jCalendario.setDate(fechaParseada);
         
+        
+        //Deshabilitando controles
         for (Component component : jLayeredPane1.getComponents()) {
             component.setEnabled(false); 
         }
