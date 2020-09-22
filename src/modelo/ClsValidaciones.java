@@ -97,5 +97,12 @@ public class ClsValidaciones {
         }
     }
     
+    public void verificarSignos(java.awt.event.KeyEvent evt){
+        char c = evt.getKeyChar();
+        if (!Character.isAlphabetic(c) && !Character.isDigit(c) && c != '@' && c != '.' && c != '_' && c!='?'&& c!='¿'&& c!='!'&& c!='¡'&& !Character.isWhitespace(c)) {
+            evt.consume();
+        }
+    }
+    
       
 }
