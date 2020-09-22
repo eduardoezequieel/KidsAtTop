@@ -77,6 +77,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         centrarColumnas();
      
         jID.setVisible(false);
+        j3.setVisible(false);
     }
     
     public void llenarAnio(){
@@ -218,6 +219,11 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         jID = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        j3 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -236,7 +242,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         jLabel10.setForeground(new java.awt.Color(254, 254, 254));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Indicador de logro:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 930, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 930, -1));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(254, 254, 254));
@@ -267,7 +273,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
                 cbIndicadoresKeyPressed(evt);
             }
         });
-        jPanel1.add(cbIndicadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 930, -1));
+        jPanel1.add(cbIndicadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 930, -1));
 
         tNotas = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -320,13 +326,13 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tNotas);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 840, 430));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 840, 390));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Buscar alumno...");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 470, 20));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 470, 20));
 
         cbAño.setBackground(new java.awt.Color(33, 37, 41));
         cbAño.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -341,7 +347,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
                 cbAñoKeyPressed(evt);
             }
         });
-        jPanel1.add(cbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 180, -1));
+        jPanel1.add(cbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 180, -1));
 
         jBuscar.setBackground(new java.awt.Color(33, 37, 41));
         jBuscar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
@@ -359,13 +365,13 @@ public class FrmNotas extends javax.swing.JInternalFrame {
                 jBuscarKeyTyped(evt);
             }
         });
-        jPanel1.add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 470, 30));
+        jPanel1.add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 470, 30));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Año:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 180, -1));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel14.setText("NP = Nota Pendiente");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 180, -1));
 
         btnAgregar.setBackground(new java.awt.Color(33, 37, 41));
         btnAgregar.setForeground(new java.awt.Color(254, 254, 254));
@@ -386,7 +392,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         jLabel15.setForeground(new java.awt.Color(254, 254, 254));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Grado/Sección:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 180, 20));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 180, 20));
 
         cbGradoSeccion.setBackground(new java.awt.Color(33, 37, 41));
         cbGradoSeccion.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -401,7 +407,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
                 cbGradoSeccionKeyPressed(evt);
             }
         });
-        jPanel1.add(cbGradoSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 180, -1));
+        jPanel1.add(cbGradoSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 180, -1));
 
         cbTrimestre.setBackground(new java.awt.Color(33, 37, 41));
         cbTrimestre.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
@@ -416,7 +422,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
                 cbTrimestreKeyPressed(evt);
             }
         });
-        jPanel1.add(cbTrimestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 180, -1));
+        jPanel1.add(cbTrimestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 180, -1));
 
         lblAviso.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         lblAviso.setForeground(new java.awt.Color(254, 254, 254));
@@ -437,13 +443,13 @@ public class FrmNotas extends javax.swing.JInternalFrame {
                 jIDKeyTyped(evt);
             }
         });
-        jPanel1.add(jID, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 300, 70, 30));
+        jPanel1.add(jID, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 580, 70, 30));
 
         jLabel17.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(254, 254, 254));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("Trimestre:");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, 180, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 110, 180, -1));
 
         jButton1.setText("Ingresar Notas");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -452,6 +458,31 @@ public class FrmNotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 630, 140, -1));
+        jPanel1.add(j3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 210, 50, -1));
+
+        jLabel16.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Año:");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 180, -1));
+
+        jLabel18.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel18.setText("S = Si lo hace ");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 130, -1));
+
+        jLabel19.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel19.setText("P = En Proceso");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 130, -1));
+
+        jLabel20.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel20.setText("T = Todavia no lo hace");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 180, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -612,6 +643,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbIndicadores;
     private javax.swing.JComboBox<String> cbNotaP;
     private javax.swing.JComboBox<String> cbTrimestre;
+    private javax.swing.JTextField j3;
     private javax.swing.JTextField jBuscar;
     private javax.swing.JButton jButton1;
     private javax.swing.JTextField jID;
@@ -620,7 +652,11 @@ public class FrmNotas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

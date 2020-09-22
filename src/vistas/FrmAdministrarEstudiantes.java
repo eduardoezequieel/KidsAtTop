@@ -372,6 +372,7 @@ public class FrmAdministrarEstudiantes extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9"
             }
         ));
+        tEstudiantes.setFocusable(false);
         tEstudiantes.setGridColor(new java.awt.Color(64, 65, 65));
         tEstudiantes.setIntercellSpacing(new java.awt.Dimension(0, 0));
         tEstudiantes.setRowHeight(30);

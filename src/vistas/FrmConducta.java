@@ -201,7 +201,7 @@ public class FrmConducta extends javax.swing.JInternalFrame {
         tConducta.setFocusable(false);
         tConducta.setGridColor(new java.awt.Color(64, 65, 65));
         tConducta.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        tConducta.setRowHeight(30);
+        tConducta.setRowHeight(40);
         tConducta.setSelectionBackground(new java.awt.Color(45, 252, 119));
         tConducta.setSelectionForeground(new java.awt.Color(0, 0, 0));
         tConducta.setShowVerticalLines(false);
