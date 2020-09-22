@@ -9,7 +9,7 @@ import java.sql.DriverManager;
  */
 public class ClsConexion {
     ///Conexion Edenilson
-    public Connection conectar(){
+    /*public Connection conectar(){
         Connection cn = null;
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -44,7 +44,7 @@ public class ClsConexion {
             return cn;
     }*/
     //Conexion Eduardo
-   /* public Connection conectar(){
+   public Connection conectar(){
         Connection cn = null;
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
