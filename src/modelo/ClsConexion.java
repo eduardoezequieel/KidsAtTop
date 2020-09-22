@@ -15,7 +15,7 @@ public class ClsConexion {
     private String pwrd = "eduardo2020";
     Connection cn = null;
     
-    public Connection conectar(){
+   /* public Connection conectar(){
         try
         {
             Class.forName(driver);
@@ -65,7 +65,7 @@ public class ClsConexion {
             return cn;
     }*/
     /*//Conexion Eduardo
-  public Connection conectar(){
+  */public Connection conectar(){
         Connection cn = null;
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -80,7 +80,7 @@ public class ClsConexion {
                     System.out.println(ex.getMessage());
             }
             return cn;
-        }*/
+        }
     
     //Conexion Jacobo
     /*public Connection conectar(){
