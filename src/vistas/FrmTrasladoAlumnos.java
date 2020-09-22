@@ -564,7 +564,9 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
 
                 resp = true;
                 estudiante.obtenerUltimoIdNota();
-                String nivelSubstring2 = gradoSeccion2.substring(7, 8);
+                //Dividiendo el grado y la seccion
+                String gradoSeccion8 = cbGS2.getItemAt(cbGS2.getSelectedIndex());
+                String nivelSubstring2 = gradoSeccion8.substring(7, 8);
                 int nivel = Integer.parseInt(nivelSubstring2);
                 estudianteCtrl.setNivelAcademico(nivel);
                 estudiante.obtenerCountIdIndicador();
