@@ -490,11 +490,17 @@ char c = evt.getKeyChar();
     }//GEN-LAST:event_cbGradoSeccionMouseClicked
 
     private void cbGradoSeccionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbGradoSeccionItemStateChanged
+  
+      
         this.llenarEstudiante();
+        this.llenarTipoFalta();
     }//GEN-LAST:event_cbGradoSeccionItemStateChanged
 
     private void cbAñoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAñoItemStateChanged
+   
         this.llenarGradoSeccion();
+        this.llenarEstudiante();
+        this.llenarTipoFalta();
     }//GEN-LAST:event_cbAñoItemStateChanged
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -775,6 +781,7 @@ char c = evt.getKeyChar();
         String[] parte = gradoSeccion.split("-");
         String grado = parte[0];
         String seccion = parte[1];
+        conductaCtrl.setAnio(cbAño.getItemAt(cbAño.getSelectedIndex()));
 
         //Obteniendo id del gradoSeccion
         idGS = conducta.obtenerIdGS(grado, seccion);

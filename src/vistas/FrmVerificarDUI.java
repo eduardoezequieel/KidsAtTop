@@ -100,7 +100,7 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
-        pnlResponsable.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 160, 80));
+        pnlResponsable.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 160, 80));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReingresarDUIDefault.png"))); // NOI18N
         jButton4.setBorder(null);
@@ -207,7 +207,7 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         jLabel6.setText("Correo Electrónico:");
         jLayeredPane2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 30));
 
-        pnlResponsable.add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 250, 280));
+        pnlResponsable.add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 250, 150));
 
         jPanel1.add(pnlResponsable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 1060, 350));
 
@@ -224,6 +224,7 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         btnVerificar.setBorderPainted(false);
         btnVerificar.setContentAreaFilled(false);
         btnVerificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVerificar.setNextFocusableComponent(jLayeredPane1);
         btnVerificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_default.png"))); // NOI18N
         btnVerificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

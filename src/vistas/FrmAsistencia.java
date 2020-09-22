@@ -145,7 +145,8 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
         String[] parte = gradoSeccion.split("-");
         String grado = parte[0];
         String seccion = parte[1];
-
+        as.setAnio(cbAño.getItemAt(cbAño.getSelectedIndex()));
+        
         //Obteniendo id del gradoSeccion
         idGS = conducta.obtenerIdGS(grado, seccion);
         as.setIdGradoSeccion(idGS);
@@ -610,8 +611,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
             mostrarTabla();
 
         } catch (Exception ex) {
-            System.out.println(ex.toString());
-
+          
         }
     }//GEN-LAST:event_jCalendarioPropertyChange
 
@@ -695,6 +695,7 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
     private void cbAñoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAñoItemStateChanged
         // TODO add your handling code here:
         this.llenarGradoSeccion();
+        this.llenarEstudiante();
         mostrarTabla();
     }//GEN-LAST:event_cbAñoItemStateChanged
 

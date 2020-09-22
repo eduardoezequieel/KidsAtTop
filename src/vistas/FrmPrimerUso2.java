@@ -442,25 +442,31 @@ public class FrmPrimerUso2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFileChooser buscar = new JFileChooser();
-        buscar.showOpenDialog(null);
-        File f = buscar.getSelectedFile();
-        filename = f.getAbsolutePath();
-        ImageIcon imagen = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
-        lblFoto.setIcon(imagen);
         try
         {
-            File image = new File(filename);
-            FileInputStream fis = new FileInputStream(image);
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            byte[] buf = new byte [1024];
-            for (int readNum; (readNum=fis.read(buf))!=-1;) {
-                bos.write(buf,0,readNum);
-            }   
-            person_image=bos.toByteArray();
+            JFileChooser buscar = new JFileChooser();
+            buscar.showOpenDialog(null);
+            File f = buscar.getSelectedFile();
+            filename = f.getAbsolutePath();
+            ImageIcon imagen = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_SMOOTH));
+            lblFoto.setIcon(imagen);
+            try
+            {
+                File image = new File(filename);
+                FileInputStream fis = new FileInputStream(image);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                byte[] buf = new byte [1024];
+                for (int readNum; (readNum=fis.read(buf))!=-1;) {
+                    bos.write(buf,0,readNum);
+                }   
+                person_image=bos.toByteArray();
+            }
+            catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
         }
         catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
+            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
