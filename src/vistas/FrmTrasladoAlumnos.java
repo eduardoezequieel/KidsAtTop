@@ -290,7 +290,11 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         });
         jPanel3.add(btnActualizar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 130, 60));
 
-        btnGraduarse.setText("Graduar");
+        btnGraduarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGraduarDefault.png"))); // NOI18N
+        btnGraduarse.setBorder(null);
+        btnGraduarse.setContentAreaFilled(false);
+        btnGraduarse.setFocusable(false);
+        btnGraduarse.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnGraduarRollover.png"))); // NOI18N
         btnGraduarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGraduarseActionPerformed(evt);

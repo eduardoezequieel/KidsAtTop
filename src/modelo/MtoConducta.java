@@ -106,6 +106,34 @@ public class MtoConducta {
       return modelo;
     }
     
+    public DefaultComboBoxModel llenarGradoSeccionValidado(){
+        
+        //Creando instancia del modelo
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        try
+        {
+            
+            //Llamando procedimiento almacenado
+            PreparedStatement cmd = cn.prepareCall("SELECT CONCAT(g.grado,'-',s.seccion) as grado_seccion FROM grado_seccion gs, seccion s, grado g WHERE gs.id_grado = g.id_grado AND gs.id_seccion = s.id_seccion AND gs.id_estado_gs = 1 AND gs.anio_seccion = ? AND gs.id_usuario = ?");
+            
+            cmd.setString(1,conducta.getAnio());
+            cmd.setInt(2, conducta.getIdUsuario());
+            
+            cmd.execute();
+            //Ejecutando sentencia
+            ResultSet rs = cmd.executeQuery();
+            while(rs.next())
+            {
+                //Agregando elementos al combobox
+                modelo.addElement(rs.getString(1));
+            }
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }       
+      return modelo;
+    }
+    
     
     //Llenando combobox de estudiante
     public DefaultComboBoxModel llenarEstudiante(){

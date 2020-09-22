@@ -129,14 +129,26 @@ public class FrmAsistencia extends javax.swing.JInternalFrame {
 
     }
 
-    private void llenarGradoSeccion() {
+    public void llenarGradoSeccion() {
+        System.out.println(String.valueOf(mod.getId_tipo_usuario()));
+        if (mod.getId_tipo_usuario() == 2) {
+           //Obteniendo parametro del año
+            String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
+            as.setAnio(anio);
+            as.setIdUsuario(mod.getId_usuario());
+            //Seteando modelo del combo
+            cbGradoSeccion.setModel(conducta.llenarGradoSeccionValidado());
+        }
+        else
+        {
+            //Obteniendo parametro del año
+            String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
+            as.setAnio(anio);
 
-        //Obteniendo parametro del año
-        String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
-        as.setAnio(anio);
-
-        //Seteando modelo del combo
-        cbGradoSeccion.setModel(conducta.llenarGradoSeccion());
+            //Seteando modelo del combo
+            cbGradoSeccion.setModel(conducta.llenarGradoSeccion());
+        }
+        
     }
 
     private void llenarEstudiante() {

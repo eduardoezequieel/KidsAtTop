@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import controlador.CtrlConducta;
 import controlador.CtrlLoginUsuario;
 import controlador.CtrlNotas;
 import java.awt.Color;
@@ -25,6 +26,7 @@ import javax.swing.table.TableRowSorter;
 import modelo.ClsConexion;
 import modelo.MtoNotas;
 import modelo.ClsValidaciones;
+import modelo.MtoConducta;
 
 /**
  *
@@ -81,11 +83,28 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         cbAño.setModel(mto.llenarAnio());
     }
     
-    public void llenarGradoSeccion(){
-        String año = cbAño.getItemAt(cbAño.getSelectedIndex());
-        ctrl.setAñoSeccion(año);
+    public void llenarGradoSeccion() {
+        CtrlConducta conductaCtrl = new CtrlConducta();
+        MtoConducta conducta = new MtoConducta();
+        System.out.println(String.valueOf(mod.getId_tipo_usuario()));
+        if (mod.getId_tipo_usuario() == 2) {
+           //Obteniendo parametro del año
+            String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
+            conductaCtrl.setAnio(anio);
+            conductaCtrl.setIdUsuario(mod.getId_usuario());
+            //Seteando modelo del combo
+            cbGradoSeccion.setModel(conducta.llenarGradoSeccionValidado());
+        }
+        else
+        {
+            //Obteniendo parametro del año
+            String anio = cbAño.getItemAt(cbAño.getSelectedIndex());
+            conductaCtrl.setAnio(anio);
+
+            //Seteando modelo del combo
+            cbGradoSeccion.setModel(conducta.llenarGradoSeccion());
+        }
         
-        cbGradoSeccion.setModel(mto.llenarGradoSeccion());
     }
     
     public void llenarTrimestre(){

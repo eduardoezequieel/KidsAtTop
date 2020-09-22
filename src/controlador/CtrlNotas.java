@@ -6,6 +6,20 @@ package controlador;
 public class CtrlNotas {
 
     /**
+     * @return the idUsuario
+     */
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    /**
+     * @param idUsuario the idUsuario to set
+     */
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    /**
      * @return the grado
      */
     public String getGrado() {
@@ -139,4 +153,5 @@ public class CtrlNotas {
     static private int nivelAcademico;
     static private String grado;
     static private String seccion;
+    private int idUsuario;
 }

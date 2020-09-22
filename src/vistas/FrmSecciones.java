@@ -500,9 +500,9 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
         mto.obtenerIdGrado();
         mto.obtenerIdUsuario();
         mto.obtenerIdSeccion();
-        if (mto.verificarRegistro()) {
-            JOptionPane.showMessageDialog(null, "El grado que intenta ingresar ya ha sido registrado");
-        } else {
+        //if (mto.verificarRegistro()) {
+           
+        //} else {
             if (mto.actualizarGradoSeccion()) {
                 JOptionPane.showMessageDialog(null, "Se han actualizado los datos correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
                 MtoBitacoras add = new MtoBitacoras();
@@ -514,7 +514,7 @@ public class FrmSecciones extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Error");
             }
-        }
+        //}
         txtBuscar.setText("");
         String busqueda = txtBuscar.getText();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(modelo);

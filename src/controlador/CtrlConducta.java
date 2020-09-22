@@ -12,6 +12,20 @@ import java.sql.Connection;
  * @author katy0
  */
 public class CtrlConducta {
+
+    /**
+     * @return the idUsuario
+     */
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    /**
+     * @param idUsuario the idUsuario to set
+     */
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
     
     //Declarando los atributos de la clase
      
@@ -29,6 +43,7 @@ public class CtrlConducta {
     static private String seccion;
     static private int LongitudArray;
     static private String anioSeccion;
+    static private int idUsuario;
 
     /**
      * @return the idConducta
