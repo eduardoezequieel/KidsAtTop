@@ -115,6 +115,10 @@ public class FrmNotas extends javax.swing.JInternalFrame {
         String año = cbAño.getItemAt(cbAño.getSelectedIndex());
         int idGradoSeccion = mto.capturarIDGS(grado, seccion, año);
         int idTrimestre = mto.getIDTrimestre(cbTrimestre.getItemAt(cbTrimestre.getSelectedIndex()));
+        
+        System.out.println(String.valueOf(idGradoSeccion));
+        System.out.println(String.valueOf(idIndicador));
+        System.out.println(String.valueOf(idTrimestre));
         ClsConexion con = new ClsConexion();
         Connection datos;
         try
@@ -491,7 +495,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBuscarKeyTyped
 
     private void cbAñoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAñoItemStateChanged
-        
+        llenarIndicadores();
         llenarGradoSeccion();
         mostrarEstudiantes();
     }//GEN-LAST:event_cbAñoItemStateChanged
@@ -502,6 +506,7 @@ public class FrmNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbGradoSeccionItemStateChanged
 
     private void cbTrimestreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTrimestreItemStateChanged
+        llenarIndicadores();
         mostrarEstudiantes();
     }//GEN-LAST:event_cbTrimestreItemStateChanged
 
