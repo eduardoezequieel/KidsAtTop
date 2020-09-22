@@ -59,6 +59,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
 
         initComponents();
         this.setBorder(null);
+        this.mod = mod;
         BasicInternalFrameUI bui = (BasicInternalFrameUI) this.getUI();
         bui.setNorthPane(null);
 
@@ -96,7 +97,9 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         j1.setVisible(false);
         j2.setVisible(false);
         j3.setVisible(false);
-
+        txtiduser.setVisible(false);
+        
+        txtiduser.setText(String.valueOf(mod.getId_usuario()));
     }
 
     /**
@@ -132,6 +135,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         jEstudiantes = new javax.swing.JTable();
         j2 = new javax.swing.JTextField();
         j3 = new javax.swing.JTextField();
+        txtiduser = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(33, 37, 41));
         setBorder(null);
@@ -155,7 +159,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_rollover-1.png"))); // NOI18N
         btnActualizar.setBorder(null);
         btnActualizar.setContentAreaFilled(false);
-        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnActualizar.setFocusable(false);
         btnActualizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnVerificar_default.png"))); // NOI18N
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -260,7 +264,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         btnActualizar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_default.png"))); // NOI18N
         btnActualizar3.setBorder(null);
         btnActualizar3.setContentAreaFilled(false);
-        btnActualizar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnActualizar3.setFocusable(false);
         btnActualizar3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnActualizar_rollover.png"))); // NOI18N
         btnActualizar3.addActionListener(new java.awt.event.ActionListener() {
@@ -285,7 +289,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         btnActualizar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReiniciarProcesoDefault.png"))); // NOI18N
         btnActualizar2.setBorder(null);
         btnActualizar2.setContentAreaFilled(false);
-        btnActualizar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnActualizar2.setFocusable(false);
         btnActualizar2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnReiniciarProcesoRollover.png"))); // NOI18N
         btnActualizar2.addActionListener(new java.awt.event.ActionListener() {
@@ -350,6 +354,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 0, 0));
         jPanel1.add(j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 40, -1));
         jPanel1.add(j3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 40, -1));
+        jPanel1.add(txtiduser, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 720));
 
@@ -518,6 +523,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
 
     private void btnActualizar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizar3ActionPerformed
         boolean resp = false;
+        
         //Verificando cupos disponibles
         estudianteCtrl.setAnioSeccion(String.valueOf(cbAño.getItemAt(cbAño.getSelectedIndex())));
 
@@ -586,10 +592,10 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
             //Verificando cupos disponibles
             estudianteCtrl.setAnioSeccion(String.valueOf(cbAño.getItemAt(cbAño.getSelectedIndex())));
 
-            MtoBitacoras add = new MtoBitacoras();
-            int id = add.capturarIdBitacora() + 1;
-            mod.setId_usuario(mod.getId_usuario());
-            mod.setId_bitacora(id);
+             MtoBitacoras add = new MtoBitacoras();
+            int idbitacora = add.capturarIdBitacora() + 1;
+            mod.setId_usuario(Integer.parseInt(txtiduser.getText()));
+            mod.setId_bitacora(idbitacora);
             add.agregarBitacoraTrasladoAlumnos(mod);
             //Dividiendo el grado y la seccion
             String gradoSeccion0 = cbGS.getItemAt(cbGS.getSelectedIndex());
@@ -800,5 +806,6 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tNotasPendientes;
+    private javax.swing.JTextField txtiduser;
     // End of variables declaration//GEN-END:variables
 }
