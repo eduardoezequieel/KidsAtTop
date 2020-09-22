@@ -97,6 +97,7 @@ public class FrmConducta extends javax.swing.JInternalFrame {
         jEliminar.setEnabled(false);
         
        jObservacion.setLineWrap(true);
+       j1.setVisible(false);
        
        j1.setText(cbEstudiante.getItemAt(cbEstudiante.getSelectedIndex()));
        

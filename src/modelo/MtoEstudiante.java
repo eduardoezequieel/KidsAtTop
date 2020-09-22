@@ -541,7 +541,7 @@ public class MtoEstudiante {
         try{
             
             //Preparando sentencia sql
-            String sql = "SELECT id_estudiante, anio_ingreso, fecha_nacimiento, direccion, foto, id_estado_estudiante FROM estudiante WHERE apellido = ? AND nombre = ? AND genero = ? AND id_responsable = ? AND id_grado_seccion = ?";
+            String sql = "SELECT id_estudiante, anio_ingreso, fecha_nacimiento, direccion, foto, id_estado_estudiante FROM estudiante WHERE apellido = ? AND nombre = ? AND genero = ? AND id_responsable = ? AND id_grado_seccion = ? AND id_estado_estudiante = 1";
             PreparedStatement cmd = cn.prepareStatement(sql);
             
             cmd.setString(1, apellido);

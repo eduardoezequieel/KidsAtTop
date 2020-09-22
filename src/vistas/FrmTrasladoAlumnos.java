@@ -484,6 +484,7 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
                         estudiante.obtenerIdGS(grado3, seccion3);
                         this.limpiarTabla2();
                         this.mostrarEstudiantes(anio, grado3, seccion3);
+                        cbGS2.setEnabled(true);
                     }
 
                 }
@@ -545,6 +546,8 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
 
             //Llenando los datos de cada estudiante
             int id = estudianteCtrl.getIdEstudiante();
+            int idRegistro = Integer.valueOf(String.valueOf(jEstudiantes.getValueAt(i, 0)));
+            estudiante.graduarEstudiante(idRegistro);
             estudianteCtrl.setNombre(String.valueOf(jEstudiantes.getValueAt(i, 1)));
             estudianteCtrl.setApellido(String.valueOf(jEstudiantes.getValueAt(i, 2)));
             estudianteCtrl.setAnioIngreso(String.valueOf(jEstudiantes.getValueAt(i, 3)));
@@ -716,12 +719,13 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         cbGS2.setVisible(true);
         btnActualizar3.setVisible(true);
         this.limpiarTabla();
-        this.limpiarTabla2();
+        //this.limpiarTabla2();
         this.llenarAnio();
         this.llenarGradoSeccion();
         j1.setText("");
         j2.setText("");
         j3.setText("");
+        cbGS2.setEnabled(false);
     }
 
     public void mostrarNotasPendientes() {
