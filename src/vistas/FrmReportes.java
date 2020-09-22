@@ -51,7 +51,6 @@ public class FrmReportes extends javax.swing.JInternalFrame {
             
             btnLista.setEnabled(false);
             btnGenerarBitacora.setEnabled(false);
-            jButton1.setEnabled(false);
             btnGenerarGradoSeccion.setEnabled(false);
 
 
