@@ -95,11 +95,26 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         this.reset();
 
         j1.setVisible(false);
-        j2.setVisible(false);
         j3.setVisible(false);
         txtiduser.setVisible(false);
         
         txtiduser.setText(String.valueOf(mod.getId_usuario()));
+        
+        j1.setText(cbGS.getItemAt(cbGS2.getSelectedIndex()));
+        
+        if (j1.getText().equals("null")) {
+            JOptionPane.showMessageDialog(null, "No existen grados o secciones en el sistema, por favor, ingrese lo requerido antes de continuar.");
+            btnActualizar.setEnabled(false);
+            btnActualizar2.setEnabled(false);      
+        }
+        
+        j3.setText(cbGS2.getItemAt(cbGS2.getSelectedIndex()));
+        
+        if (j3.getText().equals("null")) {
+            JOptionPane.showMessageDialog(null, "No existen grados o secciones en el sistema, por favor, ingrese lo requerido antes de continuar.");
+            btnActualizar2.setEnabled(false);
+            btnActualizar3.setEnabled(false);
+        }
     }
 
     /**
@@ -133,7 +148,6 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         j1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jEstudiantes = new javax.swing.JTable();
-        j2 = new javax.swing.JTextField();
         j3 = new javax.swing.JTextField();
         txtiduser = new javax.swing.JTextField();
 
@@ -352,7 +366,6 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jEstudiantes);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 0, 0));
-        jPanel1.add(j2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 40, -1));
         jPanel1.add(j3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 40, -1));
         jPanel1.add(txtiduser, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
 
@@ -795,7 +808,6 @@ public class FrmTrasladoAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbGS;
     private javax.swing.JComboBox<String> cbGS2;
     private javax.swing.JTextField j1;
-    private javax.swing.JTextField j2;
     private javax.swing.JTextField j3;
     private javax.swing.JTable jEstudiantes;
     private javax.swing.JLabel jLabel14;

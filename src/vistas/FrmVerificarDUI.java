@@ -29,6 +29,15 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         
         //Llenando combobox
         this.llenarParentesco();
+        
+        j1.setVisible(false);
+        
+        j1.setText(cbParentesco.getItemAt(cbParentesco.getSelectedIndex()));
+        
+        if (j1.getText().equals("null")) {
+            JOptionPane.showMessageDialog(null, "No hay parentescos existentes, por favor, ingrese lo requerido para continuar.");
+            btnAgregar.setEnabled(false);
+        }
     }
 
     /**
@@ -63,6 +72,7 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jDui = new javax.swing.JFormattedTextField();
+        j1 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
 
         setPreferredSize(new java.awt.Dimension(1080, 650));
@@ -173,7 +183,6 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         cbParentesco.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         cbParentesco.setForeground(new java.awt.Color(255, 255, 255));
         cbParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbParentesco.setBorder(null);
         jLayeredPane2.add(cbParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 230, -1));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -250,6 +259,26 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         jDui.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jDui.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
         pnlVerificar.add(jDui, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 180, 30));
+
+        j1.setBackground(new java.awt.Color(33, 37, 41));
+        j1.setFont(new java.awt.Font("Roboto Black", 0, 16)); // NOI18N
+        j1.setForeground(new java.awt.Color(255, 255, 255));
+        j1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        j1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(119, 119, 119)));
+        j1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                j1ActionPerformed(evt);
+            }
+        });
+        j1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                j1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                j1KeyTyped(evt);
+            }
+        });
+        pnlVerificar.add(j1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 70, 30));
 
         jPanel1.add(pnlVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1060, 220));
 
@@ -377,6 +406,18 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
         
         val.verificarPegar(evt);
     }//GEN-LAST:event_jCorreoKeyPressed
+
+    private void j1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_j1KeyPressed
+
+    private void j1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_j1KeyTyped
+
+    private void j1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_j1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_j1ActionPerformed
        
     public void limpiarCampos(){
         jNombre.setText("");
@@ -395,6 +436,7 @@ public class FrmVerificarDUI extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnVerificar;
     private javax.swing.JComboBox<String> cbParentesco;
+    private javax.swing.JTextField j1;
     private javax.swing.JTextField jApellido;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
