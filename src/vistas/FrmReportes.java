@@ -100,7 +100,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         btnGenerarBitacora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptBitacora.png"))); // NOI18N
         btnGenerarBitacora.setBorder(null);
         btnGenerarBitacora.setContentAreaFilled(false);
-        btnGenerarBitacora.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenerarBitacora.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGenerarBitacora.setFocusable(false);
         btnGenerarBitacora.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptBitacoraRollover.png"))); // NOI18N
         btnGenerarBitacora.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +113,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         btnGenerarGradoSeccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptDocentesDefault.png"))); // NOI18N
         btnGenerarGradoSeccion.setBorder(null);
         btnGenerarGradoSeccion.setContentAreaFilled(false);
-        btnGenerarGradoSeccion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenerarGradoSeccion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGenerarGradoSeccion.setFocusable(false);
         btnGenerarGradoSeccion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptDocentesRollover.png"))); // NOI18N
         btnGenerarGradoSeccion.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +126,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         btnGenerarEstudiantesGS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptListaDefault.png"))); // NOI18N
         btnGenerarEstudiantesGS.setBorder(null);
         btnGenerarEstudiantesGS.setContentAreaFilled(false);
-        btnGenerarEstudiantesGS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenerarEstudiantesGS.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGenerarEstudiantesGS.setFocusable(false);
         btnGenerarEstudiantesGS.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptListaRollover.png"))); // NOI18N
         btnGenerarEstudiantesGS.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +139,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         btnLista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptUsuarioDefault.png"))); // NOI18N
         btnLista.setBorder(null);
         btnLista.setContentAreaFilled(false);
-        btnLista.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLista.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLista.setFocusable(false);
         btnLista.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptUsuarioRollover.png"))); // NOI18N
         btnLista.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +152,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         btnInasistencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptInasistenciasDefault.png"))); // NOI18N
         btnInasistencias.setBorder(null);
         btnInasistencias.setContentAreaFilled(false);
-        btnInasistencias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInasistencias.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnInasistencias.setFocusable(false);
         btnInasistencias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptInasistenciasRollover.png"))); // NOI18N
         btnInasistencias.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +165,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         btnConducta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptConductaDefault.png"))); // NOI18N
         btnConducta.setBorder(null);
         btnConducta.setContentAreaFilled(false);
-        btnConducta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnConducta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnConducta.setFocusable(false);
         btnConducta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptConductaRollover.png"))); // NOI18N
         btnConducta.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +178,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         btnGenerarAsistenciaDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptAsistenciasDefault.png"))); // NOI18N
         btnGenerarAsistenciaDia.setBorder(null);
         btnGenerarAsistenciaDia.setContentAreaFilled(false);
-        btnGenerarAsistenciaDia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGenerarAsistenciaDia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGenerarAsistenciaDia.setFocusable(false);
         btnGenerarAsistenciaDia.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptAsistenciasRollover.png"))); // NOI18N
         btnGenerarAsistenciaDia.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +191,7 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         btnNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptNotasEstudianteDefault.png"))); // NOI18N
         btnNotas.setBorder(null);
         btnNotas.setContentAreaFilled(false);
-        btnNotas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNotas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnNotas.setFocusable(false);
         btnNotas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptNotasEstudianteRollover.png"))); // NOI18N
         btnNotas.addActionListener(new java.awt.event.ActionListener() {
@@ -204,9 +204,14 @@ public class FrmReportes extends javax.swing.JInternalFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptIndicadores.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setFocusable(false);
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/btnRptIndicadoresRollover.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 290, 210, 180));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N

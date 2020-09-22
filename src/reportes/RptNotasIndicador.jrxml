@@ -13,13 +13,16 @@
 	<parameter name="ANIO" class="java.lang.String"/>
 	<parameter name="USUARIO" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[Select CONCAT(e.nombre , ' ' , e.apellido) as Nombre, g.grado, s.seccion, i.indicador, np.n_predeterminada from estudiante e, grado_seccion gs, grado g, seccion s, indicador_logro i, nota n, nota_predeterminada np where e.id_estudiante = n.id_estudiante and gs.id_grado = g.id_grado and gs.id_seccion = s.id_seccion and e.id_grado_seccion = gs.id_grado_seccion and n.id_n_predeterminada = np.id_n_predeterminada and n.id_indicador = i.id_indicador and g.grado = $P{GRADO} and s.seccion = $P{SECCION} and gs.anio_seccion = $P{ANIO} and i.id_indicador = $P{INDICADOR}]]>
+		<![CDATA[Select CONCAT(e.nombre , ' ' , e.apellido) as Nombre,e.id_estudiante, g.grado, s.seccion, i.indicador, (select np1.n_predeterminada from nota_predeterminada np1, trimestre t1, nota n1, estudiante e1, indicador_logro i1 where n1.id_estudiante = e1.id_estudiante and n1.id_n_predeterminada = np1.id_n_predeterminada and n1.id_trimestre = t1.id_trimestre and e1.id_estudiante = e.id_estudiante and t1.id_trimestre = 1 and n1.id_indicador = i1.id_indicador AND i1.id_indicador = i.id_indicador) as Primero, (select np1.n_predeterminada from nota_predeterminada np1, trimestre t1, nota n1, estudiante e1, indicador_logro i1 where n1.id_estudiante = e1.id_estudiante and n1.id_n_predeterminada = np1.id_n_predeterminada and n1.id_trimestre = t1.id_trimestre and e1.id_estudiante = e.id_estudiante and t1.id_trimestre = 2 and n1.id_indicador = i1.id_indicador AND i1.id_indicador = i.id_indicador) as Segundo, (select np1.n_predeterminada from nota_predeterminada np1, trimestre t1, nota n1, estudiante e1, indicador_logro i1 where n1.id_estudiante = e1.id_estudiante and n1.id_n_predeterminada = np1.id_n_predeterminada and n1.id_trimestre = t1.id_trimestre and e1.id_estudiante = e.id_estudiante and t1.id_trimestre = 3 and n1.id_indicador = i1.id_indicador AND i1.id_indicador = i.id_indicador) as Tercero from estudiante e, grado_seccion gs, grado g, seccion s, indicador_logro i where gs.id_grado = g.id_grado and gs.id_seccion = s.id_seccion and e.id_grado_seccion = gs.id_grado_seccion and g.grado = $P{GRADO} and s.seccion = $P{SECCION} and gs.anio_seccion = $P{ANIO} and i.id_indicador = $P{INDICADOR}]]>
 	</queryString>
 	<field name="Nombre" class="java.lang.String"/>
+	<field name="id_estudiante" class="java.lang.Integer"/>
 	<field name="grado" class="java.lang.String"/>
 	<field name="seccion" class="java.lang.String"/>
 	<field name="indicador" class="java.lang.String"/>
-	<field name="n_predeterminada" class="java.lang.String"/>
+	<field name="Primero" class="java.lang.String"/>
+	<field name="Segundo" class="java.lang.String"/>
+	<field name="Tercero" class="java.lang.String"/>
 	<group name="GrupoConducta">
 		<groupHeader>
 			<band height="155">
@@ -34,18 +37,18 @@
 					<textFieldExpression><![CDATA[$F{indicador}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="477" y="133" width="70" height="20" uuid="841fe134-f3cd-4de6-bb54-362b6356540c"/>
+					<reportElement x="388" y="133" width="52" height="20" uuid="841fe134-f3cd-4de6-bb54-362b6356540c"/>
 					<textElement textAlignment="Center">
 						<font fontName="Segoe UI Semilight" size="14"/>
 					</textElement>
-					<text><![CDATA[Nota]]></text>
+					<text><![CDATA[1°]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="23" y="133" width="444" height="20" uuid="807bc867-dee2-4398-b7a4-bee076153d39"/>
+					<reportElement x="23" y="133" width="362" height="20" uuid="807bc867-dee2-4398-b7a4-bee076153d39"/>
 					<textElement>
 						<font fontName="Segoe UI Semilight" size="14"/>
 					</textElement>
-					<text><![CDATA[Indicador]]></text>
+					<text><![CDATA[Nombre]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="9" y="17" width="77" height="30" uuid="a8726c5a-fc64-4c64-b4b2-1a1f312ee270"/>
@@ -82,6 +85,20 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{seccion}]]></textFieldExpression>
 				</textField>
+				<staticText>
+					<reportElement x="500" y="133" width="52" height="20" uuid="97ce16d2-b23e-4efb-9277-495d63c5cde9"/>
+					<textElement textAlignment="Center">
+						<font fontName="Segoe UI Semilight" size="14"/>
+					</textElement>
+					<text><![CDATA[3°]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="445" y="133" width="52" height="20" uuid="c8c8b96b-4b0d-43fd-a817-fd1675ae93a5"/>
+					<textElement textAlignment="Center">
+						<font fontName="Segoe UI Semilight" size="14"/>
+					</textElement>
+					<text><![CDATA[2°]]></text>
+				</staticText>
 			</band>
 		</groupHeader>
 	</group>
@@ -123,18 +140,32 @@
 				<reportElement x="10" y="4" width="552" height="34" forecolor="#D4F9DD" uuid="13f97e10-ac20-4846-ae73-9dec5e93fffb"/>
 			</rectangle>
 			<textField>
-				<reportElement x="477" y="10" width="71" height="20" uuid="62166e4d-9fee-4ab8-9c26-b42ad7ea29f9"/>
-				<textElement>
+				<reportElement x="388" y="10" width="52" height="20" uuid="62166e4d-9fee-4ab8-9c26-b42ad7ea29f9"/>
+				<textElement textAlignment="Center">
 					<font fontName="Segoe UI Semilight" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{n_predeterminada}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Primero}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="23" y="10" width="444" height="20" uuid="67def60f-05b7-472b-a410-fba47815f6d5"/>
+				<reportElement x="23" y="10" width="362" height="20" uuid="67def60f-05b7-472b-a410-fba47815f6d5"/>
 				<textElement>
 					<font fontName="Segoe UI Semilight" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="10" width="52" height="20" uuid="7d6a8f2d-5c98-4685-85c0-6e076f048197"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Segundo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="10" width="52" height="20" uuid="b4a0b52d-28d4-4066-be0c-351f6b8cfa74"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI Semilight" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Tercero}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
